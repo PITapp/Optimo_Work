@@ -159,8 +159,7 @@
                   "name": "buttonSuchenKontakte",
                   "size": "md",
                   "style": {
-                    "backgroundColor": "#f2f3f5",
-                    "border": "1px solid #a71330",
+                    "backgroundColor": "rgb(230, 236, 239)",
                     "borderBottom": "2px solid #a71330",
                     "color": "#5d717d",
                     "display": "block",
