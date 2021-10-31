@@ -1,0 +1,72 @@
+<rz-content #content1 container="main">
+  <div class="row">
+    <div class="col-md-12">
+      <rz-template-form #templateFormKontaktpersonen [style]="{}" (submit)="templateFormKontaktpersonenSubmit($event)">
+        <div class="row">
+          <div class="col-md-12" [ngStyle]="{'paddingLeft': '0px'}">
+            <div [ngStyle]="{'marginBottom': '10px'}" class="row">
+              <div class="col-md-3" [ngStyle]="{}">
+                <rz-label #label1 component="NameKontakt" [style]="{'display': 'block', 'textAlign': 'left', 'width': '100%'}" text="Name">
+                </rz-label>
+                <rz-required-validator #requiredValidator3 [component]="nameKontakt" [style]="{'position': 'absolute', 'textAlign': 'left', 'width': '100%'}" text="╘ eingeben">
+                </rz-required-validator>
+              </div>
+              <div class="col-md-9" [ngStyle]="{'display': 'block', 'paddingRight': '0'}">
+                <rz-textbox #nameKontakt [maxLength]="100" [style]="{'display': 'block', 'width': '100%'}" name="NameKontakt">
+                </rz-textbox>
+              </div>
+            </div>
+            <div [ngStyle]="{'marginBottom': '10px'}" class="row">
+              <div class="col-md-3" [ngStyle]="{}">
+                <rz-label #label4 component="Handy" [style]="{'textAlign': 'left', 'width': '100%'}" text="Handy">
+                </rz-label>
+              </div>
+              <div class="col-md-9" [ngStyle]="{'display': 'block', 'paddingRight': '0'}">
+                <rz-textbox #handy [maxLength]="20" [style]="{'width': '100%'}" name="Handy">
+                </rz-textbox>
+              </div>
+            </div>
+            <div [ngStyle]="{'marginBottom': '10px'}" class="row">
+              <div class="col-md-3" [ngStyle]="{}">
+                <rz-label #label5 component="Telefon" [style]="{'textAlign': 'left', 'width': '100%'}" text="Telefon">
+                </rz-label>
+              </div>
+              <div class="col-md-9" [ngStyle]="{'display': 'block', 'paddingRight': '0'}">
+                <rz-textbox #telefon [maxLength]="20" [style]="{'width': '100%'}" name="Telefon">
+                </rz-textbox>
+              </div>
+            </div>
+            <div [ngStyle]="{'marginBottom': '10px'}" class="row">
+              <div class="col-md-3" [ngStyle]="{}">
+                <rz-label #label6 component="EMail" [style]="{'textAlign': 'left', 'width': '100%'}" text="E-Mail">
+                </rz-label>
+              </div>
+              <div class="col-md-9" [ngStyle]="{'paddingRight': '0'}">
+                <rz-textbox #eMail [maxLength]="70" [style]="{'width': '100%'}" name="EMail">
+                </rz-textbox>
+              </div>
+            </div>
+            <div [ngStyle]="{'marginBottom': '14px'}" class="row">
+              <div class="col-md-3" [ngStyle]="{}">
+                <rz-label #label19 component="Info" [style]="{'textAlign': 'left', 'width': '100%'}" text="Info">
+                </rz-label>
+              </div>
+              <div class="col-md-9" [ngStyle]="{'paddingRight': '0'}">
+                <rz-textarea #info [rows]="4" [style]="{'height': '136px', 'width': '100%'}" name="Info">
+                </rz-textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div [ngStyle]="{'float': 'none'}" class="row">
+          <div class="col offset-sm-3 justify-content-end d-flex col-md-9" [ngStyle]="{}">
+            <rz-button #button1 buttonStyle="success" buttonType="submit" icon="done" [style]="{}" text="Speichern">
+            </rz-button>
+            <rz-button #button2 buttonStyle="light" [style]="{'marginLeft': '1rem'}" text="Abbruch" (click)="button2Click($event)">
+            </rz-button>
+          </div>
+        </div>
+      </rz-template-form>
+    </div>
+  </div>
+</rz-content>

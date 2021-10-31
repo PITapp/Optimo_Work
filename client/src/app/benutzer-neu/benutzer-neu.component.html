@@ -1,0 +1,122 @@
+<rz-content #content1 container="main">
+  <div class="row">
+    <div class="col-md-12">
+      <rz-template-form #form0 (submit)="form0Submit($event)">
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3">
+            <rz-label #label1 component="BaseID" [style]="{'textAlign': 'left', 'width': '100%'}" text="Benutzer">
+            </rz-label>
+            <rz-required-validator #requiredValidator1 [component]="baseId" [style]="{'display': 'block', 'position': 'absolute', 'width': '100%'}" text="╘ eingeben">
+            </rz-required-validator>
+          </div>
+          <div class="col-md-9">
+            <rz-dropdown #baseId [data]="rstBase" emptyFilterText="No results found" [multiple]="false" multipleItemsSelectedText="{0} items selected" placeholder="Kontakt auswählen" [style]="{'display': 'block', 'width': '100%'}" textProperty="NameGesamt" valueProperty="BaseID" name="BaseID" (change)="BaseIDChange($event)">
+            </rz-dropdown>
+          </div>
+        </div>
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3" [ngStyle]="{'textAlign': 'right'}">
+            <rz-label #label2 component="Anmeldename" [style]="{'textAlign': 'left', 'width': '100%'}" text="Anmeldename">
+            </rz-label>
+            <rz-required-validator #requiredValidator4 [component]="anmeldename" [style]="{'display': 'block', 'position': 'absolute', 'textAlign': 'left', 'width': '100%'}" text="╘ eingeben">
+            </rz-required-validator>
+          </div>
+          <div class="col-md-9">
+            <rz-textbox #anmeldename [autoComplete]="false" [style]="{'display': 'block', 'width': '100%'}" name="Anmeldename">
+            </rz-textbox>
+          </div>
+        </div>
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3" [ngStyle]="{'textAlign': 'right'}">
+            <rz-label #label3 component="Initialen" [style]="{'textAlign': 'left', 'width': '100%'}" text="Initialen">
+            </rz-label>
+            <rz-required-validator #requiredValidator2 [component]="initialen" [style]="{'display': 'block', 'position': 'absolute', 'textAlign': 'left', 'width': '100%'}" text="╘ eingeben">
+            </rz-required-validator>
+          </div>
+          <div class="col-md-9">
+            <rz-textbox #initialen [autoComplete]="false" [style]="{'display': 'block', 'width': '100%'}" name="Initialen">
+            </rz-textbox>
+          </div>
+        </div>
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3">
+            <rz-label #roleNamesLabel component="RoleNames" [style]="{'textAlign': 'left', 'width': '100%'}" text="Rollen">
+            </rz-label>
+            <rz-required-validator #requiredValidator3 [component]="roleNames" [style]="{'display': 'block', 'position': 'absolute', 'textAlign': 'left', 'width': '100%'}" text="╘ eingeben">
+            </rz-required-validator>
+          </div>
+          <div class="col-md-9">
+            <rz-listbox #roleNames [allowFiltering]="false" [checkbox]="true" [data]="rstRollen" [multiple]="true" [showToggleAll]="false" [style]="{'display': 'block', 'width': '100%'}" textProperty="Titel" valueProperty="Titel" name="RoleNames">
+            </rz-listbox>
+          </div>
+        </div>
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3">
+            <rz-label #passwordLabel component="Password" [style]="{'textAlign': 'left', 'width': '100%'}" text="Passwort">
+            </rz-label>
+            <rz-required-validator #passwordRequiredValidator [component]="password" [style]="{'display': 'block', 'position': 'absolute', 'textAlign': 'left', 'width': '100%'}" text="╘ eingeben">
+            </rz-required-validator>
+          </div>
+          <div class="col-md-9">
+            <rz-password #password [autoComplete]="false" [style]="{'display': 'block', 'width': '100%'}" name="Password">
+            </rz-password>
+          </div>
+        </div>
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3">
+            <rz-label #confirmPasswordLabel component="ConfirmPassword" [style]="{'textAlign': 'left', 'width': '100%'}" text="Wiederholen">
+            </rz-label>
+            <rz-required-validator #confirmPasswordRequiredValidator [component]="confirmPassword" [style]="{'display': 'block', 'position': 'absolute', 'textAlign': 'left', 'width': '100%'}" text="╘ eingeben">
+            </rz-required-validator>
+          </div>
+          <div class="col-md-9">
+            <rz-password #confirmPassword [autoComplete]="false" [style]="{'display': 'block', 'width': '100%'}" name="ConfirmPassword">
+            </rz-password>
+          </div>
+        </div>
+        <div [ngStyle]="{'marginBottom': '14px'}" class="row">
+          <div class="col-md-3" [ngStyle]="{}">
+            <rz-label #label19 component="Info" [style]="{'textAlign': 'left', 'width': '100%'}" text="Notizen">
+            </rz-label>
+          </div>
+          <div class="col-md-9" [ngStyle]="{}">
+            <rz-textarea #notiz [rows]="4" [style]="{'height': '136px', 'width': '100%'}" name="Notiz">
+            </rz-textarea>
+          </div>
+        </div>
+        <div [ngStyle]="{'textAlign': 'right'}" class="row">
+          <div class="col">
+            <rz-button #button0 buttonStyle="success" buttonType="submit" icon="done" text="Speichern">
+            </rz-button>
+            <rz-button #button1 buttonStyle="light" [style]="{'marginLeft': '1rem'}" text="Abbruch" (click)="button1Click($event)">
+            </rz-button>
+          </div>
+        </div>
+      </rz-template-form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-9">
+      <rz-textarea #textarea0 placeholder="Funktionsbeschreibung - BenutzerNeu
+      
+      Zuerst wird über die Funktion crateUser der Benutzer und seine Rollen in AspNetUsers und AspNetUsersRoles eingetragen. Die Funktion liefert die UserID zurück. Mit dieser ID werden dann in der Tabelle Benutzer die Daten (Benutzername, E-Mail, …) eingetragen. Beim eintragen des Benutzernamens und der E-Mail werden diese Daten dann wieder in die Tabelle AspNetUsers übertragen und dort aktualisiert. Dies geschieht deswegen, weil standardmäßig über die Funktion createUser der Benutzername eine E-Mail-Adresse sein muss. Wir verwenden aber für den Benutzernamen den Vornamen und Familiennamen. Diese Aktualisierung wird beim Ändern in der Tabelle Benutzer in der Tabelle AspNetUsers aktualisiert.
+      
+      Funktion in MySQL:
+      AFTER INSERT ON `xxx`.`Benutzer`
+      FOR EACH ROW
+      BEGIN
+      
+      	-- Den Benutzernamen aus der Tabelle 'Benutzer' in der Tabelle 'AspNetUsers' eintragen
+      	UPDATE AspNetUsers 
+      		SET UserName = NEW.Benutzername, 
+                  NormalizedUserName = Upper(NEW.Benutzername)
+      		WHERE Id = NEW.AspNetUsers_Id;
+              
+      END
+      " [style]="{'backgroundColor': '#ffeca3', 'height': '200px', 'width': '100%'}" *ngIf="false" name="textarea0">
+      </rz-textarea>
+    </div>
+  </div>
+</rz-content>

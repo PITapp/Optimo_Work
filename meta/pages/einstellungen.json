@@ -1,0 +1,619 @@
+{
+  "access": [
+    "Administrator"
+  ],
+  "components": [
+    {
+      "components": [
+        {
+          "components": [
+            {
+              "class": "justify-content-start       d-flex align-items-center          col-md-8",
+              "components": [
+                {
+                  "name": "heading18",
+                  "size": "H1",
+                  "style": {
+                    "color": "#5d717b",
+                    "display": "inline-block"
+                  },
+                  "text": "Einstellungen",
+                  "type": "heading"
+                },
+                {
+                  "name": "heading19",
+                  "size": "H3",
+                  "style": {
+                    "color": "#e5ecef",
+                    "display": "inline-block",
+                    "marginTop": "7px",
+                    "paddingLeft": "10px",
+                    "paddingRight": "10px"
+                  },
+                  "text": "|",
+                  "type": "heading"
+                },
+                {
+                  "attributes": [
+                    {}
+                  ],
+                  "name": "heading21",
+                  "size": "H3",
+                  "style": {
+                    "color": "#789BC0",
+                    "display": "inline",
+                    "fontSize": "21px",
+                    "fontWeight": "normal"
+                  },
+                  "text": "Grundeinstellungen für Module",
+                  "type": "heading"
+                }
+              ],
+              "name": "col46",
+              "style": {
+                "height": "57px",
+                "paddingBottom": "1px"
+              },
+              "type": "col"
+            },
+            {
+              "class": "col-md-4  d-flex justify-content-end align-items-end",
+              "components": [
+                {
+                  "buttonStyle": "info",
+                  "buttonType": "submit",
+                  "events": {
+                    "click": [
+                      {
+                        "height": "",
+                        "parameters": [
+                          {
+                            "name": "strMeldung",
+                            "value": "\"Drucken ist für dieses Modul noch nicht aktiviert!\""
+                          }
+                        ],
+                        "path": "meldung-ok",
+                        "then": [],
+                        "title": "Info",
+                        "type": "popup",
+                        "width": 600
+                      }
+                    ]
+                  },
+                  "icon": "print",
+                  "name": "button0",
+                  "size": "md",
+                  "style": {
+                    "backgroundColor": "rgba(0, 0, 0, 0)",
+                    "border": "1px solid #A71330",
+                    "borderBottom": "3px solid #A71330",
+                    "color": "#6A80AA",
+                    "display": "block",
+                    "fontWeight": "normal",
+                    "width": "150px"
+                  },
+                  "text": "Drucken",
+                  "tooltip": "",
+                  "type": "button"
+                }
+              ],
+              "name": "col64",
+              "style": {
+                "paddingRight": "20px"
+              },
+              "type": "col"
+            }
+          ],
+          "name": "row24",
+          "style": {
+            "height": "",
+            "marginTop": "-7px",
+            "paddingBottom": "0",
+            "paddingLeft": "5px",
+            "paddingRight": "3px",
+            "paddingTop": "0",
+            "width": ""
+          },
+          "type": "row"
+        },
+        {
+          "items": [
+            {
+              "components": [
+                {
+                  "components": [
+                    {
+                      "class": "col-md-7",
+                      "components": [
+                        {
+                          "components": [
+                            {
+                              "addText": "",
+                              "allowAdd": false,
+                              "allowColumnResize": true,
+                              "allowDelete": "",
+                              "allowFiltering": true,
+                              "allowMultiSorting": false,
+                              "allowPaging": true,
+                              "allowSorting": true,
+                              "applyFilterText": "Apply",
+                              "clearFilterText": "Clear",
+                              "columns": [
+                                {
+                                  "format": "",
+                                  "property": "Titel",
+                                  "title": "Titel",
+                                  "type": "string",
+                                  "width": "60%"
+                                },
+                                {
+                                  "format": "",
+                                  "property": "Code",
+                                  "title": "Code",
+                                  "type": "string",
+                                  "width": "40%"
+                                }
+                              ],
+                              "confirmDelete": false,
+                              "confirmDeleteCancelText": "",
+                              "confirmDeleteOkText": "",
+                              "confirmDeleteText": "",
+                              "confirmDeleteTitle": "",
+                              "containsText": "Contains",
+                              "count": "${rstInfotexteCount}",
+                              "data": "${rstInfotexte}",
+                              "emptyText": "Keine Infotexte vorhanden",
+                              "endsWithText": "Ends with",
+                              "equalsText": "Equals",
+                              "events": {
+                                "add": [],
+                                "create": [],
+                                "delete": [],
+                                "loadData": [
+                                  {
+                                    "error": [
+                                      {
+                                        "detail": "Infotexte konnten nicht geladen werden!",
+                                        "severity": "error",
+                                        "summary": "",
+                                        "type": "notify"
+                                      }
+                                    ],
+                                    "name": "dbOptimo.getInfotexteHtmls",
+                                    "parameters": [
+                                      {
+                                        "name": "$top",
+                                        "value": "event.top"
+                                      },
+                                      {
+                                        "name": "$skip",
+                                        "value": "event.skip"
+                                      },
+                                      {
+                                        "name": "$count",
+                                        "value": "event.top != null && event.skip != null"
+                                      },
+                                      {
+                                        "name": "$filter",
+                                        "value": "${event.filter}"
+                                      },
+                                      {
+                                        "name": "$orderby",
+                                        "value": "${event.orderby || 'Titel'}"
+                                      }
+                                    ],
+                                    "then": [
+                                      {
+                                        "name": "rstInfotexte",
+                                        "type": "set",
+                                        "value": "${result.value}"
+                                      },
+                                      {
+                                        "name": "rstInfotexteCount",
+                                        "type": "set",
+                                        "value": "event.top != null && event.skip != null ? result['@odata.count'] : ${result.value.length}"
+                                      },
+                                      {
+                                        "code": "if (this.rstInfotexte.find(p => p.InfotextID == this.letzteInfotextID) != null) {\n    // letzteInfotextID wurde in rstInfotexte gefunden\n    this.gridInfotexte.onSelect(this.rstInfotexte.find(p => p.InfotextID == this.letzteInfotextID))\n} else {\n    // letzteInfotextID wurde in rstInfotexte NICHT gefunden\n    this.letzteInfotextID = null;\n    this.gridInfotexte.onSelect(this.rstInfotexte[0]);\n}",
+                                        "type": "execute"
+                                      }
+                                    ],
+                                    "type": "invoke"
+                                  }
+                                ],
+                                "rowDoubleClick": [
+                                  {
+                                    "name": "letzteInfotextID",
+                                    "type": "set",
+                                    "value": "${dsoInfotexte.InfotextID}"
+                                  },
+                                  {
+                                    "parameters": [
+                                      {
+                                        "name": "InfotextID",
+                                        "value": "${dsoInfotexte.InfotextID}"
+                                      }
+                                    ],
+                                    "path": "einstellungen-infotexte-bearbeiten",
+                                    "title": "Bearbeiten Infotexte",
+                                    "type": "popup"
+                                  }
+                                ],
+                                "rowSelect": [
+                                  {
+                                    "name": "strInfotextHTML",
+                                    "type": "set",
+                                    "value": "${event.Inhalt}"
+                                  },
+                                  {
+                                    "name": "dsoInfotexte",
+                                    "type": "set",
+                                    "value": "${event}"
+                                  }
+                                ],
+                                "update": []
+                              },
+                              "filterCaseSensitivity": "caseInsensitive",
+                              "greaterThanOrEqualsText": "Greater than or equals",
+                              "greaterThanText": "Greater than",
+                              "lessThanOrEqualsText": "Less than or equals",
+                              "lessThanText": "Less than",
+                              "name": "gridInfotexte",
+                              "notEqualsText": "Not equals",
+                              "pageSize": 15,
+                              "startsWithText": "Starts with",
+                              "style": {
+                                "border": "1px solid rgba(0, 0, 0, 0)",
+                                "height": "700px",
+                                "marginLeft": "-10px",
+                                "marginRight": "-10px",
+                                "marginTop": "-13px"
+                              },
+                              "title": "",
+                              "type": "grid",
+                              "value": ""
+                            }
+                          ],
+                          "headerTemplate": [
+                            {
+                              "components": [
+                                {
+                                  "class": "col-md-12 align-items-start d-flex",
+                                  "components": [
+                                    {
+                                      "buttonStyle": "light",
+                                      "events": {
+                                        "click": [
+                                          {
+                                            "name": "letzteInfotextID",
+                                            "type": "set",
+                                            "value": "${dsoInfotexte.InfotextID}"
+                                          },
+                                          {
+                                            "path": "einstellungen-infotexte-neu",
+                                            "then": [
+                                              {
+                                                "condition": "${result} != null",
+                                                "name": "letzteInfotextID",
+                                                "type": "set",
+                                                "value": "${result.InfotextID}"
+                                              },
+                                              {
+                                                "code": "this.gridInfotexte.load();",
+                                                "condition": "${result} != null",
+                                                "type": "execute"
+                                              }
+                                            ],
+                                            "title": "Neuer Infotext ",
+                                            "type": "popup"
+                                          }
+                                        ]
+                                      },
+                                      "icon": "add",
+                                      "name": "buttonNeuerInfotext",
+                                      "size": "sm",
+                                      "style": {
+                                        "color": "#A71330",
+                                        "display": "block"
+                                      },
+                                      "text": "Neuer Infotext",
+                                      "tooltip": "",
+                                      "type": "button"
+                                    },
+                                    {
+                                      "buttonStyle": "light",
+                                      "events": {
+                                        "click": [
+                                          {
+                                            "name": "letzteInfotextID",
+                                            "type": "set",
+                                            "value": "${dsoInfotexte.InfotextID}"
+                                          },
+                                          {
+                                            "parameters": [
+                                              {
+                                                "name": "InfotextID",
+                                                "value": "${dsoInfotexte.InfotextID}"
+                                              }
+                                            ],
+                                            "path": "einstellungen-infotexte-bearbeiten",
+                                            "then": [],
+                                            "title": "Bearbeiten Infotext",
+                                            "type": "popup"
+                                          }
+                                        ]
+                                      },
+                                      "icon": "create",
+                                      "name": "buttonBearbeitenInfotext",
+                                      "size": "sm",
+                                      "style": {
+                                        "color": "#6A80AA",
+                                        "display": "block",
+                                        "marginLeft": "10px",
+                                        "paddingLeft": ""
+                                      },
+                                      "text": "",
+                                      "tooltip": "Bearbeiten Infotext",
+                                      "type": "button"
+                                    },
+                                    {
+                                      "buttonStyle": "light",
+                                      "disabled": false,
+                                      "events": {
+                                        "click": [
+                                          {
+                                            "name": "letzteInfotextID",
+                                            "type": "set",
+                                            "value": "null"
+                                          },
+                                          {
+                                            "parameters": [
+                                              {
+                                                "name": "strMeldung",
+                                                "value": "\"Soll der Infotext '\" + ${dsoInfotexte.Titel} + \"' gelöscht werden?\""
+                                              }
+                                            ],
+                                            "path": "meldung-loeschen",
+                                            "then": [
+                                              {
+                                                "condition": "${result} == 'Löschen'",
+                                                "error": [
+                                                  {
+                                                    "detail": "Infotext konnte nicht gelöscht werden!",
+                                                    "severity": "error",
+                                                    "summary": "",
+                                                    "type": "notify"
+                                                  }
+                                                ],
+                                                "name": "dbOptimo.deleteInfotexteHtml",
+                                                "parameters": [
+                                                  {
+                                                    "name": "InfotextID",
+                                                    "value": "${dsoInfotexte.InfotextID}"
+                                                  }
+                                                ],
+                                                "then": [
+                                                  {
+                                                    "detail": "Infotext gelöscht",
+                                                    "severity": "success",
+                                                    "summary": "",
+                                                    "type": "notify"
+                                                  }
+                                                ],
+                                                "type": "invoke"
+                                              }
+                                            ],
+                                            "title": "Löschen Infotext",
+                                            "type": "popup"
+                                          }
+                                        ]
+                                      },
+                                      "icon": "cancel",
+                                      "name": "buttonLoeschenInfotext",
+                                      "size": "sm",
+                                      "style": {
+                                        "color": "#6A80AA",
+                                        "display": "block",
+                                        "fontStyle": "normal",
+                                        "fontWeight": "normal",
+                                        "marginLeft": "10px",
+                                        "marginRight": "-9px"
+                                      },
+                                      "text": "",
+                                      "tooltip": "Löschen Infotext",
+                                      "type": "button"
+                                    }
+                                  ],
+                                  "name": "col1",
+                                  "type": "col"
+                                }
+                              ],
+                              "name": "row0",
+                              "type": "row"
+                            }
+                          ],
+                          "icon": "",
+                          "name": "panel1",
+                          "style": {
+                            "border": "1px solid #e6ecef",
+                            "height": "750px"
+                          },
+                          "text": "${rstInfotexteCount} Infotexte",
+                          "type": "panel"
+                        }
+                      ],
+                      "name": "col0",
+                      "type": "col"
+                    },
+                    {
+                      "class": "col-md-5",
+                      "components": [
+                        {
+                          "attributes": [],
+                          "components": [
+                            {
+                              "components": [
+                                {
+                                  "class": "col-md-12",
+                                  "components": [
+                                    {
+                                      "attributes": [],
+                                      "content": "<editor\n  [(ngModel)]=\"strInfotextHTML\"\n  [disabled]=\"true\"\n  apiKey=\"7uaxcp1fzfppm9wca8ei2hnuuf9hv2fl9slezwr9k33gv0pp\"\n  [init]=\"{\n    height: 699,\n    menubar: false,\n    toolbar: false,\n    statusbar: false,\n    language: 'de',\n    browser_spellcheck: true,\n    plugins: [\n      'fullpage'\n    ]\n  }\"\n ></editor>",
+                                      "name": "htmlEditorInfotexte",
+                                      "type": "html"
+                                    }
+                                  ],
+                                  "name": "col2",
+                                  "style": {},
+                                  "type": "col"
+                                }
+                              ],
+                              "name": "row0",
+                              "style": {
+                                "marginLeft": "-36px",
+                                "marginRight": "-36px",
+                                "marginTop": "-12px"
+                              },
+                              "type": "row"
+                            }
+                          ],
+                          "footerTemplate": "",
+                          "headerTemplate": [
+                            {
+                              "components": [
+                                {
+                                  "class": "col-md-12 align-items-start d-flex",
+                                  "components": [
+                                    {
+                                      "buttonStyle": "light",
+                                      "events": {
+                                        "click": [
+                                          {
+                                            "code": "  // Create container for the HTML\n  // [1]\n  var container = document.createElement('div')\n  container.innerHTML = this.strInfotextHTML\n\n  // Hide element\n  // [2]\n  container.style.position = 'fixed'\n  container.style.pointerEvents = 'none'\n  container.style.opacity = '0'\n  container.style.background = 'white'\n\n  // Mount the container to the DOM to make `contentWindow` available\n  // [3]\n  document.body.appendChild(container)\n\n  // Copy to clipboard\n  // [4]\n  window.getSelection().removeAllRanges()\n\n  var range = document.createRange()\n  range.selectNode(container)\n  window.getSelection().addRange(range)\n\n  // [5]\n  document.execCommand('copy')\n  \n  // Remove the container\n  // [6]\n  document.body.removeChild(container)",
+                                            "type": "execute"
+                                          },
+                                          {
+                                            "detail": "Text wurde kopiert",
+                                            "severity": "success",
+                                            "type": "notify"
+                                          }
+                                        ]
+                                      },
+                                      "icon": "content_copy",
+                                      "name": "buttonKopieren",
+                                      "size": "sm",
+                                      "style": {
+                                        "color": "#A71330",
+                                        "display": "block",
+                                        "float": "none"
+                                      },
+                                      "text": "Kopieren",
+                                      "tooltip": "",
+                                      "type": "button"
+                                    },
+                                    {
+                                      "buttonStyle": "light",
+                                      "buttonType": "button",
+                                      "events": {
+                                        "click": [
+                                          {
+                                            "name": "letzteInfotextID",
+                                            "type": "set",
+                                            "value": "${dsoInfotexte.InfotextID}"
+                                          },
+                                          {
+                                            "parameters": [
+                                              {
+                                                "name": "InfotextID",
+                                                "value": "${dsoInfotexte.InfotextID}"
+                                              }
+                                            ],
+                                            "path": "einstellungen-infotexte-editor",
+                                            "title": "Bearbeiten",
+                                            "type": "popup",
+                                            "width": 720
+                                          }
+                                        ]
+                                      },
+                                      "icon": "create",
+                                      "name": "buttonBearbeitenInfotextEditor",
+                                      "size": "sm",
+                                      "style": {
+                                        "color": "#6A80AA",
+                                        "display": "block",
+                                        "marginLeft": "10px",
+                                        "marginRight": "-9px",
+                                        "marginTop": "1px"
+                                      },
+                                      "text": "Bearbeiten",
+                                      "tooltip": "",
+                                      "type": "button"
+                                    }
+                                  ],
+                                  "name": "col1",
+                                  "type": "col"
+                                }
+                              ],
+                              "name": "row0",
+                              "type": "row"
+                            }
+                          ],
+                          "name": "panel0",
+                          "style": {
+                            "border": "1px solid #e6ecef",
+                            "height": "750px"
+                          },
+                          "text": "${dsoInfotexte.Titel}",
+                          "type": "panel"
+                        }
+                      ],
+                      "name": "col3",
+                      "style": {
+                        "paddingLeft": "5px"
+                      },
+                      "type": "col"
+                    }
+                  ],
+                  "name": "row1",
+                  "type": "row"
+                }
+              ],
+              "icon": "",
+              "selected": false,
+              "text": "Infotexte"
+            }
+          ],
+          "name": "tabs0",
+          "selectedIndex": "",
+          "style": {
+            "float": "none"
+          },
+          "type": "tabs",
+          "visible": true
+        }
+      ],
+      "container": "main",
+      "type": "content"
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "strInfotextHTML",
+        "type": "set",
+        "value": "null"
+      },
+      {
+        "name": "letzteInfotextID",
+        "type": "set",
+        "value": "null"
+      },
+      {
+        "code": "this.gridInfotexte.load();",
+        "type": "execute"
+      }
+    ]
+  },
+  "layout": "Main",
+  "name": "Einstellungen"
+}

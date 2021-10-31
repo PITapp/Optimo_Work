@@ -1,0 +1,126 @@
+{
+  "access": [
+    "Authenticated"
+  ],
+  "components": [
+    {
+      "components": [
+        {
+          "allowFiltering": true,
+          "attributes": [
+            {
+              "name": "class",
+              "value": "optimo-suchen-listbox"
+            },
+            {
+              "name": "(dblclick)",
+              "value": "dblclickListboxKontakte()"
+            }
+          ],
+          "checkbox": false,
+          "data": "${rstBase}",
+          "events": {
+            "change": [
+              {
+                "name": "dsoBase",
+                "type": "set",
+                "value": "${event}"
+              }
+            ]
+          },
+          "multiple": false,
+          "name": "listboxKontakte",
+          "style": {
+            "height": "555px",
+            "width": "100%"
+          },
+          "textProperty": "NameGesamt",
+          "type": "listbox",
+          "valueProperty": "BaseID"
+        },
+        {
+          "components": [
+            {
+              "class": "col  justify-content-end d-flex",
+              "components": [
+                {
+                  "buttonStyle": "success",
+                  "buttonType": "submit",
+                  "events": {
+                    "click": [
+                      {
+                        "result": "${dsoBase}",
+                        "type": "close-popup"
+                      }
+                    ]
+                  },
+                  "icon": "done",
+                  "name": "buttonUebernehmen",
+                  "style": {},
+                  "text": "Übernehmen",
+                  "tooltip": "",
+                  "type": "button"
+                },
+                {
+                  "buttonStyle": "light",
+                  "events": {
+                    "click": [
+                      {
+                        "type": "back"
+                      }
+                    ]
+                  },
+                  "name": "buttonAbbruch",
+                  "style": {
+                    "marginLeft": "1rem"
+                  },
+                  "text": "Abbruch",
+                  "tooltip": "",
+                  "type": "button"
+                }
+              ],
+              "name": "col46",
+              "style": {},
+              "type": "col"
+            }
+          ],
+          "name": "row24",
+          "style": {
+            "marginTop": "15px"
+          },
+          "type": "row"
+        }
+      ],
+      "container": "main",
+      "type": "content"
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "dbOptimo.getVwBaseAlles",
+        "parameters": [
+          {
+            "name": "$orderby",
+            "value": "NameGesamt"
+          }
+        ],
+        "then": [
+          {
+            "name": "rstBase",
+            "type": "set",
+            "value": "${result.value}"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "dblclickListboxKontakte",
+        "type": "set",
+        "value": "() => {\n    this.dialogRef.close(this.dsoBase);\n}"
+      }
+    ]
+  },
+  "layout": "Main",
+  "name": "KontakteSuchen"
+}

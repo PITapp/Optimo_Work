@@ -1,0 +1,497 @@
+{
+  "access": [
+    "Authenticated"
+  ],
+  "components": [
+    {
+      "components": [
+        {
+          "components": [
+            {
+              "class": "justify-content-start       d-flex align-items-center          col-md-8",
+              "components": [
+                {
+                  "name": "heading18",
+                  "size": "H1",
+                  "style": {
+                    "color": "#5d717b",
+                    "display": "inline-block"
+                  },
+                  "text": "Mitarbeiter",
+                  "type": "heading"
+                },
+                {
+                  "name": "heading19",
+                  "size": "H3",
+                  "style": {
+                    "color": "#e5ecef",
+                    "display": "inline-block",
+                    "marginTop": "7px",
+                    "paddingLeft": "10px",
+                    "paddingRight": "10px"
+                  },
+                  "text": "|",
+                  "type": "heading"
+                },
+                {
+                  "attributes": [
+                    {}
+                  ],
+                  "name": "heading21",
+                  "size": "H3",
+                  "style": {
+                    "color": "#789BC0",
+                    "display": "inline",
+                    "fontSize": "21px",
+                    "fontWeight": "normal"
+                  },
+                  "text": "Infoanzeige für das Modul",
+                  "type": "heading"
+                }
+              ],
+              "name": "col46",
+              "style": {
+                "height": "57px",
+                "paddingBottom": "1px"
+              },
+              "type": "col"
+            },
+            {
+              "class": "col-md-4  d-flex justify-content-end align-items-end",
+              "components": [
+                {
+                  "buttonStyle": "info",
+                  "buttonType": "submit",
+                  "events": {
+                    "click": [
+                      {
+                        "height": "",
+                        "parameters": [
+                          {
+                            "name": "strMeldung",
+                            "value": "\"Drucken ist für dieses Modul noch nicht aktiviert!\""
+                          }
+                        ],
+                        "path": "meldung-ok",
+                        "then": [],
+                        "title": "Info",
+                        "type": "popup",
+                        "width": 600
+                      }
+                    ]
+                  },
+                  "icon": "print",
+                  "name": "button0",
+                  "size": "md",
+                  "style": {
+                    "backgroundColor": "rgba(0, 0, 0, 0)",
+                    "border": "1px solid #A71330",
+                    "borderBottom": "3px solid #A71330",
+                    "color": "#6A80AA",
+                    "display": "block",
+                    "fontWeight": "normal",
+                    "width": "150px"
+                  },
+                  "text": "Drucken",
+                  "tooltip": "",
+                  "type": "button"
+                },
+                {
+                  "buttonStyle": "info",
+                  "buttonType": "submit",
+                  "events": {
+                    "click": [
+                      {
+                        "height": 700,
+                        "path": "kontakte-suchen",
+                        "then": [
+                          {
+                            "condition": "${result} != null",
+                            "detail": "Jetzt ist was da",
+                            "severity": "info",
+                            "type": "notify"
+                          }
+                        ],
+                        "title": "Suchen Kontakt",
+                        "type": "popup",
+                        "width": 450
+                      }
+                    ]
+                  },
+                  "icon": "search",
+                  "name": "button1",
+                  "size": "md",
+                  "style": {
+                    "backgroundColor": "rgba(0, 0, 0, 0)",
+                    "border": "1px solid #A71330",
+                    "borderBottom": "3px solid #A71330",
+                    "color": "#6A80AA",
+                    "display": "block",
+                    "fontWeight": "normal",
+                    "marginLeft": "12px",
+                    "width": "150px"
+                  },
+                  "text": "Suchen",
+                  "tooltip": "",
+                  "type": "button"
+                }
+              ],
+              "name": "col64",
+              "style": {
+                "paddingRight": "20px"
+              },
+              "type": "col"
+            }
+          ],
+          "name": "row24",
+          "style": {
+            "height": "",
+            "marginTop": "-7px",
+            "paddingBottom": "0",
+            "paddingLeft": "5px",
+            "paddingRight": "3px",
+            "paddingTop": "0",
+            "width": ""
+          },
+          "type": "row"
+        },
+        {
+          "items": [
+            {
+              "components": [
+                {
+                  "components": [
+                    {
+                      "class": "col-md-7",
+                      "components": [
+                        {
+                          "components": [
+                            {
+                              "items": [
+                                {
+                                  "text": "Tab 1"
+                                },
+                                {
+                                  "icon": "",
+                                  "text": "2222"
+                                }
+                              ],
+                              "name": "tabs1",
+                              "type": "tabs"
+                            }
+                          ],
+                          "headerTemplate": [
+                            {
+                              "components": [
+                                {
+                                  "class": "col-md-12 align-items-start d-flex",
+                                  "components": [
+                                    {
+                                      "buttonStyle": "light",
+                                      "events": {
+                                        "click": []
+                                      },
+                                      "icon": "add",
+                                      "name": "buttonNeuerInfotext",
+                                      "size": "sm",
+                                      "style": {
+                                        "color": "#A71330",
+                                        "display": "block"
+                                      },
+                                      "text": "Neu",
+                                      "tooltip": "",
+                                      "type": "button"
+                                    },
+                                    {
+                                      "buttonStyle": "light",
+                                      "events": {
+                                        "click": []
+                                      },
+                                      "icon": "create",
+                                      "name": "buttonBearbeitenInfotext",
+                                      "size": "sm",
+                                      "style": {
+                                        "color": "#6A80AA",
+                                        "display": "block",
+                                        "marginLeft": "10px",
+                                        "paddingLeft": ""
+                                      },
+                                      "text": "",
+                                      "tooltip": "Bearbeiten Infotext",
+                                      "type": "button"
+                                    },
+                                    {
+                                      "buttonStyle": "light",
+                                      "disabled": false,
+                                      "events": {
+                                        "click": []
+                                      },
+                                      "icon": "cancel",
+                                      "name": "buttonLoeschenInfotext",
+                                      "size": "sm",
+                                      "style": {
+                                        "color": "#6A80AA",
+                                        "display": "block",
+                                        "fontStyle": "normal",
+                                        "fontWeight": "normal",
+                                        "marginLeft": "10px",
+                                        "marginRight": "-9px"
+                                      },
+                                      "text": "",
+                                      "tooltip": "Löschen Infotext",
+                                      "type": "button"
+                                    }
+                                  ],
+                                  "name": "col1",
+                                  "type": "col"
+                                }
+                              ],
+                              "name": "row0",
+                              "type": "row"
+                            }
+                          ],
+                          "icon": "",
+                          "name": "panel1",
+                          "style": {
+                            "border": "1px solid #e6ecef",
+                            "height": "750px"
+                          },
+                          "text": "Beispiel",
+                          "type": "panel"
+                        }
+                      ],
+                      "name": "col0",
+                      "type": "col"
+                    },
+                    {
+                      "class": "col-md-5",
+                      "components": [
+                        {
+                          "attributes": [],
+                          "components": [],
+                          "footerTemplate": "",
+                          "headerTemplate": [
+                            {
+                              "components": [
+                                {
+                                  "class": "col-md-12 align-items-start d-flex",
+                                  "components": [
+                                    {
+                                      "buttonStyle": "light",
+                                      "events": {
+                                        "click": []
+                                      },
+                                      "icon": "content_copy",
+                                      "name": "buttonKopieren",
+                                      "size": "sm",
+                                      "style": {
+                                        "color": "#A71330",
+                                        "display": "block",
+                                        "float": "none"
+                                      },
+                                      "text": "Kopieren",
+                                      "tooltip": "",
+                                      "type": "button"
+                                    },
+                                    {
+                                      "buttonStyle": "light",
+                                      "buttonType": "button",
+                                      "events": {
+                                        "click": []
+                                      },
+                                      "icon": "create",
+                                      "name": "buttonBearbeitenInfotextEditor",
+                                      "size": "sm",
+                                      "style": {
+                                        "color": "#6A80AA",
+                                        "display": "block",
+                                        "marginLeft": "10px",
+                                        "marginRight": "-9px",
+                                        "marginTop": "1px"
+                                      },
+                                      "text": "Bearbeiten",
+                                      "tooltip": "",
+                                      "type": "button"
+                                    }
+                                  ],
+                                  "name": "col1",
+                                  "type": "col"
+                                }
+                              ],
+                              "name": "row0",
+                              "type": "row"
+                            }
+                          ],
+                          "name": "panel0",
+                          "style": {
+                            "border": "1px solid #e6ecef",
+                            "height": "750px"
+                          },
+                          "text": "Beispiel",
+                          "type": "panel"
+                        }
+                      ],
+                      "name": "col3",
+                      "style": {
+                        "paddingLeft": "5px"
+                      },
+                      "type": "col"
+                    }
+                  ],
+                  "name": "row1",
+                  "type": "row"
+                }
+              ],
+              "icon": "",
+              "selected": true,
+              "text": "Daten"
+            },
+            {
+              "components": [
+                {
+                  "components": [
+                    {
+                      "class": "col-md-12",
+                      "components": [
+                        {
+                          "components": [],
+                          "headerTemplate": "",
+                          "icon": "",
+                          "name": "panel2",
+                          "style": {
+                            "border": "1px solid #e6ecef",
+                            "height": "750px"
+                          },
+                          "text": "Beispiel",
+                          "type": "panel"
+                        }
+                      ],
+                      "name": "col2",
+                      "type": "col"
+                    }
+                  ],
+                  "name": "row0",
+                  "type": "row"
+                }
+              ],
+              "icon": "",
+              "selected": false,
+              "text": "Details"
+            },
+            {
+              "components": [
+                {
+                  "components": [
+                    {
+                      "class": "col-md-12",
+                      "components": [
+                        {
+                          "components": [],
+                          "headerTemplate": "",
+                          "icon": "",
+                          "name": "panel3",
+                          "style": {
+                            "border": "1px solid #e6ecef",
+                            "height": "750px"
+                          },
+                          "text": "Beispiel",
+                          "type": "panel"
+                        }
+                      ],
+                      "name": "col4",
+                      "type": "col"
+                    }
+                  ],
+                  "name": "row2",
+                  "type": "row"
+                }
+              ],
+              "selected": false,
+              "text": "Dienstzeiten"
+            },
+            {
+              "components": [
+                {
+                  "components": [
+                    {
+                      "class": "col-md-12",
+                      "components": [
+                        {
+                          "components": [],
+                          "headerTemplate": "",
+                          "icon": "",
+                          "name": "panel4",
+                          "style": {
+                            "border": "1px solid #e6ecef",
+                            "height": "750px"
+                          },
+                          "text": "Beispiel",
+                          "type": "panel"
+                        }
+                      ],
+                      "name": "col5",
+                      "type": "col"
+                    }
+                  ],
+                  "name": "row3",
+                  "type": "row"
+                }
+              ],
+              "selected": false,
+              "text": "Urlaub"
+            },
+            {
+              "components": [
+                {
+                  "components": [
+                    {
+                      "class": "col-md-12",
+                      "components": [
+                        {
+                          "components": [],
+                          "headerTemplate": "",
+                          "icon": "",
+                          "name": "panel5",
+                          "style": {
+                            "border": "1px solid #e6ecef",
+                            "height": "750px"
+                          },
+                          "text": "Beispiel",
+                          "type": "panel"
+                        }
+                      ],
+                      "name": "col6",
+                      "type": "col"
+                    }
+                  ],
+                  "name": "row4",
+                  "type": "row"
+                }
+              ],
+              "selected": false,
+              "text": "Fortbildungen"
+            },
+            {
+              "icon": "",
+              "text": "Liste"
+            }
+          ],
+          "name": "tabs0",
+          "selectedIndex": "",
+          "style": {
+            "float": "none"
+          },
+          "type": "tabs",
+          "visible": true
+        }
+      ],
+      "container": "main",
+      "type": "content"
+    }
+  ],
+  "events": {
+    "load": []
+  },
+  "layout": "Main",
+  "name": "Mitarbeiter"
+}

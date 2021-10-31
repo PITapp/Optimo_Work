@@ -1,0 +1,12 @@
+<rz-content #content1 container="main">
+  <rz-listbox #listboxKontakte [allowFiltering]="true" [checkbox]="false" [data]="rstBase" [multiple]="false" [style]="{'height': '555px', 'width': '100%'}" textProperty="NameGesamt" valueProperty="BaseID" name="listboxKontakte" (change)="listboxKontakteChange($event)" class="optimo-suchen-listbox" (dblclick)="dblclickListboxKontakte()">
+  </rz-listbox>
+  <div [ngStyle]="{'marginTop': '15px'}" class="row">
+    <div class="col  justify-content-end d-flex" [ngStyle]="{}">
+      <rz-button #buttonUebernehmen buttonStyle="success" buttonType="submit" icon="done" [style]="{}" text="Übernehmen" (click)="buttonUebernehmenClick($event)">
+      </rz-button>
+      <rz-button #buttonAbbruch buttonStyle="light" [style]="{'marginLeft': '1rem'}" text="Abbruch" (click)="buttonAbbruchClick($event)">
+      </rz-button>
+    </div>
+  </div>
+</rz-content>

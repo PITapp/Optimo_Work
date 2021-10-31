@@ -1,0 +1,176 @@
+{
+  "access": [
+    "Authenticated"
+  ],
+  "components": [
+    {
+      "components": [
+        {
+          "components": [
+            {
+              "class": "justify-content-start       d-flex align-items-center col-md-8",
+              "components": [
+                {
+                  "name": "heading18",
+                  "size": "H1",
+                  "style": {
+                    "color": "#5d717b",
+                    "display": "inline-block"
+                  },
+                  "text": "Version",
+                  "type": "heading"
+                },
+                {
+                  "name": "heading19",
+                  "size": "H3",
+                  "style": {
+                    "color": "#e5ecef",
+                    "display": "inline-block",
+                    "marginTop": "7px",
+                    "paddingLeft": "10px",
+                    "paddingRight": "10px"
+                  },
+                  "text": "|",
+                  "type": "heading"
+                },
+                {
+                  "attributes": [
+                    {}
+                  ],
+                  "name": "heading21",
+                  "size": "H3",
+                  "style": {
+                    "color": "#789BC0",
+                    "display": "inline",
+                    "fontSize": "21px",
+                    "fontWeight": "normal"
+                  },
+                  "text": "SinDarEla",
+                  "type": "heading"
+                }
+              ],
+              "name": "col46",
+              "style": {
+                "height": "57px",
+                "paddingBottom": "1px"
+              },
+              "type": "col"
+            },
+            {
+              "class": "col-md-4  d-flex justify-content-end align-items-end",
+              "components": [
+                {
+                  "buttonStyle": "info",
+                  "buttonType": "submit",
+                  "events": {
+                    "click": [
+                      {
+                        "height": "",
+                        "parameters": [
+                          {
+                            "name": "strMeldung",
+                            "value": "\"Drucken ist für dieses Modul noch nicht aktiviert!\""
+                          }
+                        ],
+                        "path": "meldung-ok",
+                        "then": [],
+                        "title": "Info",
+                        "type": "popup",
+                        "width": 600
+                      }
+                    ]
+                  },
+                  "icon": "print",
+                  "name": "button0",
+                  "size": "md",
+                  "style": {
+                    "backgroundColor": "rgba(0, 0, 0, 0)",
+                    "border": "1px solid #A71330",
+                    "borderBottom": "3px solid #A71330",
+                    "color": "#6A80AA",
+                    "display": "block",
+                    "fontWeight": "normal",
+                    "width": "150px"
+                  },
+                  "text": "Drucken",
+                  "tooltip": "",
+                  "type": "button"
+                }
+              ],
+              "name": "col64",
+              "style": {
+                "paddingRight": "20px"
+              },
+              "type": "col"
+            }
+          ],
+          "name": "row24",
+          "style": {
+            "height": "",
+            "marginTop": "-7px",
+            "paddingBottom": "0",
+            "paddingLeft": "5px",
+            "paddingRight": "3px",
+            "paddingTop": "0",
+            "width": ""
+          },
+          "type": "row"
+        },
+        {
+          "items": [
+            {
+              "components": [
+                {
+                  "class": "col-md-12",
+                  "components": [
+                    {
+                      "content": "<div innerHTML='${versionenHtml}'></div>",
+                      "name": "html0",
+                      "type": "html"
+                    }
+                  ],
+                  "name": "col0",
+                  "type": "col"
+                }
+              ],
+              "selected": false,
+              "text": "Versionen"
+            }
+          ],
+          "name": "tabs0",
+          "selectedIndex": "",
+          "style": {
+            "float": "none",
+            "height": "831px"
+          },
+          "type": "tabs"
+        }
+      ],
+      "container": "main",
+      "type": "content"
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "dbOptimo.getInfotexteHtmls",
+        "parameters": [
+          {
+            "name": "$filter",
+            "value": "Code eq 'VersionenWeb'"
+          }
+        ],
+        "then": [
+          {
+            "name": "versionenHtml",
+            "type": "set",
+            "value": "${result.value[0].Inhalt}"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "layout": "Main",
+  "name": "Versionen"
+}

@@ -1,0 +1,117 @@
+<rz-content #content1 container="main">
+  <div class="row">
+    <div class="col-md-12">
+      <rz-template-form #form0 (submit)="form0Submit($event)">
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3" [ngStyle]="{'textAlign': 'right'}">
+            <rz-label #label4 component="textbox0" [style]="{'textAlign': 'left', 'width': '100%'}" text="Benutzer">
+            </rz-label>
+          </div>
+          <div class="col-md-9">
+            <rz-textbox #textbox0 [autoComplete]="false" [disabled]="true" [style]="{'display': 'block', 'width': '100%'}" [(ngModel)]="strNameKontakt" name="textbox0">
+            </rz-textbox>
+          </div>
+        </div>
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3" [ngStyle]="{'textAlign': 'right'}">
+            <rz-label #label2 component="Anmeldename" [style]="{'display': 'block', 'textAlign': 'left', 'width': '100%'}" text="Anmeldename">
+            </rz-label>
+            <rz-required-validator #requiredValidator4 [component]="anmeldename" [style]="{'display': 'block', 'position': 'absolute', 'textAlign': 'left', 'width': '100%'}" text="╘ eingeben">
+            </rz-required-validator>
+          </div>
+          <div class="col-md-9">
+            <rz-textbox #anmeldename [autoComplete]="false" [style]="{'display': 'block', 'width': '100%'}" [(ngModel)]="dsoBenutzer && dsoBenutzer.Benutzername" name="Anmeldename">
+            </rz-textbox>
+          </div>
+        </div>
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3" [ngStyle]="{'textAlign': 'right'}">
+            <rz-label #label3 component="Initialen" [style]="{'display': 'block', 'textAlign': 'left', 'width': '100%'}" text="Initialen">
+            </rz-label>
+            <rz-required-validator #requiredValidator2 [component]="initialen" [style]="{'display': 'block', 'position': 'absolute', 'textAlign': 'left', 'width': '100%'}" text="╘ eingeben">
+            </rz-required-validator>
+          </div>
+          <div class="col-md-9">
+            <rz-textbox #initialen [autoComplete]="false" [style]="{'display': 'block', 'width': '100%'}" [(ngModel)]="dsoBenutzer && dsoBenutzer.Initialen" name="Initialen">
+            </rz-textbox>
+          </div>
+        </div>
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3">
+            <rz-label #roleNamesLabel component="RoleNames" [style]="{'display': 'block', 'textAlign': 'left', 'width': '100%'}" text="Rollen">
+            </rz-label>
+            <rz-required-validator #requiredValidator3 [component]="roleNames" [style]="{'display': 'block', 'position': 'absolute', 'width': '100%'}" text="╘ eingeben">
+            </rz-required-validator>
+          </div>
+          <div class="col-md-9">
+            <rz-listbox #roleNames [allowFiltering]="false" [checkbox]="true" [data]="rstRollen" [multiple]="true" [showToggleAll]="false" [style]="{'display': 'block', 'width': '100%'}" textProperty="Titel" [(ngModel)]="dsoUser && dsoUser.RoleNames" valueProperty="Titel" name="RoleNames">
+            </rz-listbox>
+          </div>
+        </div>
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3">
+            <rz-label #passwordLabel component="Password" [style]="{'textAlign': 'left', 'width': '100%'}" text="Passwort">
+            </rz-label>
+          </div>
+          <div class="col-md-9">
+            <rz-password #password [autoComplete]="false" [style]="{'display': 'block', 'width': '100%'}" [(ngModel)]="dsoUser && dsoUser.Password" name="Password">
+            </rz-password>
+          </div>
+        </div>
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3">
+            <rz-label #confirmPasswordLabel component="ConfirmPassword" [style]="{'textAlign': 'left', 'width': '100%'}" text="Wiederholen">
+            </rz-label>
+          </div>
+          <div class="col-md-9">
+            <rz-password #confirmPassword [autoComplete]="false" [style]="{'display': 'block', 'width': '100%'}" [(ngModel)]="dsoUser && dsoUser.ConfirmPassword" name="ConfirmPassword">
+            </rz-password>
+          </div>
+        </div>
+        <div [ngStyle]="{'marginBottom': '14px'}" class="row">
+          <div class="col-md-3" [ngStyle]="{}">
+            <rz-label #label19 component="Info" [style]="{'textAlign': 'left', 'width': '100%'}" text="Notizen">
+            </rz-label>
+          </div>
+          <div class="col-md-9" [ngStyle]="{}">
+            <rz-textarea #notiz [rows]="4" [style]="{'height': '136px', 'width': '100%'}" [(ngModel)]="dsoBenutzer && dsoBenutzer.Notiz" name="Notiz">
+            </rz-textarea>
+          </div>
+        </div>
+        <div [ngStyle]="{'textAlign': 'right'}" class="row">
+          <div class="col offset-sm-3">
+            <rz-button #button1 buttonStyle="success" buttonType="submit" icon="done" text="Speichern">
+            </rz-button>
+            <rz-button #button2 buttonStyle="light" [style]="{'marginLeft': '1rem'}" text="Abbruch" (click)="button2Click($event)">
+            </rz-button>
+          </div>
+        </div>
+      </rz-template-form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-9">
+      <rz-textarea #textarea0 placeholder="Funktionsbeschreibung - BenutzerBearbeiten
+      
+      Wenn die Tabelle Benutzer aktualisiert wird, werden der Benutzername und die E-Mail-Adresse in der Tabelle AspNetUsers auch aktualisiert. Wir verwenden aber für den Benutzernamen den Vornamen und Familiennamen. Diese Aktualisierung wird beim Ändern in der Tabelle Benutzer in der Tabelle AspNetUsers aktualisiert.
+      
+      Funktion in MySQL:
+      
+      AFTER UPDATE ON `xxx`.`Benutzer`
+      FOR EACH ROW
+      BEGIN
+      
+      	-- Den Benutzernamen aus der Tabelle 'Benutzer' in der Tabelle 'AspNetUsers' eintragen
+      	UPDATE AspNetUsers 
+      		SET UserName = NEW.Benutzername, 
+                  NormalizedUserName = Upper(NEW.Benutzername),
+      		    Email = NEW.BenutzerEMail, 
+                  NormalizedEmail = Upper(NEW.BenutzerEMail)
+      		WHERE Id = NEW.AspNetUsers_Id;
+      END" [style]="{'backgroundColor': '#ffeca3', 'height': '200px', 'width': '100%'}" *ngIf="false" name="textarea0">
+      </rz-textarea>
+    </div>
+  </div>
+</rz-content>

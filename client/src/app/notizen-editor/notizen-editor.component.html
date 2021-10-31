@@ -1,0 +1,69 @@
+<rz-content #content1 container="main">
+  <div class="row">
+    <div class="col-md-12">
+      <rz-panel #panel6 [style]="{'border': '1px solid #e6ecef', 'height': '850px'}" [text]="dsoNotizen?.Titel">
+        <div [ngStyle]="{'marginLeft': '-36px', 'marginRight': '-36px', 'marginTop': '-12px'}" class="row">
+          <div class="col-md-12" [ngStyle]="{}">
+            <rz-html #htmlEditorNotizen>
+              <editor
+                *ngIf="bolEditorLaden"
+                (onDirty)="onDirtyEditor()"
+                [(ngModel)]="strNotizHTML"
+                apiKey="7uaxcp1fzfppm9wca8ei2hnuuf9hv2fl9slezwr9k33gv0pp"
+                [init]="{
+                  height: 799,
+                  menubar: true,
+                  statusbar: false,
+                  language: 'de',
+                  browser_spellcheck: true,
+                  plugins: [
+                    'fullpage advlist autolink lists link image charmap print preview anchor',
+                    'searchreplace visualblocks code fullscreen',
+                    'insertdatetime media table paste code help wordcount'
+                  ],
+              
+                  style_formats_merge: false,
+                  style_formats: [
+                    {title: 'HK Standard', inline: 'span', styles: { 'font-family': 'Calibri', 'font-size': '11pt'}},    
+                    {title: 'HK Überschrift', inline: 'span', styles: { 'font-family': 'Calibri', 'font-size': '12pt', 'font-weight': 'bold'}},    
+                    {title: 'HK Fußnote', inline: 'span', styles: { 'font-family': 'Calibri', 'font-size': '9pt'}}
+                  ],
+                  toolbar_mode: 'sliding',
+                  toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist | fullscreen | fontselect fontsizeselect | outdent indent | forecolor backcolor | removeformat searchreplace | help',
+              	font_formats: 'Andale Mono=andale mono,times; Arial=arial,helvetica,sans-serif; Arial Black=arial black,avant garde; Book Antiqua=book antiqua,palatino; Calibri=calibri; Comic Sans MS=comic sans ms,sans-serif; Courier New=courier new,courier; Georgia=georgia,palatino; Helvetica=helvetica; Impact=impact,chicago; Symbol=symbol; Tahoma=tahoma,arial,helvetica,sans-serif; Source Sans Pro=source sans pro; Terminal=terminal,monaco; Times New Roman=times new roman,times; Trebuchet MS=trebuchet ms,geneva; Verdana=verdana,geneva; Webdings=webdings; Wingdings=wingdings,zapf dingbats',
+                  fontsize_formats: '8pt 9pt 10pt 11pt 12pt 14pt 16pt 18pt 24pt 36pt 48pt',
+                  menu: {
+                    file: { title: 'File', items: 'restoredraft | preview | print ' },
+                    edit: { title: 'Edit', items: 'undo redo | cut copy paste pastetext | selectall | searchreplace' },
+                    view: { title: 'View', items: 'code | visualaid visualchars visualblocks | spellchecker | preview fullscreen' },
+                    insert: { title: 'Insert', items: 'image link media template codesample inserttable | charmap emoticons hr | pagebreak nonbreaking anchor toc | insertdatetime' },
+                    format: { title: 'Format', items: 'bold italic underline strikethrough superscript subscript codeformat | formats blockformats fontformats fontsizes align lineheight | forecolor backcolor | removeformat' },
+                    tools: { title: 'Tools', items: 'spellchecker spellcheckerlanguage | code wordcount' },
+                    table: { title: 'Table', items: 'inserttable | cell row column | tableprops deletetable' },
+                    help: { title: 'Help', items: 'help' }
+                  }
+              }"
+               ></editor>
+            </rz-html>
+          </div>
+        </div>
+        <rz-panel-header>
+          <div [ngStyle]="{'display': 'inline-block'}" class="row">
+            <div class="col-md-12 align-items-start d-flex" [ngStyle]="{'display': 'flex'}">
+              <rz-button #buttonKopieren buttonStyle="light" icon="content_copy" size="sm" [style]="{'color': '#A71330', 'display': 'block', 'float': 'none', 'marginRight': '-9px', 'marginTop': '1px'}" text="Kopieren" (click)="buttonKopierenClick($event)">
+              </rz-button>
+            </div>
+          </div>
+        </rz-panel-header>
+      </rz-panel>
+    </div>
+  </div>
+  <div [ngStyle]="{'paddingTop': '15px'}" class="row">
+    <div class="col offset-sm-3 justify-content-end d-flex" [ngStyle]="{}">
+      <rz-button #button0 buttonStyle="success" buttonType="button" icon="done" text="Speichern" (click)="button0Click($event)">
+      </rz-button>
+      <rz-button #button1 buttonStyle="light" [style]="{'marginLeft': '1rem'}" text="Abbruch" (click)="button1Click($event)">
+      </rz-button>
+    </div>
+  </div>
+</rz-content>

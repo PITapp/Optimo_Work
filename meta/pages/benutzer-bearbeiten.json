@@ -1,0 +1,575 @@
+{
+  "access": [
+    "Authenticated"
+  ],
+  "components": [
+    {
+      "components": [
+        {
+          "components": [
+            {
+              "class": "col-md-12",
+              "components": [
+                {
+                  "components": [
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "textbox0",
+                              "name": "label4",
+                              "style": {
+                                "textAlign": "left",
+                                "width": "100%"
+                              },
+                              "text": "Benutzer",
+                              "type": "label"
+                            }
+                          ],
+                          "name": "col8",
+                          "style": {
+                            "textAlign": "right"
+                          },
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "autoComplete": false,
+                              "disabled": true,
+                              "name": "textbox0",
+                              "placeholder": "",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "type": "textbox",
+                              "value": "${strNameKontakt}",
+                              "visible": true
+                            }
+                          ],
+                          "name": "col9",
+                          "type": "col"
+                        }
+                      ],
+                      "name": "row4",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "Anmeldename",
+                              "name": "label2",
+                              "style": {
+                                "display": "block",
+                                "textAlign": "left",
+                                "width": "100%"
+                              },
+                              "text": "Anmeldename",
+                              "type": "label"
+                            },
+                            {
+                              "component": "Anmeldename",
+                              "name": "requiredValidator4",
+                              "style": {
+                                "display": "block",
+                                "position": "absolute",
+                                "textAlign": "left",
+                                "width": "100%"
+                              },
+                              "text": "╘ eingeben",
+                              "type": "required-validator"
+                            }
+                          ],
+                          "name": "col6",
+                          "style": {
+                            "textAlign": "right"
+                          },
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "autoComplete": false,
+                              "name": "Anmeldename",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "type": "textbox",
+                              "value": "${dsoBenutzer.Benutzername}",
+                              "visible": true
+                            }
+                          ],
+                          "name": "col7",
+                          "type": "col"
+                        }
+                      ],
+                      "name": "row3",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "Initialen",
+                              "name": "label3",
+                              "style": {
+                                "display": "block",
+                                "textAlign": "left",
+                                "width": "100%"
+                              },
+                              "text": "Initialen",
+                              "type": "label"
+                            },
+                            {
+                              "component": "Initialen",
+                              "name": "requiredValidator2",
+                              "style": {
+                                "display": "block",
+                                "position": "absolute",
+                                "textAlign": "left",
+                                "width": "100%"
+                              },
+                              "text": "╘ eingeben",
+                              "type": "required-validator"
+                            }
+                          ],
+                          "name": "col4",
+                          "style": {
+                            "textAlign": "right"
+                          },
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "autoComplete": false,
+                              "name": "Initialen",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "type": "textbox",
+                              "value": "${dsoBenutzer.Initialen}",
+                              "visible": true
+                            }
+                          ],
+                          "name": "col5",
+                          "type": "col"
+                        }
+                      ],
+                      "name": "row2",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "RoleNames",
+                              "name": "RoleNamesLabel",
+                              "style": {
+                                "display": "block",
+                                "textAlign": "left",
+                                "width": "100%"
+                              },
+                              "text": "Rollen",
+                              "type": "label"
+                            },
+                            {
+                              "component": "RoleNames",
+                              "name": "requiredValidator3",
+                              "style": {
+                                "display": "block",
+                                "position": "absolute",
+                                "width": "100%"
+                              },
+                              "text": "╘ eingeben",
+                              "type": "required-validator"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "allowFiltering": false,
+                              "checkbox": true,
+                              "data": "${rstRollen}",
+                              "multiple": true,
+                              "name": "RoleNames",
+                              "showToggleAll": false,
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "template": "",
+                              "textProperty": "Titel",
+                              "type": "listbox",
+                              "value": "${dsoUser.RoleNames}",
+                              "valueProperty": "Titel"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "Password",
+                              "name": "PasswordLabel",
+                              "style": {
+                                "textAlign": "left",
+                                "width": "100%"
+                              },
+                              "text": "Passwort",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "autoComplete": false,
+                              "name": "Password",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "type": "password",
+                              "value": "${dsoUser.Password}"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "ConfirmPassword",
+                              "name": "ConfirmPasswordLabel",
+                              "style": {
+                                "textAlign": "left",
+                                "width": "100%"
+                              },
+                              "text": "Wiederholen",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "autoComplete": false,
+                              "name": "ConfirmPassword",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "type": "password",
+                              "value": "${dsoUser.ConfirmPassword}"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "Info",
+                              "name": "label19",
+                              "style": {
+                                "textAlign": "left",
+                                "width": "100%"
+                              },
+                              "text": "Notizen",
+                              "type": "label"
+                            }
+                          ],
+                          "name": "col64",
+                          "style": {},
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "name": "Notiz",
+                              "rows": 4,
+                              "style": {
+                                "height": "136px",
+                                "width": "100%"
+                              },
+                              "type": "textarea",
+                              "value": "${dsoBenutzer.Notiz}"
+                            }
+                          ],
+                          "name": "col65",
+                          "style": {},
+                          "type": "col"
+                        }
+                      ],
+                      "name": "row31",
+                      "style": {
+                        "marginBottom": "14px"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col offset-sm-3",
+                          "components": [
+                            {
+                              "buttonStyle": "success",
+                              "buttonType": "submit",
+                              "icon": "done",
+                              "text": "Speichern",
+                              "type": "button"
+                            },
+                            {
+                              "buttonStyle": "light",
+                              "events": {
+                                "click": [
+                                  {
+                                    "type": "back"
+                                  }
+                                ]
+                              },
+                              "style": {
+                                "marginLeft": "1rem"
+                              },
+                              "text": "Abbruch",
+                              "type": "button"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "textAlign": "right"
+                      },
+                      "type": "row"
+                    }
+                  ],
+                  "events": {
+                    "submit": [
+                      {
+                        "code": "${dsoUser.UserName} = ${dsoBenutzer.BaseID} ",
+                        "type": "execute"
+                      },
+                      {
+                        "condition": "",
+                        "error": [
+                          {
+                            "detail": "Benutzer (Schritt 1) konnte nicht aktualisiert werden!",
+                            "severity": "error",
+                            "summary": "",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "Security.updateUser",
+                        "parameters": [
+                          {
+                            "name": "User",
+                            "value": "${dsoUser}"
+                          },
+                          {
+                            "name": "Id",
+                            "value": "${dsoBenutzer.AspNetUsers_Id}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "error": [
+                              {
+                                "detail": "Benutzer (Schritt 2) konnte nicht aktualisiert werden!",
+                                "severity": "error",
+                                "then": [],
+                                "type": "notify"
+                              }
+                            ],
+                            "name": "dbOptimo.updateBenutzer",
+                            "parameters": [
+                              {
+                                "name": "Benutzer",
+                                "value": "${dsoBenutzer}"
+                              },
+                              {
+                                "name": "BenutzerID",
+                                "value": "${dsoBenutzer.BenutzerID}"
+                              }
+                            ],
+                            "then": [
+                              {
+                                "detail": "Benutzer aktualisiert",
+                                "severity": "success",
+                                "type": "notify"
+                              },
+                              {
+                                "result": "${result}",
+                                "type": "close-popup"
+                              }
+                            ],
+                            "type": "invoke"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "name": "form0",
+                  "type": "template-form"
+                }
+              ],
+              "type": "col"
+            }
+          ],
+          "type": "row"
+        },
+        {
+          "components": [
+            {
+              "class": "col-md-3",
+              "name": "col10",
+              "type": "col"
+            },
+            {
+              "class": "col-md-9",
+              "components": [
+                {
+                  "name": "textarea0",
+                  "placeholder": "Funktionsbeschreibung - BenutzerBearbeiten\n\nWenn die Tabelle Benutzer aktualisiert wird, werden der Benutzername und die E-Mail-Adresse in der Tabelle AspNetUsers auch aktualisiert. Wir verwenden aber für den Benutzernamen den Vornamen und Familiennamen. Diese Aktualisierung wird beim Ändern in der Tabelle Benutzer in der Tabelle AspNetUsers aktualisiert.\n\nFunktion in MySQL:\n\nAFTER UPDATE ON `xxx`.`Benutzer`\nFOR EACH ROW\nBEGIN\n\n\t-- Den Benutzernamen aus der Tabelle 'Benutzer' in der Tabelle 'AspNetUsers' eintragen\n\tUPDATE AspNetUsers \n\t\tSET UserName = NEW.Benutzername, \n            NormalizedUserName = Upper(NEW.Benutzername),\n\t\t    Email = NEW.BenutzerEMail, \n            NormalizedEmail = Upper(NEW.BenutzerEMail)\n\t\tWHERE Id = NEW.AspNetUsers_Id;\nEND",
+                  "style": {
+                    "backgroundColor": "#ffeca3",
+                    "height": "200px",
+                    "width": "100%"
+                  },
+                  "type": "textarea",
+                  "value": "",
+                  "visible": false
+                }
+              ],
+              "name": "col11",
+              "type": "col"
+            }
+          ],
+          "name": "row5",
+          "type": "row"
+        }
+      ],
+      "container": "main",
+      "type": "content"
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "dbOptimo.getVwRollens",
+        "then": [
+          {
+            "name": "rstRollen",
+            "type": "set",
+            "value": "${result.value}"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "dbOptimo.getBenutzerByBenutzerID",
+        "parameters": [
+          {
+            "name": "BenutzerID",
+            "value": "${parameters.BenutzerID}"
+          },
+          {
+            "name": "$expand",
+            "value": "Base"
+          }
+        ],
+        "then": [
+          {
+            "name": "dsoBenutzer",
+            "type": "set",
+            "value": "${result}"
+          },
+          {
+            "name": "strNameKontakt",
+            "type": "set",
+            "value": "${result.Base.Name1} + ' ' + ${result.Base.Name2}"
+          },
+          {
+            "name": "Security.getUserById",
+            "parameters": [
+              {
+                "name": "Id",
+                "value": "${result.AspNetUsers_Id}"
+              }
+            ],
+            "then": [
+              {
+                "name": "dsoUser",
+                "type": "set",
+                "value": "${result}"
+              }
+            ],
+            "type": "invoke"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "layout": "Main",
+  "name": "BenutzerBearbeiten"
+}

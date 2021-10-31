@@ -1,0 +1,80 @@
+<rz-content #content1 container="main">
+  <div [ngStyle]="{'height': '', 'marginTop': '-7px', 'paddingBottom': '0', 'paddingLeft': '5px', 'paddingRight': '3px', 'paddingTop': '0', 'width': ''}" class="row">
+    <div class="justify-content-start       d-flex align-items-center          col-md-8" [ngStyle]="{'height': '57px', 'paddingBottom': '1px'}">
+      <rz-heading #heading18 size="H1" [style]="{'color': '#5d717b', 'display': 'inline-block'}" text="Einstellungen">
+      </rz-heading>
+      <rz-heading #heading19 size="H3" [style]="{'color': '#e5ecef', 'display': 'inline-block', 'marginTop': '7px', 'paddingLeft': '10px', 'paddingRight': '10px'}" text="|">
+      </rz-heading>
+      <rz-heading #heading21 size="H3" [style]="{'color': '#789BC0', 'display': 'inline', 'fontSize': '21px', 'fontWeight': 'normal'}" text="Grundeinstellungen für Module" >
+      </rz-heading>
+    </div>
+    <div class="col-md-4  d-flex justify-content-end align-items-end" [ngStyle]="{'paddingRight': '20px'}">
+      <rz-button #button0 buttonStyle="info" buttonType="submit" icon="print" size="md" [style]="{'backgroundColor': 'rgba(0, 0, 0, 0)', 'border': '1px solid #A71330', 'borderBottom': '3px solid #A71330', 'color': '#6A80AA', 'display': 'block', 'fontWeight': 'normal', 'width': '150px'}" text="Drucken" (click)="button0Click($event)">
+      </rz-button>
+    </div>
+  </div>
+  <rz-tabs #tabs0 [style]="{'float': 'none'}">
+    <rz-tabs-item [selected]="false" text="Infotexte">
+      <div class="row">
+        <div class="col-md-7">
+          <rz-panel #panel1 [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="{{rstInfotexteCount}} Infotexte">
+            <rz-grid #gridInfotexte [allowAdd]="false" [allowColumnResize]="true" [allowFiltering]="true" [allowMultiSorting]="false" [allowPaging]="true" [allowSorting]="true" applyFilterText="Apply" clearFilterText="Clear" [confirmDelete]="false" containsText="Contains" [count]="rstInfotexteCount" [data]="rstInfotexte" emptyText="Keine Infotexte vorhanden" endsWithText="Ends with" equalsText="Equals" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Greater than or equals" greaterThanText="Greater than" lessThanOrEqualsText="Less than or equals" lessThanText="Less than" notEqualsText="Not equals" [pageSize]="15" startsWithText="Starts with" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '700px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}" (loadData)="gridInfotexteLoadData($event)" (rowDoubleClick)="gridInfotexteRowDoubleClick($event)" (rowSelect)="gridInfotexteRowSelect($event)">
+              <rz-grid-column property="Titel" title="Titel" width="60%" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="Code" title="Code" width="40%" type="string">
+              </rz-grid-column>
+            </rz-grid>
+            <rz-panel-header>
+              <div class="row">
+                <div class="col-md-12 align-items-start d-flex">
+                  <rz-button #buttonNeuerInfotext buttonStyle="light" icon="add" size="sm" [style]="{'color': '#A71330', 'display': 'block'}" text="Neuer Infotext" (click)="buttonNeuerInfotextClick($event)">
+                  </rz-button>
+                  <rz-button #buttonBearbeitenInfotext buttonStyle="light" icon="create" size="sm" [style]="{'color': '#6A80AA', 'display': 'block', 'marginLeft': '10px', 'paddingLeft': ''}" tooltip="Bearbeiten Infotext" (click)="buttonBearbeitenInfotextClick($event)">
+                  </rz-button>
+                  <rz-button #buttonLoeschenInfotext buttonStyle="light" [disabled]="false" icon="cancel" size="sm" [style]="{'color': '#6A80AA', 'display': 'block', 'fontStyle': 'normal', 'fontWeight': 'normal', 'marginLeft': '10px', 'marginRight': '-9px'}" tooltip="Löschen Infotext" (click)="buttonLoeschenInfotextClick($event)">
+                  </rz-button>
+                </div>
+              </div>
+            </rz-panel-header>
+          </rz-panel>
+        </div>
+        <div class="col-md-5" [ngStyle]="{'paddingLeft': '5px'}">
+          <rz-panel #panel0 [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" [text]="dsoInfotexte?.Titel">
+            <div [ngStyle]="{'marginLeft': '-36px', 'marginRight': '-36px', 'marginTop': '-12px'}" class="row">
+              <div class="col-md-12" [ngStyle]="{}">
+                <rz-html #htmlEditorInfotexte>
+                  <editor
+                    [(ngModel)]="strInfotextHTML"
+                    [disabled]="true"
+                    apiKey="7uaxcp1fzfppm9wca8ei2hnuuf9hv2fl9slezwr9k33gv0pp"
+                    [init]="{
+                      height: 699,
+                      menubar: false,
+                      toolbar: false,
+                      statusbar: false,
+                      language: 'de',
+                      browser_spellcheck: true,
+                      plugins: [
+                        'fullpage'
+                      ]
+                    }"
+                   ></editor>
+                </rz-html>
+              </div>
+            </div>
+            <rz-panel-header>
+              <div class="row">
+                <div class="col-md-12 align-items-start d-flex">
+                  <rz-button #buttonKopieren buttonStyle="light" icon="content_copy" size="sm" [style]="{'color': '#A71330', 'display': 'block', 'float': 'none'}" text="Kopieren" (click)="buttonKopierenClick($event)">
+                  </rz-button>
+                  <rz-button #buttonBearbeitenInfotextEditor buttonStyle="light" buttonType="button" icon="create" size="sm" [style]="{'color': '#6A80AA', 'display': 'block', 'marginLeft': '10px', 'marginRight': '-9px', 'marginTop': '1px'}" text="Bearbeiten" (click)="buttonBearbeitenInfotextEditorClick($event)">
+                  </rz-button>
+                </div>
+              </div>
+            </rz-panel-header>
+          </rz-panel>
+        </div>
+      </div>
+    </rz-tabs-item>
+  </rz-tabs>
+</rz-content>

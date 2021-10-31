@@ -1,0 +1,36 @@
+<rz-content #content1 container="main">
+  <div class="row">
+    <div class="col-md-12">
+      <rz-template-form #form0 (submit)="form0Submit($event)">
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3">
+            <rz-label #titelLabel component="Titel" [style]="{'width': '100%'}" text="Titel">
+            </rz-label>
+          </div>
+          <div class="col-md-9">
+            <rz-textbox #titel [maxLength]="100" [style]="{'width': '100%'}" name="Titel">
+            </rz-textbox>
+          </div>
+        </div>
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3">
+            <rz-label #codeLabel component="Code" [style]="{'width': '100%'}" text="Code">
+            </rz-label>
+          </div>
+          <div class="col-md-9">
+            <rz-textbox #code [maxLength]="20" [style]="{'width': '100%'}" name="Code">
+            </rz-textbox>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col offset-sm-3 justify-content-end d-flex">
+            <rz-button #button1 buttonStyle="success" buttonType="submit" icon="done" text="Speichern">
+            </rz-button>
+            <rz-button #button2 buttonStyle="light" [style]="{'marginLeft': '1rem'}" text="Abbruch" (click)="button2Click($event)">
+            </rz-button>
+          </div>
+        </div>
+      </rz-template-form>
+    </div>
+  </div>
+</rz-content>

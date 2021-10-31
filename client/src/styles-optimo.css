@@ -1,0 +1,435 @@
+/* --- Meine Einstellungen --- */
+
+/* --- Kopfzeile: verlaufend dunkel --- */
+.header {
+  background-image: linear-gradient(#E7E7E7, #D8D8D8);
+}
+
+.kopfzeileVerlaufend {
+  background-image: linear-gradient(#D8D8D8, #D8D8D8);
+}
+
+
+/* --- Umschalter für Seitenmenü links --- */
+.sidebar-toggle {
+  border: none;
+  background-color: transparent;
+  color: #575757;
+  font-size: 16px;
+}
+
+.sidebar-toggle:hover {
+  color: #A71330;
+  background: transparent;
+  border-radius: 0;
+}
+
+
+/* --- Profilmenü rechts oben --- */
+ul.profile-menu {
+  background-color: transparent;
+  color: #575757;
+  border-left: 0px solid #a2a2a2;
+}
+
+ul.profile-menu .navigation-item-icon-children {
+  color: #575757;
+}
+
+ul.profile-menu .navigation-menu {
+  background-color: #ffffff;
+  top: calc(100%);
+}
+
+ul.profile-menu .navigation-menu .navigation-item-wrapper:hover {
+  background-color: #A71330;
+}
+
+ul.profile-menu .navigation-menu .navigation-item-wrapper:hover .navigation-item-link {
+  color: whitesmoke;
+}
+
+
+/* --- Einstellungen Seitenmenü links --- */
+.panel-menu {
+  color: #212529;
+  background-color: #FFFFFF;
+}
+
+.panel-menu .navigation-item {
+  border-bottom: solid 1px #E6E5E5;
+}
+
+.panel-menu .navigation-item-wrapper:hover {
+  background-color: #A71330;
+  color: #f5f5f5;
+}
+
+.panel-menu .navigation-item-wrapper:hover .navigation-item-icon {
+  color: #f5f5f5;
+}
+
+.panel-menu .navigation-item-icon {
+  color: #727272;
+}
+
+.panel-menu .navigation-item-wrapper-active {
+  background-color: #F4F5F7;
+  color: #A71330;
+}
+
+.panel-menu .navigation-item-wrapper-active .navigation-item-icon {
+  color: #A71330;
+}
+
+.panel-menu .navigation-item-wrapper-active:before {
+  width: 7px;
+  background-color: #A71330;
+}
+
+
+/* --- Einstellungen Seitenmenü links | zweite Ebene --- */
+.panel-menu .navigation-item-active {
+  background-color: #ffffff;
+}
+
+.panel-menu .navigation-menu .navigation-item-wrapper {
+  background-color: #ffffff;
+}
+
+.panel-menu .navigation-menu .navigation-item-wrapper:hover {
+  background-color: #f3f5f7;
+}
+
+.panel-menu .navigation-menu .navigation-item-wrapper-active {
+  background-color: #F4F5F7;
+  color: #A71330;
+}
+
+
+/* --- Dialog für zB Löschabfragen --- */
+.ui-dialog-footer .ui-button:first-child,
+.ui-dialog-footer .ui-paginator-element:first-child {
+  text-align: center !important;
+  width: 120px;
+  margin-right: 10px;
+  background-color: #A71330;
+  color: #ffffff;
+}
+
+.ui-dialog-footer .ui-button:last-child,
+.ui-dialog-footer .ui-paginator-element:last-child {
+  text-align: center !important;
+  width: 120px;
+  background-color: #e6ecef;
+  color: #3a474d;
+}
+
+/* --- Dialog für zB Löschabfragen: Icon in der Schaltfläche ausblenden --- */
+.ui-dialog-footer .ui-button .pi {
+  width: 0;
+}
+
+
+/* --- DropDown Box Höhe einstellen --- */
+.ui-dropdown-items-wrapper,
+.ui-multiselect-items-wrapper {
+  max-height: 500px !important;
+  max-width: 798px !important;
+}
+
+/* --- DataGrit: Hintergrundfarbe des Lösch-Buttons --- */
+/*
+.ui-datatable-data .ui-cell-data .ui-button-sm.ui-button-icon-only {
+  background: #95A5A6;
+  background: #e6ecef;
+}
+*/
+
+/* --- Darstellung des Focus in Eingabefeldern --- */
+input:focus,
+textarea:focus {
+  outline: none;
+  border: 1px solid #A71330;
+  box-shadow: 0px 0px 4px #A71330;
+  -moz-box-shadow: 0px 0px 4px #A71330;
+  -webkit-box-shadow: 0px 0px 4px #A71330;
+}
+
+/* --- Darstellung des Focus in Tabs ausschalten --- */
+.ui-tabview-nav li:focus {
+  outline: none;
+}
+
+/* --- Darstellung des Focus in der Listbox --- */
+.ui-listbox-item:focus {
+  outline: none;
+  border: 0px solid #A71330;
+}
+
+.ui-tabview-nav .ui-tabview-selected {
+  outline: none;
+}
+
+/* --- In den Tabs wird der Zeiger zum Pointer --- */
+.ui-tabview-nav {
+  cursor: pointer;
+}
+
+.ui-tabview-nav li:hover:not(.ui-tabview-selected):not(.ui-state-disabled) a {
+  color: #3a474d;
+}
+
+/* --- Den Überlauf in den Tabs unsichtbar machen --- */
+.ui-tabview-panel {
+  overflow: hidden !important;
+}
+
+/* --- Kopfzeile in Dialogen --- */
+.ui-dialog-titlebar {
+  /* 
+  background-color: #3B4650; 
+  background-color: #424753;
+  */
+  /*
+  background-color: #A71330;
+  background-image: linear-gradient(#F1903C, #A71330);
+  color: whitesmoke;
+  */
+
+  background-color: #E8ECEF;
+  color: #5d717b;
+}
+
+.ui-dialog-titlebar-close {
+  color: whitesmoke;
+  color: #5d717b;
+}
+
+.ui-dialog-titlebar-close .pi-times:before {
+  color: whitesmoke;
+  color: #5d717b;
+}
+
+
+/* --- Der Icon für den DataPicker wird falsch angezeigt. Mit dieser Einstellung wird er wieder in das Eingabefeld gesetzt --- */
+.ui-datepicker-trigger {
+  right: 190px;
+}
+
+/* --- Panel: Farbe des Titels und Abstand --- */
+.ui-panel-title {
+  color: #479cc8;
+  color: #5d717b;
+  color: #A71330;
+  color: #5d717b;
+  color: #6A80AA;
+  padding-top: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* --- Den Überlauf im Panel unsichtbar machen --- */
+.ui-panel {
+  overflow: hidden !important;
+}
+
+/* --- DataGrid: Die Ecken rundum abgerundet --- */
+.ui-datatable {
+  border-radius: 4px;
+}
+
+.ui-datatable-header {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+/* --- Damit wird verhindert, dass bei einem Popup auf der rechten Seite im Hintergrund ein rand eingeschalten wird --- */
+.no-scroll {
+  padding-right: 0px;
+}
+
+/* --- Notification Position einstellen --- */
+.ui-growl {
+  top: 50px;
+  right: 16px;
+}
+
+/* --- Zeilenumbruch verhindern und am Ende drei Punkte anzeigen --- */
+.kein-zeilenumbruch {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* --- Höhe der Zeilen in DataGrid --- */
+.ui-datatable-data td {
+  padding: 3px 0.625rem 3px 0.625rem;
+}
+
+/* --- Höhe der Kopfzeile in DataGrid --- */
+.ui-datatable-thead th {
+  padding: 1px 0 0 0;
+}
+
+/* --- Spaltennamen im DataGrid --- */
+.ui-datatable-thead th .ui-column-title {
+  text-transform: none;
+  padding: 0 0 6px 0.625rem;
+}
+
+/* --- DropDown Löschzeichen auf der linken Seite --- */
+.ui-dropdown-clear-icon {
+  /*
+  left: 0;
+  */
+  top: 1px;
+  font-size: 12px;
+  color: red;
+  color: #212529;
+  color: #A71330;
+}
+
+/* --- Einstellungen für Optimo work-Filter --- */
+.optimo-filter-listbox .ui-listbox-item {
+  padding: 0px 0.625rem 1px 0.625rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+}
+
+.optimo-filter-listbox .ui-listbox-item.ui-state-highlight {
+  background-color: #CBD5E8;
+}
+
+/* --- Einstellungen für Optimo work Listbox im Suchdialog --- */
+.optimo-suchen-listbox .ui-listbox-item {
+  padding: 0px 0.625rem 1px 0.625rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 16px;
+}
+
+.optimo-suchen-listbox .ui-listbox-item.ui-state-highlight {
+  background-color: #CBD5E8;
+}
+
+.optimo-filter-auswahl .ui-dropdown-label {
+  font-size: 14px;
+}
+
+.optimo-filter-auswahl .textbox {
+  font-size: 14px;
+}
+
+.optimo-filter-auswahl .ui-spinner input[type='number'] {
+  font-size: 14px;
+}
+
+.optimo-filter-auswahl .ui-spinner {
+  padding-top: 0;
+}
+
+.optimo-filter-auswahl .ui-spinner-button .pi {
+  font-size: 0.75rem;
+}
+
+.optimo-filter-auswahl .ui-dropdown-item,
+.ui-dropdown-items li {
+  padding: 3px 0.625rem;
+  font-size: 14px;
+}
+
+/* --- Login Button auf die rechte Seite --- */
+.login .login-buttons {
+  justify-content: flex-end !important;
+}
+
+/* --- Background für Listbox mit Markirungshacken --- */
+.ui-listbox-item.ui-state-highlight {
+  background-color: white;
+  color: #212529;
+}
+
+/* --- Listbox Auswahhl mit Einfärbung --- */
+.listbox-mit-auswahl .ui-listbox-item.ui-state-highlight {
+  background-color: #CBD5E8;
+}
+
+/* --- Auswahlhacken in Listbox einstellen --- */
+.ui-chkbox-box.ui-state-active {
+  border-color: #789BC0;
+  background: #789BC0;
+}
+
+.ui-chkbox-box.ui-state-active:hover {
+  border-color: #6A80AA;
+  background: #6A80AA;
+}
+
+/* --- Farbe und Abstand für Label --- */
+label {
+  color: #88989b;
+  color: #5d717d;
+  padding-top: 6px;
+}
+
+.ui-multiselect-label-container,
+.ui-dropdown-label {
+  color: #212529;
+  padding-top: 2px;
+}
+
+/* --- Filtereingabe in DataGrit --- */
+.ui-cell-filter input:focus {
+  font-size: 14px;
+}
+
+/* --- Filtereingabe in DataGrit (damit das Datumsfeld in der richtigen Höhe ist) --- */
+.ui-cell-filter-content {
+  min-height: 26px;
+}
+
+/* --- Farbeinstellungen für die Bewegungskböpfe im DataGrit --- */
+.ui-paginator-last,
+.ui-paginator-next {
+  color: #1766a8;
+  background-color: #dbebf8;
+  border-color: #a0c9eb;
+}
+
+.ui-paginator-first,
+.ui-paginator-prev {
+  color: #1766a8;
+  background-color: #dbebf8;
+  border-color: #a0c9eb;
+}
+
+/* --- Farbe für Text im Platzhalter --- */
+.ui-multiselect .ui-placeholder, .ui-dropdown .ui-placeholder {
+  color: #dde6e9;
+}
+
+input::placeholder {
+  color: #dde6e9;
+}
+
+/* --- Abrundungen für Tab-Rahmen einstellen (sonst war er rechts oben ohne Abrundung) --- */
+.ui-tabview-panels {
+  border-radius: 0 4px 4px 4px;
+}
+
+/* --- Abrundungen für FileUpload --- */
+.ui-fileupload-buttonbar {
+  border-radius: 4px;
+}
+
+/* --- Einstellungen für einen Link-Button --- */
+.link-button button.btn-primary {
+  background-color: transparent;
+  color: #479cc8;
+  padding: 0;
+}

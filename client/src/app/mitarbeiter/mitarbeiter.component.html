@@ -1,0 +1,94 @@
+<rz-content #content1 container="main">
+  <div [ngStyle]="{'height': '', 'marginTop': '-7px', 'paddingBottom': '0', 'paddingLeft': '5px', 'paddingRight': '3px', 'paddingTop': '0', 'width': ''}" class="row">
+    <div class="justify-content-start       d-flex align-items-center          col-md-8" [ngStyle]="{'height': '57px', 'paddingBottom': '1px'}">
+      <rz-heading #heading18 size="H1" [style]="{'color': '#5d717b', 'display': 'inline-block'}" text="Mitarbeiter">
+      </rz-heading>
+      <rz-heading #heading19 size="H3" [style]="{'color': '#e5ecef', 'display': 'inline-block', 'marginTop': '7px', 'paddingLeft': '10px', 'paddingRight': '10px'}" text="|">
+      </rz-heading>
+      <rz-heading #heading21 size="H3" [style]="{'color': '#789BC0', 'display': 'inline', 'fontSize': '21px', 'fontWeight': 'normal'}" text="Infoanzeige für das Modul" >
+      </rz-heading>
+    </div>
+    <div class="col-md-4  d-flex justify-content-end align-items-end" [ngStyle]="{'paddingRight': '20px'}">
+      <rz-button #button0 buttonStyle="info" buttonType="submit" icon="print" size="md" [style]="{'backgroundColor': 'rgba(0, 0, 0, 0)', 'border': '1px solid #A71330', 'borderBottom': '3px solid #A71330', 'color': '#6A80AA', 'display': 'block', 'fontWeight': 'normal', 'width': '150px'}" text="Drucken" (click)="button0Click($event)">
+      </rz-button>
+      <rz-button #button1 buttonStyle="info" buttonType="submit" icon="search" size="md" [style]="{'backgroundColor': 'rgba(0, 0, 0, 0)', 'border': '1px solid #A71330', 'borderBottom': '3px solid #A71330', 'color': '#6A80AA', 'display': 'block', 'fontWeight': 'normal', 'marginLeft': '12px', 'width': '150px'}" text="Suchen" (click)="button1Click($event)">
+      </rz-button>
+    </div>
+  </div>
+  <rz-tabs #tabs0 [style]="{'float': 'none'}">
+    <rz-tabs-item [selected]="true" text="Daten">
+      <div class="row">
+        <div class="col-md-7">
+          <rz-panel #panel1 [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="Beispiel">
+            <rz-tabs #tabs1>
+              <rz-tabs-item text="Tab 1">
+              </rz-tabs-item>
+              <rz-tabs-item text="2222">
+              </rz-tabs-item>
+            </rz-tabs>
+            <rz-panel-header>
+              <div class="row">
+                <div class="col-md-12 align-items-start d-flex">
+                  <rz-button #buttonNeuerInfotext buttonStyle="light" icon="add" size="sm" [style]="{'color': '#A71330', 'display': 'block'}" text="Neu">
+                  </rz-button>
+                  <rz-button #buttonBearbeitenInfotext buttonStyle="light" icon="create" size="sm" [style]="{'color': '#6A80AA', 'display': 'block', 'marginLeft': '10px', 'paddingLeft': ''}" tooltip="Bearbeiten Infotext">
+                  </rz-button>
+                  <rz-button #buttonLoeschenInfotext buttonStyle="light" [disabled]="false" icon="cancel" size="sm" [style]="{'color': '#6A80AA', 'display': 'block', 'fontStyle': 'normal', 'fontWeight': 'normal', 'marginLeft': '10px', 'marginRight': '-9px'}" tooltip="Löschen Infotext">
+                  </rz-button>
+                </div>
+              </div>
+            </rz-panel-header>
+          </rz-panel>
+        </div>
+        <div class="col-md-5" [ngStyle]="{'paddingLeft': '5px'}">
+          <rz-panel #panel0 [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="Beispiel">
+            <rz-panel-header>
+              <div class="row">
+                <div class="col-md-12 align-items-start d-flex">
+                  <rz-button #buttonKopieren buttonStyle="light" icon="content_copy" size="sm" [style]="{'color': '#A71330', 'display': 'block', 'float': 'none'}" text="Kopieren">
+                  </rz-button>
+                  <rz-button #buttonBearbeitenInfotextEditor buttonStyle="light" buttonType="button" icon="create" size="sm" [style]="{'color': '#6A80AA', 'display': 'block', 'marginLeft': '10px', 'marginRight': '-9px', 'marginTop': '1px'}" text="Bearbeiten">
+                  </rz-button>
+                </div>
+              </div>
+            </rz-panel-header>
+          </rz-panel>
+        </div>
+      </div>
+    </rz-tabs-item>
+    <rz-tabs-item [selected]="false" text="Details">
+      <div class="row">
+        <div class="col-md-12">
+          <rz-panel #panel2 [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="Beispiel">
+          </rz-panel>
+        </div>
+      </div>
+    </rz-tabs-item>
+    <rz-tabs-item [selected]="false" text="Dienstzeiten">
+      <div class="row">
+        <div class="col-md-12">
+          <rz-panel #panel3 [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="Beispiel">
+          </rz-panel>
+        </div>
+      </div>
+    </rz-tabs-item>
+    <rz-tabs-item [selected]="false" text="Urlaub">
+      <div class="row">
+        <div class="col-md-12">
+          <rz-panel #panel4 [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="Beispiel">
+          </rz-panel>
+        </div>
+      </div>
+    </rz-tabs-item>
+    <rz-tabs-item [selected]="false" text="Fortbildungen">
+      <div class="row">
+        <div class="col-md-12">
+          <rz-panel #panel5 [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="Beispiel">
+          </rz-panel>
+        </div>
+      </div>
+    </rz-tabs-item>
+    <rz-tabs-item text="Liste">
+    </rz-tabs-item>
+  </rz-tabs>
+</rz-content>

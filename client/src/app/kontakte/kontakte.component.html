@@ -1,0 +1,456 @@
+<rz-content #content1 container="main">
+  <div [ngStyle]="{'backgroundColor': 'rgba(0, 0, 0, 0)', 'marginTop': '-7px', 'paddingBottom': '0', 'paddingLeft': '5px', 'paddingRight': '3px', 'paddingTop': '0', 'width': ''}" class="row">
+    <div class="justify-content-start       d-flex align-items-center  col-md-8" [ngStyle]="{'height': '57px', 'paddingBottom': '1px'}">
+      <rz-heading #heading8 size="H1" [style]="{'color': '#5d717b', 'display': 'inline-block'}" text="Kontakte">
+      </rz-heading>
+      <rz-heading #heading9 size="H3" [style]="{'color': '#e5ecef', 'display': 'inline-block', 'marginTop': '7px', 'paddingLeft': '10px', 'paddingRight': '10px'}" text="|">
+      </rz-heading>
+      <rz-image #image0 path="assets/images/Spinner02.gif" [style]="{'display': 'block', 'marginRight': '10px', 'position': 'static', 'width': '35px'}" *ngIf="bolLadenKontakte">
+      </rz-image>
+      <rz-heading #heading2 size="H3" [style]="{'color': '#6A80AA', 'display': 'inline', 'fontSize': '21px', 'fontWeight': 'normal'}" text="{{bolLadenKontakte ? 'Kontaktdaten werden geladen... ' : tabsKontakteSelectedIndex == 3 ? 'Liste...' : dsoBaseKontakte?.Name1 == null ? 'Klicke auf [Suchen] um einen Kontakt auszuwählen!' : dsoBaseKontakte?.Name1 + ' ' + dsoBaseKontakte?.Name2}}" >
+      </rz-heading>
+    </div>
+    <div class="col-md-4  d-flex justify-content-end align-items-end" [ngStyle]="{'paddingRight': '20px'}">
+      <rz-button #button0 buttonStyle="info" buttonType="submit" icon="print" size="md" [style]="{'backgroundColor': 'rgb(230, 236, 239)', 'borderBottom': '2px solid #a71330', 'color': '#5d717d', 'display': 'block', 'fontWeight': 'normal', 'width': '150px'}" text="Drucken" (click)="button0Click($event)">
+      </rz-button>
+      <rz-button #buttonSuchenKontakte buttonStyle="info" buttonType="submit" icon="search" size="md" [style]="{'backgroundColor': '#f2f3f5', 'border': '1px solid #a71330', 'borderBottom': '2px solid #a71330', 'color': '#5d717d', 'display': 'block', 'fontWeight': 'normal', 'marginLeft': '12px', 'width': '150px'}" text="Suchen" (click)="buttonSuchenKontakteClick($event)">
+      </rz-button>
+    </div>
+  </div>
+  <rz-tabs #tabsKontakte [selectedIndex]="tabsKontakteSelectedIndex" [style]="{'float': 'none'}" (change)="tabsKontakteChange($event)">
+    <rz-tabs-item [disabled]="false" [selected]="true" text="Daten">
+      <div class="row">
+        <div class="col-md-7">
+          <rz-panel #panel2 [allowCollapse]="false" [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="Kontaktdaten">
+            <rz-template-form #templateFormKontakte [style]="{}">
+              <div class="row">
+                <div class="col-md-6" [ngStyle]="{'paddingLeft': '0px'}">
+                  <div class="row" [ngStyle]="{'marginBottom': '4px'}">
+                    <div class="col-md-3" [ngStyle]="{'paddingLeft': '0'}">
+                      <rz-label #label7 component="AnredeID" [style]="{'textAlign': 'left', 'width': '100%'}" text="Anrede">
+                      </rz-label>
+                    </div>
+                    <div class="col-md-5" [ngStyle]="{'paddingRight': '0'}">
+                      <rz-dropdown #anredeId [data]="rstBaseAnreden" emptyFilterText="No results found" placeholder="Anrede auswählen" [style]="{'width': '100%'}" textProperty="Anrede" [(ngModel)]="dsoBaseKontakte && dsoBaseKontakte.AnredeID" valueProperty="AnredeID" name="AnredeID">
+                      </rz-dropdown>
+                    </div>
+                  </div>
+                  <div [ngStyle]="{'marginBottom': '10px'}" class="row">
+                    <div class="col-md-3" [ngStyle]="{'paddingLeft': '0'}">
+                      <rz-label #label8 component="Name1" [style]="{'display': 'block', 'textAlign': 'left', 'width': '100%'}" text="Name">
+                      </rz-label>
+                      <rz-required-validator #requiredValidator0 [component]="name1" [style]="{'position': 'absolute', 'textAlign': 'left', 'width': '100%'}" text="╘ eingeben">
+                      </rz-required-validator>
+                    </div>
+                    <div class="col-md-9" [ngStyle]="{'display': 'block'}">
+                      <rz-textbox #name1 [maxLength]="100" [style]="{'display': 'block', 'width': '100%'}" [(ngModel)]="dsoBaseKontakte && dsoBaseKontakte.Name1" name="Name1">
+                      </rz-textbox>
+                    </div>
+                  </div>
+                  <div [ngStyle]="{'marginBottom': '10px'}" class="row">
+                    <div class="col-md-3" [ngStyle]="{'paddingLeft': '0'}">
+                      <rz-label #label18 component="Name2" [style]="{'display': 'block', 'textAlign': 'left', 'width': '100%'}" text="Vorname">
+                      </rz-label>
+                      <rz-required-validator #requiredValidator2 [component]="name2" [style]="{'position': 'absolute', 'textAlign': 'left', 'width': '100%'}" text="╘ eingeben">
+                      </rz-required-validator>
+                    </div>
+                    <div class="col-md-9" [ngStyle]="{'display': 'block'}">
+                      <rz-textbox #name2 [maxLength]="30" [style]="{'display': 'block', 'width': '100%'}" [(ngModel)]="dsoBaseKontakte && dsoBaseKontakte.Name2" name="Name2">
+                      </rz-textbox>
+                    </div>
+                  </div>
+                  <div [ngStyle]="{'marginBottom': '10px'}" class="row">
+                    <div class="col-md-3" [ngStyle]="{'paddingLeft': '0'}">
+                      <rz-label #label9 component="NameKuerzel" [style]="{'display': 'block', 'textAlign': 'left', 'width': '100%'}" text="Kürzel">
+                      </rz-label>
+                      <rz-required-validator #requiredValidator1 [component]="nameKuerzel" [style]="{'position': 'absolute', 'textAlign': 'left', 'width': '100%'}" text="╘ eingeben">
+                      </rz-required-validator>
+                    </div>
+                    <div class="col-md-9" [ngStyle]="{'display': 'block'}">
+                      <rz-textbox #nameKuerzel [maxLength]="5" [style]="{'display': 'block', 'width': '100%'}" [(ngModel)]="dsoBaseKontakte && dsoBaseKontakte.NameKuerzel" name="NameKuerzel">
+                      </rz-textbox>
+                    </div>
+                  </div>
+                  <div [ngStyle]="{'marginBottom': '10px'}" class="row">
+                    <div class="col-md-3" [ngStyle]="{'paddingLeft': '0'}">
+                      <rz-label #label10 [style]="{'textAlign': 'left', 'width': '100%'}" text="Titel vorne">
+                      </rz-label>
+                    </div>
+                    <div class="col-md-9" [ngStyle]="{'display': 'block'}">
+                      <rz-textbox #titelVorne [maxLength]="20" [style]="{'width': '100%'}" [(ngModel)]="dsoBaseKontakte && dsoBaseKontakte.TitelVorne" name="TitelVorne">
+                      </rz-textbox>
+                    </div>
+                  </div>
+                  <div [ngStyle]="{'marginBottom': '10px'}" class="row">
+                    <div class="col-md-3" [ngStyle]="{'paddingLeft': '0'}">
+                      <rz-label #label2 [style]="{'textAlign': 'left', 'width': '100%'}" text="Titel hinten">
+                      </rz-label>
+                    </div>
+                    <div class="col-md-9" [ngStyle]="{'display': 'block'}">
+                      <rz-textbox #titelHinten [maxLength]="20" [style]="{'width': '100%'}" [(ngModel)]="dsoBaseKontakte && dsoBaseKontakte.TitelHinten" name="TitelHinten">
+                      </rz-textbox>
+                    </div>
+                  </div>
+                  <div [ngStyle]="{'marginBottom': '10px'}" class="row">
+                    <div class="col-md-3" [ngStyle]="{'paddingLeft': '0'}">
+                      <rz-label #label11 component="Strasse" [style]="{'textAlign': 'left', 'width': '100%'}" text="Strasse">
+                      </rz-label>
+                    </div>
+                    <div class="col-md-9" [ngStyle]="{}">
+                      <rz-textbox #strasse [maxLength]="70" [style]="{'width': '100%'}" [(ngModel)]="dsoBaseKontakte && dsoBaseKontakte.Strasse" name="Strasse">
+                      </rz-textbox>
+                    </div>
+                  </div>
+                  <div [ngStyle]="{'marginBottom': '10px'}" class="row">
+                    <div class="col-md-3" [ngStyle]="{'paddingLeft': '0', 'textAlign': 'right'}">
+                      <rz-label #label12 [style]="{'textAlign': 'left', 'width': '100%'}" text="PLZ">
+                      </rz-label>
+                    </div>
+                    <div class="col-md-9" [ngStyle]="{'display': 'block'}">
+                      <rz-textbox #plz [maxLength]="10" [style]="{'width': '100%'}" [(ngModel)]="dsoBaseKontakte && dsoBaseKontakte.PLZ" name="PLZ">
+                      </rz-textbox>
+                    </div>
+                  </div>
+                  <div [ngStyle]="{'marginBottom': '10px'}" class="row">
+                    <div class="col-md-3" [ngStyle]="{'paddingLeft': '0', 'textAlign': 'right'}">
+                      <rz-label #label3 [style]="{'textAlign': 'left', 'width': '100%'}" text="Ort">
+                      </rz-label>
+                    </div>
+                    <div class="col-md-9" [ngStyle]="{'display': 'block'}">
+                      <rz-textbox #ort [maxLength]="100" [style]="{'width': '100%'}" [(ngModel)]="dsoBaseKontakte && dsoBaseKontakte.Ort" name="Ort">
+                      </rz-textbox>
+                    </div>
+                  </div>
+                  <div [ngStyle]="{'marginBottom': '10px', 'marginTop': '15px', 'paddingRight': '15px'}" class="row">
+                    <div class="col-md-12 justify-content-center d-flex align-items-center" [ngStyle]="{'backgroundColor': '#F3F5F7', 'color': '#88989b', 'display': 'block', 'height': '30px', 'paddingRight': '0', 'textAlign': 'center'}">
+                      <rz-label #label28 [style]="{'color': '#88989b', 'marginTop': '-6px'}" text="Notizen">
+                      </rz-label>
+                    </div>
+                  </div>
+                  <div [ngStyle]="{'marginBottom': '4px'}" class="row">
+                    <div class="col-md-12" [ngStyle]="{'paddingLeft': '0'}">
+                      <rz-textarea #notiz [rows]="4" [style]="{'height': '217px', 'width': '100%'}" [(ngModel)]="dsoBaseKontakte && dsoBaseKontakte.Notiz" name="Notiz">
+                      </rz-textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6" [ngStyle]="{'marginTop': '45px', 'paddingLeft': '50px', 'paddingRight': '0'}">
+                  <div [ngStyle]="{'marginBottom': '10px'}" class="row">
+                    <div class="col-md-3" [ngStyle]="{'paddingLeft': '0'}">
+                      <rz-label #label22 [style]="{'textAlign': 'left', 'width': '100%'}" text="Geburtsdatum">
+                      </rz-label>
+                    </div>
+                    <div class="col-md-6" [ngStyle]="{'display': 'block', 'paddingRight': '0'}">
+                      <rz-datepicker #geburtsdatum dateFormat="dd.mm.yy" locale="de" [style]="{'width': '100%'}" [(ngModel)]="dsoBaseKontakte && dsoBaseKontakte.Geburtsdatum" yearRange="1930:2050" name="Geburtsdatum">
+                      </rz-datepicker>
+                    </div>
+                  </div>
+                  <div [ngStyle]="{'marginBottom': '10px'}" class="row">
+                    <div class="col-md-3" [ngStyle]="{'paddingLeft': '0'}">
+                      <rz-label #label6 [style]="{'textAlign': 'left', 'width': '100%'}" text="VersichNr">
+                      </rz-label>
+                    </div>
+                    <div class="col-md-9" [ngStyle]="{'display': 'block', 'paddingRight': '0'}">
+                      <rz-textbox #versicherungsnummer [maxLength]="30" [style]="{'width': '100%'}" [(ngModel)]="dsoBaseKontakte && dsoBaseKontakte.Versicherungsnummer" name="Versicherungsnummer">
+                      </rz-textbox>
+                    </div>
+                  </div>
+                  <div [ngStyle]="{'marginBottom': '10px'}" class="row">
+                    <div class="col-md-3" [ngStyle]="{'paddingLeft': '0'}">
+                      <rz-label #label5 [style]="{'textAlign': 'left', 'width': '100%'}" text="Nationalität">
+                      </rz-label>
+                    </div>
+                    <div class="col-md-9" [ngStyle]="{'display': 'block', 'paddingRight': '0'}">
+                      <rz-textbox #staatsangehoerigkeit [maxLength]="30" [style]="{'width': '100%'}" [(ngModel)]="dsoBaseKontakte && dsoBaseKontakte.Staatsangehoerigkeit" name="Staatsangehoerigkeit">
+                      </rz-textbox>
+                    </div>
+                  </div>
+                  <div [ngStyle]="{'marginBottom': '10px'}" class="row">
+                    <div class="col-md-3" [ngStyle]="{'paddingLeft': '0'}">
+                      <rz-label #label13 [style]="{'textAlign': 'left', 'width': '100%'}" text="Telefon 1">
+                      </rz-label>
+                    </div>
+                    <div class="col-md-9" [ngStyle]="{'display': 'block', 'paddingRight': '0'}">
+                      <rz-textbox #telefon1 [maxLength]="30" [style]="{'width': '100%'}" [(ngModel)]="dsoBaseKontakte && dsoBaseKontakte.Telefon1" name="Telefon1">
+                      </rz-textbox>
+                    </div>
+                  </div>
+                  <div [ngStyle]="{'marginBottom': '10px'}" class="row">
+                    <div class="col-md-3" [ngStyle]="{'paddingLeft': '0'}">
+                      <rz-label #label14 [style]="{'textAlign': 'left', 'width': '100%'}" text="Telefon 2">
+                      </rz-label>
+                    </div>
+                    <div class="col-md-9" [ngStyle]="{'display': 'block', 'paddingRight': '0'}">
+                      <rz-textbox #telefon2 [maxLength]="30" [style]="{'width': '100%'}" [(ngModel)]="dsoBaseKontakte && dsoBaseKontakte.Telefon2" name="Telefon2">
+                      </rz-textbox>
+                    </div>
+                  </div>
+                  <div [ngStyle]="{'marginBottom': '10px'}" class="row">
+                    <div class="col-md-3" [ngStyle]="{'paddingLeft': '0'}">
+                      <rz-label #label15 [style]="{'textAlign': 'left', 'width': '100%'}" text="E-Mail 1">
+                      </rz-label>
+                    </div>
+                    <div class="col-md-9" [ngStyle]="{'display': 'block', 'paddingRight': '0'}">
+                      <rz-textbox #eMail1 [maxLength]="70" [style]="{'width': '100%'}" [(ngModel)]="dsoBaseKontakte && dsoBaseKontakte.EMail1" name="EMail1">
+                      </rz-textbox>
+                    </div>
+                  </div>
+                  <div [ngStyle]="{'marginBottom': '10px'}" class="row">
+                    <div class="col-md-3" [ngStyle]="{'paddingLeft': '0'}">
+                      <rz-label #label16 [style]="{'textAlign': 'left', 'width': '100%'}" text="E-Mail 2">
+                      </rz-label>
+                    </div>
+                    <div class="col-md-9" [ngStyle]="{'display': 'block', 'paddingRight': '0'}">
+                      <rz-textbox #eMail2 [maxLength]="70" [style]="{'width': '100%'}" [(ngModel)]="dsoBaseKontakte && dsoBaseKontakte.EMail2" name="EMail2">
+                      </rz-textbox>
+                    </div>
+                  </div>
+                  <div [ngStyle]="{'marginBottom': '10px'}" class="row">
+                    <div class="col-md-3" [ngStyle]="{'paddingLeft': '0'}">
+                      <rz-label #label23 [style]="{'textAlign': 'left', 'width': '100%'}" text="Webseite">
+                      </rz-label>
+                    </div>
+                    <div class="col-md-9" [ngStyle]="{'display': 'block', 'paddingRight': '0'}">
+                      <rz-textbox #webseite [maxLength]="70" [style]="{'width': '100%'}" [(ngModel)]="dsoBaseKontakte && dsoBaseKontakte.Webseite" name="Webseite">
+                      </rz-textbox>
+                    </div>
+                  </div>
+                  <div [ngStyle]="{'marginBottom': '10px', 'marginTop': '15px'}" class="row">
+                    <div class="col-md-12 align-items-center d-flex justify-content-center" [ngStyle]="{'backgroundColor': '#F3F5F7', 'color': '#88989b', 'display': 'block', 'height': '30px', 'paddingRight': '0', 'textAlign': 'center', 'verticalAlign': 'baseline'}">
+                      <rz-label #label26 [style]="{'color': '#88989b', 'marginTop': '-6px'}" text="Bank">
+                      </rz-label>
+                    </div>
+                  </div>
+                  <div [ngStyle]="{'marginBottom': '10px'}" class="row">
+                    <div class="col-md-3" [ngStyle]="{'paddingLeft': '0'}">
+                      <rz-label #label27 [style]="{'textAlign': 'left', 'width': '100%'}" text="Name">
+                      </rz-label>
+                    </div>
+                    <div class="col-md-9" [ngStyle]="{'display': 'block', 'paddingRight': '0'}">
+                      <rz-textbox #kontoName [maxLength]="70" [style]="{'width': '100%'}" [(ngModel)]="dsoBaseKontakte && dsoBaseKontakte.KontoName" name="KontoName">
+                      </rz-textbox>
+                    </div>
+                  </div>
+                  <div [ngStyle]="{'marginBottom': '10px'}" class="row">
+                    <div class="col-md-3" [ngStyle]="{'paddingLeft': '0'}">
+                      <rz-label #label25 [style]="{'textAlign': 'left', 'width': '100%'}" text="KontoNr">
+                      </rz-label>
+                    </div>
+                    <div class="col-md-9" [ngStyle]="{'display': 'block', 'paddingRight': '0'}">
+                      <rz-textbox #kontoNummer [maxLength]="70" [style]="{'width': '100%'}" [(ngModel)]="dsoBaseKontakte && dsoBaseKontakte.KontoNummer" name="KontoNummer">
+                      </rz-textbox>
+                    </div>
+                  </div>
+                  <div [ngStyle]="{'marginBottom': '10px'}" class="row">
+                    <div class="col-md-3" [ngStyle]="{'paddingLeft': '0'}">
+                      <rz-label #label24 [style]="{'textAlign': 'left', 'width': '100%'}" text="Info">
+                      </rz-label>
+                    </div>
+                    <div class="col-md-9" [ngStyle]="{'display': 'block', 'paddingRight': '0'}">
+                      <rz-textarea #kontoInfo [style]="{'height': '127px', 'width': '100%'}" [(ngModel)]="dsoBaseKontakte && dsoBaseKontakte.KontoInfo" name="KontoInfo">
+                      </rz-textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </rz-template-form>
+            <rz-panel-header>
+              <div class="row">
+                <div class="col-md-12 align-items-start d-flex">
+                  <rz-button #button2 buttonStyle="light" icon="add" size="sm" [style]="{'color': '#A71330', 'display': 'block', 'marginRight': ''}" text="Neuer Kontakt" (click)="button2Click($event)">
+                  </rz-button>
+                  <rz-button #buttonKontakteSpeichern buttonStyle="light" buttonType="submit" icon="done" size="sm" [style]="{'color': '#6A80AA', 'display': 'block', 'marginLeft': '10px'}" text="Speichern" (click)="buttonKontakteSpeichernClick($event)">
+                  </rz-button>
+                  <rz-button #button3 buttonStyle="light" [disabled]="false" icon="cancel" size="sm" [style]="{'color': '#6A80AA', 'display': 'block', 'fontWeight': 'normal', 'marginLeft': '10px', 'marginRight': '-9px', 'paddingLeft': ''}" tooltip="Löschen Kontakt" (click)="button3Click($event)">
+                  </rz-button>
+                </div>
+              </div>
+            </rz-panel-header>
+          </rz-panel>
+        </div>
+        <div class="col-md-5" [ngStyle]="{'paddingLeft': '5px'}">
+          <div [ngStyle]="{'paddingBottom': '0', 'paddingTop': '0'}" class="row">
+            <div class="col-md-12">
+              <rz-panel #panel1 [style]="{'border': '1px solid #e6ecef', 'height': '370px'}" text="Kontaktpersonen">
+                <rz-grid #gridKontaktpersonen [allowAdd]="false" [allowColumnReorder]="false" [allowColumnResize]="true" [allowDelete]="false" [allowFiltering]="false" [allowMultiSorting]="false" [allowPaging]="false" [allowSorting]="true" [alwaysShowPager]="false" applyFilterText="Apply" clearFilterText="Clear" columnResizeMode="expand" columnWidth="auto" [confirmDelete]="false" containsText="Contains" [count]="rstBaseKontaktpersonenCount" [data]="rstBaseKontaktpersonen" emptyText="Keine Kontaktpersonen vorhanden" endsWithText="Ends with" equalsText="Equals" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Greater than or equals" greaterThanText="Greater than" [isLoading]="false" lessThanOrEqualsText="Less than or equals" lessThanText="Less than" notEqualsText="Not equals" [pageSize]="10" [responsive]="true" startsWithText="Starts with" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '310px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}" [(value)]="dsoBaseKontaktpersonen" (loadData)="gridKontaktpersonenLoadData($event)" (rowDoubleClick)="gridKontaktpersonenRowDoubleClick($event)" (rowSelect)="gridKontaktpersonenRowSelect($event)">
+                  <rz-grid-column property="NameKontakt" title="Name" width="30%" type="string">
+                  </rz-grid-column>
+                  <rz-grid-column property="Handy" title="Handy" type="string">
+                  </rz-grid-column>
+                  <rz-grid-column property="Telefon" title="Telefon" type="string">
+                  </rz-grid-column>
+                  <rz-grid-column property="EMail" title="E-Mail" type="string">
+                  </rz-grid-column>
+                  <rz-grid-column property="Info" title="Info" type="string">
+                  </rz-grid-column>
+                </rz-grid>
+                <rz-panel-header>
+                  <div class="row justify-content-center">
+                    <div class="col-md-12  d-flex align-items-start">
+                      <rz-button #buttonKontaktpersonNeu buttonStyle="light" icon="add" size="sm" [style]="{'color': '#A71330', 'display': 'block', 'marginRight': ''}" text="Neue Kontaktperson" (click)="buttonKontaktpersonNeuClick($event)">
+                      </rz-button>
+                      <rz-button #buttonKontaktpersonBearbeiten buttonStyle="light" icon="create" size="sm" [style]="{'color': '#6A80AA', 'display': 'block', 'marginLeft': '10px', 'paddingLeft': ''}" tooltip="Bearbeiten Kontaktperson" (click)="buttonKontaktpersonBearbeitenClick($event)">
+                      </rz-button>
+                      <rz-button #buttonKontaktpersonLoeschen buttonStyle="light" [disabled]="false" icon="cancel" size="sm" [style]="{'color': '#6A80AA', 'display': 'block', 'fontWeight': 'normal', 'marginLeft': '10px', 'marginRight': '-9px', 'paddingLeft': ''}" tooltip="Löschen Kontaktperson" (click)="buttonKontaktpersonLoeschenClick($event)">
+                      </rz-button>
+                    </div>
+                  </div>
+                </rz-panel-header>
+              </rz-panel>
+            </div>
+          </div>
+          <div [ngStyle]="{'marginTop': '20px', 'paddingLeft': '0', 'paddingTop': '0'}" class="row">
+            <div class="col-md-12">
+              <rz-panel #bild [style]="{'border': '1px solid #e6ecef', 'height': '360px'}" text="Profilbild">
+                <div [ngStyle]="{'marginBottom': '15px'}" class="row">
+                  <div class="col-md-5">
+                    <rz-image #bildUrl [path]="dsoBaseKontakte?.BildURL" [style]="{'backgroundColor': 'rgba(0, 0, 0, 0)', 'border': '1px solid #dbdfe2', 'borderRadius': '4px', 'width': '120px'}">
+                    </rz-image>
+                  </div>
+                  <div class="col-md-7 justify-content-end d-flex">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <rz-upload #uploadBildBase accept="image/*" [auto]="false" cancelText="Abbruch" chooseText="Bild auswählen" mode="advanced" [multiple]="false" [previewWidth]="50" [showCancelButton]="false" [showUploadButton]="true" [style]="{'float': 'none', 'width': '100%'}" uploadText="Hochladen" url="upload/bild/base/{{dsoBaseKontakte?.BaseID}}{{(uploadBildBase?.fileUpload?.files || {})[0]?.name?.substring((uploadBildBase?.fileUpload?.files || {})[0]?.name?.indexOf('.'))}}" (beforeUpload)="uploadBildBaseBeforeUpload($event)" (error)="uploadBildBaseError($event)" (upload)="uploadBildBaseUpload($event)">
+                    </rz-upload>
+                  </div>
+                </div>
+                <rz-panel-header>
+                  <div class="row">
+                    <div class="col-md-12 align-items-start d-flex">
+                      <rz-button #buttonBildEntfernen buttonStyle="light" icon="cancel" size="sm" [style]="{'color': '#6A80AA', 'display': 'block', 'marginRight': '-9px'}" tooltip="Löschen Profilbild" (click)="buttonBildEntfernenClick($event)">
+                      </rz-button>
+                    </div>
+                  </div>
+                </rz-panel-header>
+              </rz-panel>
+            </div>
+          </div>
+        </div>
+      </div>
+    </rz-tabs-item>
+    <rz-tabs-item [selected]="false" text="Notizen">
+      <div class="row">
+        <div class="col-md-7">
+          <rz-panel #panel4 [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="{{rstNotizenCount}} Notizen">
+            <rz-grid #gridNotizen [allowAdd]="false" [allowColumnResize]="true" [allowFiltering]="false" [allowMultiSorting]="false" [allowPaging]="false" [allowSorting]="true" applyFilterText="Apply" clearFilterText="Clear" [confirmDelete]="false" containsText="Contains" [count]="rstNotizenCount" [data]="rstNotizen" emptyText="Keine Notizen vorhanden" endsWithText="Ends with" equalsText="Equals" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Greater than or equals" greaterThanText="Greater than" lessThanOrEqualsText="Less than or equals" lessThanText="Less than" notEqualsText="Not equals" [pageSize]="15" startsWithText="Starts with" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '700px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}" (loadData)="gridNotizenLoadData($event)" (rowDoubleClick)="gridNotizenRowDoubleClick($event)" (rowSelect)="gridNotizenRowSelect($event)">
+              <rz-grid-column format="date-time" formatString="dd.MM.yyyy HH:mm" property="Am" title="Am" width="150px" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="Titel" title="Titel" type="string">
+              </rz-grid-column>
+            </rz-grid>
+            <rz-panel-header>
+              <div class="row">
+                <div class="col-md-12 align-items-start d-flex">
+                  <rz-button #buttonNeueNotiz buttonStyle="light" icon="add" size="sm" [style]="{'color': '#a71330', 'display': 'block'}" text="Neue Notiz" (click)="buttonNeueNotizClick($event)">
+                  </rz-button>
+                  <rz-button #buttonBearbeitenNotiz buttonStyle="light" icon="create" size="sm" [style]="{'color': '#6A80AA', 'display': 'block', 'marginLeft': '10px', 'paddingLeft': ''}" tooltip="Bearbeiten Notiz" (click)="buttonBearbeitenNotizClick($event)">
+                  </rz-button>
+                  <rz-button #buttonLoeschenNotiz buttonStyle="light" [disabled]="false" icon="cancel" size="sm" [style]="{'color': '#6A80AA', 'display': 'block', 'fontStyle': 'normal', 'fontWeight': 'normal', 'marginLeft': '10px', 'marginRight': '-9px'}" tooltip="Löschen Notiz" (click)="buttonLoeschenNotizClick($event)">
+                  </rz-button>
+                </div>
+              </div>
+            </rz-panel-header>
+          </rz-panel>
+        </div>
+        <div class="col-md-5" [ngStyle]="{'paddingLeft': '5px'}">
+          <rz-panel #panel6 [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" [text]="dsoNotizen?.Titel">
+            <div [ngStyle]="{'marginLeft': '-36px', 'marginRight': '-36px', 'marginTop': '-12px'}" class="row">
+              <div class="col-md-12" [ngStyle]="{}">
+                <rz-html #htmlEditorInfotexte>
+                  <editor
+                    [(ngModel)]="strNotizHTML"
+                    [disabled]="true"
+                    apiKey="7uaxcp1fzfppm9wca8ei2hnuuf9hv2fl9slezwr9k33gv0pp"
+                    [init]="{
+                      height: 699,
+                      menubar: false,
+                      toolbar: false,
+                      statusbar: false,
+                      language: 'de',
+                      browser_spellcheck: true,
+                      plugins: [
+                        'fullpage'
+                      ]
+                    }"
+                   ></editor>
+                </rz-html>
+              </div>
+            </div>
+            <rz-panel-header>
+              <div class="row">
+                <div class="col-md-12 align-items-start d-flex">
+                  <rz-button #buttonKopieren buttonStyle="light" icon="content_copy" size="sm" [style]="{'color': '#A71330', 'display': 'block', 'float': 'none'}" text="Kopieren" (click)="buttonKopierenClick($event)">
+                  </rz-button>
+                  <rz-button #buttonBearbeitenNotizEditor buttonStyle="light" buttonType="button" icon="create" size="sm" [style]="{'color': '#6A80AA', 'display': 'block', 'marginLeft': '10px', 'marginRight': '-9px', 'marginTop': '1px'}" text="Bearbeiten" (click)="buttonBearbeitenNotizEditorClick($event)">
+                  </rz-button>
+                </div>
+              </div>
+            </rz-panel-header>
+          </rz-panel>
+        </div>
+      </div>
+    </rz-tabs-item>
+    <rz-tabs-item [disabled]="false" [selected]="false" text="Liste">
+      <div [ngStyle]="{'height': '100%'}" class="row">
+        <div class="col-md-12" [ngStyle]="{'display': 'block', 'float': 'none'}">
+          <rz-panel #panel0 [style]="{'border': '1px solid #e6ecef', 'display': 'block', 'height': '750px'}" text="{{rstBaseKontakteCount}} Kontakte">
+            <rz-grid #gridKontakte [allowAdd]="false" [allowColumnReorder]="true" [allowColumnResize]="true" [allowDelete]="false" [allowFiltering]="true" [allowMultiSorting]="true" [allowPaging]="true" [allowSorting]="true" [alwaysShowPager]="false" applyFilterText="Anwenden" clearFilterText="Entfernen" columnResizeMode="expand" [confirmDelete]="false" containsText="Enthält" [count]="rstBaseKontakteCount" [data]="rstBaseKontakte" emptyText="Keine Kontakte gefunden" endsWithText="Endet mit" equalsText="Gleich" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Größer oder gleich" greaterThanText="Größer" [isLoading]="false" lessThanOrEqualsText="Kleiner oder gleich" lessThanText="Kleiner" locale="de-at" notEqualsText="Nicht Gleich" [pageSize]="20" [responsive]="true" startsWithText="Beginnt mit" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '700px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}" [(value)]="dsoBaseKontakteAusListe" (loadData)="gridKontakteLoadData($event)" (rowDoubleClick)="gridKontakteRowDoubleClick($event)" (rowSelect)="gridKontakteRowSelect($event)">
+              <rz-grid-column property="Name1" title="Name" width="120px" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="Name2" title="Vorname" width="100px" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="NameKuerzel" title="Kürzel" width="80px" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="Anrede" title="Anrede" width="90px" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="Strasse" title="Strasse" width="200px" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="PLZ" title="PLZ" width="70px" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="Ort" title="Ort" width="150px" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="Telefon1" title="Telefon 1" width="150px" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="Telefon2" title="Telefon 2" width="150px" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="EMail1" title="E-Mail 1" width="150px" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="EMail2" title="E-Mail 2" width="150px" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="Webseite" title="Webseite" width="150px" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="TitelVorne" title="Titel Vorne" width="100px" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="TitelHinten" title="Titel Hinten" width="100px" type="string">
+              </rz-grid-column>
+              <rz-grid-column format="date-time" formatString="dd.MM.yyyy" property="Geburtsdatum" title="Geburtsdatum" width="150px" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="Versicherungsnummer" title="Versicherungsnummer" width="150px" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="Staatsangehoerigkeit" title="Staatsangehörigkeit" width="150px" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="Notiz" title="Notiz" width="300px" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="KontoName" title="Konto Name" width="150px" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="KontoNummer" title="Konto Nummer" width="150px" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="KontoInfo" title="Konto Info" width="300px" type="string">
+              </rz-grid-column>
+            </rz-grid>
+            <rz-panel-header>
+              <div class="row justify-content-center">
+                <div class="col-md-12  d-flex align-items-start">
+                  <rz-button #buttonExport buttonStyle="light" icon="publish" size="sm" [style]="{'color': '#A71330', 'display': 'block', 'marginRight': '-9px'}" text="Export" (click)="buttonExportClick($event)">
+                  </rz-button>
+                </div>
+              </div>
+            </rz-panel-header>
+          </rz-panel>
+        </div>
+      </div>
+    </rz-tabs-item>
+  </rz-tabs>
+</rz-content>

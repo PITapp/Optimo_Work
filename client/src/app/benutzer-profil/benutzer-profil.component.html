@@ -1,0 +1,142 @@
+<rz-content #content1 container="main">
+  <div [ngStyle]="{'height': '', 'marginTop': '-7px', 'paddingBottom': '0', 'paddingLeft': '5px', 'paddingRight': '3px', 'paddingTop': '0', 'width': ''}" class="row">
+    <div class="justify-content-start       d-flex align-items-center col-md-8" [ngStyle]="{'height': '57px', 'paddingBottom': '1px'}">
+      <rz-heading #heading1 size="H1" [style]="{'color': '#5d717b', 'display': 'inline-block'}" text="Benutzerprofil">
+      </rz-heading>
+      <rz-heading #heading2 size="H3" [style]="{'color': '#e5ecef', 'display': 'inline-block', 'marginTop': '7px', 'paddingLeft': '10px', 'paddingRight': '10px'}" text="|">
+      </rz-heading>
+      <rz-heading #heading3 size="H3" [style]="{'color': '#789BC0', 'display': 'inline', 'fontSize': '21px', 'fontWeight': 'normal'}" [text]="dsoBenutzer?.Benutzername" >
+      </rz-heading>
+    </div>
+    <div class="col-md-4  d-flex justify-content-end align-items-end" [ngStyle]="{'paddingRight': '20px'}">
+      <rz-button #button0 buttonStyle="info" buttonType="submit" icon="print" size="md" [style]="{'backgroundColor': 'rgba(0, 0, 0, 0)', 'border': '1px solid #A71330', 'borderBottom': '3px solid #A71330', 'color': '#5d717d', 'display': 'block', 'fontWeight': 'normal', 'width': '150px'}" text="Drucken" (click)="button0Click($event)">
+      </rz-button>
+    </div>
+  </div>
+  <rz-tabs #tabs0 [style]="{'float': 'none'}">
+    <rz-tabs-item [selected]="true" text="Daten">
+      <div class="row">
+        <div class="col-md-4">
+          <rz-panel #panel0 [allowCollapse]="false" [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="Benutzerdaten">
+            <rz-template-form #form0 (submit)="form0Submit($event)">
+              <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+                <div class="col-md-3" [ngStyle]="{'paddingLeft': '0', 'textAlign': 'right'}">
+                  <rz-label #label4 component="textbox0" [style]="{'textAlign': 'left', 'width': '100%'}" text="Benutzer">
+                  </rz-label>
+                </div>
+                <div class="col-md-9" [ngStyle]="{'paddingRight': '0'}">
+                  <rz-textbox #textbox0 [autoComplete]="false" [disabled]="true" [style]="{'display': 'block', 'width': '100%'}" [(ngModel)]="strNameKontakt" name="textbox0">
+                  </rz-textbox>
+                </div>
+              </div>
+              <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+                <div class="col-md-3" [ngStyle]="{'paddingLeft': '0', 'textAlign': 'right'}">
+                  <rz-label #label2 component="Anmeldename" [style]="{'textAlign': 'left', 'width': '100%'}" text="Anmeldename">
+                  </rz-label>
+                  <rz-required-validator #requiredValidator4 [component]="anmeldename" [style]="{'display': 'block', 'position': 'absolute', 'textAlign': 'left', 'width': '100%'}" text="╘ eingeben">
+                  </rz-required-validator>
+                </div>
+                <div class="col-md-9" [ngStyle]="{'paddingRight': '0'}">
+                  <rz-textbox #anmeldename [autoComplete]="false" [style]="{'display': 'block', 'width': '100%'}" [(ngModel)]="dsoBenutzer && dsoBenutzer.Benutzername" name="Anmeldename">
+                  </rz-textbox>
+                </div>
+              </div>
+              <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+                <div class="col-md-3" [ngStyle]="{'paddingLeft': '0', 'textAlign': 'right'}">
+                  <rz-label #label3 component="Initialen" [style]="{'textAlign': 'left', 'width': '100%'}" text="Initialen">
+                  </rz-label>
+                  <rz-required-validator #requiredValidator2 [component]="initialen" [style]="{'display': 'block', 'position': 'absolute', 'textAlign': 'left', 'width': '100%'}" text="╘ eingeben">
+                  </rz-required-validator>
+                </div>
+                <div class="col-md-9" [ngStyle]="{'paddingRight': '0'}">
+                  <rz-textbox #initialen [autoComplete]="false" [style]="{'display': 'block', 'width': '100%'}" [(ngModel)]="dsoBenutzer && dsoBenutzer.Initialen" name="Initialen">
+                  </rz-textbox>
+                </div>
+              </div>
+              <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+                <div class="col-md-3" [ngStyle]="{'paddingLeft': '0'}">
+                  <rz-label #roleNamesLabel component="RoleNames" [style]="{'textAlign': 'left', 'width': '100%'}" text="Rollen">
+                  </rz-label>
+                  <rz-required-validator #requiredValidator3 [component]="roleNames" [style]="{'display': 'block', 'position': 'absolute', 'textAlign': 'left', 'width': '100%'}" text="╘ eingeben">
+                  </rz-required-validator>
+                </div>
+                <div class="col-md-9" [ngStyle]="{'paddingRight': '0'}">
+                  <rz-listbox #roleNames [allowFiltering]="false" [checkbox]="true" [data]="rstRollen" [disabled]="true" [multiple]="true" [showToggleAll]="false" [style]="{'display': 'block', 'height': '189px', 'width': '100%'}" textProperty="Titel" [(ngModel)]="dsoUser && dsoUser.RoleNames" valueProperty="Titel" name="RoleNames">
+                  </rz-listbox>
+                </div>
+              </div>
+              <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+                <div class="col-md-3" [ngStyle]="{'paddingLeft': '0'}">
+                  <rz-label #passwordLabel component="Password" [style]="{'textAlign': 'left', 'width': '100%'}" text="Passwort">
+                  </rz-label>
+                </div>
+                <div class="col-md-9" [ngStyle]="{'paddingRight': '0'}">
+                  <rz-password #password [autoComplete]="false" [style]="{'display': 'block', 'width': '100%'}" [(ngModel)]="dsoUser && dsoUser.Password" name="Password">
+                  </rz-password>
+                </div>
+              </div>
+              <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+                <div class="col-md-3" [ngStyle]="{'paddingLeft': '0'}">
+                  <rz-label #confirmPasswordLabel component="ConfirmPassword" [style]="{'textAlign': 'left', 'width': '100%'}" text="Wiederholen">
+                  </rz-label>
+                </div>
+                <div class="col-md-9" [ngStyle]="{'paddingRight': '0'}">
+                  <rz-password #confirmPassword [autoComplete]="false" [style]="{'display': 'block', 'width': '100%'}" [(ngModel)]="dsoUser && dsoUser.ConfirmPassword" name="ConfirmPassword">
+                  </rz-password>
+                </div>
+              </div>
+              <div [ngStyle]="{'marginBottom': '14px'}" class="row">
+                <div class="col-md-3" [ngStyle]="{'paddingLeft': '0'}">
+                  <rz-label #label19 component="Info" [style]="{'textAlign': 'left', 'width': '100%'}" text="Notizen">
+                  </rz-label>
+                </div>
+                <div class="col-md-9" [ngStyle]="{'paddingRight': '0'}">
+                  <rz-textarea #notiz [rows]="4" [style]="{'height': '207px', 'width': '100%'}" [(ngModel)]="dsoBenutzer && dsoBenutzer.Notiz" name="Notiz">
+                  </rz-textarea>
+                </div>
+              </div>
+            </rz-template-form>
+            <rz-panel-header>
+              <div [ngStyle]="{'color': 'rgb(33, 37, 41)'}" class="row">
+                <div class="col-md-12 align-items-start d-flex">
+                  <rz-button #button4 buttonStyle="light" buttonType="submit" icon="done" size="sm" [style]="{'color': '#A71330', 'display': 'block', 'fontWeight': 'normal', 'marginRight': '-9px'}" text="Speichern" (click)="button4Click($event)">
+                  </rz-button>
+                </div>
+              </div>
+            </rz-panel-header>
+          </rz-panel>
+        </div>
+        <div class="col-md-4" [ngStyle]="{'paddingLeft': '5px'}">
+          <rz-panel #bild [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="Profilbild">
+            <div [ngStyle]="{'marginBottom': '15px'}" class="row">
+              <div class="col-md-5">
+                <rz-image #bildUrl [path]="dsoBase?.BildURL" [style]="{'backgroundColor': 'rgba(0, 0, 0, 0)', 'border': '1px solid #dbdfe2', 'borderRadius': '4px', 'width': '120px'}">
+                </rz-image>
+              </div>
+              <div class="col-md-7 justify-content-end d-flex">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <rz-upload #uploadBildBase accept="image/*" [auto]="false" cancelText="Abbruch" chooseText="Bild auswählen" mode="advanced" [multiple]="false" [previewWidth]="50" [showCancelButton]="false" [showUploadButton]="true" [style]="{'float': 'none', 'width': '100%'}" uploadText="Hochladen" url="upload/bild/base/{{dsoBase?.BaseID}}{{(uploadBildBase?.fileUpload?.files || {})[0]?.name?.substring((uploadBildBase?.fileUpload?.files || {})[0]?.name?.indexOf('.'))}}" (beforeUpload)="uploadBildBaseBeforeUpload($event)" (error)="uploadBildBaseError($event)" (upload)="uploadBildBaseUpload($event)">
+                </rz-upload>
+              </div>
+            </div>
+            <rz-panel-header>
+              <div class="row">
+                <div class="col-md-12 align-items-start d-flex">
+                  <rz-button #buttonBildEntfernen buttonStyle="light" icon="cancel" size="sm" [style]="{'color': '#6A80AA', 'display': 'block', 'marginRight': '-9px'}" tooltip="Löschen Profilbild" (click)="buttonBildEntfernenClick($event)">
+                  </rz-button>
+                </div>
+              </div>
+            </rz-panel-header>
+          </rz-panel>
+        </div>
+        <div class="col-md-4" [ngStyle]="{'paddingLeft': '5px'}">
+          <rz-panel #panel1 [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="Sonstiges">
+          </rz-panel>
+        </div>
+      </div>
+    </rz-tabs-item>
+  </rz-tabs>
+</rz-content>

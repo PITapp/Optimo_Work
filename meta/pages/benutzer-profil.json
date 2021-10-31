@@ -1,0 +1,1039 @@
+{
+  "access": [
+    "Authenticated"
+  ],
+  "components": [
+    {
+      "components": [
+        {
+          "components": [
+            {
+              "class": "justify-content-start       d-flex align-items-center col-md-8",
+              "components": [
+                {
+                  "name": "heading1",
+                  "size": "H1",
+                  "style": {
+                    "color": "#5d717b",
+                    "display": "inline-block"
+                  },
+                  "text": "Benutzerprofil",
+                  "type": "heading"
+                },
+                {
+                  "name": "heading2",
+                  "size": "H3",
+                  "style": {
+                    "color": "#e5ecef",
+                    "display": "inline-block",
+                    "marginTop": "7px",
+                    "paddingLeft": "10px",
+                    "paddingRight": "10px"
+                  },
+                  "text": "|",
+                  "type": "heading"
+                },
+                {
+                  "attributes": [
+                    {}
+                  ],
+                  "name": "heading3",
+                  "size": "H3",
+                  "style": {
+                    "color": "#789BC0",
+                    "display": "inline",
+                    "fontSize": "21px",
+                    "fontWeight": "normal"
+                  },
+                  "text": "${dsoBenutzer.Benutzername}",
+                  "type": "heading"
+                }
+              ],
+              "name": "col46",
+              "style": {
+                "height": "57px",
+                "paddingBottom": "1px"
+              },
+              "type": "col"
+            },
+            {
+              "class": "col-md-4  d-flex justify-content-end align-items-end",
+              "components": [
+                {
+                  "buttonStyle": "info",
+                  "buttonType": "submit",
+                  "events": {
+                    "click": [
+                      {
+                        "height": "",
+                        "parameters": [
+                          {
+                            "name": "strMeldung",
+                            "value": "\"Drucken ist für dieses Modul noch nicht aktiviert!\""
+                          }
+                        ],
+                        "path": "meldung-ok",
+                        "then": [],
+                        "title": "Info",
+                        "type": "popup",
+                        "width": 600
+                      }
+                    ]
+                  },
+                  "icon": "print",
+                  "name": "button0",
+                  "size": "md",
+                  "style": {
+                    "backgroundColor": "rgba(0, 0, 0, 0)",
+                    "border": "1px solid #A71330",
+                    "borderBottom": "3px solid #A71330",
+                    "color": "#5d717d",
+                    "display": "block",
+                    "fontWeight": "normal",
+                    "width": "150px"
+                  },
+                  "text": "Drucken",
+                  "tooltip": "",
+                  "type": "button"
+                }
+              ],
+              "name": "col11",
+              "style": {
+                "paddingRight": "20px"
+              },
+              "type": "col"
+            }
+          ],
+          "name": "row24",
+          "style": {
+            "height": "",
+            "marginTop": "-7px",
+            "paddingBottom": "0",
+            "paddingLeft": "5px",
+            "paddingRight": "3px",
+            "paddingTop": "0",
+            "width": ""
+          },
+          "type": "row"
+        },
+        {
+          "items": [
+            {
+              "components": [
+                {
+                  "components": [
+                    {
+                      "class": "col-md-4",
+                      "components": [
+                        {
+                          "allowCollapse": false,
+                          "components": [
+                            {
+                              "components": [
+                                {
+                                  "components": [
+                                    {
+                                      "class": "col-md-3",
+                                      "components": [
+                                        {
+                                          "component": "textbox0",
+                                          "name": "label4",
+                                          "style": {
+                                            "textAlign": "left",
+                                            "width": "100%"
+                                          },
+                                          "text": "Benutzer",
+                                          "type": "label"
+                                        }
+                                      ],
+                                      "name": "col8",
+                                      "style": {
+                                        "paddingLeft": "0",
+                                        "textAlign": "right"
+                                      },
+                                      "type": "col"
+                                    },
+                                    {
+                                      "class": "col-md-9",
+                                      "components": [
+                                        {
+                                          "autoComplete": false,
+                                          "disabled": true,
+                                          "name": "textbox0",
+                                          "placeholder": "",
+                                          "style": {
+                                            "display": "block",
+                                            "width": "100%"
+                                          },
+                                          "type": "textbox",
+                                          "value": "${strNameKontakt}",
+                                          "visible": true
+                                        }
+                                      ],
+                                      "name": "col9",
+                                      "style": {
+                                        "paddingRight": "0"
+                                      },
+                                      "type": "col"
+                                    }
+                                  ],
+                                  "name": "row4",
+                                  "style": {
+                                    "marginBottom": "1rem"
+                                  },
+                                  "type": "row"
+                                },
+                                {
+                                  "components": [
+                                    {
+                                      "class": "col-md-3",
+                                      "components": [
+                                        {
+                                          "component": "Anmeldename",
+                                          "name": "label2",
+                                          "style": {
+                                            "textAlign": "left",
+                                            "width": "100%"
+                                          },
+                                          "text": "Anmeldename",
+                                          "type": "label"
+                                        },
+                                        {
+                                          "component": "Anmeldename",
+                                          "name": "requiredValidator4",
+                                          "style": {
+                                            "display": "block",
+                                            "position": "absolute",
+                                            "textAlign": "left",
+                                            "width": "100%"
+                                          },
+                                          "text": "╘ eingeben",
+                                          "type": "required-validator"
+                                        }
+                                      ],
+                                      "name": "col6",
+                                      "style": {
+                                        "paddingLeft": "0",
+                                        "textAlign": "right"
+                                      },
+                                      "type": "col"
+                                    },
+                                    {
+                                      "class": "col-md-9",
+                                      "components": [
+                                        {
+                                          "autoComplete": false,
+                                          "name": "Anmeldename",
+                                          "style": {
+                                            "display": "block",
+                                            "width": "100%"
+                                          },
+                                          "type": "textbox",
+                                          "value": "${dsoBenutzer.Benutzername}",
+                                          "visible": true
+                                        }
+                                      ],
+                                      "name": "col7",
+                                      "style": {
+                                        "paddingRight": "0"
+                                      },
+                                      "type": "col"
+                                    }
+                                  ],
+                                  "name": "row3",
+                                  "style": {
+                                    "marginBottom": "1rem"
+                                  },
+                                  "type": "row"
+                                },
+                                {
+                                  "components": [
+                                    {
+                                      "class": "col-md-3",
+                                      "components": [
+                                        {
+                                          "component": "Initialen",
+                                          "name": "label3",
+                                          "style": {
+                                            "textAlign": "left",
+                                            "width": "100%"
+                                          },
+                                          "text": "Initialen",
+                                          "type": "label"
+                                        },
+                                        {
+                                          "component": "Initialen",
+                                          "name": "requiredValidator2",
+                                          "style": {
+                                            "display": "block",
+                                            "position": "absolute",
+                                            "textAlign": "left",
+                                            "width": "100%"
+                                          },
+                                          "text": "╘ eingeben",
+                                          "type": "required-validator"
+                                        }
+                                      ],
+                                      "name": "col5",
+                                      "style": {
+                                        "paddingLeft": "0",
+                                        "textAlign": "right"
+                                      },
+                                      "type": "col"
+                                    },
+                                    {
+                                      "class": "col-md-9",
+                                      "components": [
+                                        {
+                                          "autoComplete": false,
+                                          "name": "Initialen",
+                                          "style": {
+                                            "display": "block",
+                                            "width": "100%"
+                                          },
+                                          "type": "textbox",
+                                          "value": "${dsoBenutzer.Initialen}",
+                                          "visible": true
+                                        }
+                                      ],
+                                      "name": "col10",
+                                      "style": {
+                                        "paddingRight": "0"
+                                      },
+                                      "type": "col"
+                                    }
+                                  ],
+                                  "name": "row2",
+                                  "style": {
+                                    "marginBottom": "1rem"
+                                  },
+                                  "type": "row"
+                                },
+                                {
+                                  "components": [
+                                    {
+                                      "class": "col-md-3",
+                                      "components": [
+                                        {
+                                          "component": "RoleNames",
+                                          "name": "RoleNamesLabel",
+                                          "style": {
+                                            "textAlign": "left",
+                                            "width": "100%"
+                                          },
+                                          "text": "Rollen",
+                                          "type": "label"
+                                        },
+                                        {
+                                          "component": "RoleNames",
+                                          "name": "requiredValidator3",
+                                          "style": {
+                                            "display": "block",
+                                            "position": "absolute",
+                                            "textAlign": "left",
+                                            "width": "100%"
+                                          },
+                                          "text": "╘ eingeben",
+                                          "type": "required-validator"
+                                        }
+                                      ],
+                                      "name": "col18",
+                                      "style": {
+                                        "paddingLeft": "0"
+                                      },
+                                      "type": "col"
+                                    },
+                                    {
+                                      "class": "col-md-9",
+                                      "components": [
+                                        {
+                                          "allowFiltering": false,
+                                          "checkbox": true,
+                                          "data": "${rstRollen}",
+                                          "disabled": true,
+                                          "multiple": true,
+                                          "name": "RoleNames",
+                                          "showToggleAll": false,
+                                          "style": {
+                                            "display": "block",
+                                            "height": "189px",
+                                            "width": "100%"
+                                          },
+                                          "template": "",
+                                          "textProperty": "Titel",
+                                          "type": "listbox",
+                                          "value": "${dsoUser.RoleNames}",
+                                          "valueProperty": "Titel"
+                                        }
+                                      ],
+                                      "name": "col19",
+                                      "style": {
+                                        "paddingRight": "0"
+                                      },
+                                      "type": "col"
+                                    }
+                                  ],
+                                  "name": "row6",
+                                  "style": {
+                                    "marginBottom": "1rem"
+                                  },
+                                  "type": "row"
+                                },
+                                {
+                                  "components": [
+                                    {
+                                      "class": "col-md-3",
+                                      "components": [
+                                        {
+                                          "component": "Password",
+                                          "name": "PasswordLabel",
+                                          "style": {
+                                            "textAlign": "left",
+                                            "width": "100%"
+                                          },
+                                          "text": "Passwort",
+                                          "type": "label"
+                                        }
+                                      ],
+                                      "name": "col20",
+                                      "style": {
+                                        "paddingLeft": "0"
+                                      },
+                                      "type": "col"
+                                    },
+                                    {
+                                      "class": "col-md-9",
+                                      "components": [
+                                        {
+                                          "autoComplete": false,
+                                          "name": "Password",
+                                          "style": {
+                                            "display": "block",
+                                            "width": "100%"
+                                          },
+                                          "type": "password",
+                                          "value": "${dsoUser.Password}"
+                                        }
+                                      ],
+                                      "name": "col21",
+                                      "style": {
+                                        "paddingRight": "0"
+                                      },
+                                      "type": "col"
+                                    }
+                                  ],
+                                  "name": "row9",
+                                  "style": {
+                                    "marginBottom": "1rem"
+                                  },
+                                  "type": "row"
+                                },
+                                {
+                                  "components": [
+                                    {
+                                      "class": "col-md-3",
+                                      "components": [
+                                        {
+                                          "component": "ConfirmPassword",
+                                          "name": "ConfirmPasswordLabel",
+                                          "style": {
+                                            "textAlign": "left",
+                                            "width": "100%"
+                                          },
+                                          "text": "Wiederholen",
+                                          "type": "label"
+                                        }
+                                      ],
+                                      "name": "col22",
+                                      "style": {
+                                        "paddingLeft": "0"
+                                      },
+                                      "type": "col"
+                                    },
+                                    {
+                                      "class": "col-md-9",
+                                      "components": [
+                                        {
+                                          "autoComplete": false,
+                                          "name": "ConfirmPassword",
+                                          "style": {
+                                            "display": "block",
+                                            "width": "100%"
+                                          },
+                                          "type": "password",
+                                          "value": "${dsoUser.ConfirmPassword}"
+                                        }
+                                      ],
+                                      "name": "col23",
+                                      "style": {
+                                        "paddingRight": "0"
+                                      },
+                                      "type": "col"
+                                    }
+                                  ],
+                                  "name": "row10",
+                                  "style": {
+                                    "marginBottom": "1rem"
+                                  },
+                                  "type": "row"
+                                },
+                                {
+                                  "components": [
+                                    {
+                                      "class": "col-md-3",
+                                      "components": [
+                                        {
+                                          "component": "Info",
+                                          "name": "label19",
+                                          "style": {
+                                            "textAlign": "left",
+                                            "width": "100%"
+                                          },
+                                          "text": "Notizen",
+                                          "type": "label"
+                                        }
+                                      ],
+                                      "name": "col64",
+                                      "style": {
+                                        "paddingLeft": "0"
+                                      },
+                                      "type": "col"
+                                    },
+                                    {
+                                      "class": "col-md-9",
+                                      "components": [
+                                        {
+                                          "name": "Notiz",
+                                          "rows": 4,
+                                          "style": {
+                                            "height": "207px",
+                                            "width": "100%"
+                                          },
+                                          "type": "textarea",
+                                          "value": "${dsoBenutzer.Notiz}"
+                                        }
+                                      ],
+                                      "name": "col65",
+                                      "style": {
+                                        "paddingRight": "0"
+                                      },
+                                      "type": "col"
+                                    }
+                                  ],
+                                  "name": "row31",
+                                  "style": {
+                                    "marginBottom": "14px"
+                                  },
+                                  "type": "row"
+                                }
+                              ],
+                              "events": {
+                                "submit": [
+                                  {
+                                    "code": "${dsoUser.UserName} = ${dsoBenutzer.BenutzerEMail} ",
+                                    "type": "execute"
+                                  },
+                                  {
+                                    "condition": "",
+                                    "error": [
+                                      {
+                                        "detail": "Benutzer (Schritt 1) konnte nicht aktualisiert werden!",
+                                        "severity": "error",
+                                        "summary": "",
+                                        "type": "notify"
+                                      }
+                                    ],
+                                    "name": "Security.updateUser",
+                                    "parameters": [
+                                      {
+                                        "name": "User",
+                                        "value": "${dsoUser}"
+                                      },
+                                      {
+                                        "name": "Id",
+                                        "value": "${dsoBenutzer.AspNetUsers_Id}"
+                                      }
+                                    ],
+                                    "then": [
+                                      {
+                                        "error": [
+                                          {
+                                            "detail": "Benutzer (Schritt 2) konnte nicht aktualisiert werden!",
+                                            "severity": "error",
+                                            "then": [],
+                                            "type": "notify"
+                                          }
+                                        ],
+                                        "name": "dbOptimo.updateBenutzer",
+                                        "parameters": [
+                                          {
+                                            "name": "Benutzer",
+                                            "value": "${dsoBenutzer}"
+                                          },
+                                          {
+                                            "name": "BenutzerID",
+                                            "value": "${dsoBenutzer.BenutzerID}"
+                                          }
+                                        ],
+                                        "then": [
+                                          {
+                                            "detail": "Benutzer aktualisiert",
+                                            "severity": "success",
+                                            "type": "notify"
+                                          },
+                                          {
+                                            "result": "${result}",
+                                            "type": "close-popup"
+                                          }
+                                        ],
+                                        "type": "invoke"
+                                      }
+                                    ],
+                                    "type": "invoke"
+                                  }
+                                ]
+                              },
+                              "name": "form0",
+                              "type": "template-form"
+                            }
+                          ],
+                          "footerTemplate": "",
+                          "headerTemplate": [
+                            {
+                              "components": [
+                                {
+                                  "class": "col-md-12 align-items-start d-flex",
+                                  "components": [
+                                    {
+                                      "buttonStyle": "light",
+                                      "buttonType": "submit",
+                                      "events": {
+                                        "click": [
+                                          {
+                                            "code": "${dsoUser.UserName} = ${dsoBenutzer.BenutzerID} ",
+                                            "type": "execute"
+                                          },
+                                          {
+                                            "condition": "",
+                                            "error": [
+                                              {
+                                                "detail": "Benutzer (Schritt 1) konnte nicht aktualisiert werden!",
+                                                "severity": "error",
+                                                "summary": "",
+                                                "type": "notify"
+                                              }
+                                            ],
+                                            "name": "Security.updateUser",
+                                            "parameters": [
+                                              {
+                                                "name": "User",
+                                                "value": "${dsoUser}"
+                                              },
+                                              {
+                                                "name": "Id",
+                                                "value": "${dsoBenutzer.AspNetUsers_Id}"
+                                              }
+                                            ],
+                                            "then": [
+                                              {
+                                                "error": [
+                                                  {
+                                                    "detail": "Benutzer (Schritt 2) konnte nicht aktualisiert werden!",
+                                                    "severity": "error",
+                                                    "then": [],
+                                                    "type": "notify"
+                                                  }
+                                                ],
+                                                "name": "dbOptimo.updateBenutzer",
+                                                "parameters": [
+                                                  {
+                                                    "name": "Benutzer",
+                                                    "value": "${dsoBenutzer}"
+                                                  },
+                                                  {
+                                                    "name": "BenutzerID",
+                                                    "value": "${dsoBenutzer.BenutzerID}"
+                                                  }
+                                                ],
+                                                "then": [
+                                                  {
+                                                    "detail": "Benutzer aktualisiert",
+                                                    "severity": "success",
+                                                    "type": "notify"
+                                                  }
+                                                ],
+                                                "type": "invoke"
+                                              }
+                                            ],
+                                            "type": "invoke"
+                                          }
+                                        ]
+                                      },
+                                      "icon": "done",
+                                      "name": "button4",
+                                      "size": "sm",
+                                      "style": {
+                                        "color": "#A71330",
+                                        "display": "block",
+                                        "fontWeight": "normal",
+                                        "marginRight": "-9px"
+                                      },
+                                      "text": "Speichern",
+                                      "tooltip": "",
+                                      "type": "button"
+                                    }
+                                  ],
+                                  "name": "col16",
+                                  "type": "col"
+                                }
+                              ],
+                              "name": "row8",
+                              "style": {
+                                "color": "rgb(33, 37, 41)"
+                              },
+                              "type": "row"
+                            }
+                          ],
+                          "name": "panel0",
+                          "style": {
+                            "border": "1px solid #e6ecef",
+                            "height": "750px"
+                          },
+                          "text": "Benutzerdaten",
+                          "type": "panel"
+                        }
+                      ],
+                      "name": "col0",
+                      "type": "col"
+                    },
+                    {
+                      "class": "col-md-4",
+                      "components": [
+                        {
+                          "components": [
+                            {
+                              "components": [
+                                {
+                                  "class": "col-md-5",
+                                  "components": [
+                                    {
+                                      "name": "BildURL",
+                                      "path": "${dsoBase.BildURL}",
+                                      "style": {
+                                        "backgroundColor": "rgba(0, 0, 0, 0)",
+                                        "border": "1px solid #dbdfe2",
+                                        "borderRadius": "4px",
+                                        "width": "120px"
+                                      },
+                                      "type": "image"
+                                    }
+                                  ],
+                                  "name": "col1",
+                                  "type": "col"
+                                },
+                                {
+                                  "class": "col-md-7 justify-content-end d-flex",
+                                  "components": [],
+                                  "name": "col2",
+                                  "type": "col"
+                                }
+                              ],
+                              "name": "row7",
+                              "style": {
+                                "marginBottom": "15px"
+                              },
+                              "type": "row"
+                            },
+                            {
+                              "components": [
+                                {
+                                  "class": "col-md-12",
+                                  "components": [
+                                    {
+                                      "accept": "image/*",
+                                      "auto": false,
+                                      "cancelText": "Abbruch",
+                                      "chooseText": "Bild auswählen",
+                                      "events": {
+                                        "beforeSend": [],
+                                        "beforeUpload": [
+                                          {
+                                            "code": "var strDateiName = ${this.uploadBildBase.fileUpload.files[0].name};\nvar strDateiEndung = strDateiName.substring(strDateiName.indexOf(\".\"));\n\n${dsoBase.BildURL} = 'https://medien.optimo.app/upload/bilder/base/' + ${dsoBase.BaseID} + strDateiEndung;",
+                                            "type": "execute"
+                                          }
+                                        ],
+                                        "error": [
+                                          {
+                                            "detail": "Hochladen fehlgeschlagen!",
+                                            "severity": "error",
+                                            "summary": "Bild",
+                                            "type": "notify"
+                                          }
+                                        ],
+                                        "progress": [],
+                                        "upload": [
+                                          {
+                                            "name": "dbOptimo.updateBase",
+                                            "parameters": [
+                                              {
+                                                "name": "BaseID",
+                                                "value": "${dsoBase.BaseID}"
+                                              },
+                                              {
+                                                "name": "Base",
+                                                "value": "${dsoBase}"
+                                              }
+                                            ],
+                                            "then": [],
+                                            "type": "invoke"
+                                          },
+                                          {
+                                            "detail": "Erfolgreich hochgeladen!",
+                                            "severity": "success",
+                                            "summary": "Bild",
+                                            "type": "notify"
+                                          },
+                                          {
+                                            "code": "window.location.reload();",
+                                            "type": "execute"
+                                          }
+                                        ]
+                                      },
+                                      "mode": "advanced",
+                                      "multiple": false,
+                                      "name": "uploadBildBase",
+                                      "previewWidth": 50,
+                                      "showCancelButton": false,
+                                      "showUploadButton": true,
+                                      "style": {
+                                        "float": "none",
+                                        "width": "100%"
+                                      },
+                                      "type": "upload",
+                                      "uploadText": "Hochladen",
+                                      "url": "upload/bild/base/${dsoBase.BaseID}${this.uploadBildBase.fileUpload.files[0].name.substring(this.uploadBildBase.fileUpload.files[0].name.indexOf('.'))}"
+                                    }
+                                  ],
+                                  "name": "col17",
+                                  "type": "col"
+                                }
+                              ],
+                              "name": "row8",
+                              "type": "row"
+                            }
+                          ],
+                          "footerTemplate": "",
+                          "headerTemplate": [
+                            {
+                              "components": [
+                                {
+                                  "class": "col-md-12 align-items-start d-flex",
+                                  "components": [
+                                    {
+                                      "buttonStyle": "light",
+                                      "events": {
+                                        "click": [
+                                          {
+                                            "parameters": [
+                                              {
+                                                "name": "strMeldung",
+                                                "value": "\"Soll das Bild von '\" + this.dsoBase.Name1 + \" \" + this.dsoBase.Name2 + \"' entfernt werden?\""
+                                              }
+                                            ],
+                                            "path": "meldung-ja-nein",
+                                            "then": [
+                                              {
+                                                "code": "${dsoBase.BildURL} = 'https://medien.optimo.app/upload/bilder/base/KeinBildPerson.png';",
+                                                "condition": "${result} == 'Ja'",
+                                                "type": "execute"
+                                              },
+                                              {
+                                                "condition": "${result} == 'Ja'",
+                                                "error": [
+                                                  {
+                                                    "detail": "Bild konnte nicht entfernt werden!",
+                                                    "severity": "error",
+                                                    "type": "notify"
+                                                  }
+                                                ],
+                                                "name": "dbOptimo.updateBase",
+                                                "parameters": [
+                                                  {
+                                                    "name": "BaseID",
+                                                    "value": "${dsoBase.BaseID}"
+                                                  },
+                                                  {
+                                                    "name": "Base",
+                                                    "value": "${dsoBase}"
+                                                  }
+                                                ],
+                                                "then": [
+                                                  {
+                                                    "detail": "Bild entfernt",
+                                                    "severity": "success",
+                                                    "type": "notify"
+                                                  }
+                                                ],
+                                                "type": "invoke"
+                                              }
+                                            ],
+                                            "title": "Bild entfernen",
+                                            "type": "popup"
+                                          }
+                                        ]
+                                      },
+                                      "icon": "cancel",
+                                      "name": "buttonBildEntfernen",
+                                      "size": "sm",
+                                      "style": {
+                                        "color": "#6A80AA",
+                                        "display": "block",
+                                        "marginRight": "-9px"
+                                      },
+                                      "text": "",
+                                      "tooltip": "Löschen Profilbild",
+                                      "type": "button"
+                                    }
+                                  ],
+                                  "name": "col15",
+                                  "type": "col"
+                                }
+                              ],
+                              "name": "row8",
+                              "type": "row"
+                            }
+                          ],
+                          "name": "Bild",
+                          "style": {
+                            "border": "1px solid #e6ecef",
+                            "height": "750px"
+                          },
+                          "text": "Profilbild",
+                          "type": "panel"
+                        }
+                      ],
+                      "name": "col4",
+                      "style": {
+                        "paddingLeft": "5px"
+                      },
+                      "type": "col"
+                    },
+                    {
+                      "class": "col-md-4",
+                      "components": [
+                        {
+                          "components": [],
+                          "icon": "",
+                          "name": "panel1",
+                          "style": {
+                            "border": "1px solid #e6ecef",
+                            "height": "750px"
+                          },
+                          "text": "Sonstiges",
+                          "type": "panel"
+                        }
+                      ],
+                      "name": "col3",
+                      "style": {
+                        "paddingLeft": "5px"
+                      },
+                      "type": "col"
+                    }
+                  ],
+                  "name": "row1",
+                  "type": "row"
+                }
+              ],
+              "selected": true,
+              "text": "Daten"
+            }
+          ],
+          "name": "tabs0",
+          "style": {
+            "float": "none"
+          },
+          "type": "tabs"
+        }
+      ],
+      "container": "main",
+      "type": "content"
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "dbOptimo.getVwRollens",
+        "then": [
+          {
+            "name": "rstRollen",
+            "type": "set",
+            "value": "${result.value}"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "dbOptimo.getBenutzers",
+        "parameters": [
+          {
+            "name": "$filter",
+            "value": "BenutzerName eq '${security.user.name}'"
+          },
+          {
+            "name": "$expand",
+            "value": "Base"
+          }
+        ],
+        "then": [
+          {
+            "name": "dsoBenutzer",
+            "type": "set",
+            "value": "${result.value[0]}"
+          },
+          {
+            "name": "strNameKontakt",
+            "type": "set",
+            "value": "${dsoBenutzer.Base.Name1} + ' ' + ${dsoBenutzer.Base.Name2}"
+          },
+          {
+            "name": "Security.getUserById",
+            "parameters": [
+              {
+                "name": "Id",
+                "value": "${dsoBenutzer.AspNetUsers_Id}"
+              }
+            ],
+            "then": [
+              {
+                "name": "dsoUser",
+                "type": "set",
+                "value": "${result}"
+              }
+            ],
+            "type": "invoke"
+          },
+          {
+            "name": "dbOptimo.getBaseByBaseID",
+            "parameters": [
+              {
+                "name": "BaseID",
+                "value": "${dsoBenutzer.BaseID}"
+              }
+            ],
+            "then": [
+              {
+                "name": "dsoBase",
+                "type": "set",
+                "value": "${result}"
+              }
+            ],
+            "type": "invoke"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "layout": "Main",
+  "name": "BenutzerProfil"
+}

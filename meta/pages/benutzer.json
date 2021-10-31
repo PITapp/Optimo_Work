@@ -1,0 +1,635 @@
+{
+  "access": [
+    "Authenticated"
+  ],
+  "components": [
+    {
+      "components": [
+        {
+          "components": [
+            {
+              "class": "justify-content-start       d-flex align-items-center col-md-8",
+              "components": [
+                {
+                  "name": "heading0",
+                  "size": "H1",
+                  "style": {
+                    "color": "#5d717b",
+                    "display": "inline-block"
+                  },
+                  "text": "Benutzer",
+                  "type": "heading"
+                },
+                {
+                  "name": "heading1",
+                  "size": "H3",
+                  "style": {
+                    "color": "#e5ecef",
+                    "display": "inline-block",
+                    "marginTop": "7px",
+                    "paddingLeft": "10px",
+                    "paddingRight": "10px"
+                  },
+                  "text": "|",
+                  "type": "heading"
+                },
+                {
+                  "attributes": [
+                    {}
+                  ],
+                  "name": "heading2",
+                  "size": "H3",
+                  "style": {
+                    "color": "#789BC0",
+                    "display": "inline",
+                    "fontSize": "21px",
+                    "fontWeight": "normal"
+                  },
+                  "text": "${dsoBenutzerBase.NameGesamt}",
+                  "type": "heading"
+                }
+              ],
+              "name": "col46",
+              "style": {
+                "height": "57px",
+                "paddingBottom": "1px"
+              },
+              "type": "col"
+            },
+            {
+              "class": "col-md-4  d-flex justify-content-end align-items-end",
+              "components": [
+                {
+                  "buttonStyle": "info",
+                  "buttonType": "submit",
+                  "events": {
+                    "click": [
+                      {
+                        "height": "",
+                        "parameters": [
+                          {
+                            "name": "strMeldung",
+                            "value": "\"Drucken ist für dieses Modul noch nicht aktiviert!\""
+                          }
+                        ],
+                        "path": "meldung-ok",
+                        "then": [],
+                        "title": "Info",
+                        "type": "popup",
+                        "width": 600
+                      }
+                    ]
+                  },
+                  "icon": "print",
+                  "name": "button0",
+                  "size": "md",
+                  "style": {
+                    "backgroundColor": "rgba(0, 0, 0, 0)",
+                    "border": "1px solid #A71330",
+                    "borderBottom": "3px solid #A71330",
+                    "color": "#5d717d",
+                    "display": "block",
+                    "fontWeight": "normal",
+                    "width": "150px"
+                  },
+                  "text": "Drucken",
+                  "tooltip": "",
+                  "type": "button"
+                }
+              ],
+              "name": "col64",
+              "style": {
+                "paddingRight": "20px"
+              },
+              "type": "col"
+            }
+          ],
+          "name": "row24",
+          "style": {
+            "height": "",
+            "marginTop": "-7px",
+            "paddingBottom": "0",
+            "paddingLeft": "5px",
+            "paddingRight": "3px",
+            "paddingTop": "0",
+            "width": ""
+          },
+          "type": "row"
+        },
+        {
+          "items": [
+            {
+              "components": [
+                {
+                  "components": [
+                    {
+                      "class": "col-md-9",
+                      "components": [
+                        {
+                          "components": [
+                            {
+                              "addText": "",
+                              "allowAdd": false,
+                              "allowDelete": false,
+                              "allowFiltering": true,
+                              "allowMultiSorting": false,
+                              "allowPaging": false,
+                              "allowSorting": true,
+                              "applyFilterText": "Apply",
+                              "clearFilterText": "Clear",
+                              "columns": [
+                                {
+                                  "filterProperty": "",
+                                  "format": "",
+                                  "property": "NameGesamt",
+                                  "template": "",
+                                  "title": "Benutzer",
+                                  "type": "string",
+                                  "width": "30%"
+                                },
+                                {
+                                  "property": "Benutzername",
+                                  "title": "Anmeldename",
+                                  "type": "string"
+                                },
+                                {
+                                  "property": "Initialen",
+                                  "title": "Initialen",
+                                  "type": "string",
+                                  "width": "90px"
+                                },
+                                {
+                                  "property": "Notiz",
+                                  "title": "Notiz",
+                                  "type": "string",
+                                  "width": "40%"
+                                }
+                              ],
+                              "confirmDelete": false,
+                              "confirmDeleteCancelText": "",
+                              "confirmDeleteOkText": "",
+                              "confirmDeleteText": "",
+                              "confirmDeleteTitle": "",
+                              "containsText": "Contains",
+                              "count": "${rstBenutzerBaseCount}",
+                              "data": "${rstBenutzerBase}",
+                              "emptyText": "Keine Benutzer vorhanden",
+                              "endsWithText": "Ends with",
+                              "equalsText": "Equals",
+                              "events": {
+                                "add": [],
+                                "delete": [],
+                                "loadData": [
+                                  {
+                                    "error": [
+                                      {
+                                        "detail": "Benutzer können nicht geladen werden!",
+                                        "severity": "error",
+                                        "summary": "",
+                                        "type": "notify"
+                                      }
+                                    ],
+                                    "name": "dbOptimo.getVwBenutzerBases",
+                                    "parameters": [
+                                      {
+                                        "name": "$top",
+                                        "value": "event.top"
+                                      },
+                                      {
+                                        "name": "$skip",
+                                        "value": "event.skip"
+                                      },
+                                      {
+                                        "name": "$count",
+                                        "value": "event.top != null && event.skip != null"
+                                      },
+                                      {
+                                        "name": "$filter",
+                                        "value": "${event.filter}"
+                                      },
+                                      {
+                                        "name": "$orderby",
+                                        "value": "${event.orderby || 'NameGesamt'}"
+                                      }
+                                    ],
+                                    "then": [
+                                      {
+                                        "name": "rstBenutzerBase",
+                                        "type": "set",
+                                        "value": "${result.value}"
+                                      },
+                                      {
+                                        "name": "rstBenutzerBaseCount",
+                                        "type": "set",
+                                        "value": "event.top != null && event.skip != null ? result['@odata.count'] : ${result.value.length}"
+                                      },
+                                      {
+                                        "code": "if (this.rstBenutzerBase.find(p => p.BenutzerID == this.letzteBenutzerID) != null) {\n    // letzteBenutzerID wurde in rstBenutzerBase gefunden\n    this.gridBenutzer.onSelect(this.rstBenutzerBase.find(p => p.BenutzerID == this.letzteBenutzerID));\n} else {\n    // letzteBenutzerID wurde in rstBenutzerBase NICHT gefunden\n    this.letzteBenutzerID = null;\n    this.gridBenutzer.onSelect(this.rstBenutzerBase[0]);\n}",
+                                        "condition": "",
+                                        "type": "execute"
+                                      }
+                                    ],
+                                    "type": "invoke"
+                                  }
+                                ],
+                                "rowDoubleClick": [
+                                  {
+                                    "name": "letzteBenutzerID",
+                                    "type": "set",
+                                    "value": "${dsoBenutzerBase.BenutzerID}"
+                                  },
+                                  {
+                                    "parameters": [
+                                      {
+                                        "name": "BenutzerID",
+                                        "value": "${event.BenutzerID}"
+                                      }
+                                    ],
+                                    "path": "benutzer-bearbeiten",
+                                    "title": "Bearbeiten Benutzer",
+                                    "type": "popup"
+                                  }
+                                ],
+                                "rowSelect": [
+                                  {
+                                    "name": "dsoBenutzerBase",
+                                    "type": "set",
+                                    "value": "${event}"
+                                  },
+                                  {
+                                    "code": "this.gridBenutzerRollen.load();",
+                                    "type": "execute"
+                                  }
+                                ]
+                              },
+                              "filterCaseSensitivity": "caseInsensitive",
+                              "greaterThanOrEqualsText": "Greater than or equals",
+                              "greaterThanText": "Greater than",
+                              "lessThanOrEqualsText": "Less than or equals",
+                              "lessThanText": "Less than",
+                              "name": "gridBenutzer",
+                              "notEqualsText": "Not equals",
+                              "pageSize": 22,
+                              "startsWithText": "Starts with",
+                              "style": {
+                                "border": "1px solid rgba(0, 0, 0, 0)",
+                                "height": "700px",
+                                "marginLeft": "-10px",
+                                "marginRight": "-10px",
+                                "marginTop": "-13px"
+                              },
+                              "title": "",
+                              "type": "grid",
+                              "value": ""
+                            }
+                          ],
+                          "headerTemplate": [
+                            {
+                              "class": "",
+                              "components": [
+                                {
+                                  "class": "col-md-12 align-items-start d-flex",
+                                  "components": [
+                                    {
+                                      "buttonStyle": "light",
+                                      "events": {
+                                        "click": [
+                                          {
+                                            "name": "letzteBenutzerID",
+                                            "type": "set",
+                                            "value": "${dsoBenutzerBase.BenutzerID}"
+                                          },
+                                          {
+                                            "path": "benutzer-neu",
+                                            "then": [
+                                              {
+                                                "condition": "${result} != null",
+                                                "name": "letzteBenutzerID",
+                                                "type": "set",
+                                                "value": "${result.BenutzerID}"
+                                              },
+                                              {
+                                                "code": "this.gridBenutzer.load();",
+                                                "condition": "${result} != null",
+                                                "then": [],
+                                                "type": "execute"
+                                              }
+                                            ],
+                                            "title": "Neuer Benutzer",
+                                            "type": "popup"
+                                          }
+                                        ]
+                                      },
+                                      "icon": "add",
+                                      "name": "buttonNeu",
+                                      "size": "sm",
+                                      "style": {
+                                        "color": "#A71330",
+                                        "display": "block",
+                                        "marginRight": ""
+                                      },
+                                      "text": "Neuer Benutzer",
+                                      "tooltip": "",
+                                      "type": "button"
+                                    },
+                                    {
+                                      "buttonStyle": "light",
+                                      "events": {
+                                        "click": [
+                                          {
+                                            "name": "letzteBenutzerID",
+                                            "type": "set",
+                                            "value": "${dsoBenutzerBase.BenutzerID}"
+                                          },
+                                          {
+                                            "parameters": [
+                                              {
+                                                "name": "BenutzerID",
+                                                "value": "${dsoBenutzerBase.BenutzerID}"
+                                              }
+                                            ],
+                                            "path": "benutzer-bearbeiten",
+                                            "then": [],
+                                            "title": "Bearbeiten Benutzer",
+                                            "type": "popup"
+                                          }
+                                        ]
+                                      },
+                                      "icon": "create",
+                                      "name": "buttonBearbeiten",
+                                      "size": "sm",
+                                      "style": {
+                                        "color": "#6A80AA",
+                                        "display": "block",
+                                        "marginLeft": "10px",
+                                        "paddingLeft": ""
+                                      },
+                                      "text": "",
+                                      "tooltip": "Bearbeiten Benutzer",
+                                      "type": "button"
+                                    },
+                                    {
+                                      "buttonStyle": "light",
+                                      "disabled": false,
+                                      "events": {
+                                        "click": [
+                                          {
+                                            "name": "letzteBenutzerID",
+                                            "type": "set",
+                                            "value": "null"
+                                          },
+                                          {
+                                            "name": "tempAspNetUsers_Id",
+                                            "type": "set",
+                                            "value": "${dsoBenutzerBase.AspNetUsers_Id}"
+                                          },
+                                          {
+                                            "parameters": [
+                                              {
+                                                "name": "strMeldung",
+                                                "value": "\"Soll der Benutzer '\" + ${dsoBenutzerBase.NameGesamt} + \"' gelöscht werden?\""
+                                              }
+                                            ],
+                                            "path": "meldung-loeschen",
+                                            "then": [
+                                              {
+                                                "condition": "${result} == 'Löschen'",
+                                                "error": [
+                                                  {
+                                                    "detail": "Benutzer (Schritt 1) konnte nicht gelöscht werden!",
+                                                    "severity": "error",
+                                                    "summary": "",
+                                                    "type": "notify"
+                                                  }
+                                                ],
+                                                "name": "dbOptimo.deleteBenutzer",
+                                                "parameters": [
+                                                  {
+                                                    "name": "BenutzerID",
+                                                    "value": "\n${dsoBenutzerBase.BenutzerID}"
+                                                  }
+                                                ],
+                                                "then": [
+                                                  {
+                                                    "error": [
+                                                      {
+                                                        "detail": "Benutzer (Schritt 2) konnte nicht gelöscht werden!",
+                                                        "severity": "error",
+                                                        "type": "notify"
+                                                      }
+                                                    ],
+                                                    "name": "Security.deleteUser",
+                                                    "parameters": [
+                                                      {
+                                                        "name": "id",
+                                                        "value": "${tempAspNetUsers_Id}"
+                                                      }
+                                                    ],
+                                                    "then": [
+                                                      {
+                                                        "code": "this.gridBenutzer.load();",
+                                                        "type": "execute"
+                                                      },
+                                                      {
+                                                        "detail": "Benutzer gelöscht",
+                                                        "severity": "success",
+                                                        "type": "notify"
+                                                      }
+                                                    ],
+                                                    "type": "invoke"
+                                                  }
+                                                ],
+                                                "type": "invoke"
+                                              }
+                                            ],
+                                            "title": "Löschen Benutzer",
+                                            "type": "popup"
+                                          }
+                                        ]
+                                      },
+                                      "icon": "cancel",
+                                      "name": "buttonLoeschen",
+                                      "size": "sm",
+                                      "style": {
+                                        "color": "#6A80AA",
+                                        "display": "block",
+                                        "fontWeight": "normal",
+                                        "marginLeft": "10px",
+                                        "marginRight": "-9px",
+                                        "paddingLeft": ""
+                                      },
+                                      "text": "",
+                                      "tooltip": "Löschen Benutzer",
+                                      "type": "button"
+                                    }
+                                  ],
+                                  "name": "col1",
+                                  "type": "col"
+                                }
+                              ],
+                              "name": "row1",
+                              "type": "row"
+                            }
+                          ],
+                          "name": "panel0",
+                          "style": {
+                            "border": "1px solid #e6ecef",
+                            "height": "750px"
+                          },
+                          "text": "${rstBenutzerBaseCount} Benutzer",
+                          "type": "panel"
+                        }
+                      ],
+                      "name": "col0",
+                      "type": "col"
+                    },
+                    {
+                      "class": "col-md-3",
+                      "components": [
+                        {
+                          "allowCollapse": false,
+                          "collapsed": false,
+                          "components": [
+                            {
+                              "addText": "",
+                              "allowAdd": false,
+                              "allowDelete": false,
+                              "allowFiltering": true,
+                              "allowMultiSorting": false,
+                              "allowPaging": false,
+                              "allowSorting": true,
+                              "alwaysShowPager": false,
+                              "applyFilterText": "Apply",
+                              "clearFilterText": "Clear",
+                              "columns": [
+                                {
+                                  "property": "RolleTitel",
+                                  "title": "Titel",
+                                  "type": "string"
+                                }
+                              ],
+                              "confirmDelete": false,
+                              "confirmDeleteCancelText": "",
+                              "confirmDeleteOkText": "",
+                              "confirmDeleteText": "",
+                              "confirmDeleteTitle": "",
+                              "containsText": "Contains",
+                              "count": "${rstBenutzerRollenCount}",
+                              "data": "${rstBenutzerRollen}",
+                              "emptyText": "Keine Rollen vorhanden",
+                              "endsWithText": "Ends with",
+                              "equalsText": "Equals",
+                              "events": {
+                                "add": [],
+                                "delete": [],
+                                "loadData": [
+                                  {
+                                    "error": [
+                                      {
+                                        "detail": "Benutzer Rollen können nicht geladen werden!",
+                                        "severity": "error",
+                                        "type": "notify"
+                                      }
+                                    ],
+                                    "name": "dbOptimo.getVwBenutzerRollens",
+                                    "parameters": [
+                                      {
+                                        "name": "$filter",
+                                        "value": "BenutzerID eq ${dsoBenutzerBase.BenutzerID}"
+                                      }
+                                    ],
+                                    "then": [
+                                      {
+                                        "name": "rstBenutzerRollen",
+                                        "type": "set",
+                                        "value": "${result.value}"
+                                      },
+                                      {
+                                        "name": "rstBenutzerRollenCount",
+                                        "type": "set",
+                                        "value": "event.top != null && event.skip != null ? result['@odata.count'] : ${result.value.length}"
+                                      }
+                                    ],
+                                    "type": "invoke"
+                                  }
+                                ],
+                                "rowSelect": []
+                              },
+                              "filterCaseSensitivity": "caseInsensitive",
+                              "greaterThanOrEqualsText": "Greater than or equals",
+                              "greaterThanText": "Greater than",
+                              "isLoading": "",
+                              "lessThanOrEqualsText": "Less than or equals",
+                              "lessThanText": "Less than",
+                              "name": "gridBenutzerRollen",
+                              "notEqualsText": "Not equals",
+                              "pageSize": 22,
+                              "startsWithText": "Starts with",
+                              "style": {
+                                "border": "1px solid rgba(0, 0, 0, 0)",
+                                "height": "700px",
+                                "marginLeft": "-10px",
+                                "marginRight": "-10px",
+                                "marginTop": "-8px"
+                              },
+                              "title": "",
+                              "type": "grid"
+                            }
+                          ],
+                          "footerTemplate": "",
+                          "headerTemplate": "",
+                          "icon": "",
+                          "name": "panel1",
+                          "style": {
+                            "border": "1px solid #e6ecef",
+                            "height": "750px"
+                          },
+                          "text": "{{rstBenutzerRollenCount == 1 ? rstBenutzerRollenCount + ' Rolle' : rstBenutzerRollenCount + ' Rollen'}}",
+                          "type": "panel"
+                        }
+                      ],
+                      "name": "col2",
+                      "style": {
+                        "paddingLeft": "5px"
+                      },
+                      "type": "col"
+                    }
+                  ],
+                  "name": "row0",
+                  "style": {
+                    "height": "100%"
+                  },
+                  "type": "row"
+                }
+              ],
+              "selected": true,
+              "text": "Daten"
+            }
+          ],
+          "name": "tabs0",
+          "style": {
+            "float": "none"
+          },
+          "type": "tabs"
+        }
+      ],
+      "container": "main",
+      "type": "content"
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "letzteBenutzerID",
+        "type": "set",
+        "value": "null"
+      },
+      {
+        "code": "this.gridBenutzer.load();",
+        "type": "execute"
+      }
+    ]
+  },
+  "layout": "Main",
+  "name": "Benutzer"
+}

@@ -1,0 +1,262 @@
+{
+  "access": [
+    "Authenticated"
+  ],
+  "components": [
+    {
+      "components": [
+        {
+          "components": [
+            {
+              "class": "col-md-12",
+              "components": [
+                {
+                  "components": [
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-12",
+                          "components": [
+                            {
+                              "attributes": [],
+                              "content": "<editor\n  *ngIf=\"bolEditorLaden\"\n  (onDirty)=\"onDirtyEditor()\"\n  [(ngModel)]=\"strNotizHTML\"\n  apiKey=\"7uaxcp1fzfppm9wca8ei2hnuuf9hv2fl9slezwr9k33gv0pp\"\n  [init]=\"{\n    height: 799,\n    menubar: true,\n    statusbar: false,\n    language: 'de',\n    browser_spellcheck: true,\n    plugins: [\n      'fullpage advlist autolink lists link image charmap print preview anchor',\n      'searchreplace visualblocks code fullscreen',\n      'insertdatetime media table paste code help wordcount'\n    ],\n\n    style_formats_merge: false,\n    style_formats: [\n      {title: 'HK Standard', inline: 'span', styles: { 'font-family': 'Calibri', 'font-size': '11pt'}},    \n      {title: 'HK Überschrift', inline: 'span', styles: { 'font-family': 'Calibri', 'font-size': '12pt', 'font-weight': 'bold'}},    \n      {title: 'HK Fußnote', inline: 'span', styles: { 'font-family': 'Calibri', 'font-size': '9pt'}}\n    ],\n    toolbar_mode: 'sliding',\n    toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist | fullscreen | fontselect fontsizeselect | outdent indent | forecolor backcolor | removeformat searchreplace | help',\n\tfont_formats: 'Andale Mono=andale mono,times; Arial=arial,helvetica,sans-serif; Arial Black=arial black,avant garde; Book Antiqua=book antiqua,palatino; Calibri=calibri; Comic Sans MS=comic sans ms,sans-serif; Courier New=courier new,courier; Georgia=georgia,palatino; Helvetica=helvetica; Impact=impact,chicago; Symbol=symbol; Tahoma=tahoma,arial,helvetica,sans-serif; Source Sans Pro=source sans pro; Terminal=terminal,monaco; Times New Roman=times new roman,times; Trebuchet MS=trebuchet ms,geneva; Verdana=verdana,geneva; Webdings=webdings; Wingdings=wingdings,zapf dingbats',\n    fontsize_formats: '8pt 9pt 10pt 11pt 12pt 14pt 16pt 18pt 24pt 36pt 48pt',\n    menu: {\n      file: { title: 'File', items: 'restoredraft | preview | print ' },\n      edit: { title: 'Edit', items: 'undo redo | cut copy paste pastetext | selectall | searchreplace' },\n      view: { title: 'View', items: 'code | visualaid visualchars visualblocks | spellchecker | preview fullscreen' },\n      insert: { title: 'Insert', items: 'image link media template codesample inserttable | charmap emoticons hr | pagebreak nonbreaking anchor toc | insertdatetime' },\n      format: { title: 'Format', items: 'bold italic underline strikethrough superscript subscript codeformat | formats blockformats fontformats fontsizes align lineheight | forecolor backcolor | removeformat' },\n      tools: { title: 'Tools', items: 'spellchecker spellcheckerlanguage | code wordcount' },\n      table: { title: 'Table', items: 'inserttable | cell row column | tableprops deletetable' },\n      help: { title: 'Help', items: 'help' }\n    }\n}\"\n ></editor>",
+                              "name": "htmlEditorNotizen",
+                              "type": "html"
+                            }
+                          ],
+                          "name": "col10",
+                          "style": {},
+                          "type": "col"
+                        }
+                      ],
+                      "name": "row4",
+                      "style": {
+                        "marginLeft": "-36px",
+                        "marginRight": "-36px",
+                        "marginTop": "-12px"
+                      },
+                      "type": "row"
+                    }
+                  ],
+                  "headerTemplate": [
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-12 align-items-start d-flex",
+                          "components": [
+                            {
+                              "buttonStyle": "light",
+                              "events": {
+                                "click": [
+                                  {
+                                    "code": "  // Create container for the HTML\n  // [1]\n  var container = document.createElement('div')\n  container.innerHTML = this.strNotizHTML\n\n  // Hide element\n  // [2]\n  container.style.position = 'fixed'\n  container.style.pointerEvents = 'none'\n  container.style.opacity = '0'\n  container.style.background = 'white'\n\n  // Mount the container to the DOM to make `contentWindow` available\n  // [3]\n  document.body.appendChild(container)\n\n  // Copy to clipboard\n  // [4]\n  window.getSelection().removeAllRanges()\n\n  var range = document.createRange()\n  range.selectNode(container)\n  window.getSelection().addRange(range)\n\n  // [5]\n  document.execCommand('copy')\n  \n  // Remove the container\n  // [6]\n  document.body.removeChild(container)",
+                                    "type": "execute"
+                                  },
+                                  {
+                                    "detail": "Text wurde kopiert",
+                                    "severity": "success",
+                                    "type": "notify"
+                                  }
+                                ]
+                              },
+                              "icon": "content_copy",
+                              "name": "buttonKopieren",
+                              "size": "sm",
+                              "style": {
+                                "color": "#A71330",
+                                "display": "block",
+                                "float": "none",
+                                "marginRight": "-9px",
+                                "marginTop": "1px"
+                              },
+                              "text": "Kopieren",
+                              "tooltip": "",
+                              "type": "button"
+                            }
+                          ],
+                          "name": "col2",
+                          "style": {
+                            "display": "flex"
+                          },
+                          "type": "col"
+                        }
+                      ],
+                      "name": "row0",
+                      "style": {
+                        "display": "inline-block"
+                      },
+                      "type": "row"
+                    }
+                  ],
+                  "name": "panel6",
+                  "style": {
+                    "border": "1px solid #e6ecef",
+                    "height": "850px"
+                  },
+                  "text": "${dsoNotizen.Titel}",
+                  "type": "panel"
+                }
+              ],
+              "name": "col1",
+              "type": "col"
+            }
+          ],
+          "name": "row1",
+          "type": "row"
+        },
+        {
+          "components": [
+            {
+              "class": "col offset-sm-3 justify-content-end d-flex",
+              "components": [
+                {
+                  "buttonStyle": "success",
+                  "buttonType": "button",
+                  "events": {
+                    "click": [
+                      {
+                        "code": "this.dsoNotizen.Notiz = this.strNotizHTML;",
+                        "type": "execute"
+                      },
+                      {
+                        "error": [
+                          {
+                            "detail": "Notiz konnte nicht gespeichert werden!",
+                            "severity": "error",
+                            "summary": "",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "dbOptimo.updateNotizen",
+                        "parameters": [
+                          {
+                            "name": "NotizID",
+                            "value": "${parameters.NotizID}"
+                          },
+                          {
+                            "name": "Notizen",
+                            "value": "${dsoNotizen}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "detail": "Notiz gespeichert",
+                            "severity": "success",
+                            "type": "notify"
+                          },
+                          {
+                            "result": "${result}",
+                            "type": "close-popup"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "icon": "done",
+                  "name": "button0",
+                  "text": "Speichern",
+                  "type": "button"
+                },
+                {
+                  "buttonStyle": "light",
+                  "events": {
+                    "click": [
+                      {
+                        "condition": "this.bolEditorAenderungen == false",
+                        "type": "back"
+                      },
+                      {
+                        "condition": "this.bolEditorAenderungen == true",
+                        "parameters": [
+                          {
+                            "name": "strMeldung",
+                            "value": "'Der Text wurde geändert! Soll die Bearbeitung wirklich abgebrochen werden?'"
+                          }
+                        ],
+                        "path": "meldung-ja-nein",
+                        "then": [
+                          {
+                            "condition": "${result} == 'Ja'",
+                            "type": "back"
+                          }
+                        ],
+                        "title": "Text geändert",
+                        "type": "popup"
+                      }
+                    ]
+                  },
+                  "name": "button1",
+                  "style": {
+                    "marginLeft": "1rem"
+                  },
+                  "text": "Abbruch",
+                  "type": "button"
+                }
+              ],
+              "name": "col0",
+              "style": {},
+              "type": "col"
+            }
+          ],
+          "name": "row0",
+          "style": {
+            "paddingTop": "15px"
+          },
+          "type": "row"
+        }
+      ],
+      "container": "main",
+      "type": "content"
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "bolEditorLaden",
+        "type": "set",
+        "value": "false"
+      },
+      {
+        "name": "bolEditorAenderungen",
+        "type": "set",
+        "value": "false"
+      },
+      {
+        "error": [],
+        "name": "dbOptimo.getNotizenByNotizID",
+        "parameters": [
+          {
+            "name": "NotizID",
+            "value": "${parameters.NotizID}"
+          }
+        ],
+        "then": [
+          {
+            "name": "dsoNotizen",
+            "type": "set",
+            "value": "${result}"
+          },
+          {
+            "name": "strNotizHTML",
+            "type": "set",
+            "value": "${result.Notiz}"
+          },
+          {
+            "name": "bolEditorLaden",
+            "type": "set",
+            "value": "true"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "onDirtyEditor",
+        "type": "set",
+        "value": "() => {     \n\n  this.bolEditorAenderungen = true;\n\n}"
+      }
+    ]
+  },
+  "layout": "Main",
+  "name": "NotizenEditor"
+}
