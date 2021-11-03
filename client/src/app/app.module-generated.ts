@@ -75,7 +75,6 @@ import { KontakteKontaktpersonenNeuComponent } from './kontakte-kontaktpersonen-
 import { KontakteKontaktpersonenBearbeitenComponent } from './kontakte-kontaktpersonen-bearbeiten/kontakte-kontaktpersonen-bearbeiten.component';
 import { KontakteSuchenComponent } from './kontakte-suchen/kontakte-suchen.component';
 import { InventurComponent } from './inventur/inventur.component';
-import { MitarbeiterComponent } from './mitarbeiter/mitarbeiter.component';
 import { ZzMusterKontakteComponent } from './zz-muster-kontakte/zz-muster-kontakte.component';
 import { MeldungOkComponent } from './meldung-ok/meldung-ok.component';
 import { MeldungFortschrittComponent } from './meldung-fortschritt/meldung-fortschritt.component';
@@ -112,7 +111,6 @@ export const PageDeclarations = [
   KontakteKontaktpersonenBearbeitenComponent,
   KontakteSuchenComponent,
   InventurComponent,
-  MitarbeiterComponent,
   ZzMusterKontakteComponent,
   MeldungOkComponent,
   MeldungFortschrittComponent,

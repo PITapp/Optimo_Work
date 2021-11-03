@@ -47,16 +47,8 @@ export interface Benutzer {
   Initialen: string;
   BenutzerEMail: string;
   Notiz: string;
-  LetzteKundenID: number;
-  LetzteMitarbeiterID: number;
   LetzteBaseID: number;
   LetzteBenutzerID: number;
-  FilterKontakteName: string;
-  FilterKontakteStrasse: string;
-  FilterKontaktePlz: string;
-  FilterKontakteOrt: string;
-  FilterKontakteNotiz: string;
-  FilterKontakteVerlinkt: string;
 }
 
 export interface InfotexteHtml {
@@ -65,6 +57,36 @@ export interface InfotexteHtml {
   Titel: string;
   Inhalt: string;
   Sortierung: number;
+}
+
+export interface InventurArtikel {
+  ArtikelID: number;
+  InventurID: number;
+  ZeilenNr: number;
+  Artikelnummer: string;
+  Beschreibung: string;
+  Status: string;
+  Notiz: string;
+}
+
+export interface InventurBasis {
+  InventurID: number;
+  AuftragCode: string;
+  ErfassungNr: number;
+  Lagerort: string;
+  Beschreibung: string;
+  Status: string;
+  Verantwortlich: string;
+  Notiz: string;
+}
+
+export interface InventurErfassung {
+  ErfassungID: number;
+  BenutzerID: number;
+  ArtikelID: number;
+  ErfasstAm: string;
+  ErfasstAnzahl: number;
+  Notiz: string;
 }
 
 export interface Notizen {
@@ -217,16 +239,8 @@ export interface VwBenutzerRollen {
   Initialen: string;
   BenutzerEMail: string;
   Notiz: string;
-  LetzteKundenID: number;
-  LetzteMitarbeiterID: number;
   LetzteBaseID: number;
   LetzteBenutzerID: number;
-  FilterKontakteName: string;
-  FilterKontakteStrasse: string;
-  FilterKontaktePlz: string;
-  FilterKontakteOrt: string;
-  FilterKontakteNotiz: string;
-  FilterKontakteVerlinkt: string;
   RoleId: string;
   RolleTitel: string;
 }

@@ -117,6 +117,66 @@ export class DbOptimoService {
     return this.odata.patch(`/InfotexteHtmls(${infotextId})`, infotexteHtml, item => item.InfotextID == infotextId, { expand }, []);
   }
 
+  getInventurArtikels(filter: string | null, top: number | null, skip: number | null, orderby: string | null, count: boolean | null, expand: string | null, format: string | null, select: string | null) : Observable<any> {
+    return this.odata.get(`/InventurArtikels`, { filter, top, skip, orderby, count, expand, format, select });
+  }
+
+  createInventurArtikel(expand: string | null, inventurArtikel: models.InventurArtikel | null) : Observable<any> {
+    return this.odata.post(`/InventurArtikels`, inventurArtikel, { expand }, ['InventurBasis']);
+  }
+
+  deleteInventurArtikel(artikelId: number | null) : Observable<any> {
+    return this.odata.delete(`/InventurArtikels(${artikelId})`, item => !(item.ArtikelID == artikelId));
+  }
+
+  getInventurArtikelByArtikelId(expand: string | null, artikelId: number | null) : Observable<any> {
+    return this.odata.getById(`/InventurArtikels(${artikelId})`, { expand });
+  }
+
+  updateInventurArtikel(expand: string | null, artikelId: number | null, inventurArtikel: models.InventurArtikel | null) : Observable<any> {
+    return this.odata.patch(`/InventurArtikels(${artikelId})`, inventurArtikel, item => item.ArtikelID == artikelId, { expand }, ['InventurBasis']);
+  }
+
+  getInventurBases(filter: string | null, top: number | null, skip: number | null, orderby: string | null, count: boolean | null, expand: string | null, format: string | null, select: string | null) : Observable<any> {
+    return this.odata.get(`/InventurBases`, { filter, top, skip, orderby, count, expand, format, select });
+  }
+
+  createInventurBasis(expand: string | null, inventurBasis: models.InventurBasis | null) : Observable<any> {
+    return this.odata.post(`/InventurBases`, inventurBasis, { expand }, []);
+  }
+
+  deleteInventurBasis(inventurId: number | null) : Observable<any> {
+    return this.odata.delete(`/InventurBases(${inventurId})`, item => !(item.InventurID == inventurId));
+  }
+
+  getInventurBasisByInventurId(expand: string | null, inventurId: number | null) : Observable<any> {
+    return this.odata.getById(`/InventurBases(${inventurId})`, { expand });
+  }
+
+  updateInventurBasis(expand: string | null, inventurId: number | null, inventurBasis: models.InventurBasis | null) : Observable<any> {
+    return this.odata.patch(`/InventurBases(${inventurId})`, inventurBasis, item => item.InventurID == inventurId, { expand }, []);
+  }
+
+  getInventurErfassungs(filter: string | null, top: number | null, skip: number | null, orderby: string | null, count: boolean | null, expand: string | null, format: string | null, select: string | null) : Observable<any> {
+    return this.odata.get(`/InventurErfassungs`, { filter, top, skip, orderby, count, expand, format, select });
+  }
+
+  createInventurErfassung(expand: string | null, inventurErfassung: models.InventurErfassung | null) : Observable<any> {
+    return this.odata.post(`/InventurErfassungs`, inventurErfassung, { expand }, ['Benutzer', 'InventurArtikel']);
+  }
+
+  deleteInventurErfassung(erfassungId: number | null) : Observable<any> {
+    return this.odata.delete(`/InventurErfassungs(${erfassungId})`, item => !(item.ErfassungID == erfassungId));
+  }
+
+  getInventurErfassungByErfassungId(expand: string | null, erfassungId: number | null) : Observable<any> {
+    return this.odata.getById(`/InventurErfassungs(${erfassungId})`, { expand });
+  }
+
+  updateInventurErfassung(expand: string | null, erfassungId: number | null, inventurErfassung: models.InventurErfassung | null) : Observable<any> {
+    return this.odata.patch(`/InventurErfassungs(${erfassungId})`, inventurErfassung, item => item.ErfassungID == erfassungId, { expand }, ['Benutzer','InventurArtikel']);
+  }
+
   getNotizens(filter: string | null, top: number | null, skip: number | null, orderby: string | null, count: boolean | null, expand: string | null, format: string | null, select: string | null) : Observable<any> {
     return this.odata.get(`/Notizens`, { filter, top, skip, orderby, count, expand, format, select });
   }

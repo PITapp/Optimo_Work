@@ -5,12 +5,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OptimoWork.Models.DbOptimo
 {
-  [Table("Benutzer")]
-  public partial class Benutzer
+  [Table("InventurArtikel")]
+  public partial class InventurArtikel
   {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int BenutzerID
+    public int ArtikelID
     {
       get;
       set;
@@ -18,44 +18,34 @@ namespace OptimoWork.Models.DbOptimo
 
 
     public ICollection<InventurErfassung> InventurErfassungs { get; set; }
-    public int BaseID
+    public int InventurID
     {
       get;
       set;
     }
 
-    public Base Base { get; set; }
-    public string AspNetUsers_Id
+    public InventurBasis InventurBasis { get; set; }
+    public int ZeilenNr
     {
       get;
       set;
     }
-    public string Benutzername
+    public string Artikelnummer
     {
       get;
       set;
     }
-    public string Initialen
+    public string Beschreibung
     {
       get;
       set;
     }
-    public string BenutzerEMail
+    public string Status
     {
       get;
       set;
     }
     public string Notiz
-    {
-      get;
-      set;
-    }
-    public int? LetzteBaseID
-    {
-      get;
-      set;
-    }
-    public int? LetzteBenutzerID
     {
       get;
       set;

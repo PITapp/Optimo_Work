@@ -28,7 +28,7 @@ export class HandbuchGenerated implements AfterViewInit, OnInit, OnDestroy {
   @ViewChild('heading18') heading18: HeadingComponent;
   @ViewChild('heading19') heading19: HeadingComponent;
   @ViewChild('heading21') heading21: HeadingComponent;
-  @ViewChild('button0') button0: ButtonComponent;
+  @ViewChild('button1') button1: ButtonComponent;
   @ViewChild('tabs0') tabs0: TabsComponent;
   @ViewChild('html0') html0: HtmlComponent;
 
@@ -116,7 +116,7 @@ export class HandbuchGenerated implements AfterViewInit, OnInit, OnDestroy {
     });
   }
 
-  button0Click(event: any) {
+  button1Click(event: any) {
     this.dialogService.open(MeldungOkComponent, { parameters: {strMeldung: "Drucken ist für dieses Modul noch nicht aktiviert!"}, width: 600, title: `Info` });
   }
 }

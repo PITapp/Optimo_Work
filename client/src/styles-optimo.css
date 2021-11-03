@@ -388,6 +388,10 @@ label {
   font-size: 14px;
 }
 
+.ui-cell-filter .ui-spinner input:focus {
+  font-size: 14px;
+}
+
 /* --- Filtereingabe in DataGrit (damit das Datumsfeld in der richtigen Höhe ist) --- */
 .ui-cell-filter-content {
   min-height: 26px;

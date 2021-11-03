@@ -15,10 +15,12 @@ import { HeadingComponent } from '@radzen/angular/dist/heading';
 import { ButtonComponent } from '@radzen/angular/dist/button';
 import { TabsComponent } from '@radzen/angular/dist/tabs';
 import { PanelComponent } from '@radzen/angular/dist/panel';
+import { GridComponent } from '@radzen/angular/dist/grid';
 
 import { ConfigService } from '../config.service';
 import { MeldungOkComponent } from '../meldung-ok/meldung-ok.component';
 
+import { DbOptimoService } from '../db-optimo.service';
 import { SecurityService } from '../security.service';
 
 export class InventurGenerated implements AfterViewInit, OnInit, OnDestroy {
@@ -27,7 +29,7 @@ export class InventurGenerated implements AfterViewInit, OnInit, OnDestroy {
   @ViewChild('heading18') heading18: HeadingComponent;
   @ViewChild('heading19') heading19: HeadingComponent;
   @ViewChild('heading21') heading21: HeadingComponent;
-  @ViewChild('button0') button0: ButtonComponent;
+  @ViewChild('button1') button1: ButtonComponent;
   @ViewChild('tabs0') tabs0: TabsComponent;
   @ViewChild('panel1') panel1: PanelComponent;
   @ViewChild('buttonNeuerInfotext') buttonNeuerInfotext: ButtonComponent;
@@ -37,6 +39,9 @@ export class InventurGenerated implements AfterViewInit, OnInit, OnDestroy {
   @ViewChild('buttonKopieren') buttonKopieren: ButtonComponent;
   @ViewChild('buttonBearbeitenInfotextEditor') buttonBearbeitenInfotextEditor: ButtonComponent;
   @ViewChild('panel2') panel2: PanelComponent;
+  @ViewChild('gridLagerorte') gridLagerorte: GridComponent;
+  @ViewChild('buttonExport') buttonExport: ButtonComponent;
+  @ViewChild('button0') button0: ButtonComponent;
   @ViewChild('panel3') panel3: PanelComponent;
   @ViewChild('panel4') panel4: PanelComponent;
 
@@ -62,8 +67,13 @@ export class InventurGenerated implements AfterViewInit, OnInit, OnDestroy {
 
   _subscription: Subscription;
 
+  dbOptimo: DbOptimoService;
+
   security: SecurityService;
   parameters: any;
+  rstInventurBasis: any;
+  rstInventurBasisCount: any;
+  dsoInvenurBasis: any;
 
   constructor(private injector: Injector) {
   }
@@ -89,6 +99,7 @@ export class InventurGenerated implements AfterViewInit, OnInit, OnDestroy {
 
     this.httpClient = this.injector.get(HttpClient);
 
+    this.dbOptimo = this.injector.get(DbOptimoService);
     this.security = this.injector.get(SecurityService);
   }
 
@@ -112,10 +123,33 @@ export class InventurGenerated implements AfterViewInit, OnInit, OnDestroy {
 
 
   load() {
+    this.gridLagerorte.load();
+  }
 
+  button1Click(event: any) {
+    this.dialogService.open(MeldungOkComponent, { parameters: {strMeldung: "Drucken ist für dieses Modul noch nicht aktiviert!"}, width: 600, title: `Info` });
+  }
+
+  gridLagerorteLoadData(event: any) {
+    this.dbOptimo.getInventurBases(`${event.filter}`, event.top, event.skip, `${event.orderby}`, event.top != null && event.skip != null, null, null, null)
+    .subscribe((result: any) => {
+      this.rstInventurBasis = result.value;
+
+      this.rstInventurBasisCount = event.top != null && event.skip != null ? result['@odata.count'] : result.value.length;
+    }, (result: any) => {
+      this.notificationService.notify({ severity: "error", summary: ``, detail: `Lagerorte können nicht geladen werden!` });
+    });
+  }
+
+  gridLagerorteRowSelect(event: any) {
+    this.dsoInvenurBasis = event;
+  }
+
+  buttonExportClick(event: any) {
+    this.dialogService.open(MeldungOkComponent, { parameters: {strMeldung: "Diese Funktion wurde noch nicht aktiviert!"}, title: `Export Kontakte` });
   }
 
   button0Click(event: any) {
-    this.dialogService.open(MeldungOkComponent, { parameters: {strMeldung: "Drucken ist für dieses Modul noch nicht aktiviert!"}, width: 600, title: `Info` });
+    this.dialogService.open(MeldungOkComponent, { parameters: {strMeldung: "Diese Funktion wurde noch nicht aktiviert!"}, title: `Export Kontakte` });
   }
 }

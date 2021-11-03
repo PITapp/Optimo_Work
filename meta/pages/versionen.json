@@ -81,13 +81,12 @@
                     ]
                   },
                   "icon": "print",
-                  "name": "button0",
+                  "name": "button1",
                   "size": "md",
                   "style": {
-                    "backgroundColor": "rgba(0, 0, 0, 0)",
-                    "border": "1px solid #A71330",
-                    "borderBottom": "3px solid #A71330",
-                    "color": "#6A80AA",
+                    "backgroundColor": "rgb(230, 236, 239)",
+                    "borderBottom": "2px solid #a71330",
+                    "color": "#5d717d",
                     "display": "block",
                     "fontWeight": "normal",
                     "width": "150px"

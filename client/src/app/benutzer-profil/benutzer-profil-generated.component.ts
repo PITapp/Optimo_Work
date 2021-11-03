@@ -38,7 +38,7 @@ export class BenutzerProfilGenerated implements AfterViewInit, OnInit, OnDestroy
   @ViewChild('heading1') heading1: HeadingComponent;
   @ViewChild('heading2') heading2: HeadingComponent;
   @ViewChild('heading3') heading3: HeadingComponent;
-  @ViewChild('button0') button0: ButtonComponent;
+  @ViewChild('button1') button1: ButtonComponent;
   @ViewChild('tabs0') tabs0: TabsComponent;
   @ViewChild('panel0') panel0: PanelComponent;
   @ViewChild('form0') form0: TemplateFormComponent;
@@ -177,7 +177,7 @@ export class BenutzerProfilGenerated implements AfterViewInit, OnInit, OnDestroy
     });
   }
 
-  button0Click(event: any) {
+  button1Click(event: any) {
     this.dialogService.open(MeldungOkComponent, { parameters: {strMeldung: "Drucken ist für dieses Modul noch nicht aktiviert!"}, width: 600, title: `Info` });
   }
 

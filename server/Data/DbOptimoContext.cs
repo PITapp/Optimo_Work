@@ -45,6 +45,21 @@ namespace OptimoWork.Data
                   .WithMany(i => i.Benutzers)
                   .HasForeignKey(i => i.BaseID)
                   .HasPrincipalKey(i => i.BaseID);
+            builder.Entity<OptimoWork.Models.DbOptimo.InventurArtikel>()
+                  .HasOne(i => i.InventurBasis)
+                  .WithMany(i => i.InventurArtikels)
+                  .HasForeignKey(i => i.InventurID)
+                  .HasPrincipalKey(i => i.InventurID);
+            builder.Entity<OptimoWork.Models.DbOptimo.InventurErfassung>()
+                  .HasOne(i => i.Benutzer)
+                  .WithMany(i => i.InventurErfassungs)
+                  .HasForeignKey(i => i.BenutzerID)
+                  .HasPrincipalKey(i => i.BenutzerID);
+            builder.Entity<OptimoWork.Models.DbOptimo.InventurErfassung>()
+                  .HasOne(i => i.InventurArtikel)
+                  .WithMany(i => i.InventurErfassungs)
+                  .HasForeignKey(i => i.ArtikelID)
+                  .HasPrincipalKey(i => i.ArtikelID);
             builder.Entity<OptimoWork.Models.DbOptimo.Protokoll>()
                   .HasOne(i => i.Base)
                   .WithMany(i => i.Protokolls)
@@ -104,6 +119,24 @@ namespace OptimoWork.Data
         }
 
         public DbSet<OptimoWork.Models.DbOptimo.InfotexteHtml> InfotexteHtmls
+        {
+          get;
+          set;
+        }
+
+        public DbSet<OptimoWork.Models.DbOptimo.InventurArtikel> InventurArtikels
+        {
+          get;
+          set;
+        }
+
+        public DbSet<OptimoWork.Models.DbOptimo.InventurBasis> InventurBases
+        {
+          get;
+          set;
+        }
+
+        public DbSet<OptimoWork.Models.DbOptimo.InventurErfassung> InventurErfassungs
         {
           get;
           set;

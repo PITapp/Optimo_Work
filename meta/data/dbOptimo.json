@@ -257,7 +257,14 @@
           "x-key": true,
           "x-identity": true,
           "x-nullable": false,
-          "type": "integer"
+          "type": "integer",
+          "x-navigation": [
+            {
+              "inversePropertyName": "Benutzer",
+              "name": "InventurErfassungs",
+              "type": "InventurErfassung"
+            }
+          ]
         },
         "Base": {
           "type": "object",
@@ -299,41 +306,17 @@
           "type": "string",
           "length": 65535
         },
-        "LetzteKundenID": {
-          "type": "integer"
-        },
-        "LetzteMitarbeiterID": {
-          "type": "integer"
-        },
         "LetzteBaseID": {
           "type": "integer"
         },
         "LetzteBenutzerID": {
           "type": "integer"
         },
-        "FilterKontakteName": {
-          "type": "string",
-          "length": 100
-        },
-        "FilterKontakteStrasse": {
-          "type": "string",
-          "length": 50
-        },
-        "FilterKontaktePlz": {
-          "type": "string",
-          "length": 10
-        },
-        "FilterKontakteOrt": {
-          "type": "string",
-          "length": 50
-        },
-        "FilterKontakteNotiz": {
-          "type": "string",
-          "length": 255
-        },
-        "FilterKontakteVerlinkt": {
-          "type": "string",
-          "length": 20
+        "InventurErfassungs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InventurErfassung"
+          }
         }
       }
     },
@@ -367,6 +350,205 @@
         },
         "Sortierung": {
           "type": "integer"
+        }
+      }
+    },
+    "InventurArtikel": {
+      "x-table": "def.InventurArtikel",
+      "resource": "InventurArtikels",
+      "required": [
+        "InventurID",
+        "ZeilenNr",
+        "Artikelnummer",
+        "Status"
+      ],
+      "properties": {
+        "ArtikelID": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "type": "integer",
+          "x-navigation": [
+            {
+              "inversePropertyName": "InventurArtikel",
+              "name": "InventurErfassungs",
+              "type": "InventurErfassung"
+            }
+          ]
+        },
+        "InventurBasis": {
+          "type": "object",
+          "$ref": "#/definitions/InventurBasis"
+        },
+        "InventurID": {
+          "x-nullable": false,
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "InventurBasis",
+            "parentEntityType": "InventurBasis",
+            "type": "InventurBasis",
+            "principalKey": "InventurID",
+            "name": "InventurBasis",
+            "textProperty": "AuftragCode",
+            "navigationProperty": "InventurArtikels"
+          }
+        },
+        "ZeilenNr": {
+          "x-nullable": false,
+          "type": "integer"
+        },
+        "Artikelnummer": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 30
+        },
+        "Beschreibung": {
+          "type": "string",
+          "length": 255
+        },
+        "Status": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 10
+        },
+        "Notiz": {
+          "type": "string",
+          "length": 65535
+        },
+        "InventurErfassungs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InventurErfassung"
+          }
+        }
+      }
+    },
+    "InventurBasis": {
+      "x-table": "def.InventurBasis",
+      "resource": "InventurBases",
+      "required": [
+        "AuftragCode",
+        "ErfassungNr",
+        "Lagerort",
+        "Beschreibung",
+        "Status"
+      ],
+      "properties": {
+        "InventurID": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "type": "integer",
+          "x-navigation": [
+            {
+              "inversePropertyName": "InventurBasis",
+              "name": "InventurArtikels",
+              "type": "InventurArtikel"
+            }
+          ]
+        },
+        "AuftragCode": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 30
+        },
+        "ErfassungNr": {
+          "x-nullable": false,
+          "type": "integer"
+        },
+        "Lagerort": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 50
+        },
+        "Beschreibung": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 255
+        },
+        "Status": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 10
+        },
+        "Verantwortlich": {
+          "type": "string",
+          "length": 200
+        },
+        "Notiz": {
+          "type": "string",
+          "length": 65535
+        },
+        "InventurArtikels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InventurArtikel"
+          }
+        }
+      }
+    },
+    "InventurErfassung": {
+      "x-table": "def.InventurErfassung",
+      "resource": "InventurErfassungs",
+      "required": [
+        "BenutzerID",
+        "ArtikelID",
+        "ErfasstAm",
+        "ErfasstAnzahl"
+      ],
+      "properties": {
+        "ErfassungID": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "type": "integer"
+        },
+        "Benutzer": {
+          "type": "object",
+          "$ref": "#/definitions/Benutzer"
+        },
+        "BenutzerID": {
+          "x-nullable": false,
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "Benutzer",
+            "parentEntityType": "Benutzer",
+            "type": "Benutzer",
+            "principalKey": "BenutzerID",
+            "name": "Benutzer",
+            "textProperty": "AspNetUsers_Id",
+            "navigationProperty": "InventurErfassungs"
+          }
+        },
+        "InventurArtikel": {
+          "type": "object",
+          "$ref": "#/definitions/InventurArtikel"
+        },
+        "ArtikelID": {
+          "x-nullable": false,
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "InventurArtikel",
+            "parentEntityType": "InventurArtikel",
+            "type": "InventurArtikel",
+            "principalKey": "ArtikelID",
+            "name": "InventurArtikel",
+            "textProperty": "Artikelnummer",
+            "navigationProperty": "InventurErfassungs"
+          }
+        },
+        "ErfasstAm": {
+          "x-nullable": false,
+          "type": "string",
+          "format": "date-time"
+        },
+        "ErfasstAnzahl": {
+          "x-nullable": false,
+          "type": "integer"
+        },
+        "Notiz": {
+          "type": "string",
+          "length": 65535
         }
       }
     },
@@ -581,6 +763,7 @@
           "length": 65535
         },
         "NameGesamt": {
+          "x-nullable": false,
           "type": "string",
           "length": 131
         }
@@ -690,6 +873,7 @@
           "length": 65535
         },
         "NameGesamt": {
+          "x-nullable": false,
           "type": "string",
           "length": 131
         }
@@ -720,6 +904,7 @@
           "length": 30
         },
         "NameGesamt": {
+          "x-nullable": false,
           "type": "string",
           "length": 131
         },
@@ -892,6 +1077,7 @@
           "length": 30
         },
         "NameGesamt": {
+          "x-nullable": false,
           "type": "string",
           "length": 131
         },
@@ -1010,41 +1196,11 @@
           "type": "string",
           "length": 65535
         },
-        "LetzteKundenID": {
-          "type": "integer"
-        },
-        "LetzteMitarbeiterID": {
-          "type": "integer"
-        },
         "LetzteBaseID": {
           "type": "integer"
         },
         "LetzteBenutzerID": {
           "type": "integer"
-        },
-        "FilterKontakteName": {
-          "type": "string",
-          "length": 100
-        },
-        "FilterKontakteStrasse": {
-          "type": "string",
-          "length": 50
-        },
-        "FilterKontaktePlz": {
-          "type": "string",
-          "length": 10
-        },
-        "FilterKontakteOrt": {
-          "type": "string",
-          "length": 50
-        },
-        "FilterKontakteNotiz": {
-          "type": "string",
-          "length": 255
-        },
-        "FilterKontakteVerlinkt": {
-          "type": "string",
-          "length": 20
         },
         "RoleId": {
           "x-nullable": false,
@@ -1550,6 +1706,294 @@
           "201": {
             "schema": {
               "$ref": "#/definitions/InfotexteHtml"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/InventurArtikels": {
+      "get": {
+        "operationId": "getInventurArtikels",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$count",
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$select",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/InventurArtikel"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createInventurArtikel",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "InventurArtikel",
+            "schema": {
+              "$ref": "#/definitions/InventurArtikel"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/InventurArtikel"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/InventurBases": {
+      "get": {
+        "operationId": "getInventurBases",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$count",
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$select",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/InventurBasis"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createInventurBasis",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "InventurBasis",
+            "schema": {
+              "$ref": "#/definitions/InventurBasis"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/InventurBasis"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/InventurErfassungs": {
+      "get": {
+        "operationId": "getInventurErfassungs",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$count",
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$select",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/InventurErfassung"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createInventurErfassung",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "InventurErfassung",
+            "schema": {
+              "$ref": "#/definitions/InventurErfassung"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/InventurErfassung"
             }
           },
           "default": {
@@ -2660,6 +3104,237 @@
             "name": "InfotexteHtml",
             "schema": {
               "$ref": "#/definitions/InfotexteHtml"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/InventurArtikels({ArtikelID})": {
+      "delete": {
+        "operationId": "deleteInventurArtikel",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ArtikelID",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getInventurArtikelByArtikelID",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "ArtikelID",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/InventurArtikel"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateInventurArtikel",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "ArtikelID",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "InventurArtikel",
+            "schema": {
+              "$ref": "#/definitions/InventurArtikel"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/InventurBases({InventurID})": {
+      "delete": {
+        "operationId": "deleteInventurBasis",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "InventurID",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getInventurBasisByInventurID",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "InventurID",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/InventurBasis"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateInventurBasis",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "InventurID",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "InventurBasis",
+            "schema": {
+              "$ref": "#/definitions/InventurBasis"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/InventurErfassungs({ErfassungID})": {
+      "delete": {
+        "operationId": "deleteInventurErfassung",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ErfassungID",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getInventurErfassungByErfassungID",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "ErfassungID",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/InventurErfassung"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateInventurErfassung",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "ErfassungID",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "InventurErfassung",
+            "schema": {
+              "$ref": "#/definitions/InventurErfassung"
             }
           }
         ],

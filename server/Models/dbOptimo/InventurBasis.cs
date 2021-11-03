@@ -5,57 +5,50 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OptimoWork.Models.DbOptimo
 {
-  [Table("Benutzer")]
-  public partial class Benutzer
+  [Table("InventurBasis")]
+  public partial class InventurBasis
   {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int BenutzerID
+    public int InventurID
     {
       get;
       set;
     }
 
 
-    public ICollection<InventurErfassung> InventurErfassungs { get; set; }
-    public int BaseID
+    public ICollection<InventurArtikel> InventurArtikels { get; set; }
+    public string AuftragCode
     {
       get;
       set;
     }
-
-    public Base Base { get; set; }
-    public string AspNetUsers_Id
+    public int ErfassungNr
     {
       get;
       set;
     }
-    public string Benutzername
+    public string Lagerort
     {
       get;
       set;
     }
-    public string Initialen
+    public string Beschreibung
     {
       get;
       set;
     }
-    public string BenutzerEMail
+    public string Status
+    {
+      get;
+      set;
+    }
+    public string Verantwortlich
     {
       get;
       set;
     }
     public string Notiz
-    {
-      get;
-      set;
-    }
-    public int? LetzteBaseID
-    {
-      get;
-      set;
-    }
-    public int? LetzteBenutzerID
     {
       get;
       set;

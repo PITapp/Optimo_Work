@@ -81,13 +81,12 @@
                     ]
                   },
                   "icon": "print",
-                  "name": "button0",
+                  "name": "button1",
                   "size": "md",
                   "style": {
-                    "backgroundColor": "rgba(0, 0, 0, 0)",
-                    "border": "1px solid #A71330",
-                    "borderBottom": "3px solid #A71330",
-                    "color": "#6A80AA",
+                    "backgroundColor": "rgb(230, 236, 239)",
+                    "borderBottom": "2px solid #a71330",
+                    "color": "#5d717d",
                     "display": "block",
                     "fontWeight": "normal",
                     "width": "150px"
@@ -301,28 +300,275 @@
                       "class": "col-md-12",
                       "components": [
                         {
-                          "components": [],
-                          "headerTemplate": "",
-                          "icon": "",
+                          "components": [
+                            {
+                              "addText": "",
+                              "allowAdd": false,
+                              "allowColumnReorder": true,
+                              "allowColumnResize": true,
+                              "allowDelete": false,
+                              "allowFiltering": true,
+                              "allowMultiSorting": true,
+                              "allowPaging": true,
+                              "allowSorting": true,
+                              "alwaysShowPager": false,
+                              "applyFilterText": "Anwenden",
+                              "clearFilterText": "Entfernen",
+                              "columnResizeMode": "expand",
+                              "columnWidth": "",
+                              "columns": [
+                                {
+                                  "property": "AuftragCode",
+                                  "title": "Auftrag Code",
+                                  "type": "string",
+                                  "width": "50px"
+                                },
+                                {
+                                  "footerTemplate": "",
+                                  "property": "ErfassungNr",
+                                  "title": "Erfassung Nr",
+                                  "type": "integer",
+                                  "width": "50px"
+                                },
+                                {
+                                  "property": "Lagerort",
+                                  "title": "Lagerort",
+                                  "type": "string",
+                                  "width": "150px"
+                                },
+                                {
+                                  "property": "Beschreibung",
+                                  "title": "Beschreibung",
+                                  "type": "string",
+                                  "width": "250px"
+                                },
+                                {
+                                  "property": "Status",
+                                  "title": "Status",
+                                  "type": "string",
+                                  "width": "50px"
+                                },
+                                {
+                                  "property": "Verantwortlich",
+                                  "title": "Verantwortlich",
+                                  "type": "string",
+                                  "width": "120px"
+                                },
+                                {
+                                  "property": "Notiz",
+                                  "title": "Notiz",
+                                  "type": "string",
+                                  "width": "150px"
+                                }
+                              ],
+                              "confirmDelete": false,
+                              "confirmDeleteCancelText": "",
+                              "confirmDeleteOkText": "",
+                              "confirmDeleteText": "",
+                              "confirmDeleteTitle": "",
+                              "containsText": "Enthält",
+                              "count": "${rstInventurBasisCount}",
+                              "data": "${rstInventurBasis}",
+                              "emptyText": "Keine Lagerorte gefunden",
+                              "endsWithText": "Endet mit",
+                              "equalsText": "Gleich",
+                              "events": {
+                                "add": [],
+                                "create": [],
+                                "delete": [],
+                                "loadData": [
+                                  {
+                                    "condition": "",
+                                    "error": [
+                                      {
+                                        "detail": "Lagerorte können nicht geladen werden!",
+                                        "severity": "error",
+                                        "summary": "",
+                                        "type": "notify"
+                                      }
+                                    ],
+                                    "name": "dbOptimo.getInventurBases",
+                                    "parameters": [
+                                      {
+                                        "name": "$top",
+                                        "value": "event.top"
+                                      },
+                                      {
+                                        "name": "$skip",
+                                        "value": "event.skip"
+                                      },
+                                      {
+                                        "name": "$count",
+                                        "value": "event.top != null && event.skip != null"
+                                      },
+                                      {
+                                        "name": "$filter",
+                                        "value": [
+                                          {
+                                            "value": "${event.filter}"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "name": "$orderby",
+                                        "value": [
+                                          {
+                                            "value": "${event.orderby}"
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    "then": [
+                                      {
+                                        "name": "rstInventurBasis",
+                                        "type": "set",
+                                        "value": "${result.value}"
+                                      },
+                                      {
+                                        "name": "rstInventurBasisCount",
+                                        "type": "set",
+                                        "value": "event.top != null && event.skip != null ? result['@odata.count'] : ${result.value.length}"
+                                      }
+                                    ],
+                                    "type": "invoke"
+                                  }
+                                ],
+                                "rowDoubleClick": [],
+                                "rowSelect": [
+                                  {
+                                    "name": "dsoInvenurBasis",
+                                    "type": "set",
+                                    "value": "${event}"
+                                  }
+                                ]
+                              },
+                              "filterCaseSensitivity": "caseInsensitive",
+                              "greaterThanOrEqualsText": "Größer oder gleich",
+                              "greaterThanText": "Größer",
+                              "isLoading": false,
+                              "lessThanOrEqualsText": "Kleiner oder gleich",
+                              "lessThanText": "Kleiner",
+                              "locale": "de-at",
+                              "name": "gridLagerorte",
+                              "notEqualsText": "Nicht Gleich",
+                              "pageSize": 20,
+                              "pageSizeOptions": [],
+                              "responsive": true,
+                              "startsWithText": "Beginnt mit",
+                              "style": {
+                                "border": "1px solid rgba(0, 0, 0, 0)",
+                                "height": "700px",
+                                "marginLeft": "-10px",
+                                "marginRight": "-10px",
+                                "marginTop": "-13px"
+                              },
+                              "template": "",
+                              "title": "",
+                              "type": "grid",
+                              "value": ""
+                            }
+                          ],
+                          "headerTemplate": [
+                            {
+                              "class": "justify-content-center",
+                              "components": [
+                                {
+                                  "class": "col-md-12  d-flex align-items-start",
+                                  "components": [
+                                    {
+                                      "buttonStyle": "light",
+                                      "events": {
+                                        "click": [
+                                          {
+                                            "parameters": [
+                                              {
+                                                "name": "strMeldung",
+                                                "value": "\"Diese Funktion wurde noch nicht aktiviert!\""
+                                              }
+                                            ],
+                                            "path": "meldung-ok",
+                                            "title": "Export Kontakte",
+                                            "type": "popup"
+                                          }
+                                        ]
+                                      },
+                                      "icon": "publish",
+                                      "name": "buttonExport",
+                                      "size": "sm",
+                                      "style": {
+                                        "color": "#A71330",
+                                        "display": "block"
+                                      },
+                                      "text": "Export",
+                                      "tooltip": "",
+                                      "type": "button"
+                                    },
+                                    {
+                                      "buttonStyle": "light",
+                                      "events": {
+                                        "click": [
+                                          {
+                                            "parameters": [
+                                              {
+                                                "name": "strMeldung",
+                                                "value": "\"Diese Funktion wurde noch nicht aktiviert!\""
+                                              }
+                                            ],
+                                            "path": "meldung-ok",
+                                            "title": "Export Kontakte",
+                                            "type": "popup"
+                                          }
+                                        ]
+                                      },
+                                      "icon": "get_app",
+                                      "name": "button0",
+                                      "size": "sm",
+                                      "style": {
+                                        "color": "#A71330",
+                                        "display": "block",
+                                        "marginLeft": "10px",
+                                        "marginRight": "-9px"
+                                      },
+                                      "text": "Import",
+                                      "tooltip": "",
+                                      "type": "button"
+                                    }
+                                  ],
+                                  "name": "col1",
+                                  "type": "col"
+                                }
+                              ],
+                              "name": "row0",
+                              "type": "row"
+                            }
+                          ],
                           "name": "panel2",
                           "style": {
                             "border": "1px solid #e6ecef",
+                            "display": "block",
                             "height": "750px"
                           },
-                          "text": "Beispiel",
+                          "text": "${rstInventurBasisCount} Lagerorte",
                           "type": "panel"
                         }
                       ],
                       "name": "col2",
+                      "style": {
+                        "display": "block",
+                        "float": "none"
+                      },
                       "type": "col"
                     }
                   ],
                   "name": "row0",
+                  "style": {
+                    "height": "100%"
+                  },
                   "type": "row"
                 }
               ],
               "selected": false,
-              "text": "Anträge"
+              "text": "Lagerorte"
             },
             {
               "components": [
@@ -353,7 +599,7 @@
                 }
               ],
               "selected": false,
-              "text": "Abwesenheiten"
+              "text": "Artikel"
             },
             {
               "components": [
@@ -384,7 +630,7 @@
                 }
               ],
               "selected": false,
-              "text": "Bereitschaften"
+              "text": "Erfassung"
             }
           ],
           "name": "tabs0",
@@ -401,7 +647,12 @@
     }
   ],
   "events": {
-    "load": []
+    "load": [
+      {
+        "code": "this.gridLagerorte.load();",
+        "type": "execute"
+      }
+    ]
   },
   "layout": "Main",
   "name": "Inventur"

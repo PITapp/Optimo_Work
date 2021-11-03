@@ -23,7 +23,8 @@
   "name": "Optimo work",
   "namespaces": [],
   "navigation": [
-    "Kontakte"
+    "Kontakte",
+    "Inventur"
   ],
   "pages": [
     "BenutzerNeu",
@@ -49,7 +50,6 @@
     "KontakteKontaktpersonenBearbeiten",
     "KontakteSuchen",
     "Inventur",
-    "Mitarbeiter",
     "zz Muster - Kontakte",
     "MeldungOK",
     "MeldungFortschritt",
@@ -76,7 +76,7 @@
   "serverPort": 5000,
   "serverProject": true,
   "serverVersion": "3",
-  "startPage": "Kontakte",
+  "startPage": "Inventur",
   "theme": "default",
   "themeSettings": {
     "$accordion-border-radius": "4px",

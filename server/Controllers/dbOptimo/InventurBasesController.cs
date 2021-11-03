@@ -20,45 +20,45 @@ namespace OptimoWork.Controllers.DbOptimo
   using Data;
   using Models.DbOptimo;
 
-  [ODataRoutePrefix("odata/dbOptimo/Benutzers")]
-  [Route("mvc/odata/dbOptimo/Benutzers")]
-  public partial class BenutzersController : ODataController
+  [ODataRoutePrefix("odata/dbOptimo/InventurBases")]
+  [Route("mvc/odata/dbOptimo/InventurBases")]
+  public partial class InventurBasesController : ODataController
   {
     private Data.DbOptimoContext context;
 
-    public BenutzersController(Data.DbOptimoContext context)
+    public InventurBasesController(Data.DbOptimoContext context)
     {
       this.context = context;
     }
-    // GET /odata/DbOptimo/Benutzers
+    // GET /odata/DbOptimo/InventurBases
     [EnableQuery(MaxExpansionDepth=10,MaxAnyAllExpressionDepth=10,MaxNodeCount=1000)]
     [HttpGet]
-    public IEnumerable<Models.DbOptimo.Benutzer> GetBenutzers()
+    public IEnumerable<Models.DbOptimo.InventurBasis> GetInventurBases()
     {
-      var items = this.context.Benutzers.AsQueryable<Models.DbOptimo.Benutzer>();
-      this.OnBenutzersRead(ref items);
+      var items = this.context.InventurBases.AsQueryable<Models.DbOptimo.InventurBasis>();
+      this.OnInventurBasesRead(ref items);
 
       return items;
     }
 
-    partial void OnBenutzersRead(ref IQueryable<Models.DbOptimo.Benutzer> items);
+    partial void OnInventurBasesRead(ref IQueryable<Models.DbOptimo.InventurBasis> items);
 
     [EnableQuery(MaxExpansionDepth=10,MaxAnyAllExpressionDepth=10,MaxNodeCount=1000)]
-    [HttpGet("{BenutzerID}")]
-    public SingleResult<Benutzer> GetBenutzer(int key)
+    [HttpGet("{InventurID}")]
+    public SingleResult<InventurBasis> GetInventurBasis(int key)
     {
-        var items = this.context.Benutzers.Where(i=>i.BenutzerID == key);
-        this.OnBenutzersGet(ref items);
+        var items = this.context.InventurBases.Where(i=>i.InventurID == key);
+        this.OnInventurBasesGet(ref items);
 
         return SingleResult.Create(items);
     }
 
-    partial void OnBenutzersGet(ref IQueryable<Models.DbOptimo.Benutzer> items);
+    partial void OnInventurBasesGet(ref IQueryable<Models.DbOptimo.InventurBasis> items);
 
-    partial void OnBenutzerDeleted(Models.DbOptimo.Benutzer item);
+    partial void OnInventurBasisDeleted(Models.DbOptimo.InventurBasis item);
 
-    [HttpDelete("{BenutzerID}")]
-    public IActionResult DeleteBenutzer(int key)
+    [HttpDelete("{InventurID}")]
+    public IActionResult DeleteInventurBasis(int key)
     {
         try
         {
@@ -68,9 +68,9 @@ namespace OptimoWork.Controllers.DbOptimo
             }
 
 
-            var itemToDelete = this.context.Benutzers
-                .Where(i => i.BenutzerID == key)
-                .Include(i => i.InventurErfassungs)
+            var itemToDelete = this.context.InventurBases
+                .Where(i => i.InventurID == key)
+                .Include(i => i.InventurArtikels)
                 .FirstOrDefault();
 
             if (itemToDelete == null)
@@ -79,8 +79,8 @@ namespace OptimoWork.Controllers.DbOptimo
                 return BadRequest(ModelState);
             }
 
-            this.OnBenutzerDeleted(itemToDelete);
-            this.context.Benutzers.Remove(itemToDelete);
+            this.OnInventurBasisDeleted(itemToDelete);
+            this.context.InventurBases.Remove(itemToDelete);
             this.context.SaveChanges();
 
             return new NoContentResult();
@@ -92,11 +92,11 @@ namespace OptimoWork.Controllers.DbOptimo
         }
     }
 
-    partial void OnBenutzerUpdated(Models.DbOptimo.Benutzer item);
+    partial void OnInventurBasisUpdated(Models.DbOptimo.InventurBasis item);
 
-    [HttpPut("{BenutzerID}")]
+    [HttpPut("{InventurID}")]
     [EnableQuery(MaxExpansionDepth=10,MaxAnyAllExpressionDepth=10,MaxNodeCount=1000)]
-    public IActionResult PutBenutzer(int key, [FromBody]Models.DbOptimo.Benutzer newItem)
+    public IActionResult PutInventurBasis(int key, [FromBody]Models.DbOptimo.InventurBasis newItem)
     {
         try
         {
@@ -105,17 +105,16 @@ namespace OptimoWork.Controllers.DbOptimo
                 return BadRequest(ModelState);
             }
 
-            if (newItem == null || (newItem.BenutzerID != key))
+            if (newItem == null || (newItem.InventurID != key))
             {
                 return BadRequest();
             }
 
-            this.OnBenutzerUpdated(newItem);
-            this.context.Benutzers.Update(newItem);
+            this.OnInventurBasisUpdated(newItem);
+            this.context.InventurBases.Update(newItem);
             this.context.SaveChanges();
 
-            var itemToReturn = this.context.Benutzers.Where(i => i.BenutzerID == key);
-            Request.QueryString = Request.QueryString.Add("$expand", "Base");
+            var itemToReturn = this.context.InventurBases.Where(i => i.InventurID == key);
             return new ObjectResult(SingleResult.Create(itemToReturn));
         }
         catch(Exception ex)
@@ -125,9 +124,9 @@ namespace OptimoWork.Controllers.DbOptimo
         }
     }
 
-    [HttpPatch("{BenutzerID}")]
+    [HttpPatch("{InventurID}")]
     [EnableQuery(MaxExpansionDepth=10,MaxAnyAllExpressionDepth=10,MaxNodeCount=1000)]
-    public IActionResult PatchBenutzer(int key, [FromBody]Delta<Models.DbOptimo.Benutzer> patch)
+    public IActionResult PatchInventurBasis(int key, [FromBody]Delta<Models.DbOptimo.InventurBasis> patch)
     {
         try
         {
@@ -136,7 +135,7 @@ namespace OptimoWork.Controllers.DbOptimo
                 return BadRequest(ModelState);
             }
 
-            var itemToUpdate = this.context.Benutzers.Where(i => i.BenutzerID == key).FirstOrDefault();
+            var itemToUpdate = this.context.InventurBases.Where(i => i.InventurID == key).FirstOrDefault();
 
             if (itemToUpdate == null)
             {
@@ -146,12 +145,11 @@ namespace OptimoWork.Controllers.DbOptimo
 
             patch.Patch(itemToUpdate);
 
-            this.OnBenutzerUpdated(itemToUpdate);
-            this.context.Benutzers.Update(itemToUpdate);
+            this.OnInventurBasisUpdated(itemToUpdate);
+            this.context.InventurBases.Update(itemToUpdate);
             this.context.SaveChanges();
 
-            var itemToReturn = this.context.Benutzers.Where(i => i.BenutzerID == key);
-            Request.QueryString = Request.QueryString.Add("$expand", "Base");
+            var itemToReturn = this.context.InventurBases.Where(i => i.InventurID == key);
             return new ObjectResult(SingleResult.Create(itemToReturn));
         }
         catch(Exception ex)
@@ -161,11 +159,11 @@ namespace OptimoWork.Controllers.DbOptimo
         }
     }
 
-    partial void OnBenutzerCreated(Models.DbOptimo.Benutzer item);
+    partial void OnInventurBasisCreated(Models.DbOptimo.InventurBasis item);
 
     [HttpPost]
     [EnableQuery(MaxExpansionDepth=10,MaxAnyAllExpressionDepth=10,MaxNodeCount=1000)]
-    public IActionResult Post([FromBody] Models.DbOptimo.Benutzer item)
+    public IActionResult Post([FromBody] Models.DbOptimo.InventurBasis item)
     {
         try
         {
@@ -179,20 +177,11 @@ namespace OptimoWork.Controllers.DbOptimo
                 return BadRequest();
             }
 
-            this.OnBenutzerCreated(item);
-            this.context.Benutzers.Add(item);
+            this.OnInventurBasisCreated(item);
+            this.context.InventurBases.Add(item);
             this.context.SaveChanges();
 
-            var key = item.BenutzerID;
-
-            var itemToReturn = this.context.Benutzers.Where(i => i.BenutzerID == key);
-
-            Request.QueryString = Request.QueryString.Add("$expand", "Base");
-
-            return new ObjectResult(SingleResult.Create(itemToReturn))
-            {
-                StatusCode = 201
-            };
+            return Created($"odata/DbOptimo/InventurBases/{item.InventurID}", item);
         }
         catch(Exception ex)
         {

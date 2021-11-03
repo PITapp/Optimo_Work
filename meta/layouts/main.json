@@ -169,15 +169,10 @@
         {
           "items": [
             {
-              "icon": "dashboard",
-              "path": "dashboard",
-              "text": "Dashboard"
-            },
-            {
-              "icon": "assignment_turned_in",
+              "icon": "movie_filter",
               "items": [],
               "parameters": [],
-              "path": "management",
+              "path": "inventur",
               "text": "Inventur"
             },
             {

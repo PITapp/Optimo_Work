@@ -166,6 +166,9 @@ namespace OptimoWork
           oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.BaseKontakte>("BaseKontaktes");
           oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.Benutzer>("Benutzers");
           oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.InfotexteHtml>("InfotexteHtmls");
+          oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.InventurArtikel>("InventurArtikels");
+          oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.InventurBasis>("InventurBases");
+          oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.InventurErfassung>("InventurErfassungs");
           oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.Notizen>("Notizens");
           oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.Protokoll>("Protokolls");
           oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.VwBase>("VwBases");

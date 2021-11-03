@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1635686924997,
+  "timestamp": 1635847271776,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -89,16 +89,16 @@
     "/assets/fonts/roboto-v15-latin-300.woff": "27c056b9c70dcfd55c43e954a898eb5bf706f730",
     "/assets/fonts/roboto-v15-latin-700.woff": "24f9df68c500f7bbd1cb1c632de59936aa85b2e0",
     "/assets/fonts/roboto-v15-latin-regular.woff": "940b859e4f02bd3e7cf7b6ce245c197b5470302a",
-    "/assets/icon-128x128.png": "39d62c3b9babd58a40221b236248f2c6e22f771f",
-    "/assets/icon-152x152.png": "10a71832a558408ec8bde8909bc9b3a3e1c0543f",
-    "/assets/icon-256x256.png": "85ee83dc2546cb6d0eccdd45b6fc137a75abc6c8",
-    "/assets/icon-512x512.png": "e7ea106a8c739906836997018c04c394cfd73bdc",
+    "/assets/icon-128x128.png": "c3c8a811743f8edc7da28bdad500687b6f4734d5",
+    "/assets/icon-152x152.png": "ebff89c7ffa5613e3ee208e5ce8dde0002f5c954",
+    "/assets/icon-256x256.png": "32616847ea5d817263910842bb5fca070650ee4d",
+    "/assets/icon-512x512.png": "c7f183935cc4b3785971c1c969e128057d886d2c",
     "/assets/images/KeinBildPerson.png": "99a382ffdd4ed46d95376a2a37eacf5da922febe",
     "/assets/images/Logo01.png": "d35faa43a89a90185eb14faf896f61aad203f6fc",
     "/assets/images/Spinner01.gif": "bfdabee6414cf264d79b40b321d296fe57554642",
     "/assets/images/Spinner02.gif": "92b129fe5eae789c5bdf9c88e56e6574004ab1b8",
-    "/favicon.ico": "e3b51fc88fbb3ff497158cdf7cd94d9b98a9e1a3",
-    "/index.html": "f21e4636332634e231c44156f29279b780235023"
+    "/favicon.ico": "f442e232b41c25e23f797d6fc8171df3c8fbb7c1",
+    "/index.html": "f8ed67042baf15d32764bf23f7fee43e6f4954f7"
   },
   "navigationUrls": [
     {
