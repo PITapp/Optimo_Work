@@ -14,13 +14,13 @@ import { HeaderComponent } from '@radzen/angular/dist/header';
 import { SidebarToggleComponent } from '@radzen/angular/dist/sidebar-toggle';
 import { ImageComponent } from '@radzen/angular/dist/image';
 import { LabelComponent } from '@radzen/angular/dist/label';
-import { LinkComponent } from '@radzen/angular/dist/link';
 import { ProfileMenuComponent } from '@radzen/angular/dist/profilemenu';
 import { BodyComponent } from '@radzen/angular/dist/body';
 import { ContentContainerComponent } from '@radzen/angular/dist/content-container';
 import { SidebarComponent } from '@radzen/angular/dist/sidebar';
 import { PanelMenuComponent } from '@radzen/angular/dist/panelmenu';
 import { FooterComponent } from '@radzen/angular/dist/footer';
+import { LinkComponent } from '@radzen/angular/dist/link';
 
 import { ConfigService } from '../config.service';
 
@@ -34,7 +34,6 @@ export class MainLayoutGenerated implements AfterViewInit, OnInit, OnDestroy {
   @ViewChild('image0') image0: ImageComponent;
   @ViewChild('label2') label2: LabelComponent;
   @ViewChild('label5') label5: LabelComponent;
-  @ViewChild('link1') link1: LinkComponent;
   @ViewChild('profilemenu1') profilemenu1: ProfileMenuComponent;
   @ViewChild('body0') body0: BodyComponent;
   @ViewChild('main') main: ContentContainerComponent;

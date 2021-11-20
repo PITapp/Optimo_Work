@@ -50,11 +50,11 @@ namespace OptimoWork.Data
                   .WithMany(i => i.InventurArtikels)
                   .HasForeignKey(i => i.InventurID)
                   .HasPrincipalKey(i => i.InventurID);
-            builder.Entity<OptimoWork.Models.DbOptimo.InventurErfassung>()
-                  .HasOne(i => i.Benutzer)
-                  .WithMany(i => i.InventurErfassungs)
-                  .HasForeignKey(i => i.BenutzerID)
-                  .HasPrincipalKey(i => i.BenutzerID);
+            builder.Entity<OptimoWork.Models.DbOptimo.InventurBasis>()
+                  .HasOne(i => i.InventurBasisStatus)
+                  .WithMany(i => i.InventurBases)
+                  .HasForeignKey(i => i.LagerortStatus)
+                  .HasPrincipalKey(i => i.LagerortStatus);
             builder.Entity<OptimoWork.Models.DbOptimo.InventurErfassung>()
                   .HasOne(i => i.InventurArtikel)
                   .WithMany(i => i.InventurErfassungs)
@@ -88,6 +88,30 @@ namespace OptimoWork.Data
 
             builder.Entity<OptimoWork.Models.DbOptimo.VwBenutzerRollen>()
                   .Property(p => p.BenutzerID)
+                  .HasDefaultValueSql("0");
+
+            builder.Entity<OptimoWork.Models.DbOptimo.VwInventurArtikel>()
+                  .Property(p => p.ArtikelID)
+                  .HasDefaultValueSql("0");
+
+            builder.Entity<OptimoWork.Models.DbOptimo.VwInventurArtikel>()
+                  .Property(p => p.AnzahlErfasst)
+                  .HasDefaultValueSql("0");
+
+            builder.Entity<OptimoWork.Models.DbOptimo.VwInventurErfassung>()
+                  .Property(p => p.ErfassungID)
+                  .HasDefaultValueSql("0");
+
+            builder.Entity<OptimoWork.Models.DbOptimo.VwInventurLagerorte>()
+                  .Property(p => p.InventurID)
+                  .HasDefaultValueSql("0");
+
+            builder.Entity<OptimoWork.Models.DbOptimo.VwInventurLagerorte>()
+                  .Property(p => p.AnzahlArtikel)
+                  .HasDefaultValueSql("0");
+
+            builder.Entity<OptimoWork.Models.DbOptimo.VwInventurLagerorte>()
+                  .Property(p => p.AnzahlErfasst)
                   .HasDefaultValueSql("0");
 
             this.OnModelBuilding(builder);
@@ -131,6 +155,12 @@ namespace OptimoWork.Data
         }
 
         public DbSet<OptimoWork.Models.DbOptimo.InventurBasis> InventurBases
+        {
+          get;
+          set;
+        }
+
+        public DbSet<OptimoWork.Models.DbOptimo.InventurBasisStatus> InventurBasisStatuses
         {
           get;
           set;
@@ -191,6 +221,24 @@ namespace OptimoWork.Data
         }
 
         public DbSet<OptimoWork.Models.DbOptimo.VwBenutzerRollen> VwBenutzerRollens
+        {
+          get;
+          set;
+        }
+
+        public DbSet<OptimoWork.Models.DbOptimo.VwInventurArtikel> VwInventurArtikels
+        {
+          get;
+          set;
+        }
+
+        public DbSet<OptimoWork.Models.DbOptimo.VwInventurErfassung> VwInventurErfassungs
+        {
+          get;
+          set;
+        }
+
+        public DbSet<OptimoWork.Models.DbOptimo.VwInventurLagerorte> VwInventurLagerortes
         {
           get;
           set;

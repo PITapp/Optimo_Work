@@ -257,14 +257,7 @@
           "x-key": true,
           "x-identity": true,
           "x-nullable": false,
-          "type": "integer",
-          "x-navigation": [
-            {
-              "inversePropertyName": "Benutzer",
-              "name": "InventurErfassungs",
-              "type": "InventurErfassung"
-            }
-          ]
+          "type": "integer"
         },
         "Base": {
           "type": "object",
@@ -311,12 +304,6 @@
         },
         "LetzteBenutzerID": {
           "type": "integer"
-        },
-        "InventurErfassungs": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/InventurErfassung"
-          }
         }
       }
     },
@@ -360,7 +347,7 @@
         "InventurID",
         "ZeilenNr",
         "Artikelnummer",
-        "Status"
+        "ArtikelStatus"
       ],
       "properties": {
         "ArtikelID": {
@@ -389,7 +376,7 @@
             "type": "InventurBasis",
             "principalKey": "InventurID",
             "name": "InventurBasis",
-            "textProperty": "AuftragCode",
+            "textProperty": "LagerortStatus",
             "navigationProperty": "InventurArtikels"
           }
         },
@@ -404,12 +391,20 @@
         },
         "Beschreibung": {
           "type": "string",
-          "length": 255
+          "length": 100
         },
-        "Status": {
+        "Beschreibung2": {
+          "type": "string",
+          "length": 100
+        },
+        "StdKreditorName": {
+          "type": "string",
+          "length": 50
+        },
+        "ArtikelStatus": {
           "x-nullable": false,
           "type": "string",
-          "length": 10
+          "length": 30
         },
         "Notiz": {
           "type": "string",
@@ -427,11 +422,13 @@
       "x-table": "def.InventurBasis",
       "resource": "InventurBases",
       "required": [
+        "LagerortStatus",
         "AuftragCode",
         "ErfassungNr",
         "Lagerort",
         "Beschreibung",
-        "Status"
+        "LagerortNummer",
+        "LagerortTitel"
       ],
       "properties": {
         "InventurID": {
@@ -447,6 +444,25 @@
             }
           ]
         },
+        "InventurBasisStatus": {
+          "type": "object",
+          "$ref": "#/definitions/InventurBasisStatus"
+        },
+        "LagerortStatus": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 30,
+          "x-foreignKey": {
+            "parentTable": "InventurBasisStatus",
+            "parentEntityType": "InventurBasisStatus",
+            "type": "InventurBasisStatus",
+            "principalKey": "LagerortStatus",
+            "name": "InventurBasisStatus",
+            "textProperty": "LagerortStatus",
+            "primaryKey": "InventurBasisStatusID",
+            "navigationProperty": "InventurBases"
+          }
+        },
         "AuftragCode": {
           "x-nullable": false,
           "type": "string",
@@ -459,21 +475,26 @@
         "Lagerort": {
           "x-nullable": false,
           "type": "string",
-          "length": 50
+          "length": 70
         },
         "Beschreibung": {
           "x-nullable": false,
           "type": "string",
           "length": 255
         },
-        "Status": {
+        "LagerortNummer": {
           "x-nullable": false,
           "type": "string",
           "length": 10
         },
+        "LagerortTitel": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 70
+        },
         "Verantwortlich": {
           "type": "string",
-          "length": 200
+          "length": 100
         },
         "Notiz": {
           "type": "string",
@@ -487,11 +508,54 @@
         }
       }
     },
+    "InventurBasisStatus": {
+      "x-table": "def.InventurBasisStatus",
+      "resource": "InventurBasisStatuses",
+      "required": [
+        "LagerortStatus"
+      ],
+      "properties": {
+        "InventurBasisStatusID": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "type": "integer"
+        },
+        "LagerortStatus": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 30,
+          "x-navigation": [
+            {
+              "inversePropertyName": "InventurBasisStatus",
+              "name": "InventurBases",
+              "type": "InventurBasis"
+            }
+          ]
+        },
+        "IconStatus": {
+          "type": "string",
+          "length": 5
+        },
+        "Sortierung": {
+          "type": "integer"
+        },
+        "Notiz": {
+          "type": "string",
+          "length": 65535
+        },
+        "InventurBases": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InventurBasis"
+          }
+        }
+      }
+    },
     "InventurErfassung": {
       "x-table": "def.InventurErfassung",
       "resource": "InventurErfassungs",
       "required": [
-        "BenutzerID",
         "ArtikelID",
         "ErfasstAm",
         "ErfasstAnzahl"
@@ -502,23 +566,6 @@
           "x-identity": true,
           "x-nullable": false,
           "type": "integer"
-        },
-        "Benutzer": {
-          "type": "object",
-          "$ref": "#/definitions/Benutzer"
-        },
-        "BenutzerID": {
-          "x-nullable": false,
-          "type": "integer",
-          "x-foreignKey": {
-            "parentTable": "Benutzer",
-            "parentEntityType": "Benutzer",
-            "type": "Benutzer",
-            "principalKey": "BenutzerID",
-            "name": "Benutzer",
-            "textProperty": "AspNetUsers_Id",
-            "navigationProperty": "InventurErfassungs"
-          }
         },
         "InventurArtikel": {
           "type": "object",
@@ -545,6 +592,10 @@
         "ErfasstAnzahl": {
           "x-nullable": false,
           "type": "integer"
+        },
+        "GeloeschtAm": {
+          "type": "string",
+          "format": "date-time"
         },
         "Notiz": {
           "type": "string",
@@ -1210,6 +1261,151 @@
         "RolleTitel": {
           "type": "string",
           "length": 256
+        }
+      }
+    },
+    "VwInventurArtikel": {
+      "x-view": true,
+      "x-table": "def.vwInventurArtikel",
+      "resource": "VwInventurArtikels",
+      "required": [
+        "InventurID",
+        "Artikelnummer"
+      ],
+      "properties": {
+        "ArtikelID": {
+          "x-default-sql": "0",
+          "x-nullable": false,
+          "type": "integer"
+        },
+        "InventurID": {
+          "x-nullable": false,
+          "type": "integer",
+          "x-key": true,
+          "x-virtual": true
+        },
+        "Artikelnummer": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 30
+        },
+        "Beschreibung": {
+          "type": "string",
+          "length": 100
+        },
+        "Beschreibung2": {
+          "type": "string",
+          "length": 100
+        },
+        "StdKreditorName": {
+          "type": "string",
+          "length": 50
+        },
+        "AnzahlErfasst": {
+          "x-default-sql": "0",
+          "x-nullable": false,
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "VwInventurErfassung": {
+      "x-view": true,
+      "x-table": "def.vwInventurErfassung",
+      "resource": "VwInventurErfassungs",
+      "required": [
+        "ArtikelID",
+        "ErfasstAm",
+        "ErfasstAnzahl",
+        "Artikelnummer"
+      ],
+      "properties": {
+        "ErfassungID": {
+          "x-default-sql": "0",
+          "x-nullable": false,
+          "type": "integer"
+        },
+        "ArtikelID": {
+          "x-nullable": false,
+          "type": "integer",
+          "x-key": true,
+          "x-virtual": true
+        },
+        "ErfasstAm": {
+          "x-nullable": false,
+          "type": "string",
+          "format": "date-time"
+        },
+        "ErfasstAnzahl": {
+          "x-nullable": false,
+          "type": "integer"
+        },
+        "GeloeschtAm": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Artikelnummer": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 30
+        },
+        "Beschreibung": {
+          "type": "string",
+          "length": 100
+        },
+        "Beschreibung2": {
+          "type": "string",
+          "length": 100
+        },
+        "StdKreditorName": {
+          "type": "string",
+          "length": 50
+        }
+      }
+    },
+    "VwInventurLagerorte": {
+      "x-view": true,
+      "x-table": "def.vwInventurLagerorte",
+      "resource": "VwInventurLagerortes",
+      "required": [
+        "LagerortNummer",
+        "LagerortTitel",
+        "LagerortStatus"
+      ],
+      "properties": {
+        "InventurID": {
+          "x-default-sql": "0",
+          "x-nullable": false,
+          "type": "integer"
+        },
+        "LagerortNummer": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 10,
+          "x-key": true,
+          "x-virtual": true
+        },
+        "LagerortTitel": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 70
+        },
+        "LagerortStatus": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 30
+        },
+        "AnzahlArtikel": {
+          "x-default-sql": "0",
+          "x-nullable": false,
+          "type": "integer",
+          "format": "int64"
+        },
+        "AnzahlErfasst": {
+          "x-default-sql": "0",
+          "x-nullable": false,
+          "type": "integer",
+          "format": "int64"
         }
       }
     },
@@ -1898,6 +2094,102 @@
           "201": {
             "schema": {
               "$ref": "#/definitions/InventurBasis"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/InventurBasisStatuses": {
+      "get": {
+        "operationId": "getInventurBasisStatuses",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$count",
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$select",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/InventurBasisStatus"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createInventurBasisStatus",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "InventurBasisStatus",
+            "schema": {
+              "$ref": "#/definitions/InventurBasisStatus"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/InventurBasisStatus"
             }
           },
           "default": {
@@ -2665,6 +2957,207 @@
         }
       }
     },
+    "/VwInventurArtikels": {
+      "get": {
+        "operationId": "getVwInventurArtikels",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$count",
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$select",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/VwInventurArtikel"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/VwInventurErfassungs": {
+      "get": {
+        "operationId": "getVwInventurErfassungs",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$count",
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$select",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/VwInventurErfassung"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/VwInventurLagerortes": {
+      "get": {
+        "operationId": "getVwInventurLagerortes",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$count",
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$select",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/VwInventurLagerorte"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
     "/VwRollens": {
       "get": {
         "operationId": "getVwRollens",
@@ -3258,6 +3751,83 @@
             "name": "InventurBasis",
             "schema": {
               "$ref": "#/definitions/InventurBasis"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/InventurBasisStatuses({InventurBasisStatusID})": {
+      "delete": {
+        "operationId": "deleteInventurBasisStatus",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "InventurBasisStatusID",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getInventurBasisStatusByInventurBasisStatusID",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "InventurBasisStatusID",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/InventurBasisStatus"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateInventurBasisStatus",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "InventurBasisStatusID",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "InventurBasisStatus",
+            "schema": {
+              "$ref": "#/definitions/InventurBasisStatus"
             }
           }
         ],

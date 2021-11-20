@@ -30,6 +30,7 @@ import { ZzMusterKontakteComponent } from './zz-muster-kontakte/zz-muster-kontak
 import { MeldungOkComponent } from './meldung-ok/meldung-ok.component';
 import { MeldungFortschrittComponent } from './meldung-fortschritt/meldung-fortschritt.component';
 import { NotizenEditorComponent } from './notizen-editor/notizen-editor.component';
+import { InventurLagerorteBearbeitenComponent } from './inventur-lagerorte-bearbeiten/inventur-lagerorte-bearbeiten.component';
 
 import { SecurityService } from './security.service';
 import { AuthGuard } from './auth.guard';
@@ -245,6 +246,14 @@ export const routes: Routes = [
           roles: ['Authenticated'],
         },
         component: NotizenEditorComponent
+      },
+      {
+        path: 'inventur-lagerorte-bearbeiten/:InventurID',
+        canActivate: [AuthGuard],
+        data: {
+          roles: ['Authenticated'],
+        },
+        component: InventurLagerorteBearbeitenComponent
       },
     ]
   },

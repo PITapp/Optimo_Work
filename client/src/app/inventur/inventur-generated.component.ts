@@ -18,6 +18,7 @@ import { PanelComponent } from '@radzen/angular/dist/panel';
 import { GridComponent } from '@radzen/angular/dist/grid';
 
 import { ConfigService } from '../config.service';
+import { InventurLagerorteBearbeitenComponent } from '../inventur-lagerorte-bearbeiten/inventur-lagerorte-bearbeiten.component';
 import { MeldungOkComponent } from '../meldung-ok/meldung-ok.component';
 
 import { DbOptimoService } from '../db-optimo.service';
@@ -32,16 +33,11 @@ export class InventurGenerated implements AfterViewInit, OnInit, OnDestroy {
   @ViewChild('button1') button1: ButtonComponent;
   @ViewChild('tabs0') tabs0: TabsComponent;
   @ViewChild('panel1') panel1: PanelComponent;
-  @ViewChild('buttonNeuerInfotext') buttonNeuerInfotext: ButtonComponent;
-  @ViewChild('buttonBearbeitenInfotext') buttonBearbeitenInfotext: ButtonComponent;
-  @ViewChild('buttonLoeschenInfotext') buttonLoeschenInfotext: ButtonComponent;
-  @ViewChild('panel0') panel0: PanelComponent;
-  @ViewChild('buttonKopieren') buttonKopieren: ButtonComponent;
-  @ViewChild('buttonBearbeitenInfotextEditor') buttonBearbeitenInfotextEditor: ButtonComponent;
-  @ViewChild('panel2') panel2: PanelComponent;
   @ViewChild('gridLagerorte') gridLagerorte: GridComponent;
-  @ViewChild('buttonExport') buttonExport: ButtonComponent;
-  @ViewChild('button0') button0: ButtonComponent;
+  @ViewChild('buttonLagerortBearbeiten') buttonLagerortBearbeiten: ButtonComponent;
+  @ViewChild('panel0') panel0: PanelComponent;
+  @ViewChild('gridErfassung') gridErfassung: GridComponent;
+  @ViewChild('buttonBearbeitenProtokoll') buttonBearbeitenProtokoll: ButtonComponent;
   @ViewChild('panel3') panel3: PanelComponent;
   @ViewChild('panel4') panel4: PanelComponent;
 
@@ -71,9 +67,12 @@ export class InventurGenerated implements AfterViewInit, OnInit, OnDestroy {
 
   security: SecurityService;
   parameters: any;
-  rstInventurBasis: any;
-  rstInventurBasisCount: any;
-  dsoInvenurBasis: any;
+  rstLagerorte: any;
+  rstLagerorteCount: any;
+  dsoLagerort: any;
+  rstErfassung: any;
+  rstErfassungCount: any;
+  dsoErfassung: any;
 
   constructor(private injector: Injector) {
   }
@@ -131,25 +130,46 @@ export class InventurGenerated implements AfterViewInit, OnInit, OnDestroy {
   }
 
   gridLagerorteLoadData(event: any) {
-    this.dbOptimo.getInventurBases(`${event.filter}`, event.top, event.skip, `${event.orderby}`, event.top != null && event.skip != null, null, null, null)
+    this.dbOptimo.getInventurBases(`${event.filter}`, event.top, event.skip, `${event.orderby || 'LagerortNummer, LagerortTitel'}`, event.top != null && event.skip != null, null, null, null)
     .subscribe((result: any) => {
-      this.rstInventurBasis = result.value;
+      this.rstLagerorte = result.value;
 
-      this.rstInventurBasisCount = event.top != null && event.skip != null ? result['@odata.count'] : result.value.length;
+      this.rstLagerorteCount = event.top != null && event.skip != null ? result['@odata.count'] : result.value.length;
+
+      this.gridLagerorte.onSelect(this.rstLagerorte[0]);
     }, (result: any) => {
       this.notificationService.notify({ severity: "error", summary: ``, detail: `Lagerorte können nicht geladen werden!` });
     });
   }
 
+  gridLagerorteRowDoubleClick(event: any) {
+    this.dialogService.open(InventurLagerorteBearbeitenComponent, { parameters: {InventurID: event.InventurID}, title: `Lagerort bearbeiten` });
+  }
+
   gridLagerorteRowSelect(event: any) {
-    this.dsoInvenurBasis = event;
+    this.dsoLagerort = event;
   }
 
-  buttonExportClick(event: any) {
-    this.dialogService.open(MeldungOkComponent, { parameters: {strMeldung: "Diese Funktion wurde noch nicht aktiviert!"}, title: `Export Kontakte` });
+  buttonLagerortBearbeitenClick(event: any) {
+    this.dialogService.open(InventurLagerorteBearbeitenComponent, { parameters: {InventurID: this.dsoLagerort.InventurID}, title: `Lagerort bearbeiten` });
   }
 
-  button0Click(event: any) {
-    this.dialogService.open(MeldungOkComponent, { parameters: {strMeldung: "Diese Funktion wurde noch nicht aktiviert!"}, title: `Export Kontakte` });
+  gridErfassungLoadData(event: any) {
+    this.dbOptimo.getVwInventurErfassungs(`${event.filter ? event.filter + ' and ' : ''}${this.dsoLagerort.InventurID ? 'InventurID eq ' + this.dsoLagerort.InventurID : ''} `, event.top, event.skip, `${event.orderby}`, event.top != null && event.skip != null, null, null, null)
+    .subscribe((result: any) => {
+      this.rstErfassung = result.value;
+
+      this.rstErfassungCount = event.top != null && event.skip != null ? result['@odata.count'] : result.value.length;
+    }, (result: any) => {
+      this.notificationService.notify({ severity: "error", summary: ``, detail: `Erfassung können nicht geladen werden!` });
+    });
+  }
+
+  gridErfassungRowDoubleClick(event: any) {
+    this.dialogService.open(InventurLagerorteBearbeitenComponent, { parameters: {InventurID: event.InventurID}, title: `Lagerort bearbeiten` });
+  }
+
+  gridErfassungRowSelect(event: any) {
+    this.dsoErfassung = event;
   }
 }

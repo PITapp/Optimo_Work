@@ -14,11 +14,11 @@ import { LabelModule } from '@radzen/angular/dist/label';
 import { ContentContainerModule } from '@radzen/angular/dist/content-container';
 import { HeaderModule } from '@radzen/angular/dist/header';
 import { SidebarToggleModule } from '@radzen/angular/dist/sidebar-toggle';
-import { LinkModule } from '@radzen/angular/dist/link';
 import { ProfileMenuModule } from '@radzen/angular/dist/profilemenu';
 import { SidebarModule } from '@radzen/angular/dist/sidebar';
 import { PanelMenuModule } from '@radzen/angular/dist/panelmenu';
 import { FooterModule } from '@radzen/angular/dist/footer';
+import { LinkModule } from '@radzen/angular/dist/link';
 import { ContentModule } from '@radzen/angular/dist/content';
 import { TemplateFormModule } from '@radzen/angular/dist/template-form';
 import { RequiredValidatorModule } from '@radzen/angular/dist/required-validator';
@@ -79,6 +79,7 @@ import { ZzMusterKontakteComponent } from './zz-muster-kontakte/zz-muster-kontak
 import { MeldungOkComponent } from './meldung-ok/meldung-ok.component';
 import { MeldungFortschrittComponent } from './meldung-fortschritt/meldung-fortschritt.component';
 import { NotizenEditorComponent } from './notizen-editor/notizen-editor.component';
+import { InventurLagerorteBearbeitenComponent } from './inventur-lagerorte-bearbeiten/inventur-lagerorte-bearbeiten.component';
 import { LoginLayoutComponent } from './login-layout/login-layout.component';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 
@@ -115,6 +116,7 @@ export const PageDeclarations = [
   MeldungOkComponent,
   MeldungFortschrittComponent,
   NotizenEditorComponent,
+  InventurLagerorteBearbeitenComponent,
 ];
 
 export const LayoutDeclarations = [
@@ -164,11 +166,11 @@ export const AppImports = [
   ContentContainerModule,
   HeaderModule,
   SidebarToggleModule,
-  LinkModule,
   ProfileMenuModule,
   SidebarModule,
   PanelMenuModule,
   FooterModule,
+  LinkModule,
   ContentModule,
   TemplateFormModule,
   RequiredValidatorModule,

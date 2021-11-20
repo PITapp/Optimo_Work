@@ -34,6 +34,7 @@
             "height": "555px",
             "width": "100%"
           },
+          "template": "",
           "textProperty": "NameGesamt",
           "type": "listbox",
           "valueProperty": "BaseID"

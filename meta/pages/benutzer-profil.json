@@ -24,7 +24,7 @@
                   "name": "heading2",
                   "size": "H3",
                   "style": {
-                    "color": "#e5ecef",
+                    "color": "#6A80AA",
                     "display": "inline-block",
                     "marginTop": "7px",
                     "paddingLeft": "10px",
@@ -40,7 +40,7 @@
                   "name": "heading3",
                   "size": "H3",
                   "style": {
-                    "color": "#789BC0",
+                    "color": "#6A80AA",
                     "display": "inline",
                     "fontSize": "21px",
                     "fontWeight": "normal"

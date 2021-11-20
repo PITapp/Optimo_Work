@@ -40,7 +40,17 @@ namespace OptimoWork.Models.DbOptimo
       get;
       set;
     }
-    public string Status
+    public string Beschreibung2
+    {
+      get;
+      set;
+    }
+    public string StdKreditorName
+    {
+      get;
+      set;
+    }
+    public string ArtikelStatus
     {
       get;
       set;

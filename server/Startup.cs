@@ -12,9 +12,11 @@ using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
 using Microsoft.AspNet.OData.Extensions;
 using Microsoft.AspNet.OData;
 using Microsoft.AspNet.OData.Builder;
+
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Hosting;
@@ -73,8 +75,10 @@ namespace OptimoWork
       }).AddNewtonsoftJson();
 
       services.AddAuthorization();
-      services.AddOData();
-      services.AddODataQueryFilter();
+      
+          services.AddOData();
+          services.AddODataQueryFilter();
+
       services.AddHttpContextAccessor();
       var tokenValidationParameters = new TokenValidationParameters
       {
@@ -149,15 +153,16 @@ namespace OptimoWork
 
       app.UseMvc(builder =>
       {
-          builder.Count().Filter().OrderBy().Expand().Select().MaxTop(null).SetTimeZoneInfo(TimeZoneInfo.Utc);
+        if (env.EnvironmentName == "Development")
+        {
+            builder.MapRoute(name: "default",
+              template: "{controller}/{action}/{id?}",
+              defaults: new { controller = "Home", action = "Index" }
+            );
+        }
 
-          if (env.EnvironmentName == "Development")
-          {
-              builder.MapRoute(name: "default",
-                template: "{controller}/{action}/{id?}",
-                defaults: new { controller = "Home", action = "Index" }
-              );
-          }
+          builder.Count().Filter().OrderBy().Expand().Select().MaxTop(null).SetTimeZoneInfo(TimeZoneInfo.Utc);
+        
 
           var oDataBuilder = new ODataConventionModelBuilder(provider);
 
@@ -168,6 +173,7 @@ namespace OptimoWork
           oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.InfotexteHtml>("InfotexteHtmls");
           oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.InventurArtikel>("InventurArtikels");
           oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.InventurBasis>("InventurBases");
+          oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.InventurBasisStatus>("InventurBasisStatuses");
           oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.InventurErfassung>("InventurErfassungs");
           oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.Notizen>("Notizens");
           oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.Protokoll>("Protokolls");
@@ -178,6 +184,9 @@ namespace OptimoWork
           oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.VwBasePlz>("VwBasePlzs");
           oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.VwBenutzerBase>("VwBenutzerBases");
           oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.VwBenutzerRollen>("VwBenutzerRollens");
+          oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.VwInventurArtikel>("VwInventurArtikels");
+          oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.VwInventurErfassung>("VwInventurErfassungs");
+          oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.VwInventurLagerorte>("VwInventurLagerortes");
           oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.VwRollen>("VwRollens");
 
           this.OnConfigureOData(oDataBuilder);
@@ -193,6 +202,7 @@ namespace OptimoWork
 
           builder.MapODataServiceRoute("auth", "auth", model);
       });
+
 
       if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable("RADZEN")) && env.IsDevelopment())
       {

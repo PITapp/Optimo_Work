@@ -1,0 +1,329 @@
+{
+  "access": [
+    "Authenticated"
+  ],
+  "components": [
+    {
+      "components": [
+        {
+          "components": [
+            {
+              "class": "col-md-12",
+              "components": [
+                {
+                  "components": [
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "LagerortNummer",
+                              "name": "LagerortNummerLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Nummer",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "maxLength": 10,
+                              "name": "LagerortNummer",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "type": "textbox",
+                              "value": "${dsoLagerort.LagerortNummer}"
+                            },
+                            {
+                              "component": "LagerortNummer",
+                              "name": "LagerortNummerRequiredValidator",
+                              "style": {
+                                "position": "absolute"
+                              },
+                              "text": "LagerortNummer is required",
+                              "type": "required-validator"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "LagerortTitel",
+                              "name": "LagerortTitelLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Titel",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "maxLength": 70,
+                              "name": "LagerortTitel",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "type": "textbox",
+                              "value": "${dsoLagerort.LagerortTitel}"
+                            },
+                            {
+                              "component": "LagerortTitel",
+                              "name": "LagerortTitelRequiredValidator",
+                              "style": {
+                                "position": "absolute"
+                              },
+                              "text": "LagerortTitel is required",
+                              "type": "required-validator"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "LagerortStatus",
+                              "name": "LagerortStatusLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Status",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${rstLagerorteStatus}",
+                              "emptyFilterText": "No results found",
+                              "multipleItemsSelectedText": "{0} items selected",
+                              "name": "LagerortStatus",
+                              "placeholder": "",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "textProperty": "LagerortStatus",
+                              "type": "dropdown",
+                              "value": "${dsoLagerort.LagerortStatus}",
+                              "valueProperty": "LagerortStatus"
+                            },
+                            {
+                              "component": "LagerortStatus",
+                              "name": "LagerortStatusRequiredValidator",
+                              "style": {
+                                "position": "absolute"
+                              },
+                              "text": "LagerortStatus is required",
+                              "type": "required-validator"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "Notiz",
+                              "name": "NotizLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Notiz",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "name": "Notiz",
+                              "rows": 4,
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "textarea",
+                              "value": "${dsoLagerort.Notiz}"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col offset-sm-3 justify-content-end d-flex",
+                          "components": [
+                            {
+                              "buttonStyle": "success",
+                              "buttonType": "submit",
+                              "icon": "done",
+                              "name": "button1",
+                              "style": {},
+                              "text": "Speichern",
+                              "tooltip": "",
+                              "type": "button"
+                            },
+                            {
+                              "buttonStyle": "light",
+                              "events": {
+                                "click": [
+                                  {
+                                    "type": "back"
+                                  }
+                                ]
+                              },
+                              "name": "button2",
+                              "style": {
+                                "marginLeft": "1rem"
+                              },
+                              "text": "Abbruch",
+                              "type": "button"
+                            }
+                          ],
+                          "name": "col46",
+                          "style": {},
+                          "type": "col"
+                        }
+                      ],
+                      "name": "row24",
+                      "type": "row"
+                    }
+                  ],
+                  "events": {
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Lagerort konnte nicht gespeichert werden!",
+                            "severity": "error",
+                            "summary": "",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "dbOptimo.updateInventurBasis",
+                        "parameters": [
+                          {
+                            "name": "InventurID",
+                            "value": "${parameters.InventurID}"
+                          },
+                          {
+                            "name": "InventurBasis",
+                            "value": "${event}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "back"
+                          },
+                          {
+                            "detail": "Lagerort gespeichert",
+                            "severity": "success",
+                            "type": "notify"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "name": "form0",
+                  "type": "template-form"
+                }
+              ],
+              "type": "col"
+            }
+          ],
+          "type": "row"
+        }
+      ],
+      "container": "main",
+      "type": "content"
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "error": [],
+        "name": "dbOptimo.getInventurBasisByInventurID",
+        "parameters": [
+          {
+            "name": "InventurID",
+            "value": "${parameters.InventurID}"
+          }
+        ],
+        "then": [
+          {
+            "name": "dsoLagerort",
+            "type": "set",
+            "value": "${result}"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "dbOptimo.getInventurBasisStatuses",
+        "parameters": [],
+        "then": [
+          {
+            "name": "rstLagerorteStatus",
+            "type": "set",
+            "value": "${result.value}"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "layout": "Main",
+  "name": "InventurLagerorteBearbeiten"
+}

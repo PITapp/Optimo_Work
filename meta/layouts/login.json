@@ -61,8 +61,8 @@
                           "style": {
                             "color": "#A71330",
                             "float": "none",
-                            "fontSize": "14px",
-                            "fontWeight": "bold",
+                            "fontFamily": "courier new,courier,monospace",
+                            "fontWeight": "normal",
                             "paddingTop": "6px"
                           },
                           "text": "work",

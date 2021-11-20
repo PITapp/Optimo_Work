@@ -1,20 +1,16 @@
-<rz-header #header0>
-  <div class="row justify-content-start align-items-center">
-    <div class="d-flex align-items-center  col-md-3 justify-content-start" [ngStyle]="{'float': 'left', 'paddingLeft': '25px'}">
+<rz-header #header0 [style]="{'borderBottom': '1px dotted #a71330'}">
+  <div class="row justify-content-start align-items-center" [ngStyle]="{}">
+    <div class="d-flex align-items-center   justify-content-start col-md-6" [ngStyle]="{'float': 'left', 'paddingLeft': '25px'}">
       <rz-sidebar-toggle #sidebarToggle0 [style]="{}">
       </rz-sidebar-toggle>
       <rz-image #image0 path="assets/images/Logo01.png" [style]="{'float': 'left', 'height': '30px'}">
       </rz-image>
       <rz-label #label2 [style]="{'color': '#575757', 'float': 'none', 'fontSize': '12px', 'paddingLeft': '10px', 'paddingRight': '10px'}" text="|">
       </rz-label>
-      <rz-label #label5 [style]="{'color': '#A71330', 'float': 'none', 'fontSize': '14px', 'fontWeight': 'bold'}" text="work">
+      <rz-label #label5 [style]="{'color': '#A71330', 'float': 'none', 'fontFamily': 'courier new,courier,monospace', 'fontWeight': 'normal'}" text="work">
       </rz-label>
     </div>
-    <div class="col-md-6 justify-content-center d-flex" [ngStyle]="{'backgroundColor': 'rgba(0, 0, 0, 0)', 'verticalAlign': 'baseline'}">
-    </div>
-    <div class="text-lg-right align-items-center d-flex justify-content-end col-md-3" [ngStyle]="{'backgroundColor': 'rgba(0, 0, 0, 0)', 'float': 'right'}">
-      <rz-link #link1 icon="description" [style]="{'color': '#575757', 'fontSize': '22px', 'marginRight': '20px'}" *ngIf="false">
-      </rz-link>
+    <div class="text-lg-right align-items-center d-flex justify-content-end col-md-6" [ngStyle]="{'backgroundColor': 'rgba(0, 0, 0, 0)', 'float': 'right'}">
       <rz-profilemenu #profilemenu1 [style]="{'display': 'block'}" *ngIf="security?.isAuthenticated()" (click)="profilemenu1Click($event)">
         <rz-profilemenu-item icon="account_circle" path="benutzer-profil" text="Benutzerprofil" *ngIf="security?.isInRole(['Authenticated'])">
         </rz-profilemenu-item>
@@ -32,7 +28,7 @@
     </div>
   </div>
 </rz-header>
-<rz-body #body0>
+<rz-body #body0 [style]="{'backgroundColor': 'rgba(247, 16, 16, 0)'}">
   <rz-content-container #main name="main">
   </rz-content-container>
 </rz-body>
@@ -55,7 +51,7 @@
   </rz-label>
   <rz-label #label0 [style]="{'color': '#e5ecef', 'float': 'none', 'marginTop': '-6px', 'paddingLeft': '10px', 'paddingRight': '10px'}" text="|">
   </rz-label>
-  <rz-label #label4 [style]="{'color': '#6d787d', 'float': 'none', 'marginTop': '-6px'}" text="Braunau/Inn  · Industriezeile 10">
+  <rz-label #label4 [style]="{'color': '#6d787d', 'float': 'none', 'marginTop': '-6px'}" text="Braunau/Inn · Industriezeile 10">
   </rz-label>
   <rz-link #linkVersion path="versionen" [style]="{'float': 'right', 'marginTop': '-2px'}" text="Version 1.01.024">
   </rz-link>

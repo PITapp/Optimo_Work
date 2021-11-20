@@ -6,7 +6,7 @@
           "class": "justify-content-start align-items-center",
           "components": [
             {
-              "class": "d-flex align-items-center  col-md-3 justify-content-start",
+              "class": "d-flex align-items-center   justify-content-start col-md-6",
               "components": [
                 {
                   "attributes": [],
@@ -44,8 +44,8 @@
                   "style": {
                     "color": "#A71330",
                     "float": "none",
-                    "fontSize": "14px",
-                    "fontWeight": "bold"
+                    "fontFamily": "courier new,courier,monospace",
+                    "fontWeight": "normal"
                   },
                   "text": "work",
                   "type": "label",
@@ -60,31 +60,8 @@
               "type": "col"
             },
             {
-              "class": "col-md-6 justify-content-center d-flex",
-              "components": [],
-              "name": "col0",
-              "style": {
-                "backgroundColor": "rgba(0, 0, 0, 0)",
-                "verticalAlign": "baseline"
-              },
-              "type": "col"
-            },
-            {
-              "class": "text-lg-right align-items-center d-flex justify-content-end col-md-3",
+              "class": "text-lg-right align-items-center d-flex justify-content-end col-md-6",
               "components": [
-                {
-                  "icon": "description",
-                  "name": "link1",
-                  "path": "",
-                  "style": {
-                    "color": "#575757",
-                    "fontSize": "22px",
-                    "marginRight": "20px"
-                  },
-                  "text": "",
-                  "type": "link",
-                  "visible": false
-                },
                 {
                   "items": [
                     {
@@ -148,10 +125,14 @@
             }
           ],
           "name": "headerRow",
+          "style": {},
           "type": "row"
         }
       ],
       "name": "header0",
+      "style": {
+        "borderBottom": "1px dotted #a71330"
+      },
       "type": "header"
     },
     {
@@ -162,6 +143,9 @@
         }
       ],
       "name": "body0",
+      "style": {
+        "backgroundColor": "rgba(247, 16, 16, 0)"
+      },
       "type": "body"
     },
     {
@@ -237,7 +221,7 @@
             "float": "none",
             "marginTop": "-6px"
           },
-          "text": "Braunau/Inn  · Industriezeile 10",
+          "text": "Braunau/Inn · Industriezeile 10",
           "type": "label"
         },
         {

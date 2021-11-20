@@ -6,11 +6,13 @@ using Microsoft.Data.SqlClient;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using Microsoft.AspNetCore.Mvc;
+
 using Microsoft.AspNet.OData;
 using Microsoft.AspNet.OData.Routing;
+using Microsoft.AspNet.OData.Query;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.AspNet.OData.Query;
 
 
 
@@ -115,6 +117,7 @@ namespace OptimoWork.Controllers.DbOptimo
             this.context.SaveChanges();
 
             var itemToReturn = this.context.InventurBases.Where(i => i.InventurID == key);
+            Request.QueryString = Request.QueryString.Add("$expand", "InventurBasisStatus");
             return new ObjectResult(SingleResult.Create(itemToReturn));
         }
         catch(Exception ex)
@@ -150,6 +153,7 @@ namespace OptimoWork.Controllers.DbOptimo
             this.context.SaveChanges();
 
             var itemToReturn = this.context.InventurBases.Where(i => i.InventurID == key);
+            Request.QueryString = Request.QueryString.Add("$expand", "InventurBasisStatus");
             return new ObjectResult(SingleResult.Create(itemToReturn));
         }
         catch(Exception ex)
@@ -181,7 +185,16 @@ namespace OptimoWork.Controllers.DbOptimo
             this.context.InventurBases.Add(item);
             this.context.SaveChanges();
 
-            return Created($"odata/DbOptimo/InventurBases/{item.InventurID}", item);
+            var key = item.InventurID;
+
+            var itemToReturn = this.context.InventurBases.Where(i => i.InventurID == key);
+
+            Request.QueryString = Request.QueryString.Add("$expand", "InventurBasisStatus");
+
+            return new ObjectResult(SingleResult.Create(itemToReturn))
+            {
+                StatusCode = 201
+            };
         }
         catch(Exception ex)
         {

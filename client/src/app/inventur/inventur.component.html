@@ -3,29 +3,35 @@
     <div class="justify-content-start       d-flex align-items-center          col-md-8" [ngStyle]="{'height': '57px', 'paddingBottom': '1px'}">
       <rz-heading #heading18 size="H1" [style]="{'color': '#5d717b', 'display': 'inline-block'}" text="Inventur">
       </rz-heading>
-      <rz-heading #heading19 size="H3" [style]="{'color': '#e5ecef', 'display': 'inline-block', 'marginTop': '7px', 'paddingLeft': '10px', 'paddingRight': '10px'}" text="|">
+      <rz-heading #heading19 size="H3" [style]="{'color': '#6A80AA', 'display': 'inline-block', 'marginTop': '7px', 'paddingLeft': '10px', 'paddingRight': '10px'}" text="|">
       </rz-heading>
-      <rz-heading #heading21 size="H3" [style]="{'color': '#789BC0', 'display': 'inline', 'fontSize': '21px', 'fontWeight': 'normal'}" text="Infoanzeige für das Modul" >
+      <rz-heading #heading21 size="H3" [style]="{'color': '#6A80AA', 'display': 'inline', 'fontSize': '21px', 'fontWeight': 'normal'}" text="Optimo Schlafsysteme GmbH" >
       </rz-heading>
     </div>
     <div class="col-md-4  d-flex justify-content-end align-items-end" [ngStyle]="{'paddingRight': '20px'}">
-      <rz-button #button1 buttonStyle="info" buttonType="submit" icon="print" size="md" [style]="{'backgroundColor': 'rgb(230, 236, 239)', 'borderBottom': '2px solid #a71330', 'color': '#5d717d', 'display': 'block', 'fontWeight': 'normal', 'width': '150px'}" text="Drucken" (click)="button1Click($event)">
+      <rz-button #button1 buttonStyle="info" buttonType="submit" icon="print" size="md" [style]="{'backgroundColor': '#E6ECEF', 'borderBottom': '2px solid #a71330', 'color': '#5d717d', 'display': 'block', 'fontWeight': 'normal', 'width': '150px'}" text="Drucken" (click)="button1Click($event)">
       </rz-button>
     </div>
   </div>
   <rz-tabs #tabs0 [style]="{'float': 'none'}">
-    <rz-tabs-item [selected]="true" text="Daten">
+    <rz-tabs-item [selected]="false" text="Lagerorte">
       <div class="row">
         <div class="col-md-7">
-          <rz-panel #panel1 [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="Beispiel">
+          <rz-panel #panel1 [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="{{rstLagerorteCount}} Lagerorte">
+            <rz-grid #gridLagerorte [allowAdd]="false" [allowColumnReorder]="true" [allowColumnResize]="true" [allowDelete]="false" [allowFiltering]="true" [allowMultiSorting]="false" [allowPaging]="true" [allowSorting]="true" [alwaysShowPager]="false" applyFilterText="Anwenden" clearFilterText="Entfernen" columnResizeMode="expand" [confirmDelete]="false" containsText="Enthält" [count]="rstLagerorteCount" [data]="rstLagerorte" emptyText="Keine Lagerorte vorhanden" endsWithText="Endet mit" equalsText="Gleich" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Größer oder gleich" greaterThanText="Größer" [isLoading]="false" lessThanOrEqualsText="Kleiner oder gleich" lessThanText="Kleiner" locale="de-at" notEqualsText="Nicht Gleich" [pageSize]="20" [responsive]="true" startsWithText="Beginnt mit" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '700px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}" (loadData)="gridLagerorteLoadData($event)" (rowDoubleClick)="gridLagerorteRowDoubleClick($event)" (rowSelect)="gridLagerorteRowSelect($event)">
+              <rz-grid-column property="LagerortNummer" title="Nummer" width="100px" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="LagerortTitel" title="Titel" width="300px" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="LagerortStatus" title="Status" width="200px" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="Notiz" title="Notiz" type="string">
+              </rz-grid-column>
+            </rz-grid>
             <rz-panel-header>
               <div class="row">
                 <div class="col-md-12 align-items-start d-flex">
-                  <rz-button #buttonNeuerInfotext buttonStyle="light" icon="add" size="sm" [style]="{'color': '#A71330', 'display': 'block'}" text="Neu">
-                  </rz-button>
-                  <rz-button #buttonBearbeitenInfotext buttonStyle="light" icon="create" size="sm" [style]="{'color': '#6A80AA', 'display': 'block', 'marginLeft': '10px', 'paddingLeft': ''}" tooltip="Bearbeiten Infotext">
-                  </rz-button>
-                  <rz-button #buttonLoeschenInfotext buttonStyle="light" [disabled]="false" icon="cancel" size="sm" [style]="{'color': '#6A80AA', 'display': 'block', 'fontStyle': 'normal', 'fontWeight': 'normal', 'marginLeft': '10px', 'marginRight': '-9px'}" tooltip="Löschen Infotext">
+                  <rz-button #buttonLagerortBearbeiten buttonStyle="light" buttonType="button" icon="create" size="sm" [style]="{'color': '#6A80AA', 'display': 'block', 'marginRight': '-9px', 'marginTop': '1px'}" text="Bearbeiten" (click)="buttonLagerortBearbeitenClick($event)">
                   </rz-button>
                 </div>
               </div>
@@ -33,47 +39,27 @@
           </rz-panel>
         </div>
         <div class="col-md-5" [ngStyle]="{'paddingLeft': '5px'}">
-          <rz-panel #panel0 [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="Beispiel">
-            <rz-panel-header>
-              <div class="row">
-                <div class="col-md-12 align-items-start d-flex">
-                  <rz-button #buttonKopieren buttonStyle="light" icon="content_copy" size="sm" [style]="{'color': '#A71330', 'display': 'block', 'float': 'none'}" text="Kopieren">
-                  </rz-button>
-                  <rz-button #buttonBearbeitenInfotextEditor buttonStyle="light" buttonType="button" icon="create" size="sm" [style]="{'color': '#6A80AA', 'display': 'block', 'marginLeft': '10px', 'marginRight': '-9px', 'marginTop': '1px'}" text="Bearbeiten">
-                  </rz-button>
-                </div>
-              </div>
-            </rz-panel-header>
-          </rz-panel>
-        </div>
-      </div>
-    </rz-tabs-item>
-    <rz-tabs-item [selected]="false" text="Lagerorte">
-      <div [ngStyle]="{'height': '100%'}" class="row">
-        <div class="col-md-12" [ngStyle]="{'display': 'block', 'float': 'none'}">
-          <rz-panel #panel2 [style]="{'border': '1px solid #e6ecef', 'display': 'block', 'height': '750px'}" text="{{rstInventurBasisCount}} Lagerorte">
-            <rz-grid #gridLagerorte [allowAdd]="false" [allowColumnReorder]="true" [allowColumnResize]="true" [allowDelete]="false" [allowFiltering]="true" [allowMultiSorting]="true" [allowPaging]="true" [allowSorting]="true" [alwaysShowPager]="false" applyFilterText="Anwenden" clearFilterText="Entfernen" columnResizeMode="expand" [confirmDelete]="false" containsText="Enthält" [count]="rstInventurBasisCount" [data]="rstInventurBasis" emptyText="Keine Lagerorte gefunden" endsWithText="Endet mit" equalsText="Gleich" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Größer oder gleich" greaterThanText="Größer" [isLoading]="false" lessThanOrEqualsText="Kleiner oder gleich" lessThanText="Kleiner" locale="de-at" notEqualsText="Nicht Gleich" [pageSize]="20" [responsive]="true" startsWithText="Beginnt mit" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '700px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}" (loadData)="gridLagerorteLoadData($event)" (rowSelect)="gridLagerorteRowSelect($event)">
-              <rz-grid-column property="AuftragCode" title="Auftrag Code" width="50px" type="string">
+          <rz-panel #panel0 [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="Erfassung: {{dsoLagerort?.LagerortNummer}} {{dsoLagerort?.LagerortTitel}}">
+            <rz-grid #gridErfassung [allowAdd]="false" [allowColumnReorder]="true" [allowColumnResize]="true" [allowDelete]="false" [allowFiltering]="true" [allowMultiSorting]="false" [allowPaging]="true" [allowSorting]="true" [alwaysShowPager]="false" applyFilterText="Anwenden" clearFilterText="Entfernen" columnResizeMode="expand" [confirmDelete]="false" containsText="Enthält" [count]="rstErfassungCount" [data]="rstErfassung" emptyText="Keine Erfassung vorhanden" endsWithText="Endet mit" equalsText="Gleich" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Größer oder gleich" greaterThanText="Größer" [isLoading]="false" lessThanOrEqualsText="Kleiner oder gleich" lessThanText="Kleiner" locale="de-at" notEqualsText="Nicht Gleich" [pageSize]="20" [responsive]="true" startsWithText="Beginnt mit" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '700px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}" (loadData)="gridErfassungLoadData($event)" (rowDoubleClick)="gridErfassungRowDoubleClick($event)" (rowSelect)="gridErfassungRowSelect($event)">
+              <rz-grid-column format="date-time" formatString="medium" property="ErfasstAm" title="Erfasst Am" type="string">
               </rz-grid-column>
-              <rz-grid-column property="ErfassungNr" title="Erfassung Nr" width="50px" type="integer">
+              <rz-grid-column property="ErfasstAnzahl" title="Erfasst Anzahl" type="integer">
               </rz-grid-column>
-              <rz-grid-column property="Lagerort" title="Lagerort" width="150px" type="string">
+              <rz-grid-column format="date-time" formatString="medium" property="GeloeschtAm" title="Geloescht Am" type="string">
               </rz-grid-column>
-              <rz-grid-column property="Beschreibung" title="Beschreibung" width="250px" type="string">
+              <rz-grid-column property="Artikelnummer" title="Artikelnummer" type="string">
               </rz-grid-column>
-              <rz-grid-column property="Status" title="Status" width="50px" type="string">
+              <rz-grid-column property="Beschreibung" title="Beschreibung" type="string">
               </rz-grid-column>
-              <rz-grid-column property="Verantwortlich" title="Verantwortlich" width="120px" type="string">
+              <rz-grid-column property="Beschreibung2" title="Beschreibung 2" type="string">
               </rz-grid-column>
-              <rz-grid-column property="Notiz" title="Notiz" width="150px" type="string">
+              <rz-grid-column property="StdKreditorName" title="Std Kreditor Name" type="string">
               </rz-grid-column>
             </rz-grid>
             <rz-panel-header>
-              <div class="row justify-content-center">
-                <div class="col-md-12  d-flex align-items-start">
-                  <rz-button #buttonExport buttonStyle="light" icon="publish" size="sm" [style]="{'color': '#A71330', 'display': 'block'}" text="Export" (click)="buttonExportClick($event)">
-                  </rz-button>
-                  <rz-button #button0 buttonStyle="light" icon="get_app" size="sm" [style]="{'color': '#A71330', 'display': 'block', 'marginLeft': '10px', 'marginRight': '-9px'}" text="Import" (click)="button0Click($event)">
+              <div class="row">
+                <div class="col-md-12 align-items-start d-flex">
+                  <rz-button #buttonBearbeitenProtokoll buttonStyle="light" buttonType="button" icon="create" size="sm" [style]="{'color': '#6A80AA', 'display': 'block', 'marginRight': '-9px', 'marginTop': '1px'}" text="Bearbeiten">
                   </rz-button>
                 </div>
               </div>

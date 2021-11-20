@@ -14,13 +14,6 @@ namespace OptimoWork.Models.DbOptimo
       get;
       set;
     }
-    public int BenutzerID
-    {
-      get;
-      set;
-    }
-
-    public Benutzer Benutzer { get; set; }
     public int ArtikelID
     {
       get;
@@ -34,6 +27,11 @@ namespace OptimoWork.Models.DbOptimo
       set;
     }
     public int ErfasstAnzahl
+    {
+      get;
+      set;
+    }
+    public DateTime? GeloeschtAm
     {
       get;
       set;

@@ -17,6 +17,8 @@ import * as Quill from 'quill/dist/quill';
 (<any>window).Quill = Quill;
 import { EditorModule } from 'primeng/editor';
 
+npm uninstall --save <package_name>
+
 
 
 # push an existing repository from the command line

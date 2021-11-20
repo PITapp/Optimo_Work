@@ -12,7 +12,8 @@
     "client\\src\\assets\\icon-128x128.png",
     "client\\src\\assets\\icon-152x152.png",
     "client\\src\\assets\\icon-256x256.png",
-    "client\\src\\assets\\icon-512x512.png"
+    "client\\src\\assets\\icon-512x512.png",
+    "client\\src\\assets\\css\\default.css"
   ],
   "javaScriptFiles": [],
   "layouts": [
@@ -53,7 +54,8 @@
     "zz Muster - Kontakte",
     "MeldungOK",
     "MeldungFortschritt",
-    "NotizenEditor"
+    "NotizenEditor",
+    "InventurLagerorteBearbeiten"
   ],
   "port": 8000,
   "security": {
@@ -173,7 +175,7 @@
     "$grid-toolbar-background-color": "#ffffff",
     "$header-background-color": "#ffffff",
     "$header-border": "1px solid #eaeef0",
-    "$info": "#23b7e5",
+    "$info": "#68d5c8",
     "$input-background-color": "#ffffff",
     "$input-border": "1px solid #dadfe2",
     "$input-border-radius": "4px",
@@ -231,9 +233,9 @@
     "$picklist-list-background-color": "#ffffff",
     "$picklist-list-border": "1px solid #dadfe2",
     "$picklist-list-border-radius": "4px",
-    "$primary": "#A71330",
+    "$primary": "#a71330",
     "$profile-menu-background-color": "#ffffff",
-    "$profile-menu-border": "1px solid #575757",
+    "$profile-menu-border": "1px solid #eaeef0",
     "$profile-menu-toggle-button-color": "#479cc8",
     "$progressbar-background-color": "#e6ecef",
     "$progressbar-border-radius": "4px",
@@ -267,7 +269,7 @@
     "$scheduler-view-selected-color": "#ffffff",
     "$scrollbar-background-color": "#ffffff",
     "$scrollbar-border-radius": "8px",
-    "$scrollbar-color": "#dbebf8",
+    "$scrollbar-color": "#479cc8",
     "$secondary": "#479cc8",
     "$selectbar-background-color": "#ffffff",
     "$selectbar-border": "1px solid #dadfe2",
@@ -320,7 +322,7 @@
     "$tabs-border-radius": "4px",
     "$tabs-hover-background-color": "#ffffff",
     "$tabs-hover-color": "#ffffff",
-    "$tabs-tab-background-color": "#e6ecef",
+    "$tabs-tab-background-color": "rgba(0, 0, 0, 0)",
     "$tabs-tab-color": "rgba(58,71,77,.5)",
     "$tabs-tab-selected-top-border-color": "#A71330",
     "$timepicker-background-color": "#e6ecef",

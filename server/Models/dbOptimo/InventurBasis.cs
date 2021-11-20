@@ -18,6 +18,13 @@ namespace OptimoWork.Models.DbOptimo
 
 
     public ICollection<InventurArtikel> InventurArtikels { get; set; }
+    public string LagerortStatus
+    {
+      get;
+      set;
+    }
+
+    public InventurBasisStatus InventurBasisStatus { get; set; }
     public string AuftragCode
     {
       get;
@@ -38,7 +45,12 @@ namespace OptimoWork.Models.DbOptimo
       get;
       set;
     }
-    public string Status
+    public string LagerortNummer
+    {
+      get;
+      set;
+    }
+    public string LagerortTitel
     {
       get;
       set;

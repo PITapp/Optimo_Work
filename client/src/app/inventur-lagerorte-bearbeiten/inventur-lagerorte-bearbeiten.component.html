@@ -1,0 +1,62 @@
+<rz-content #content1 container="main">
+  <div class="row">
+    <div class="col-md-12">
+      <rz-template-form #form0 (submit)="form0Submit($event)">
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3">
+            <rz-label #lagerortNummerLabel component="LagerortNummer" [style]="{'width': '100%'}" text="Nummer">
+            </rz-label>
+          </div>
+          <div class="col-md-9">
+            <rz-textbox #lagerortNummer [maxLength]="10" [style]="{'display': 'block', 'width': '100%'}" [(ngModel)]="dsoLagerort && dsoLagerort.LagerortNummer" name="LagerortNummer">
+            </rz-textbox>
+            <rz-required-validator #lagerortNummerRequiredValidator [component]="lagerortNummer" [style]="{'position': 'absolute'}" text="LagerortNummer is required">
+            </rz-required-validator>
+          </div>
+        </div>
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3">
+            <rz-label #lagerortTitelLabel component="LagerortTitel" [style]="{'width': '100%'}" text="Titel">
+            </rz-label>
+          </div>
+          <div class="col-md-9">
+            <rz-textbox #lagerortTitel [maxLength]="70" [style]="{'display': 'block', 'width': '100%'}" [(ngModel)]="dsoLagerort && dsoLagerort.LagerortTitel" name="LagerortTitel">
+            </rz-textbox>
+            <rz-required-validator #lagerortTitelRequiredValidator [component]="lagerortTitel" [style]="{'position': 'absolute'}" text="LagerortTitel is required">
+            </rz-required-validator>
+          </div>
+        </div>
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3">
+            <rz-label #lagerortStatusLabel component="LagerortStatus" [style]="{'width': '100%'}" text="Status">
+            </rz-label>
+          </div>
+          <div class="col-md-9">
+            <rz-dropdown #lagerortStatus [data]="rstLagerorteStatus" emptyFilterText="No results found" multipleItemsSelectedText="{0} items selected" [style]="{'display': 'block', 'width': '100%'}" textProperty="LagerortStatus" [(ngModel)]="dsoLagerort && dsoLagerort.LagerortStatus" valueProperty="LagerortStatus" name="LagerortStatus">
+            </rz-dropdown>
+            <rz-required-validator #lagerortStatusRequiredValidator [component]="lagerortStatus" [style]="{'position': 'absolute'}" text="LagerortStatus is required">
+            </rz-required-validator>
+          </div>
+        </div>
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3">
+            <rz-label #notizLabel component="Notiz" [style]="{'width': '100%'}" text="Notiz">
+            </rz-label>
+          </div>
+          <div class="col-md-9">
+            <rz-textarea #notiz [rows]="4" [style]="{'width': '100%'}" [(ngModel)]="dsoLagerort && dsoLagerort.Notiz" name="Notiz">
+            </rz-textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col offset-sm-3 justify-content-end d-flex" [ngStyle]="{}">
+            <rz-button #button1 buttonStyle="success" buttonType="submit" icon="done" [style]="{}" text="Speichern">
+            </rz-button>
+            <rz-button #button2 buttonStyle="light" [style]="{'marginLeft': '1rem'}" text="Abbruch" (click)="button2Click($event)">
+            </rz-button>
+          </div>
+        </div>
+      </rz-template-form>
+    </div>
+  </div>
+</rz-content>
