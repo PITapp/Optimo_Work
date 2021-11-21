@@ -12,8 +12,8 @@
   --white: #ffffff;
   --gray: #6c757d;
   --gray-dark: #343a40;
-  --primary: #a71330;
-  --secondary: #479cc8;
+  --primary: #FEA21D;
+  --secondary: #80a4ab;
   --success: #5dbf74;
   --info: #68d5c8;
   --warning: #e6c54f;
@@ -25,7 +25,7 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "Source Sans Pro", sans-serif;
+  --font-family-sans-serif: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -127,7 +127,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
   margin: 0;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -224,13 +224,13 @@ sup {
 }
 
 a {
-  color: #479cc8;
+  color: #FEA21D;
   text-decoration: none;
   background-color: transparent;
 }
 
 a:hover {
-  color: #479cc8;
+  color: #FEA21D;
   text-decoration: underline;
 }
 
@@ -1274,9 +1274,9 @@ template {
 .form-control:focus {
   color: #495057;
   background-color: #ffffff;
-  border-color: #eb4f6d;
+  border-color: #ffd69c;
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(167, 19, 48, 0.25);
+  box-shadow: 0 0 0 0.2rem rgba(254, 162, 29, 0.25);
 }
 
 .form-control::placeholder {
@@ -1764,33 +1764,33 @@ a.badge:hover, a.badge:focus {
 }
 
 .badge-primary {
-  color: #ffffff;
-  background-color: #a71330;
+  color: #212529;
+  background-color: #FEA21D;
 }
 
 a.badge-primary:hover, a.badge-primary:focus {
-  color: #ffffff;
-  background-color: #790e23;
+  color: #212529;
+  background-color: #e78901;
 }
 
 a.badge-primary:focus, a.badge-primary.focus {
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(167, 19, 48, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(254, 162, 29, 0.5);
 }
 
 .badge-secondary {
-  color: #ffffff;
-  background-color: #479cc8;
+  color: #212529;
+  background-color: #80a4ab;
 }
 
 a.badge-secondary:hover, a.badge-secondary:focus {
-  color: #ffffff;
-  background-color: #3381a9;
+  color: #212529;
+  background-color: #638d95;
 }
 
 a.badge-secondary:focus, a.badge-secondary.focus {
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(71, 156, 200, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(128, 164, 171, 0.5);
 }
 
 .badge-success {
@@ -1912,31 +1912,31 @@ a.badge-dark:focus, a.badge-dark.focus {
 }
 
 .alert-primary {
-  color: #590c1b;
-  background-color: #edd0d6;
-  border-color: #e6bdc5;
+  color: #865611;
+  background-color: #ffecd2;
+  border-color: #ffe5c0;
 }
 
 .alert-primary hr {
-  border-top-color: #dfabb5;
+  border-top-color: #ffdaa7;
 }
 
 .alert-primary .alert-link {
-  color: #2c060d;
+  color: #59390b;
 }
 
 .alert-secondary {
-  color: #27536a;
-  background-color: #daebf4;
-  border-color: #cbe3f0;
+  color: #44575b;
+  background-color: #e6edee;
+  border-color: #dbe6e7;
 }
 
 .alert-secondary hr {
-  border-top-color: #b7d8ea;
+  border-top-color: #ccdbdd;
 }
 
 .alert-secondary .alert-link {
-  color: #193645;
+  color: #2e3b3e;
 }
 
 .alert-success {
@@ -2057,23 +2057,23 @@ a.badge-dark:focus, a.badge-dark.focus {
 }
 
 .bg-primary {
-  background-color: #a71330 !important;
+  background-color: #FEA21D !important;
 }
 
 a.bg-primary:hover, a.bg-primary:focus,
 button.bg-primary:hover,
 button.bg-primary:focus {
-  background-color: #790e23 !important;
+  background-color: #e78901 !important;
 }
 
 .bg-secondary {
-  background-color: #479cc8 !important;
+  background-color: #80a4ab !important;
 }
 
 a.bg-secondary:hover, a.bg-secondary:focus,
 button.bg-secondary:hover,
 button.bg-secondary:focus {
-  background-color: #3381a9 !important;
+  background-color: #638d95 !important;
 }
 
 .bg-success {
@@ -2185,11 +2185,11 @@ button.bg-dark:focus {
 }
 
 .border-primary {
-  border-color: #a71330 !important;
+  border-color: #FEA21D !important;
 }
 
 .border-secondary {
-  border-color: #479cc8 !important;
+  border-color: #80a4ab !important;
 }
 
 .border-success {
@@ -5214,19 +5214,19 @@ button.bg-dark:focus {
 }
 
 .text-primary {
-  color: #a71330 !important;
+  color: #FEA21D !important;
 }
 
 a.text-primary:hover, a.text-primary:focus {
-  color: #620b1c !important;
+  color: #ce7a01 !important;
 }
 
 .text-secondary {
-  color: #479cc8 !important;
+  color: #80a4ab !important;
 }
 
 a.text-secondary:hover, a.text-secondary:focus {
-  color: #2d7296 !important;
+  color: #597f86 !important;
 }
 
 .text-success {
@@ -6999,7 +6999,7 @@ p-button[type] {
 }
 
 .ui-button.btn-primary, .btn-primary.ui-paginator-element {
-  background-color: #a71330;
+  background-color: #FEA21D;
 }
 
 .ui-button.btn-light, .btn-light.ui-paginator-element {
@@ -7008,7 +7008,7 @@ p-button[type] {
 }
 
 .ui-button.btn-secondary, .btn-secondary.ui-paginator-element {
-  background-color: #479cc8;
+  background-color: #80a4ab;
 }
 
 .ui-button.btn-info, .btn-info.ui-paginator-element {
@@ -7125,8 +7125,8 @@ p-button[type] {
 }
 
 .ui-spinner.ui-state-disabled .ui-inputtext, .ui-calendar.ui-state-disabled .ui-inputtext .ui-inputtext, .ui-picklist.ui-state-disabled .ui-inputtext, .ui-listbox.ui-state-disabled .ui-inputtext, .ui-autocomplete-input:disabled .ui-inputtext, .ui-state-disabled.ui-multiselect .ui-inputtext, .ui-state-disabled.ui-dropdown .ui-inputtext, .ui-radiobutton-box.ui-state-disabled .ui-inputtext, .ui-chkbox-box.ui-state-disabled .ui-inputtext, .rz-colorpicker:disabled .ui-inputtext, .ui-lookup-search input:disabled .ui-inputtext, .ui-spinner:disabled .ui-inputtext, .ui-calendar .ui-inputtext:disabled .ui-inputtext, .ui-multiselect:disabled .ui-inputtext, .ui-dropdown:disabled .ui-inputtext, .mask:disabled .ui-inputtext, .textarea:disabled .ui-inputtext, .textbox:disabled .ui-inputtext {
-  background-color: rgba(255, 255, 255, 0.7);
-  color: rgba(58, 58, 58, 0.4);
+  background-color: transparent;
+  color: inherit;
 }
 
 input {
@@ -7498,64 +7498,6 @@ p-accordiontab {
   margin: 0 0.625rem 0 0;
 }
 
-.rz-menu-toggle-item {
-  display: none;
-  padding: 0.8125rem 0.625rem;
-  text-align: right;
-  width: 100%;
-  height: 100%;
-}
-
-.rz-menu-toggle {
-  appearance: none;
-  background-color: transparent;
-  border: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-}
-
-.rz-menu-toggle:active {
-  background-color: transparent;
-  color: inherit;
-}
-
-@media (max-width: 768px) {
-  .rz-menu-toggle-item {
-    display: block;
-  }
-  .menu:not(.profile-menu).rz-menu-closed .navigation-item {
-    display: none;
-  }
-  .menu:not(.profile-menu) .rz-menu-toggle .material-icons, .menu:not(.profile-menu) .rz-menu-toggle .fc-prev-button .ui-icon, .fc-prev-button .menu:not(.profile-menu) .rz-menu-toggle .ui-icon,
-.menu:not(.profile-menu) .rz-menu-toggle .fc-next-button .ui-icon,
-.fc-next-button .menu:not(.profile-menu) .rz-menu-toggle .ui-icon, .menu:not(.profile-menu) .rz-menu-toggle .ui-datatable-loading-content .fa-circle-o-notch, .ui-datatable-loading-content .menu:not(.profile-menu) .rz-menu-toggle .fa-circle-o-notch, .menu:not(.profile-menu) .rz-menu-toggle .ui-datatable-header .fa-plus, .ui-datatable-header .menu:not(.profile-menu) .rz-menu-toggle .fa-plus, .menu:not(.profile-menu) .rz-menu-toggle .ui-sortable-column .fa, .ui-sortable-column .menu:not(.profile-menu) .rz-menu-toggle .fa, .menu:not(.profile-menu) .rz-menu-toggle .ui-datatable .fa-chevron-circle-down, .ui-datatable .menu:not(.profile-menu) .rz-menu-toggle .fa-chevron-circle-down, .menu:not(.profile-menu) .rz-menu-toggle .ui-datatable .fa-chevron-circle-right, .ui-datatable .menu:not(.profile-menu) .rz-menu-toggle .fa-chevron-circle-right, .menu:not(.profile-menu) .rz-menu-toggle .ui-fileupload-row .ui-button .fa-close, .menu:not(.profile-menu) .rz-menu-toggle .ui-fileupload-row .ui-paginator-element .fa-close, .ui-fileupload-row .ui-button .menu:not(.profile-menu) .rz-menu-toggle .fa-close, .ui-fileupload-row .ui-paginator-element .menu:not(.profile-menu) .rz-menu-toggle .fa-close,
-.menu:not(.profile-menu) .rz-menu-toggle .ui-fileupload-row .ui-button .pi-times,
-.menu:not(.profile-menu) .rz-menu-toggle .ui-fileupload-row .ui-paginator-element .pi-times,
-.ui-fileupload-row .ui-button .menu:not(.profile-menu) .rz-menu-toggle .pi-times,
-.ui-fileupload-row .ui-paginator-element .menu:not(.profile-menu) .rz-menu-toggle .pi-times,
-.menu:not(.profile-menu) .rz-menu-toggle .ui-fileupload-row .ui-button .ui-icon-trash,
-.menu:not(.profile-menu) .rz-menu-toggle .ui-fileupload-row .ui-paginator-element .ui-icon-trash,
-.ui-fileupload-row .ui-button .menu:not(.profile-menu) .rz-menu-toggle .ui-icon-trash,
-.ui-fileupload-row .ui-paginator-element .menu:not(.profile-menu) .rz-menu-toggle .ui-icon-trash {
-    margin: 0;
-  }
-  .menu:not(.profile-menu).rz-menu-open {
-    display: block;
-  }
-  .menu:not(.profile-menu).rz-menu-open .navigation-item {
-    background-color: inherit;
-  }
-  .menu:not(.profile-menu).rz-menu-open .navigation-menu {
-    position: static;
-    box-shadow: none;
-  }
-  .menu:not(.profile-menu) .navigation-item-wrapper-active:before {
-    display: none !important;
-  }
-}
-
 .panel-menu {
   list-style: none;
   padding: 0;
@@ -7566,7 +7508,7 @@ p-accordiontab {
 }
 
 .panel-menu .navigation-item {
-  border-bottom: 1px solid #363d40;
+  border-bottom: 1px solid #edebe9;
 }
 
 .panel-menu .navigation-item-active {
@@ -7594,7 +7536,7 @@ p-accordiontab {
   top: 0;
   bottom: 0;
   width: 4px;
-  background-color: #479cc8;
+  background-color: #FEA21D;
 }
 
 .panel-menu .navigation-item-link {
@@ -7712,7 +7654,7 @@ ul.profile-menu .navigation-menu .navigation-item-wrapper {
 }
 
 ul.profile-menu .navigation-menu .navigation-item-wrapper:hover {
-  background-color: #479cc8;
+  background-color: #FEA21D;
   color: #ffffff;
 }
 
@@ -7947,12 +7889,12 @@ ul.profile-menu .navigation-menu .ui-fileupload-row .ui-paginator-element .ui-ic
 }
 
 .ui-chkbox-box.ui-state-active {
-  background-color: #3f8cb3;
+  background-color: #80a4ab;
   border: 1px solid #dadfe2;
 }
 
 .ui-chkbox-box.ui-state-active:hover {
-  background-color: #59a6cd;
+  background-color: #80a4ab;
   border: 1px solid #dadfe2;
 }
 
@@ -7961,12 +7903,6 @@ ul.profile-menu .navigation-menu .ui-fileupload-row .ui-paginator-element .ui-ic
   display: inline-block;
   width: 3rem;
   height: 1.75rem;
-}
-
-.rz-switch .rz-helper-hidden-accessible {
-  opacity: 0;
-  height: 0;
-  overflow: hidden;
 }
 
 .rz-switch-circle {
@@ -7989,7 +7925,7 @@ ul.profile-menu .navigation-menu .ui-fileupload-row .ui-paginator-element .ui-ic
 }
 
 .rz-switch.rz-switch-checked .rz-switch-circle {
-  background: #479cc8;
+  background: #80a4ab;
 }
 
 .rz-switch .rz-switch-circle:before {
@@ -8087,12 +8023,12 @@ p-radiobutton,
 }
 
 .ui-radiobutton-box.ui-state-active {
-  background-color: #3f8cb3;
+  background-color: #80a4ab;
   border: 1px solid #dadfe2;
 }
 
 .ui-radiobutton-box.ui-state-active:hover {
-  background-color: #59a6cd;
+  background-color: #80a4ab;
   box-shadow: inset 0 -3px 0 0 rgba(255, 255, 255, 0.2);
 }
 
@@ -8284,7 +8220,7 @@ p-radiobutton,
 }
 
 .ui-dropdown-item:hover, .ui-menuitem:hover, .ui-autocomplete-list-item:hover, .ui-multiselect-item:hover, .ui-dropdown-items li:hover, .ui-autocomplete-items li:hover, .ui-multiselect-items li:hover, .ui-dropdown-items li:hover, .ui-autocomplete-items li:hover, .ui-multiselect-items li:hover, .ui-multiselect-items li:hover {
-  background-color: #59a6cd;
+  background-color: #80a4ab;
   color: #ffffff;
   border-radius: 0;
 }
@@ -8361,7 +8297,7 @@ p-radiobutton,
 }
 
 .ui-listbox:not(.ui-state-disabled) .ui-listbox-item:hover:hover {
-  background-color: #59a6cd;
+  background-color: #80a4ab;
   color: #ffffff;
   border-radius: 4px;
 }
@@ -8445,7 +8381,7 @@ p-radiobutton,
 }
 
 .ui-picklist:not(.ui-state-disabled) .ui-picklist-item:hover:hover {
-  background-color: #59a6cd;
+  background-color: #80a4ab;
   color: #ffffff;
   border-radius: 4px;
 }
@@ -8455,7 +8391,7 @@ p-radiobutton,
 }
 
 .ui-picklist-droppoint-highlight {
-  background-color: #479cc8;
+  background-color: #FEA21D;
   border-radius: 1px;
 }
 
@@ -8608,7 +8544,7 @@ p-radiobutton,
 .ui-splitbutton-menubutton {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  border-left: 1px solid #e5613a;
+  border-left: 1px solid #475359;
 }
 
 .ui-splitbutton-menubutton .ui-button-text {
@@ -8653,8 +8589,8 @@ p-radiobutton,
   left: -1px;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
-  background-color: rgba(71, 156, 200, 0.3);
-  border: 1px solid #459cca;
+  background-color: #80a4ab;
+  border: 1px solid #598087;
 }
 
 .ui-slider-handle {
@@ -8678,7 +8614,7 @@ p-radiobutton,
 }
 
 .ui-slider:not(.ui-state-disabled) .ui-slider-handle:hover {
-  background-color: #59a6cd;
+  background-color: #80a4ab;
   box-shadow: inset 0 -3px 0 0 rgba(255, 255, 255, 0.2);
 }
 
@@ -9775,7 +9711,7 @@ p-radiobutton,
 }
 
 .rz-grid-filter-active {
-  color: #479cc8;
+  color: #FEA21D;
 }
 
 .ui-paginator {
@@ -9921,7 +9857,7 @@ p-radiobutton,
 }
 
 .ui-treenode-content:not(.ui-treenode-content-selected):hover {
-  background-color: #59a6cd;
+  background-color: #80a4ab;
   color: #ffffff;
   border-radius: 2px;
 }
@@ -10315,14 +10251,14 @@ p-treetabletoggler {
 .ui-tabview-nav li {
   border: 1px solid #dfe7ec;
   border-top-width: 2px;
-  border-bottom-color: rgba(0, 0, 0, 0);
-  background-color: rgba(0, 0, 0, 0);
+  border-bottom-color: #e6ecef;
+  background-color: #e6ecef;
   border-radius: 4px 4px 0 0;
 }
 
 .ui-tabview-nav li:hover:not(.ui-tabview-selected):not(.ui-state-disabled) {
   background-color: #ffffff;
-  border-top-color: #A71330;
+  border-top-color: #D86E13;
 }
 
 .ui-tabview-nav li:hover:not(.ui-tabview-selected):not(.ui-state-disabled) a {
@@ -10350,7 +10286,7 @@ p-treetabletoggler {
   border-bottom-color: #ffffff;
   margin-bottom: -1px;
   position: relative;
-  border-top-color: #A71330;
+  border-top-color: #D86E13;
 }
 
 .ui-tabview-nav .ui-tabview-selected a {
@@ -10528,12 +10464,12 @@ p-treetabletoggler {
 }
 
 .ui-dialog-footer .ui-button:first-child, .ui-dialog-footer .ui-paginator-element:first-child {
-  background-color: #a71330;
+  background-color: #FEA21D;
   width: 80px;
 }
 
 .ui-dialog-footer .ui-button:last-child, .ui-dialog-footer .ui-paginator-element:last-child {
-  background-color: #479cc8;
+  background-color: #80a4ab;
   width: 105px;
 }
 
@@ -10753,12 +10689,12 @@ body:not(.rz-default-scrollbars) ::-webkit-scrollbar-corner {
 }
 
 .login .login-buttons a {
-  color: #479cc8;
+  color: #FEA21D;
   cursor: pointer;
 }
 
 .login .login-buttons a:hover {
-  color: #479cc8;
+  color: #FEA21D;
   text-decoration: underline;
 }
 
@@ -12104,7 +12040,7 @@ a.fc-event .fc-content {
 }
 
 .rz-html-editor-dropdown-item:hover {
-  background-color: #59a6cd;
+  background-color: #80a4ab;
   color: #ffffff;
   border-radius: 0;
 }
@@ -12357,467 +12293,4 @@ a.fc-event .fc-content {
   margin: 4px;
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.25) 0px 0px 4px inset;
-}
-
-
-/* -------------------------------------------------------------------- */
-/* ------- Ab hier werden die eigenen Einstellungen eingetragen ------- */
-/* ------- In Radzen wird in den sttings die Datei default.css von Code-Generierung ausgeschloassen ------- */
-/* -------------------------------------------------------------------- */
-
-/* --- Kopfzeile: verlaufend dunkel --- */
-.header {
-  background-image: linear-gradient(#e2e2e2, #E9E9E9);
-  background-image: linear-gradient(#E7E7E7, #D8D8D8);
-  background-image: linear-gradient(#f3f5f7, #f3f5f7);
-  background-image: linear-gradient(#e2e2e2, #E2E2E2);
-  background-image: linear-gradient(#E6ECEF, #E6ECEF);
-}
-
-.kopfzeileVerlaufend {
-  background-image: linear-gradient(#e2e2e2, #E9E9E9);
-  background-image: linear-gradient(#D8D8D8, #D8D8D8);
-  background-image: linear-gradient(#f3f5f7, #f3f5f7);
-}
-
-/* --- Umschalter für Seitenmenü links --- */
-.sidebar-toggle {
-  border: none;
-  background-color: transparent;
-  color: #575757;
-  font-size: 16px;
-}
-
-.sidebar-toggle:hover {
-  color: #A71330;
-  background: transparent;
-  border-radius: 0;
-}
-
-
-/* --- Profilmenü rechts oben --- */
-ul.profile-menu {
-  background-color: transparent;
-  color: #575757;
-  border-left: 0px solid #a2a2a2;
-}
-
-ul.profile-menu .navigation-item-icon-children {
-  color: #575757;
-}
-
-ul.profile-menu .navigation-menu {
-  background-color: #ffffff;
-  top: calc(100%);
-}
-
-ul.profile-menu .navigation-menu .navigation-item-wrapper:hover {
-  background-color: #A71330;
-}
-
-ul.profile-menu .navigation-menu .navigation-item-wrapper:hover .navigation-item-link {
-  color: whitesmoke;
-}
-
-
-/* --- Einstellungen Seitenmenü links --- */
-.panel-menu {
-  color: #212529;
-  color: #3a474d;
-  background-color: #FFFFFF;
-}
-
-.panel-menu .navigation-item {
-  border-bottom: solid 1px #E6E5E5;
-}
-
-.panel-menu .navigation-item-wrapper:hover {
-  background-color: #A71330;
-  color: #f5f5f5;
-}
-
-.panel-menu .navigation-item-wrapper:hover .navigation-item-icon {
-  color: #f5f5f5;
-}
-
-.panel-menu .navigation-item-icon {
-  color: #727272;
-}
-
-.panel-menu .navigation-item-wrapper-active {
-  background-color: #F4F5F7;
-  color: #A71330;
-}
-
-.panel-menu .navigation-item-wrapper-active .navigation-item-icon {
-  color: #A71330;
-}
-
-.panel-menu .navigation-item-wrapper-active:before {
-  width: 7px;
-  background-color: #A71330;
-}
-
-
-/* --- Einstellungen Seitenmenü links | zweite Ebene --- */
-.panel-menu .navigation-item-active {
-  background-color: #ffffff;
-}
-
-.panel-menu .navigation-menu .navigation-item-wrapper {
-  background-color: #ffffff;
-}
-
-.panel-menu .navigation-menu .navigation-item-wrapper:hover {
-  background-color: #f3f5f7;
-}
-
-.panel-menu .navigation-menu .navigation-item-wrapper-active {
-  background-color: #F4F5F7;
-  color: #A71330;
-}
-
-
-/* --- Dialog für zB Löschabfragen --- */
-.ui-dialog-footer .ui-button:first-child,
-.ui-dialog-footer .ui-paginator-element:first-child {
-  text-align: center !important;
-  width: 120px;
-  margin-right: 10px;
-  background-color: #A71330;
-  color: #ffffff;
-}
-
-.ui-dialog-footer .ui-button:last-child,
-.ui-dialog-footer .ui-paginator-element:last-child {
-  text-align: center !important;
-  width: 120px;
-  background-color: #e6ecef;
-  color: #3a474d;
-}
-
-/* --- Dialog für zB Löschabfragen: Icon in der Schaltfläche ausblenden --- */
-.ui-dialog-footer .ui-button .pi {
-  width: 0;
-}
-
-
-/* --- DropDown Box Höhe einstellen --- */
-.ui-dropdown-items-wrapper,
-.ui-multiselect-items-wrapper {
-  max-height: 500px !important;
-  max-width: 798px !important;
-}
-
-/* --- DataGrit: Hintergrundfarbe des Lösch-Buttons --- */
-/*
-.ui-datatable-data .ui-cell-data .ui-button-sm.ui-button-icon-only {
-  background: #95A5A6;
-  background: #e6ecef;
-}
-*/
-
-/* --- Darstellung des Focus in Eingabefeldern --- */
-input:focus,
-textarea:focus {
-  outline: none;
-  border: 1px solid #A71330;
-  box-shadow: 0px 0px 4px #A71330;
-  -moz-box-shadow: 0px 0px 4px #A71330;
-  -webkit-box-shadow: 0px 0px 4px #A71330;
-}
-
-/* --- Darstellung des Focus in Tabs ausschalten --- */
-.ui-tabview-nav li:focus {
-  outline: none;
-}
-
-/* --- Darstellung des Focus in der Listbox --- */
-.ui-listbox-item:focus {
-  outline: none;
-  border: 0px solid #A71330;
-}
-
-.ui-tabview-nav .ui-tabview-selected {
-  outline: none;
-}
-
-/* --- In den Tabs wird der Zeiger zum Pointer --- */
-.ui-tabview-nav {
-  cursor: pointer;
-}
-
-.ui-tabview-nav li:hover:not(.ui-tabview-selected):not(.ui-state-disabled) a {
-  color: #3a474d;
-}
-
-/* --- Den Überlauf in den Tabs unsichtbar machen --- */
-.ui-tabview-panel {
-  overflow: hidden !important;
-}
-
-/* --- Kopfzeile in Dialogen --- */
-.ui-dialog-titlebar {
-  /* 
-  background-color: #3B4650; 
-  background-color: #424753;
-  */
-  /*
-  background-color: #A71330;
-  background-image: linear-gradient(#F1903C, #A71330);
-  color: whitesmoke;
-  */
-
-  background-color: #E8ECEF;
-  color: #5d717b;
-}
-
-.ui-dialog-titlebar-close {
-  color: whitesmoke;
-  color: #5d717b;
-}
-
-.ui-dialog-titlebar-close .pi-times:before {
-  color: whitesmoke;
-  color: #5d717b;
-}
-
-
-/* --- Der Icon für den DataPicker wird falsch angezeigt. Mit dieser Einstellung wird er wieder in das Eingabefeld gesetzt --- */
-.ui-datepicker-trigger {
-  right: 190px;
-}
-
-/* --- Panel: Farbe des Titels und Abstand --- */
-.ui-panel-title {
-  color: #6A80AA;
-  padding-top: 3px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* --- Den Überlauf im Panel unsichtbar machen --- */
-.ui-panel {
-  overflow: hidden !important;
-}
-
-/* --- DataGrid: Die Ecken rundum abgerundet --- */
-.ui-datatable {
-  border-radius: 4px;
-}
-
-.ui-datatable-header {
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-}
-
-/* --- Damit wird verhindert, dass bei einem Popup auf der rechten Seite im Hintergrund ein rand eingeschalten wird --- */
-.no-scroll {
-  padding-right: 0px;
-}
-
-/* --- Notification Position einstellen --- */
-.ui-growl {
-  top: 50px;
-  right: 16px;
-}
-
-/* --- Zeilenumbruch verhindern und am Ende drei Punkte anzeigen --- */
-.kein-zeilenumbruch {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* --- Höhe der Zeilen in DataGrid --- */
-.ui-datatable-data td {
-  padding: 3px 0.625rem 3px 0.625rem;
-}
-
-/* --- Höhe der Kopfzeile in DataGrid --- */
-.ui-datatable-thead th {
-  padding: 1px 0 0 0;
-}
-
-/* --- Spaltennamen im DataGrid --- */
-.ui-datatable-thead th .ui-column-title {
-  text-transform: none;
-  padding: 0 0 6px 0.625rem;
-}
-
-/* --- DropDown Löschzeichen auf der linken Seite --- */
-.ui-dropdown-clear-icon {
-  /*
-  left: 0;
-  */
-  top: 1px;
-  font-size: 12px;
-  color: red;
-  color: #212529;
-  color: #A71330;
-}
-
-/* --- Einstellungen für Optimo work-Filter --- */
-.optimo-filter-listbox .ui-listbox-item {
-  padding: 0px 0.625rem 1px 0.625rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: 14px;
-}
-
-.optimo-filter-listbox .ui-listbox-item.ui-state-highlight {
-  background-color: #CBD5E8;
-}
-
-/* --- Einstellungen für Optimo work Listbox im Suchdialog --- */
-.optimo-suchen-listbox .ui-listbox-item {
-  padding: 0px 0.625rem 1px 0.625rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: 16px;
-}
-
-.optimo-suchen-listbox .ui-listbox-item.ui-state-highlight {
-  background-color: #CBD5E8;
-}
-
-.optimo-filter-auswahl .ui-dropdown-label {
-  font-size: 14px;
-}
-
-.optimo-filter-auswahl .textbox {
-  font-size: 14px;
-}
-
-.optimo-filter-auswahl .ui-spinner input[type='number'] {
-  font-size: 14px;
-}
-
-.optimo-filter-auswahl .ui-spinner {
-  padding-top: 0;
-}
-
-.optimo-filter-auswahl .ui-spinner-button .pi {
-  font-size: 0.75rem;
-}
-
-.optimo-filter-auswahl .ui-dropdown-item,
-.ui-dropdown-items li {
-  padding: 3px 0.625rem;
-  font-size: 16px;
-}
-
-/* --- Login Button auf die rechte Seite --- */
-.login .login-buttons {
-  justify-content: flex-end !important;
-}
-
-/* --- Background für Listbox mit Markirungshacken --- */
-.ui-listbox-item.ui-state-highlight {
-  background-color: white;
-  color: #212529;
-  color: #3a474d;
-}
-
-/* --- Listbox Auswahhl mit Einfärbung --- */
-.listbox-mit-auswahl .ui-listbox-item.ui-state-highlight {
-  background-color: #CBD5E8;
-}
-
-/* --- Auswahlhacken in Listbox einstellen --- */
-.ui-chkbox-box.ui-state-active {
-  border-color: #6A80AA;
-  background: #6A80AA;
-}
-
-.ui-chkbox-box.ui-state-active:hover {
-  border-color: #6A80AA;
-  background: #6A80AA;
-}
-
-/* --- Farbe und Abstand für Label --- */
-label {
-  color: #88989b;
-  color: #5d717d;
-  padding-top: 6px;
-}
-
-.ui-multiselect-label-container,
-.ui-dropdown-label {
-  color: #212529;
-  color: #3a474d;
-  padding-top: 2px;
-}
-
-/* --- Filtereingabe in DataGrit --- */
-.ui-cell-filter input:focus {
-  font-size: 14px;
-}
-
-.ui-cell-filter .ui-spinner input:focus {
-  font-size: 14px;
-}
-
-/* --- Filtereingabe in DataGrit (damit das Datumsfeld in der richtigen Höhe ist) --- */
-.ui-cell-filter-content {
-  min-height: 26px;
-}
-
-.ui-cell-filter .ui-spinner input {
-  height: 0.875rem;
-}
-
-/* --- Farbeinstellungen für die Bewegungskböpfe im DataGrit --- */
-.ui-paginator-last,
-.ui-paginator-next {
-  color: #1766a8;
-  background-color: #dbebf8;
-  border-color: #a0c9eb;
-}
-
-.ui-paginator-first,
-.ui-paginator-prev {
-  color: #1766a8;
-  background-color: #dbebf8;
-  border-color: #a0c9eb;
-}
-
-/* --- Farbe für Text im Platzhalter --- */
-.ui-multiselect .ui-placeholder, .ui-dropdown .ui-placeholder {
-  color: #dde6e9;
-}
-
-input::placeholder {
-  color: #dde6e9;
-}
-
-/* --- Abrundungen für Tab-Rahmen einstellen (sonst war er rechts oben ohne Abrundung) --- */
-.ui-tabview-panels {
-  border-radius: 0 4px 4px 4px;
-}
-
-/* --- Abrundungen für FileUpload --- */
-.ui-fileupload-buttonbar {
-  border-radius: 4px;
-}
-
-/* --- Einstellungen für einen Link-Button --- */
-.link-button button.btn-primary {
-  background-color: transparent;
-  color: #479cc8;
-  padding: 0;
-}
-
-/* --- Tabelle: Farbe der markierten Zeile --- */
-.ui-selectable .ui-datatable-even.ui-state-highlight > td,
-.ui-selectable .ui-datatable-odd.ui-state-highlight > td {
-  background-color: #6A80AA;
-}
-
-/* --- DropDown: Hintergrund einfärben --- */
-.optimo-filter-auswahl .ui-dropdown-item, .ui-dropdown-items li {
-  background-color: #e9e9e9;
 }
