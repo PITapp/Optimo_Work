@@ -3,9 +3,9 @@
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `angular-cli.json`.
 export const environment = {
-  serverMethodsUrl: 'http://localhost:5000/',
-  dbOptimo: 'http://localhost:5000/odata/dbOptimo',
+  serverMethodsUrl: '/',
+  dbOptimo: '/odata/dbOptimo',
 
-  securityUrl: 'http://localhost:5000/auth',
+  securityUrl: '/auth',
   production: false,
 };

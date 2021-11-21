@@ -25,7 +25,8 @@
   "namespaces": [],
   "navigation": [
     "Kontakte",
-    "Inventur"
+    "Inventur",
+    "InventurBasis"
   ],
   "pages": [
     "BenutzerNeu",
@@ -55,7 +56,8 @@
     "MeldungOK",
     "MeldungFortschritt",
     "NotizenEditor",
-    "InventurLagerorteBearbeiten"
+    "InventurLagerorteBearbeiten",
+    "InventurBasis"
   ],
   "port": 8000,
   "security": {

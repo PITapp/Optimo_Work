@@ -122,7 +122,7 @@
                 {
                   "components": [
                     {
-                      "class": "col-md-7",
+                      "class": "col-md-6",
                       "components": [
                         {
                           "components": [
@@ -257,6 +257,32 @@
                                     "name": "dsoLagerort",
                                     "type": "set",
                                     "value": "${event}"
+                                  },
+                                  {
+                                    "name": "dbOptimo.getVwInventurErfassungs",
+                                    "parameters": [
+                                      {
+                                        "name": "$filter",
+                                        "value": "InventurID eq ${event.InventurID}"
+                                      },
+                                      {
+                                        "name": "$orderby",
+                                        "value": "${event.orderby || 'ErfasstAm DESC'}"
+                                      }
+                                    ],
+                                    "then": [
+                                      {
+                                        "name": "rstErfassungLagerorte",
+                                        "type": "set",
+                                        "value": "${result.value}"
+                                      },
+                                      {
+                                        "name": "rstErfassungLagerorteCount",
+                                        "type": "set",
+                                        "value": "event.top != null && event.skip != null ? result['@odata.count'] : ${result.value.length}"
+                                      }
+                                    ],
+                                    "type": "invoke"
                                   }
                                 ]
                               },
@@ -314,7 +340,7 @@
                                       "name": "buttonLagerortBearbeiten",
                                       "size": "sm",
                                       "style": {
-                                        "color": "#6A80AA",
+                                        "color": "#a71330",
                                         "display": "block",
                                         "marginRight": "-9px",
                                         "marginTop": "1px"
@@ -346,7 +372,7 @@
                       "type": "col"
                     },
                     {
-                      "class": "col-md-5",
+                      "class": "col-md-6",
                       "components": [
                         {
                           "attributes": [],
@@ -369,42 +395,61 @@
                               "columns": [
                                 {
                                   "format": "date-time",
-                                  "formatString": "medium",
+                                  "formatString": "dd.MM.yyyy HH:mm",
                                   "property": "ErfasstAm",
-                                  "title": "Erfasst Am",
-                                  "type": "string"
-                                },
-                                {
-                                  "property": "ErfasstAnzahl",
-                                  "title": "Erfasst Anzahl",
-                                  "type": "integer"
-                                },
-                                {
-                                  "format": "date-time",
-                                  "formatString": "medium",
-                                  "property": "GeloeschtAm",
-                                  "title": "Geloescht Am",
-                                  "type": "string"
+                                  "sortProperty": "",
+                                  "title": "Am",
+                                  "type": "string",
+                                  "width": "120px"
                                 },
                                 {
                                   "property": "Artikelnummer",
                                   "title": "Artikelnummer",
-                                  "type": "string"
+                                  "type": "string",
+                                  "width": "120px"
                                 },
                                 {
                                   "property": "Beschreibung",
-                                  "title": "Beschreibung",
-                                  "type": "string"
+                                  "title": "Bezeichnung",
+                                  "type": "string",
+                                  "width": "300px"
                                 },
                                 {
-                                  "property": "Beschreibung2",
-                                  "title": "Beschreibung 2",
-                                  "type": "string"
+                                  "editTemplate": "",
+                                  "footerTemplate": "",
+                                  "formatString": "",
+                                  "property": "ErfasstAnzahl",
+                                  "sortProperty": "",
+                                  "template": "${data.ErfasstAnzahlFormatiert}",
+                                  "textAlign": "right",
+                                  "title": "Gezählt",
+                                  "type": "integer",
+                                  "width": "80px"
                                 },
                                 {
-                                  "property": "StdKreditorName",
-                                  "title": "Std Kreditor Name",
-                                  "type": "string"
+                                  "filterProperty": "",
+                                  "footerTemplate": "",
+                                  "format": "date-time",
+                                  "formatString": "dd.MM.yyyy HH:mm",
+                                  "property": "GeloeschtAm",
+                                  "template": [
+                                    {
+                                      "classList": {
+                                        "badge": true,
+                                        "badge-danger": "${data.GeloeschtAm != null}"
+                                      },
+                                      "name": "label1",
+                                      "style": {
+                                        "color": "#ffffff"
+                                      },
+                                      "text": "${data.GeloeschtAm | date : 'dd.MM.yyyy HH:mm'}",
+                                      "type": "label"
+                                    }
+                                  ],
+                                  "textAlign": "right",
+                                  "title": "Gelöscht",
+                                  "type": "string",
+                                  "width": "100px"
                                 }
                               ],
                               "confirmDelete": false,
@@ -413,84 +458,18 @@
                               "confirmDeleteText": "",
                               "confirmDeleteTitle": "",
                               "containsText": "Enthält",
-                              "count": "${rstErfassungCount}",
-                              "data": "${rstErfassung}",
-                              "emptyText": "Keine Erfassung vorhanden",
+                              "count": "${rstErfassungLagerorteCount}",
+                              "data": "${rstErfassungLagerorte}",
+                              "emptyText": "Keine Daten vorhanden",
                               "endsWithText": "Endet mit",
                               "equalsText": "Gleich",
                               "events": {
                                 "add": [],
                                 "create": [],
                                 "delete": [],
-                                "loadData": [
-                                  {
-                                    "condition": "",
-                                    "error": [
-                                      {
-                                        "detail": "Erfassung können nicht geladen werden!",
-                                        "severity": "error",
-                                        "summary": "",
-                                        "type": "notify"
-                                      }
-                                    ],
-                                    "name": "dbOptimo.getVwInventurErfassungs",
-                                    "parameters": [
-                                      {
-                                        "name": "$top",
-                                        "value": "event.top"
-                                      },
-                                      {
-                                        "name": "$skip",
-                                        "value": "event.skip"
-                                      },
-                                      {
-                                        "name": "$count",
-                                        "value": "event.top != null && event.skip != null"
-                                      },
-                                      {
-                                        "name": "$filter",
-                                        "value": "${event.filter ? event.filter + ' and ':''}${this.dsoLagerort.InventurID ? 'InventurID eq ' + this.dsoLagerort.InventurID : ''} "
-                                      },
-                                      {
-                                        "name": "$orderby",
-                                        "value": "${event.orderby}"
-                                      }
-                                    ],
-                                    "then": [
-                                      {
-                                        "name": "rstErfassung",
-                                        "type": "set",
-                                        "value": "${result.value}"
-                                      },
-                                      {
-                                        "name": "rstErfassungCount",
-                                        "type": "set",
-                                        "value": "event.top != null && event.skip != null ? result['@odata.count'] : ${result.value.length}"
-                                      }
-                                    ],
-                                    "type": "invoke"
-                                  }
-                                ],
-                                "rowDoubleClick": [
-                                  {
-                                    "parameters": [
-                                      {
-                                        "name": "InventurID",
-                                        "value": "${event.InventurID}"
-                                      }
-                                    ],
-                                    "path": "inventur-lagerorte-bearbeiten",
-                                    "title": "Lagerort bearbeiten",
-                                    "type": "popup"
-                                  }
-                                ],
-                                "rowSelect": [
-                                  {
-                                    "name": "dsoErfassung",
-                                    "type": "set",
-                                    "value": "${event}"
-                                  }
-                                ]
+                                "loadData": [],
+                                "rowDoubleClick": [],
+                                "rowSelect": []
                               },
                               "filterCaseSensitivity": "caseInsensitive",
                               "greaterThanOrEqualsText": "Größer oder gleich",
@@ -499,7 +478,7 @@
                               "lessThanOrEqualsText": "Kleiner oder gleich",
                               "lessThanText": "Kleiner",
                               "locale": "de-at",
-                              "name": "gridErfassung",
+                              "name": "gridErfassungLagerorte",
                               "notEqualsText": "Nicht Gleich",
                               "pageSize": 20,
                               "pageSizeOptions": [],
@@ -529,18 +508,30 @@
                                       "buttonStyle": "light",
                                       "buttonType": "button",
                                       "events": {
-                                        "click": []
+                                        "click": [
+                                          {
+                                            "parameters": [
+                                              {
+                                                "name": "strMeldung",
+                                                "value": "\"Export ist für dieses Modul noch nicht aktiviert!\""
+                                              }
+                                            ],
+                                            "path": "meldung-ok",
+                                            "title": "Info",
+                                            "type": "popup"
+                                          }
+                                        ]
                                       },
-                                      "icon": "create",
+                                      "icon": "published_with_changes",
                                       "name": "buttonBearbeitenProtokoll",
                                       "size": "sm",
                                       "style": {
-                                        "color": "#6A80AA",
+                                        "color": "#a71330",
                                         "display": "block",
                                         "marginRight": "-9px",
                                         "marginTop": "1px"
                                       },
-                                      "text": "Bearbeiten",
+                                      "text": "Export",
                                       "tooltip": "",
                                       "type": "button"
                                     }
@@ -575,7 +566,7 @@
                 }
               ],
               "icon": "",
-              "selected": false,
+              "selected": true,
               "text": "Lagerorte"
             },
             {
@@ -583,26 +574,432 @@
                 {
                   "components": [
                     {
-                      "class": "col-md-12",
+                      "class": "col-md-6",
                       "components": [
                         {
-                          "components": [],
-                          "headerTemplate": "",
+                          "components": [
+                            {
+                              "addText": "",
+                              "allowAdd": false,
+                              "allowColumnReorder": true,
+                              "allowColumnResize": true,
+                              "allowDelete": false,
+                              "allowFiltering": true,
+                              "allowMultiSorting": false,
+                              "allowPaging": true,
+                              "allowSorting": true,
+                              "alwaysShowPager": false,
+                              "applyFilterText": "Anwenden",
+                              "clearFilterText": "Entfernen",
+                              "columnResizeMode": "expand",
+                              "columnWidth": "",
+                              "columns": [
+                                {
+                                  "property": "Artikelnummer",
+                                  "title": "Artikelnummer",
+                                  "type": "string",
+                                  "width": "120px"
+                                },
+                                {
+                                  "property": "Beschreibung",
+                                  "title": "Bezeichnung",
+                                  "type": "string",
+                                  "width": "300px"
+                                },
+                                {
+                                  "editTemplate": "",
+                                  "filterProperty": "",
+                                  "format": "",
+                                  "property": "LagerortGesamt",
+                                  "template": "",
+                                  "title": "Lagerort",
+                                  "type": "string",
+                                  "width": "250px"
+                                },
+                                {
+                                  "format": "decimal",
+                                  "property": "SummeGezaehlt",
+                                  "template": "${data.SummeGezaehltFormatiert}",
+                                  "textAlign": "right",
+                                  "title": "Gezählt",
+                                  "type": "number",
+                                  "width": "80px"
+                                }
+                              ],
+                              "confirmDelete": false,
+                              "confirmDeleteCancelText": "",
+                              "confirmDeleteOkText": "",
+                              "confirmDeleteText": "",
+                              "confirmDeleteTitle": "",
+                              "containsText": "Enthält",
+                              "count": "${rstArtikelCount}",
+                              "data": "${rstArtikel}",
+                              "emptyText": "Keine Artikel vorhanden",
+                              "endsWithText": "Endet mit",
+                              "equalsText": "Gleich",
+                              "events": {
+                                "add": [],
+                                "create": [],
+                                "delete": [],
+                                "loadData": [
+                                  {
+                                    "condition": "",
+                                    "error": [
+                                      {
+                                        "detail": "Artikel können nicht geladen werden!",
+                                        "severity": "error",
+                                        "summary": "",
+                                        "type": "notify"
+                                      }
+                                    ],
+                                    "name": "dbOptimo.getVwInventurArtikels",
+                                    "parameters": [
+                                      {
+                                        "name": "$top",
+                                        "value": "event.top"
+                                      },
+                                      {
+                                        "name": "$skip",
+                                        "value": "event.skip"
+                                      },
+                                      {
+                                        "name": "$count",
+                                        "value": "event.top != null && event.skip != null"
+                                      },
+                                      {
+                                        "name": "$filter",
+                                        "value": "${event.filter}"
+                                      },
+                                      {
+                                        "name": "$orderby",
+                                        "value": "${event.orderby}"
+                                      }
+                                    ],
+                                    "then": [
+                                      {
+                                        "name": "rstArtikel",
+                                        "type": "set",
+                                        "value": "${result.value}"
+                                      },
+                                      {
+                                        "name": "rstArtikelCount",
+                                        "type": "set",
+                                        "value": "event.top != null && event.skip != null ? result['@odata.count'] : ${result.value.length}"
+                                      },
+                                      {
+                                        "code": "this.gridArtikel.onSelect(this.rstArtikel[0]);",
+                                        "type": "execute"
+                                      }
+                                    ],
+                                    "type": "invoke"
+                                  }
+                                ],
+                                "rowDoubleClick": [],
+                                "rowSelect": [
+                                  {
+                                    "name": "dsoArtikel",
+                                    "type": "set",
+                                    "value": "${event}"
+                                  },
+                                  {
+                                    "name": "dbOptimo.getVwInventurErfassungs",
+                                    "parameters": [
+                                      {
+                                        "name": "$filter",
+                                        "value": "ArtikelID eq ${event.ArtikelID}"
+                                      },
+                                      {
+                                        "name": "$orderby",
+                                        "value": "${event.orderby || 'ErfasstAm DESC'}"
+                                      }
+                                    ],
+                                    "then": [
+                                      {
+                                        "name": "rstErfassungArtikel",
+                                        "type": "set",
+                                        "value": "${result.value}"
+                                      },
+                                      {
+                                        "name": "rstErfassungArtikelCount",
+                                        "type": "set",
+                                        "value": "event.top != null && event.skip != null ? result['@odata.count'] : ${result.value.length}"
+                                      }
+                                    ],
+                                    "type": "invoke"
+                                  }
+                                ]
+                              },
+                              "filterCaseSensitivity": "caseInsensitive",
+                              "greaterThanOrEqualsText": "Größer oder gleich",
+                              "greaterThanText": "Größer",
+                              "isLoading": false,
+                              "lessThanOrEqualsText": "Kleiner oder gleich",
+                              "lessThanText": "Kleiner",
+                              "locale": "de-at",
+                              "name": "gridArtikel",
+                              "notEqualsText": "Nicht Gleich",
+                              "pageSize": 20,
+                              "pageSizeOptions": [],
+                              "responsive": true,
+                              "startsWithText": "Beginnt mit",
+                              "style": {
+                                "border": "1px solid rgba(0, 0, 0, 0)",
+                                "height": "700px",
+                                "marginLeft": "-10px",
+                                "marginRight": "-10px",
+                                "marginTop": "-13px"
+                              },
+                              "template": "",
+                              "title": "",
+                              "type": "grid",
+                              "value": ""
+                            }
+                          ],
+                          "headerTemplate": [
+                            {
+                              "components": [
+                                {
+                                  "class": "col-md-12 align-items-start d-flex",
+                                  "components": [
+                                    {
+                                      "buttonStyle": "light",
+                                      "buttonType": "button",
+                                      "events": {
+                                        "click": [
+                                          {
+                                            "parameters": [
+                                              {
+                                                "name": "strMeldung",
+                                                "value": "\"Export ist für dieses Modul noch nicht aktiviert!\""
+                                              }
+                                            ],
+                                            "path": "meldung-ok",
+                                            "title": "Info",
+                                            "type": "popup"
+                                          }
+                                        ]
+                                      },
+                                      "icon": "published_with_changes",
+                                      "name": "buttonArtikelExport",
+                                      "size": "sm",
+                                      "style": {
+                                        "color": "#a71330",
+                                        "display": "block",
+                                        "marginRight": "-9px",
+                                        "marginTop": "1px"
+                                      },
+                                      "text": "Export",
+                                      "tooltip": "",
+                                      "type": "button"
+                                    }
+                                  ],
+                                  "name": "col6",
+                                  "type": "col"
+                                }
+                              ],
+                              "name": "row0",
+                              "type": "row"
+                            }
+                          ],
+                          "icon": "",
+                          "name": "panel2",
+                          "style": {
+                            "border": "1px solid #e6ecef",
+                            "height": "750px"
+                          },
+                          "text": "${rstArtikelCount} Artikel",
+                          "type": "panel"
+                        }
+                      ],
+                      "name": "col2",
+                      "type": "col"
+                    },
+                    {
+                      "class": "col-md-6",
+                      "components": [
+                        {
+                          "attributes": [],
+                          "components": [
+                            {
+                              "addText": "",
+                              "allowAdd": false,
+                              "allowColumnReorder": true,
+                              "allowColumnResize": true,
+                              "allowDelete": false,
+                              "allowFiltering": true,
+                              "allowMultiSorting": false,
+                              "allowPaging": true,
+                              "allowSorting": true,
+                              "alwaysShowPager": false,
+                              "applyFilterText": "Anwenden",
+                              "clearFilterText": "Entfernen",
+                              "columnResizeMode": "expand",
+                              "columnWidth": "",
+                              "columns": [
+                                {
+                                  "format": "date-time",
+                                  "formatString": "dd.MM.yyyy HH:mm",
+                                  "property": "ErfasstAm",
+                                  "sortProperty": "",
+                                  "title": "Am",
+                                  "type": "string",
+                                  "width": "120px"
+                                },
+                                {
+                                  "format": "",
+                                  "property": "LagerortGesamt",
+                                  "title": "Lagerort",
+                                  "type": "string",
+                                  "width": "250px"
+                                },
+                                {
+                                  "editTemplate": "",
+                                  "filterProperty": "",
+                                  "format": "",
+                                  "property": "ErfasstAnzahl",
+                                  "sortProperty": "",
+                                  "template": "${data.ErfasstAnzahlFormatiert}",
+                                  "textAlign": "right",
+                                  "title": "Gezählt",
+                                  "type": "integer",
+                                  "width": "80px"
+                                },
+                                {
+                                  "filterProperty": "",
+                                  "footerTemplate": "",
+                                  "format": "date-time",
+                                  "formatString": "dd.MM.yyyy HH:mm",
+                                  "property": "GeloeschtAm",
+                                  "template": [
+                                    {
+                                      "classList": {
+                                        "badge": true,
+                                        "badge-danger": "${data.GeloeschtAm != null}"
+                                      },
+                                      "name": "label1",
+                                      "style": {
+                                        "color": "#ffffff"
+                                      },
+                                      "text": "${data.GeloeschtAm | date : 'dd.MM.yyyy HH:mm'}",
+                                      "type": "label"
+                                    }
+                                  ],
+                                  "textAlign": "right",
+                                  "title": "Gelöscht",
+                                  "type": "string",
+                                  "width": "100px"
+                                }
+                              ],
+                              "confirmDelete": false,
+                              "confirmDeleteCancelText": "",
+                              "confirmDeleteOkText": "",
+                              "confirmDeleteText": "",
+                              "confirmDeleteTitle": "",
+                              "containsText": "Enthält",
+                              "count": "${rstErfassungArtikelCount}",
+                              "data": "${rstErfassungArtikel}",
+                              "emptyText": "Keine Daten vorhanden",
+                              "endsWithText": "Endet mit",
+                              "equalsText": "Gleich",
+                              "events": {
+                                "add": [],
+                                "create": [],
+                                "delete": [],
+                                "loadData": [],
+                                "rowDoubleClick": [],
+                                "rowSelect": []
+                              },
+                              "filterCaseSensitivity": "caseInsensitive",
+                              "greaterThanOrEqualsText": "Größer oder gleich",
+                              "greaterThanText": "Größer",
+                              "isLoading": false,
+                              "lessThanOrEqualsText": "Kleiner oder gleich",
+                              "lessThanText": "Kleiner",
+                              "locale": "de-at",
+                              "name": "gridErfassungArtikel",
+                              "notEqualsText": "Nicht Gleich",
+                              "pageSize": 20,
+                              "pageSizeOptions": [],
+                              "responsive": true,
+                              "startsWithText": "Beginnt mit",
+                              "style": {
+                                "border": "1px solid rgba(0, 0, 0, 0)",
+                                "height": "700px",
+                                "marginLeft": "-10px",
+                                "marginRight": "-10px",
+                                "marginTop": "-13px"
+                              },
+                              "template": "",
+                              "title": "",
+                              "type": "grid",
+                              "value": ""
+                            }
+                          ],
+                          "footerTemplate": "",
+                          "headerTemplate": [
+                            {
+                              "components": [
+                                {
+                                  "class": "col-md-12 align-items-start d-flex",
+                                  "components": [
+                                    {
+                                      "buttonStyle": "light",
+                                      "buttonType": "button",
+                                      "events": {
+                                        "click": [
+                                          {
+                                            "parameters": [
+                                              {
+                                                "name": "strMeldung",
+                                                "value": "\"Export ist für dieses Modul noch nicht aktiviert!\""
+                                              }
+                                            ],
+                                            "path": "meldung-ok",
+                                            "title": "Info",
+                                            "type": "popup"
+                                          }
+                                        ]
+                                      },
+                                      "icon": "published_with_changes",
+                                      "name": "buttonExportArtikelErfassung",
+                                      "size": "sm",
+                                      "style": {
+                                        "color": "#a71330",
+                                        "display": "block",
+                                        "marginRight": "-9px",
+                                        "marginTop": "1px"
+                                      },
+                                      "text": "Export",
+                                      "tooltip": "",
+                                      "type": "button"
+                                    }
+                                  ],
+                                  "name": "col1",
+                                  "type": "col"
+                                }
+                              ],
+                              "name": "row0",
+                              "type": "row"
+                            }
+                          ],
                           "icon": "",
                           "name": "panel3",
                           "style": {
                             "border": "1px solid #e6ecef",
                             "height": "750px"
                           },
-                          "text": "Beispiel",
+                          "text": "Erfassung: ${dsoArtikel.Artikelnummer} | ${dsoArtikel.Beschreibung} | ${dsoArtikel.LagerortGesamt}",
                           "type": "panel"
                         }
                       ],
                       "name": "col4",
+                      "style": {
+                        "paddingLeft": "5px"
+                      },
                       "type": "col"
                     }
                   ],
-                  "name": "row2",
+                  "name": "row0",
                   "type": "row"
                 }
               ],
@@ -617,15 +1014,252 @@
                       "class": "col-md-12",
                       "components": [
                         {
-                          "components": [],
-                          "headerTemplate": "",
+                          "components": [
+                            {
+                              "addText": "",
+                              "allowAdd": false,
+                              "allowColumnReorder": true,
+                              "allowColumnResize": true,
+                              "allowDelete": false,
+                              "allowFiltering": true,
+                              "allowMultiSorting": false,
+                              "allowPaging": true,
+                              "allowSorting": true,
+                              "alwaysShowPager": false,
+                              "applyFilterText": "Anwenden",
+                              "clearFilterText": "Entfernen",
+                              "columnResizeMode": "expand",
+                              "columnWidth": "",
+                              "columns": [
+                                {
+                                  "format": "date-time",
+                                  "formatString": "dd.MM.yyyy HH:mm",
+                                  "property": "ErfasstAm",
+                                  "title": "Am",
+                                  "type": "string",
+                                  "width": "120px"
+                                },
+                                {
+                                  "property": "LagerortGesamt",
+                                  "title": "Lagerort",
+                                  "type": "string",
+                                  "width": "250px"
+                                },
+                                {
+                                  "headerTemplate": "",
+                                  "property": "Artikelnummer",
+                                  "title": "Artikelnummer",
+                                  "type": "string",
+                                  "width": "120px"
+                                },
+                                {
+                                  "property": "Beschreibung",
+                                  "title": "Bezeichnung",
+                                  "type": "string",
+                                  "width": "300px"
+                                },
+                                {
+                                  "format": "",
+                                  "property": "Beschreibung2",
+                                  "title": "Bezeichnung 2",
+                                  "type": "string",
+                                  "width": "200px"
+                                },
+                                {
+                                  "format": "",
+                                  "property": "StdKreditorName",
+                                  "title": "Std Kreditor Name",
+                                  "type": "string",
+                                  "width": "150px"
+                                },
+                                {
+                                  "property": "ErfasstAnzahl",
+                                  "template": "${data.ErfasstAnzahlFormatiert}",
+                                  "textAlign": "right",
+                                  "title": "Gezählt",
+                                  "type": "integer",
+                                  "width": "80px"
+                                },
+                                {
+                                  "format": "date-time",
+                                  "formatString": "medium",
+                                  "property": "GeloeschtAm",
+                                  "template": [
+                                    {
+                                      "classList": {
+                                        "badge": true,
+                                        "badge-danger": "${data.GeloeschtAm != null}"
+                                      },
+                                      "name": "label0",
+                                      "style": {
+                                        "color": "#ffffff"
+                                      },
+                                      "text": "${data.GeloeschtAm | date : 'dd.MM.yyyy HH:mm'}",
+                                      "type": "label"
+                                    }
+                                  ],
+                                  "textAlign": "right",
+                                  "title": "Gelöscht",
+                                  "type": "string",
+                                  "width": "100px"
+                                }
+                              ],
+                              "confirmDelete": false,
+                              "confirmDeleteCancelText": "",
+                              "confirmDeleteOkText": "",
+                              "confirmDeleteText": "",
+                              "confirmDeleteTitle": "",
+                              "containsText": "Enthält",
+                              "count": "${rstErfassungCount}",
+                              "data": "${rstErfassung}",
+                              "emptyText": "Keine Erfassung vorhanden",
+                              "endsWithText": "Endet mit",
+                              "equalsText": "Gleich",
+                              "events": {
+                                "add": [],
+                                "create": [],
+                                "delete": [],
+                                "loadData": [
+                                  {
+                                    "condition": "",
+                                    "error": [
+                                      {
+                                        "detail": "Erfassung konnte nicht geladen werden!",
+                                        "severity": "error",
+                                        "summary": "",
+                                        "type": "notify"
+                                      }
+                                    ],
+                                    "name": "dbOptimo.getVwInventurErfassungs",
+                                    "parameters": [
+                                      {
+                                        "name": "$top",
+                                        "value": "event.top"
+                                      },
+                                      {
+                                        "name": "$skip",
+                                        "value": "event.skip"
+                                      },
+                                      {
+                                        "name": "$count",
+                                        "value": "event.top != null && event.skip != null"
+                                      },
+                                      {
+                                        "name": "$filter",
+                                        "value": "${event.filter}"
+                                      },
+                                      {
+                                        "name": "$orderby",
+                                        "value": "${event.orderby || 'ErfasstAm DESC'}"
+                                      }
+                                    ],
+                                    "then": [
+                                      {
+                                        "name": "rstErfassung",
+                                        "type": "set",
+                                        "value": "${result.value}"
+                                      },
+                                      {
+                                        "name": "rstErfassungCount",
+                                        "type": "set",
+                                        "value": "event.top != null && event.skip != null ? result['@odata.count'] : ${result.value.length}"
+                                      },
+                                      {
+                                        "code": "this.gridErfassung.onSelect(this.rstErfassung[0]);",
+                                        "type": "execute"
+                                      }
+                                    ],
+                                    "type": "invoke"
+                                  }
+                                ],
+                                "rowDoubleClick": [],
+                                "rowSelect": [
+                                  {
+                                    "name": "dsoErfassung",
+                                    "type": "set",
+                                    "value": "${event}"
+                                  }
+                                ]
+                              },
+                              "filterCaseSensitivity": "caseInsensitive",
+                              "greaterThanOrEqualsText": "Größer oder gleich",
+                              "greaterThanText": "Größer",
+                              "isLoading": false,
+                              "lessThanOrEqualsText": "Kleiner oder gleich",
+                              "lessThanText": "Kleiner",
+                              "locale": "de-at",
+                              "name": "gridErfassung",
+                              "notEqualsText": "Nicht Gleich",
+                              "pageSize": 20,
+                              "pageSizeOptions": [],
+                              "responsive": true,
+                              "startsWithText": "Beginnt mit",
+                              "style": {
+                                "border": "1px solid rgba(0, 0, 0, 0)",
+                                "height": "700px",
+                                "marginLeft": "-10px",
+                                "marginRight": "-10px",
+                                "marginTop": "-13px"
+                              },
+                              "template": "",
+                              "title": "",
+                              "type": "grid",
+                              "value": ""
+                            }
+                          ],
+                          "headerTemplate": [
+                            {
+                              "components": [
+                                {
+                                  "class": "col-md-12 align-items-start d-flex",
+                                  "components": [
+                                    {
+                                      "buttonStyle": "light",
+                                      "buttonType": "button",
+                                      "events": {
+                                        "click": [
+                                          {
+                                            "parameters": [
+                                              {
+                                                "name": "strMeldung",
+                                                "value": "\"Export ist für dieses Modul noch nicht aktiviert!\""
+                                              }
+                                            ],
+                                            "path": "meldung-ok",
+                                            "title": "Info",
+                                            "type": "popup"
+                                          }
+                                        ]
+                                      },
+                                      "icon": "published_with_changes",
+                                      "name": "buttonErfassungExport",
+                                      "size": "sm",
+                                      "style": {
+                                        "color": "#a71330",
+                                        "display": "block",
+                                        "marginRight": "-9px",
+                                        "marginTop": "1px"
+                                      },
+                                      "text": "Export",
+                                      "tooltip": "",
+                                      "type": "button"
+                                    }
+                                  ],
+                                  "name": "col6",
+                                  "type": "col"
+                                }
+                              ],
+                              "name": "row0",
+                              "type": "row"
+                            }
+                          ],
                           "icon": "",
                           "name": "panel4",
                           "style": {
                             "border": "1px solid #e6ecef",
                             "height": "750px"
                           },
-                          "text": "Beispiel",
+                          "text": "${rstErfassungCount} Erfassungen",
                           "type": "panel"
                         }
                       ],
@@ -633,7 +1267,7 @@
                       "type": "col"
                     }
                   ],
-                  "name": "row3",
+                  "name": "row2",
                   "type": "row"
                 }
               ],
@@ -658,6 +1292,14 @@
     "load": [
       {
         "code": "this.gridLagerorte.load();",
+        "type": "execute"
+      },
+      {
+        "code": "this.gridArtikel.load();",
+        "type": "execute"
+      },
+      {
+        "code": "this.gridErfassung.load();",
         "type": "execute"
       }
     ]

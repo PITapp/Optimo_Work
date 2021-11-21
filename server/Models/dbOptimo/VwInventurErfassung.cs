@@ -28,7 +28,17 @@ namespace OptimoWork.Models.DbOptimo
       get;
       set;
     }
+    public string ErfasstAnzahlFormatiert
+    {
+      get;
+      set;
+    }
     public DateTime? GeloeschtAm
+    {
+      get;
+      set;
+    }
+    public int InventurID
     {
       get;
       set;
@@ -49,6 +59,21 @@ namespace OptimoWork.Models.DbOptimo
       set;
     }
     public string StdKreditorName
+    {
+      get;
+      set;
+    }
+    public string LagerortNummer
+    {
+      get;
+      set;
+    }
+    public string LagerortTitel
+    {
+      get;
+      set;
+    }
+    public string LagerortGesamt
     {
       get;
       set;

@@ -31,6 +31,7 @@ import { MeldungOkComponent } from './meldung-ok/meldung-ok.component';
 import { MeldungFortschrittComponent } from './meldung-fortschritt/meldung-fortschritt.component';
 import { NotizenEditorComponent } from './notizen-editor/notizen-editor.component';
 import { InventurLagerorteBearbeitenComponent } from './inventur-lagerorte-bearbeiten/inventur-lagerorte-bearbeiten.component';
+import { InventurBasisComponent } from './inventur-basis/inventur-basis.component';
 
 import { SecurityService } from './security.service';
 import { AuthGuard } from './auth.guard';
@@ -254,6 +255,14 @@ export const routes: Routes = [
           roles: ['Authenticated'],
         },
         component: InventurLagerorteBearbeitenComponent
+      },
+      {
+        path: 'inventur-basis',
+        canActivate: [AuthGuard],
+        data: {
+          roles: ['Authenticated'],
+        },
+        component: InventurBasisComponent
       },
     ]
   },

@@ -80,6 +80,7 @@ import { MeldungOkComponent } from './meldung-ok/meldung-ok.component';
 import { MeldungFortschrittComponent } from './meldung-fortschritt/meldung-fortschritt.component';
 import { NotizenEditorComponent } from './notizen-editor/notizen-editor.component';
 import { InventurLagerorteBearbeitenComponent } from './inventur-lagerorte-bearbeiten/inventur-lagerorte-bearbeiten.component';
+import { InventurBasisComponent } from './inventur-basis/inventur-basis.component';
 import { LoginLayoutComponent } from './login-layout/login-layout.component';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 
@@ -117,6 +118,7 @@ export const PageDeclarations = [
   MeldungFortschrittComponent,
   NotizenEditorComponent,
   InventurLagerorteBearbeitenComponent,
+  InventurBasisComponent,
 ];
 
 export const LayoutDeclarations = [

@@ -1,0 +1,290 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "heading",
+          "name": "pageTitle",
+          "size": "H1",
+          "text": "InventurBasis"
+        },
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "name": "grid0",
+                  "allowDelete": false,
+                  "confirmDelete": false,
+                  "allowAdd": false,
+                  "allowFiltering": true,
+                  "allowMultiSorting": false,
+                  "allowPaging": true,
+                  "allowSorting": true,
+                  "count": "${getInventurBasesCount}",
+                  "data": "${getInventurBasesResult}",
+                  "events": {
+                    "loadData": [
+                      {
+                        "name": "dbOptimo.getInventurBases",
+                        "parameters": [
+                          {
+                            "name": "$top",
+                            "value": "event.top"
+                          },
+                          {
+                            "name": "$skip",
+                            "value": "event.skip"
+                          },
+                          {
+                            "name": "$count",
+                            "value": "event.top != null && event.skip != null"
+                          },
+                          {
+                            "name": "$filter",
+                            "value": "${event.filter}"
+                          },
+                          {
+                            "name": "$orderby",
+                            "value": "${event.orderby}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "name": "getInventurBasesResult",
+                            "type": "set",
+                            "value": "${result.value}"
+                          },
+                          {
+                            "name": "getInventurBasesCount",
+                            "type": "set",
+                            "value": "event.top != null && event.skip != null ? result['@odata.count'] : ${result.value.length}"
+                          },
+                          {
+                            "code": "${this.grid0.onSelect(result.value[0])}",
+                            "condition": "result.value.length && !this.grid0.value",
+                            "type": "execute"
+                          }
+                        ],
+                        "type": "invoke",
+                        "error": [
+                          {
+                            "detail": "Unable to load InventurBases",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ]
+                      }
+                    ],
+                    "rowSelect": [
+                      {
+                        "name": "master",
+                        "type": "set",
+                        "value": "${event}"
+                      },
+                      {
+                        "condition": "",
+                        "name": "dbOptimo.getInventurArtikels",
+                        "parameters": [
+                          {
+                            "name": "$filter",
+                            "value": "InventurID eq ${event.InventurID}"
+                          },
+                          {
+                            "name": "$expand",
+                            "value": "InventurBasis"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "name": "InventurArtikels",
+                            "type": "set",
+                            "value": "${result.value}"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "title": "",
+                  "columns": [
+                    {
+                      "property": "InventurID",
+                      "title": "Inventur ID",
+                      "type": "integer"
+                    },
+                    {
+                      "property": "LagerortStatus",
+                      "title": "Lagerort Status",
+                      "type": "string"
+                    },
+                    {
+                      "property": "AuftragCode",
+                      "title": "Auftrag Code",
+                      "type": "string"
+                    },
+                    {
+                      "property": "ErfassungNr",
+                      "title": "Erfassung Nr",
+                      "type": "integer"
+                    },
+                    {
+                      "property": "Lagerort",
+                      "title": "Lagerort",
+                      "type": "string"
+                    },
+                    {
+                      "property": "Beschreibung",
+                      "title": "Beschreibung",
+                      "type": "string"
+                    },
+                    {
+                      "property": "LagerortNummer",
+                      "title": "Lagerort Nummer",
+                      "type": "string"
+                    },
+                    {
+                      "property": "LagerortTitel",
+                      "title": "Lagerort Titel",
+                      "type": "string"
+                    },
+                    {
+                      "property": "Verantwortlich",
+                      "title": "Verantwortlich",
+                      "type": "string"
+                    },
+                    {
+                      "property": "Notiz",
+                      "title": "Notiz",
+                      "type": "string"
+                    }
+                  ],
+                  "type": "grid",
+                  "value": "${master}",
+                  "confirmDeleteText": "Are you sure you want to delete this record?",
+                  "confirmDeleteTitle": "Confirmation",
+                  "confirmDeleteOkText": "Ok",
+                  "confirmDeleteCancelText": "Cancel",
+                  "emptyText": "No records to display.",
+                  "addText": "Add",
+                  "clearFilterText": "Clear",
+                  "applyFilterText": "Apply",
+                  "equalsText": "Equals",
+                  "notEqualsText": "Not equals",
+                  "lessThanText": "Less than",
+                  "lessThanOrEqualsText": "Less than or equals",
+                  "greaterThanText": "Greater than",
+                  "greaterThanOrEqualsText": "Greater than or equals",
+                  "endsWithText": "Ends with",
+                  "containsText": "Contains",
+                  "startsWithText": "Starts with"
+                },
+                {
+                  "name": "heading1",
+                  "size": "H1",
+                  "text": "InventurArtikels",
+                  "type": "heading"
+                },
+                {
+                  "name": "grid1",
+                  "data": "${this.InventurArtikels}",
+                  "columns": [
+                    {
+                      "property": "ArtikelID",
+                      "title": "Artikel ID",
+                      "type": "integer"
+                    },
+                    {
+                      "property": "InventurID",
+                      "title": "Inventur ID",
+                      "type": "integer"
+                    },
+                    {
+                      "property": "ZeilenNr",
+                      "title": "Zeilen Nr",
+                      "type": "integer"
+                    },
+                    {
+                      "property": "Artikelnummer",
+                      "title": "Artikelnummer",
+                      "type": "string"
+                    },
+                    {
+                      "property": "Beschreibung",
+                      "title": "Beschreibung",
+                      "type": "string"
+                    },
+                    {
+                      "property": "Beschreibung2",
+                      "title": "Beschreibung 2",
+                      "type": "string"
+                    },
+                    {
+                      "property": "StdKreditorName",
+                      "title": "Std Kreditor Name",
+                      "type": "string"
+                    },
+                    {
+                      "property": "ArtikelStatus",
+                      "title": "Artikel Status",
+                      "type": "string"
+                    },
+                    {
+                      "property": "Notiz",
+                      "title": "Notiz",
+                      "type": "string"
+                    }
+                  ],
+                  "type": "grid",
+                  "allowFiltering": true,
+                  "allowPaging": true,
+                  "allowSorting": true,
+                  "events": {},
+                  "allowAdd": false,
+                  "allowDelete": false,
+                  "allowMultiSorting": false,
+                  "confirmDeleteText": "Are you sure you want to delete this record?",
+                  "confirmDeleteTitle": "Confirmation",
+                  "confirmDeleteOkText": "Ok",
+                  "confirmDeleteCancelText": "Cancel",
+                  "emptyText": "No records to display.",
+                  "addText": "Add",
+                  "clearFilterText": "Clear",
+                  "applyFilterText": "Apply",
+                  "equalsText": "Equals",
+                  "notEqualsText": "Not equals",
+                  "lessThanText": "Less than",
+                  "lessThanOrEqualsText": "Less than or equals",
+                  "greaterThanText": "Greater than",
+                  "greaterThanOrEqualsText": "Greater than or equals",
+                  "endsWithText": "Ends with",
+                  "containsText": "Contains",
+                  "startsWithText": "Starts with"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "type": "execute",
+        "code": "this.grid0.load();"
+      }
+    ]
+  },
+  "name": "InventurBasis",
+  "access": [
+    "Authenticated"
+  ],
+  "layout": "Main"
+}

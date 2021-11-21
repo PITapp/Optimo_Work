@@ -23,6 +23,11 @@ namespace OptimoWork.Models.DbOptimo
       get;
       set;
     }
+    public string LagerortGesamt
+    {
+      get;
+      set;
+    }
     public string LagerortStatus
     {
       get;
@@ -34,6 +39,16 @@ namespace OptimoWork.Models.DbOptimo
       set;
     }
     public Int64 AnzahlErfasst
+    {
+      get;
+      set;
+    }
+    public string AnzahlArtikelFormatiert
+    {
+      get;
+      set;
+    }
+    public string AnzahlErfasstFormatiert
     {
       get;
       set;

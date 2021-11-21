@@ -14,9 +14,9 @@
     </div>
   </div>
   <rz-tabs #tabs0 [style]="{'float': 'none'}">
-    <rz-tabs-item [selected]="false" text="Lagerorte">
+    <rz-tabs-item [selected]="true" text="Lagerorte">
       <div class="row">
-        <div class="col-md-7">
+        <div class="col-md-6">
           <rz-panel #panel1 [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="{{rstLagerorteCount}} Lagerorte">
             <rz-grid #gridLagerorte [allowAdd]="false" [allowColumnReorder]="true" [allowColumnResize]="true" [allowDelete]="false" [allowFiltering]="true" [allowMultiSorting]="false" [allowPaging]="true" [allowSorting]="true" [alwaysShowPager]="false" applyFilterText="Anwenden" clearFilterText="Entfernen" columnResizeMode="expand" [confirmDelete]="false" containsText="Enthält" [count]="rstLagerorteCount" [data]="rstLagerorte" emptyText="Keine Lagerorte vorhanden" endsWithText="Endet mit" equalsText="Gleich" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Größer oder gleich" greaterThanText="Größer" [isLoading]="false" lessThanOrEqualsText="Kleiner oder gleich" lessThanText="Kleiner" locale="de-at" notEqualsText="Nicht Gleich" [pageSize]="20" [responsive]="true" startsWithText="Beginnt mit" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '700px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}" (loadData)="gridLagerorteLoadData($event)" (rowDoubleClick)="gridLagerorteRowDoubleClick($event)" (rowSelect)="gridLagerorteRowSelect($event)">
               <rz-grid-column property="LagerortNummer" title="Nummer" width="100px" type="string">
@@ -31,35 +31,38 @@
             <rz-panel-header>
               <div class="row">
                 <div class="col-md-12 align-items-start d-flex">
-                  <rz-button #buttonLagerortBearbeiten buttonStyle="light" buttonType="button" icon="create" size="sm" [style]="{'color': '#6A80AA', 'display': 'block', 'marginRight': '-9px', 'marginTop': '1px'}" text="Bearbeiten" (click)="buttonLagerortBearbeitenClick($event)">
+                  <rz-button #buttonLagerortBearbeiten buttonStyle="light" buttonType="button" icon="create" size="sm" [style]="{'color': '#a71330', 'display': 'block', 'marginRight': '-9px', 'marginTop': '1px'}" text="Bearbeiten" (click)="buttonLagerortBearbeitenClick($event)">
                   </rz-button>
                 </div>
               </div>
             </rz-panel-header>
           </rz-panel>
         </div>
-        <div class="col-md-5" [ngStyle]="{'paddingLeft': '5px'}">
+        <div class="col-md-6" [ngStyle]="{'paddingLeft': '5px'}">
           <rz-panel #panel0 [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="Erfassung: {{dsoLagerort?.LagerortNummer}} {{dsoLagerort?.LagerortTitel}}">
-            <rz-grid #gridErfassung [allowAdd]="false" [allowColumnReorder]="true" [allowColumnResize]="true" [allowDelete]="false" [allowFiltering]="true" [allowMultiSorting]="false" [allowPaging]="true" [allowSorting]="true" [alwaysShowPager]="false" applyFilterText="Anwenden" clearFilterText="Entfernen" columnResizeMode="expand" [confirmDelete]="false" containsText="Enthält" [count]="rstErfassungCount" [data]="rstErfassung" emptyText="Keine Erfassung vorhanden" endsWithText="Endet mit" equalsText="Gleich" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Größer oder gleich" greaterThanText="Größer" [isLoading]="false" lessThanOrEqualsText="Kleiner oder gleich" lessThanText="Kleiner" locale="de-at" notEqualsText="Nicht Gleich" [pageSize]="20" [responsive]="true" startsWithText="Beginnt mit" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '700px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}" (loadData)="gridErfassungLoadData($event)" (rowDoubleClick)="gridErfassungRowDoubleClick($event)" (rowSelect)="gridErfassungRowSelect($event)">
-              <rz-grid-column format="date-time" formatString="medium" property="ErfasstAm" title="Erfasst Am" type="string">
+            <rz-grid #gridErfassungLagerorte [allowAdd]="false" [allowColumnReorder]="true" [allowColumnResize]="true" [allowDelete]="false" [allowFiltering]="true" [allowMultiSorting]="false" [allowPaging]="true" [allowSorting]="true" [alwaysShowPager]="false" applyFilterText="Anwenden" clearFilterText="Entfernen" columnResizeMode="expand" [confirmDelete]="false" containsText="Enthält" [count]="rstErfassungLagerorteCount" [data]="rstErfassungLagerorte" emptyText="Keine Daten vorhanden" endsWithText="Endet mit" equalsText="Gleich" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Größer oder gleich" greaterThanText="Größer" [isLoading]="false" lessThanOrEqualsText="Kleiner oder gleich" lessThanText="Kleiner" locale="de-at" notEqualsText="Nicht Gleich" [pageSize]="20" [responsive]="true" startsWithText="Beginnt mit" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '700px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}">
+              <rz-grid-column format="date-time" formatString="dd.MM.yyyy HH:mm" property="ErfasstAm" title="Am" width="120px" type="string">
               </rz-grid-column>
-              <rz-grid-column property="ErfasstAnzahl" title="Erfasst Anzahl" type="integer">
+              <rz-grid-column property="Artikelnummer" title="Artikelnummer" width="120px" type="string">
               </rz-grid-column>
-              <rz-grid-column format="date-time" formatString="medium" property="GeloeschtAm" title="Geloescht Am" type="string">
+              <rz-grid-column property="Beschreibung" title="Bezeichnung" width="300px" type="string">
               </rz-grid-column>
-              <rz-grid-column property="Artikelnummer" title="Artikelnummer" type="string">
+              <rz-grid-column property="ErfasstAnzahl" textAlign="right" title="Gezählt" width="80px" type="integer">
+                <ng-template let-data gridColumnTemplate>
+                {{data?.ErfasstAnzahlFormatiert}}
+                </ng-template>
               </rz-grid-column>
-              <rz-grid-column property="Beschreibung" title="Beschreibung" type="string">
-              </rz-grid-column>
-              <rz-grid-column property="Beschreibung2" title="Beschreibung 2" type="string">
-              </rz-grid-column>
-              <rz-grid-column property="StdKreditorName" title="Std Kreditor Name" type="string">
+              <rz-grid-column format="date-time" formatString="dd.MM.yyyy HH:mm" property="GeloeschtAm" textAlign="right" title="Gelöscht" width="100px" type="string">
+                <ng-template let-data gridColumnTemplate>
+                  <rz-label #label1 [classList]="{'badge': true, 'badge-danger': data?.GeloeschtAm != null}" [style]="{'color': '#ffffff'}" [text]="data?.GeloeschtAm | date:'dd.MM.yyyy HH:mm'">
+                  </rz-label>
+                </ng-template>
               </rz-grid-column>
             </rz-grid>
             <rz-panel-header>
               <div class="row">
                 <div class="col-md-12 align-items-start d-flex">
-                  <rz-button #buttonBearbeitenProtokoll buttonStyle="light" buttonType="button" icon="create" size="sm" [style]="{'color': '#6A80AA', 'display': 'block', 'marginRight': '-9px', 'marginTop': '1px'}" text="Bearbeiten">
+                  <rz-button #buttonBearbeitenProtokoll buttonStyle="light" buttonType="button" icon="published_with_changes" size="sm" [style]="{'color': '#a71330', 'display': 'block', 'marginRight': '-9px', 'marginTop': '1px'}" text="Export" (click)="buttonBearbeitenProtokollClick($event)">
                   </rz-button>
                 </div>
               </div>
@@ -70,8 +73,58 @@
     </rz-tabs-item>
     <rz-tabs-item [selected]="false" text="Artikel">
       <div class="row">
-        <div class="col-md-12">
-          <rz-panel #panel3 [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="Beispiel">
+        <div class="col-md-6">
+          <rz-panel #panel2 [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="{{rstArtikelCount}} Artikel">
+            <rz-grid #gridArtikel [allowAdd]="false" [allowColumnReorder]="true" [allowColumnResize]="true" [allowDelete]="false" [allowFiltering]="true" [allowMultiSorting]="false" [allowPaging]="true" [allowSorting]="true" [alwaysShowPager]="false" applyFilterText="Anwenden" clearFilterText="Entfernen" columnResizeMode="expand" [confirmDelete]="false" containsText="Enthält" [count]="rstArtikelCount" [data]="rstArtikel" emptyText="Keine Artikel vorhanden" endsWithText="Endet mit" equalsText="Gleich" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Größer oder gleich" greaterThanText="Größer" [isLoading]="false" lessThanOrEqualsText="Kleiner oder gleich" lessThanText="Kleiner" locale="de-at" notEqualsText="Nicht Gleich" [pageSize]="20" [responsive]="true" startsWithText="Beginnt mit" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '700px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}" (loadData)="gridArtikelLoadData($event)" (rowSelect)="gridArtikelRowSelect($event)">
+              <rz-grid-column property="Artikelnummer" title="Artikelnummer" width="120px" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="Beschreibung" title="Bezeichnung" width="300px" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="LagerortGesamt" title="Lagerort" width="250px" type="string">
+              </rz-grid-column>
+              <rz-grid-column format="decimal" property="SummeGezaehlt" textAlign="right" title="Gezählt" width="80px" type="number">
+                <ng-template let-data gridColumnTemplate>
+                {{data?.SummeGezaehltFormatiert}}
+                </ng-template>
+              </rz-grid-column>
+            </rz-grid>
+            <rz-panel-header>
+              <div class="row">
+                <div class="col-md-12 align-items-start d-flex">
+                  <rz-button #buttonArtikelExport buttonStyle="light" buttonType="button" icon="published_with_changes" size="sm" [style]="{'color': '#a71330', 'display': 'block', 'marginRight': '-9px', 'marginTop': '1px'}" text="Export" (click)="buttonArtikelExportClick($event)">
+                  </rz-button>
+                </div>
+              </div>
+            </rz-panel-header>
+          </rz-panel>
+        </div>
+        <div class="col-md-6" [ngStyle]="{'paddingLeft': '5px'}">
+          <rz-panel #panel3 [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="Erfassung: {{dsoArtikel?.Artikelnummer}} | {{dsoArtikel?.Beschreibung}} | {{dsoArtikel?.LagerortGesamt}}">
+            <rz-grid #gridErfassungArtikel [allowAdd]="false" [allowColumnReorder]="true" [allowColumnResize]="true" [allowDelete]="false" [allowFiltering]="true" [allowMultiSorting]="false" [allowPaging]="true" [allowSorting]="true" [alwaysShowPager]="false" applyFilterText="Anwenden" clearFilterText="Entfernen" columnResizeMode="expand" [confirmDelete]="false" containsText="Enthält" [count]="rstErfassungArtikelCount" [data]="rstErfassungArtikel" emptyText="Keine Daten vorhanden" endsWithText="Endet mit" equalsText="Gleich" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Größer oder gleich" greaterThanText="Größer" [isLoading]="false" lessThanOrEqualsText="Kleiner oder gleich" lessThanText="Kleiner" locale="de-at" notEqualsText="Nicht Gleich" [pageSize]="20" [responsive]="true" startsWithText="Beginnt mit" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '700px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}">
+              <rz-grid-column format="date-time" formatString="dd.MM.yyyy HH:mm" property="ErfasstAm" title="Am" width="120px" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="LagerortGesamt" title="Lagerort" width="250px" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="ErfasstAnzahl" textAlign="right" title="Gezählt" width="80px" type="integer">
+                <ng-template let-data gridColumnTemplate>
+                {{data?.ErfasstAnzahlFormatiert}}
+                </ng-template>
+              </rz-grid-column>
+              <rz-grid-column format="date-time" formatString="dd.MM.yyyy HH:mm" property="GeloeschtAm" textAlign="right" title="Gelöscht" width="100px" type="string">
+                <ng-template let-data gridColumnTemplate>
+                  <rz-label #label1 [classList]="{'badge': true, 'badge-danger': data?.GeloeschtAm != null}" [style]="{'color': '#ffffff'}" [text]="data?.GeloeschtAm | date:'dd.MM.yyyy HH:mm'">
+                  </rz-label>
+                </ng-template>
+              </rz-grid-column>
+            </rz-grid>
+            <rz-panel-header>
+              <div class="row">
+                <div class="col-md-12 align-items-start d-flex">
+                  <rz-button #buttonExportArtikelErfassung buttonStyle="light" buttonType="button" icon="published_with_changes" size="sm" [style]="{'color': '#a71330', 'display': 'block', 'marginRight': '-9px', 'marginTop': '1px'}" text="Export" (click)="buttonExportArtikelErfassungClick($event)">
+                  </rz-button>
+                </div>
+              </div>
+            </rz-panel-header>
           </rz-panel>
         </div>
       </div>
@@ -79,7 +132,40 @@
     <rz-tabs-item [selected]="false" text="Erfassung">
       <div class="row">
         <div class="col-md-12">
-          <rz-panel #panel4 [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="Beispiel">
+          <rz-panel #panel4 [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="{{rstErfassungCount}} Erfassungen">
+            <rz-grid #gridErfassung [allowAdd]="false" [allowColumnReorder]="true" [allowColumnResize]="true" [allowDelete]="false" [allowFiltering]="true" [allowMultiSorting]="false" [allowPaging]="true" [allowSorting]="true" [alwaysShowPager]="false" applyFilterText="Anwenden" clearFilterText="Entfernen" columnResizeMode="expand" [confirmDelete]="false" containsText="Enthält" [count]="rstErfassungCount" [data]="rstErfassung" emptyText="Keine Erfassung vorhanden" endsWithText="Endet mit" equalsText="Gleich" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Größer oder gleich" greaterThanText="Größer" [isLoading]="false" lessThanOrEqualsText="Kleiner oder gleich" lessThanText="Kleiner" locale="de-at" notEqualsText="Nicht Gleich" [pageSize]="20" [responsive]="true" startsWithText="Beginnt mit" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '700px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}" (loadData)="gridErfassungLoadData($event)" (rowSelect)="gridErfassungRowSelect($event)">
+              <rz-grid-column format="date-time" formatString="dd.MM.yyyy HH:mm" property="ErfasstAm" title="Am" width="120px" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="LagerortGesamt" title="Lagerort" width="250px" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="Artikelnummer" title="Artikelnummer" width="120px" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="Beschreibung" title="Bezeichnung" width="300px" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="Beschreibung2" title="Bezeichnung 2" width="200px" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="StdKreditorName" title="Std Kreditor Name" width="150px" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="ErfasstAnzahl" textAlign="right" title="Gezählt" width="80px" type="integer">
+                <ng-template let-data gridColumnTemplate>
+                {{data?.ErfasstAnzahlFormatiert}}
+                </ng-template>
+              </rz-grid-column>
+              <rz-grid-column format="date-time" formatString="medium" property="GeloeschtAm" textAlign="right" title="Gelöscht" width="100px" type="string">
+                <ng-template let-data gridColumnTemplate>
+                  <rz-label #label0 [classList]="{'badge': true, 'badge-danger': data?.GeloeschtAm != null}" [style]="{'color': '#ffffff'}" [text]="data?.GeloeschtAm | date:'dd.MM.yyyy HH:mm'">
+                  </rz-label>
+                </ng-template>
+              </rz-grid-column>
+            </rz-grid>
+            <rz-panel-header>
+              <div class="row">
+                <div class="col-md-12 align-items-start d-flex">
+                  <rz-button #buttonErfassungExport buttonStyle="light" buttonType="button" icon="published_with_changes" size="sm" [style]="{'color': '#a71330', 'display': 'block', 'marginRight': '-9px', 'marginTop': '1px'}" text="Export" (click)="buttonErfassungExportClick($event)">
+                  </rz-button>
+                </div>
+              </div>
+            </rz-panel-header>
           </rz-panel>
         </div>
       </div>

@@ -18,7 +18,7 @@
     </div>
   </div>
   <rz-tabs #tabsKontakte [selectedIndex]="tabsKontakteSelectedIndex" [style]="{'float': 'none'}" (change)="tabsKontakteChange($event)">
-    <rz-tabs-item [disabled]="false" [selected]="true" text="Daten">
+    <rz-tabs-item [disabled]="false" [selected]="false" text="Daten">
       <div class="row">
         <div class="col-md-7">
           <rz-panel #panel2 [allowCollapse]="false" [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="Kontaktdaten">
@@ -392,7 +392,7 @@
         </div>
       </div>
     </rz-tabs-item>
-    <rz-tabs-item [disabled]="false" [selected]="false" text="Liste">
+    <rz-tabs-item [disabled]="false" [selected]="true" text="Liste">
       <div [ngStyle]="{'height': '100%'}" class="row">
         <div class="col-md-12" [ngStyle]="{'display': 'block', 'float': 'none'}">
           <rz-panel #panel0 [style]="{'border': '1px solid #e6ecef', 'display': 'block', 'height': '750px'}" text="{{rstBaseKontakteCount}} Kontakte">

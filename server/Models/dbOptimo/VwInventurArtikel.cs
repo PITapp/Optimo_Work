@@ -38,7 +38,47 @@ namespace OptimoWork.Models.DbOptimo
       get;
       set;
     }
+    public string ArtikelStatus
+    {
+      get;
+      set;
+    }
+    public string Notiz
+    {
+      get;
+      set;
+    }
+    public string LagerortNummer
+    {
+      get;
+      set;
+    }
+    public string LagerortTitel
+    {
+      get;
+      set;
+    }
+    public string LagerortGesamt
+    {
+      get;
+      set;
+    }
     public Int64 AnzahlErfasst
+    {
+      get;
+      set;
+    }
+    public decimal? SummeGezaehlt
+    {
+      get;
+      set;
+    }
+    public string AnzahlErfasstFormatiert
+    {
+      get;
+      set;
+    }
+    public string SummeGezaehltFormatiert
     {
       get;
       set;

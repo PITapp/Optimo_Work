@@ -1270,7 +1270,10 @@
       "resource": "VwInventurArtikels",
       "required": [
         "InventurID",
-        "Artikelnummer"
+        "Artikelnummer",
+        "ArtikelStatus",
+        "LagerortNummer",
+        "LagerortTitel"
       ],
       "properties": {
         "ArtikelID": {
@@ -1301,11 +1304,48 @@
           "type": "string",
           "length": 50
         },
+        "ArtikelStatus": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 30
+        },
+        "Notiz": {
+          "type": "string",
+          "length": 65535
+        },
+        "LagerortNummer": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 10
+        },
+        "LagerortTitel": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 70
+        },
+        "LagerortGesamt": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 81
+        },
         "AnzahlErfasst": {
           "x-default-sql": "0",
           "x-nullable": false,
           "type": "integer",
           "format": "int64"
+        },
+        "SummeGezaehlt": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "AnzahlErfasstFormatiert": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 61
+        },
+        "SummeGezaehltFormatiert": {
+          "type": "string",
+          "length": 77
         }
       }
     },
@@ -1317,7 +1357,10 @@
         "ArtikelID",
         "ErfasstAm",
         "ErfasstAnzahl",
-        "Artikelnummer"
+        "InventurID",
+        "Artikelnummer",
+        "LagerortNummer",
+        "LagerortTitel"
       ],
       "properties": {
         "ErfassungID": {
@@ -1340,9 +1383,18 @@
           "x-nullable": false,
           "type": "integer"
         },
+        "ErfasstAnzahlFormatiert": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 47
+        },
         "GeloeschtAm": {
           "type": "string",
           "format": "date-time"
+        },
+        "InventurID": {
+          "x-nullable": false,
+          "type": "integer"
         },
         "Artikelnummer": {
           "x-nullable": false,
@@ -1360,6 +1412,21 @@
         "StdKreditorName": {
           "type": "string",
           "length": 50
+        },
+        "LagerortNummer": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 10
+        },
+        "LagerortTitel": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 70
+        },
+        "LagerortGesamt": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 81
         }
       }
     },
@@ -1390,6 +1457,11 @@
           "type": "string",
           "length": 70
         },
+        "LagerortGesamt": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 81
+        },
         "LagerortStatus": {
           "x-nullable": false,
           "type": "string",
@@ -1406,6 +1478,16 @@
           "x-nullable": false,
           "type": "integer",
           "format": "int64"
+        },
+        "AnzahlArtikelFormatiert": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 61
+        },
+        "AnzahlErfasstFormatiert": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 61
         }
       }
     },

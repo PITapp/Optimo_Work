@@ -2168,7 +2168,7 @@
               ],
               "disabled": false,
               "icon": "",
-              "selected": true,
+              "selected": false,
               "text": "Daten"
             },
             {
@@ -3029,7 +3029,7 @@
               ],
               "disabled": false,
               "icon": "",
-              "selected": false,
+              "selected": true,
               "text": "Liste"
             }
           ],
