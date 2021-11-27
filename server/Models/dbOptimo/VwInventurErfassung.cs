@@ -18,6 +18,11 @@ namespace OptimoWork.Models.DbOptimo
       get;
       set;
     }
+    public int DeviceID
+    {
+      get;
+      set;
+    }
     public DateTime ErfasstAm
     {
       get;
@@ -74,6 +79,31 @@ namespace OptimoWork.Models.DbOptimo
       set;
     }
     public string LagerortGesamt
+    {
+      get;
+      set;
+    }
+    public string DeviceNummer
+    {
+      get;
+      set;
+    }
+    public string DeviceTitel
+    {
+      get;
+      set;
+    }
+    public DateTime? RegistriertAm
+    {
+      get;
+      set;
+    }
+    public DateTime? AnmeldungAm
+    {
+      get;
+      set;
+    }
+    public DateTime? AbmeldungAm
     {
       get;
       set;

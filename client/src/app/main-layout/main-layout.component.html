@@ -36,6 +36,8 @@
   <rz-panelmenu #panelmenu0 [style]="{'height': '100%'}">
     <rz-panelmenu-item icon="movie_filter" [parameters]="[]" path="inventur" text="Inventur" *ngIf="security?.isInRole(['Authenticated'])">
     </rz-panelmenu-item>
+    <rz-panelmenu-item icon="phonelink_setup" path="device" text="Geräte" *ngIf="security?.isInRole(['Authenticated'])">
+    </rz-panelmenu-item>
     <rz-panelmenu-item icon="contact_phone" path="kontakte" text="Kontakte" *ngIf="security?.isInRole(['Authenticated'])">
     </rz-panelmenu-item>
     <rz-panelmenu-item icon="supervisor_account" path="benutzer" text="Benutzer" *ngIf="security?.isInRole(['Authenticated'])">
@@ -53,7 +55,7 @@
   </rz-label>
   <rz-label #label4 [style]="{'color': '#6d787d', 'float': 'none', 'marginTop': '-6px'}" text="Braunau/Inn · Industriezeile 10">
   </rz-label>
-  <rz-link #linkVersion path="versionen" [style]="{'float': 'right', 'marginTop': '-2px'}" text="Version 1.01.024">
+  <rz-link #linkVersion path="versionen" [style]="{'float': 'right', 'marginTop': '-2px'}" text="Version 1.02.031">
   </rz-link>
   <rz-label #label1 [style]="{'color': '#e5ecef', 'float': 'right', 'marginTop': '-6px', 'paddingLeft': '10px', 'paddingRight': '10px'}" text="|">
   </rz-label>

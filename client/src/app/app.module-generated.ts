@@ -80,7 +80,9 @@ import { MeldungOkComponent } from './meldung-ok/meldung-ok.component';
 import { MeldungFortschrittComponent } from './meldung-fortschritt/meldung-fortschritt.component';
 import { NotizenEditorComponent } from './notizen-editor/notizen-editor.component';
 import { InventurLagerorteBearbeitenComponent } from './inventur-lagerorte-bearbeiten/inventur-lagerorte-bearbeiten.component';
-import { InventurBasisComponent } from './inventur-basis/inventur-basis.component';
+import { DeviceComponent } from './device/device.component';
+import { DeviceNeuComponent } from './device-neu/device-neu.component';
+import { DeviceBearbeitenComponent } from './device-bearbeiten/device-bearbeiten.component';
 import { LoginLayoutComponent } from './login-layout/login-layout.component';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 
@@ -118,7 +120,9 @@ export const PageDeclarations = [
   MeldungFortschrittComponent,
   NotizenEditorComponent,
   InventurLagerorteBearbeitenComponent,
-  InventurBasisComponent,
+  DeviceComponent,
+  DeviceNeuComponent,
+  DeviceBearbeitenComponent,
 ];
 
 export const LayoutDeclarations = [

@@ -1,0 +1,80 @@
+<rz-content #content1 container="main">
+  <div class="row">
+    <div class="col-md-12">
+      <rz-template-form #form0 (submit)="form0Submit($event)">
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3">
+            <rz-label #deviceNummerLabel component="DeviceNummer" [style]="{'width': '100%'}" text="Gerätenummer">
+            </rz-label>
+          </div>
+          <div class="col-md-9">
+            <rz-textbox #deviceNummer [maxLength]="30" [style]="{'display': 'block', 'width': '100%'}" [(ngModel)]="dsoDevice && dsoDevice.DeviceNummer" name="DeviceNummer">
+            </rz-textbox>
+            <rz-required-validator #deviceNummerRequiredValidator [component]="deviceNummer" [style]="{'position': 'absolute'}" text="DeviceNummer is required">
+            </rz-required-validator>
+          </div>
+        </div>
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3">
+            <rz-label #deviceTitelLabel component="DeviceTitel" [style]="{'width': '100%'}" text="Gerätetitel">
+            </rz-label>
+          </div>
+          <div class="col-md-9">
+            <rz-textbox #deviceTitel [maxLength]="150" [style]="{'display': 'block', 'width': '100%'}" [(ngModel)]="dsoDevice && dsoDevice.DeviceTitel" name="DeviceTitel">
+            </rz-textbox>
+            <rz-required-validator #deviceTitelRequiredValidator [component]="deviceTitel" [style]="{'position': 'absolute'}" text="DeviceTitel is required">
+            </rz-required-validator>
+          </div>
+        </div>
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3">
+            <rz-label #registriertAmLabel component="RegistriertAm" [style]="{'width': '100%'}" text="Registriert am">
+            </rz-label>
+          </div>
+          <div class="col-md-9">
+            <rz-datepicker #registriertAm dateFormat="dd.mm.yy" [inline]="false" locale="de" [showTime]="true" [style]="{'width': '100%'}" [(ngModel)]="dsoDevice && dsoDevice.RegistriertAm" name="RegistriertAm">
+            </rz-datepicker>
+          </div>
+        </div>
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3">
+            <rz-label #anmeldungAmLabel component="AnmeldungAm" [style]="{'width': '100%'}" text="Anmeldung am">
+            </rz-label>
+          </div>
+          <div class="col-md-9">
+            <rz-datepicker #anmeldungAm dateFormat="dd.mm.yy" locale="de" [showTime]="true" [style]="{'width': '100%'}" [(ngModel)]="dsoDevice && dsoDevice.AnmeldungAm" name="AnmeldungAm">
+            </rz-datepicker>
+          </div>
+        </div>
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3">
+            <rz-label #abmeldungAmLabel component="AbmeldungAm" [style]="{'width': '100%'}" text="Abmeldung am">
+            </rz-label>
+          </div>
+          <div class="col-md-9">
+            <rz-datepicker #abmeldungAm dateFormat="dd.mm.yy" locale="de" [showTime]="true" [style]="{'width': '100%'}" [(ngModel)]="dsoDevice && dsoDevice.AbmeldungAm" name="AbmeldungAm">
+            </rz-datepicker>
+          </div>
+        </div>
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3">
+            <rz-label #infoLabel component="Info" [style]="{'width': '100%'}" text="Info">
+            </rz-label>
+          </div>
+          <div class="col-md-9">
+            <rz-textarea #info [rows]="7" [style]="{'width': '100%'}" [(ngModel)]="dsoDevice && dsoDevice.Info" name="Info">
+            </rz-textarea>
+          </div>
+        </div>
+        <div [ngStyle]="{'textAlign': 'right'}" class="row">
+          <div class="col offset-sm-3">
+            <rz-button #button0 buttonStyle="success" buttonType="submit" icon="done" text="Speichern">
+            </rz-button>
+            <rz-button #button1 buttonStyle="light" [style]="{'marginLeft': '1rem'}" text="Abbruch" (click)="button1Click($event)">
+            </rz-button>
+          </div>
+        </div>
+      </rz-template-form>
+    </div>
+  </div>
+</rz-content>

@@ -177,12 +177,32 @@ export class DbOptimoService {
     return this.odata.patch(`/InventurBasisStatuses(${inventurBasisStatusId})`, inventurBasisStatus, item => item.InventurBasisStatusID == inventurBasisStatusId, { expand }, []);
   }
 
+  getInventurDevices(filter: string | null, top: number | null, skip: number | null, orderby: string | null, count: boolean | null, expand: string | null, format: string | null, select: string | null) : Observable<any> {
+    return this.odata.get(`/InventurDevices`, { filter, top, skip, orderby, count, expand, format, select });
+  }
+
+  createInventurDevice(expand: string | null, inventurDevice: models.InventurDevice | null) : Observable<any> {
+    return this.odata.post(`/InventurDevices`, inventurDevice, { expand }, ['InventurBasis']);
+  }
+
+  deleteInventurDevice(deviceId: number | null) : Observable<any> {
+    return this.odata.delete(`/InventurDevices(${deviceId})`, item => !(item.DeviceID == deviceId));
+  }
+
+  getInventurDeviceByDeviceId(expand: string | null, deviceId: number | null) : Observable<any> {
+    return this.odata.getById(`/InventurDevices(${deviceId})`, { expand });
+  }
+
+  updateInventurDevice(expand: string | null, deviceId: number | null, inventurDevice: models.InventurDevice | null) : Observable<any> {
+    return this.odata.patch(`/InventurDevices(${deviceId})`, inventurDevice, item => item.DeviceID == deviceId, { expand }, ['InventurBasis']);
+  }
+
   getInventurErfassungs(filter: string | null, top: number | null, skip: number | null, orderby: string | null, count: boolean | null, expand: string | null, format: string | null, select: string | null) : Observable<any> {
     return this.odata.get(`/InventurErfassungs`, { filter, top, skip, orderby, count, expand, format, select });
   }
 
   createInventurErfassung(expand: string | null, inventurErfassung: models.InventurErfassung | null) : Observable<any> {
-    return this.odata.post(`/InventurErfassungs`, inventurErfassung, { expand }, ['InventurArtikel']);
+    return this.odata.post(`/InventurErfassungs`, inventurErfassung, { expand }, ['InventurArtikel', 'InventurDevice']);
   }
 
   deleteInventurErfassung(erfassungId: number | null) : Observable<any> {
@@ -194,7 +214,7 @@ export class DbOptimoService {
   }
 
   updateInventurErfassung(expand: string | null, erfassungId: number | null, inventurErfassung: models.InventurErfassung | null) : Observable<any> {
-    return this.odata.patch(`/InventurErfassungs(${erfassungId})`, inventurErfassung, item => item.ErfassungID == erfassungId, { expand }, ['InventurArtikel']);
+    return this.odata.patch(`/InventurErfassungs(${erfassungId})`, inventurErfassung, item => item.ErfassungID == erfassungId, { expand }, ['InventurArtikel','InventurDevice']);
   }
 
   getNotizens(filter: string | null, top: number | null, skip: number | null, orderby: string | null, count: boolean | null, expand: string | null, format: string | null, select: string | null) : Observable<any> {
@@ -275,6 +295,10 @@ export class DbOptimoService {
 
   getVwInventurLagerortes(filter: string | null, top: number | null, skip: number | null, orderby: string | null, count: boolean | null, expand: string | null, format: string | null, select: string | null) : Observable<any> {
     return this.odata.get(`/VwInventurLagerortes`, { filter, top, skip, orderby, count, expand, format, select });
+  }
+
+  getVwInventurLagerorteMitSummens(filter: string | null, top: number | null, skip: number | null, orderby: string | null, count: boolean | null, expand: string | null, format: string | null, select: string | null) : Observable<any> {
+    return this.odata.get(`/VwInventurLagerorteMitSummens`, { filter, top, skip, orderby, count, expand, format, select });
   }
 
   getVwRollens(filter: string | null, top: number | null, skip: number | null, orderby: string | null, count: boolean | null, expand: string | null, format: string | null, select: string | null) : Observable<any> {

@@ -160,6 +160,11 @@
               "text": "Inventur"
             },
             {
+              "icon": "phonelink_setup",
+              "path": "device",
+              "text": "Geräte"
+            },
+            {
               "icon": "contact_phone",
               "path": "kontakte",
               "text": "Kontakte"
@@ -232,7 +237,7 @@
             "float": "right",
             "marginTop": "-2px"
           },
-          "text": "Version 1.01.024",
+          "text": "Version 1.02.031",
           "type": "link"
         },
         {

@@ -74,6 +74,7 @@ export class InventurGenerated implements AfterViewInit, OnInit, OnDestroy {
   dbOptimo: DbOptimoService;
 
   security: SecurityService;
+  letzteInventurID: any;
   parameters: any;
   rstLagerorte: any;
   rstLagerorteCount: any;
@@ -137,6 +138,8 @@ export class InventurGenerated implements AfterViewInit, OnInit, OnDestroy {
 
 
   load() {
+    this.letzteInventurID = null;
+
     this.gridLagerorte.load();
 
     this.gridArtikel.load();
@@ -149,19 +152,28 @@ export class InventurGenerated implements AfterViewInit, OnInit, OnDestroy {
   }
 
   gridLagerorteLoadData(event: any) {
-    this.dbOptimo.getInventurBases(`${event.filter}`, event.top, event.skip, `${event.orderby || 'LagerortNummer, LagerortTitel'}`, event.top != null && event.skip != null, null, null, null)
+    this.dbOptimo.getVwInventurLagerortes(`${event.filter}`, event.top, event.skip, `${event.orderby || 'LagerortNummer, LagerortTitel'}`, event.top != null && event.skip != null, null, null, null)
     .subscribe((result: any) => {
       this.rstLagerorte = result.value;
 
       this.rstLagerorteCount = event.top != null && event.skip != null ? result['@odata.count'] : result.value.length;
 
-      this.gridLagerorte.onSelect(this.rstLagerorte[0]);
+      if (this.rstLagerorte.find(p => p.InventurID == this.letzteInventurID) != null) {
+    // letzteInventurID wurde in rstLagerorte gefunden
+    this.gridLagerorte.onSelect(this.rstLagerorte.find(p => p.InventurID == this.letzteInventurID))
+} else {
+    // letzteInventurID wurde in rstLagerorte NICHT gefunden
+    this.letzteInventurID = null;
+    this.gridLagerorte.onSelect(this.rstLagerorte[0]);
+}
     }, (result: any) => {
       this.notificationService.notify({ severity: "error", summary: ``, detail: `Lagerorte können nicht geladen werden!` });
     });
   }
 
   gridLagerorteRowDoubleClick(event: any) {
+    this.letzteInventurID = event.InventurID;
+
     this.dialogService.open(InventurLagerorteBearbeitenComponent, { parameters: {InventurID: event.InventurID}, title: `Lagerort bearbeiten` });
   }
 
@@ -179,6 +191,8 @@ export class InventurGenerated implements AfterViewInit, OnInit, OnDestroy {
   }
 
   buttonLagerortBearbeitenClick(event: any) {
+    this.letzteInventurID = this.dsoLagerort.InventurID;
+
     this.dialogService.open(InventurLagerorteBearbeitenComponent, { parameters: {InventurID: this.dsoLagerort.InventurID}, title: `Lagerort bearbeiten` });
   }
 

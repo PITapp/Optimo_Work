@@ -31,7 +31,9 @@ import { MeldungOkComponent } from './meldung-ok/meldung-ok.component';
 import { MeldungFortschrittComponent } from './meldung-fortschritt/meldung-fortschritt.component';
 import { NotizenEditorComponent } from './notizen-editor/notizen-editor.component';
 import { InventurLagerorteBearbeitenComponent } from './inventur-lagerorte-bearbeiten/inventur-lagerorte-bearbeiten.component';
-import { InventurBasisComponent } from './inventur-basis/inventur-basis.component';
+import { DeviceComponent } from './device/device.component';
+import { DeviceNeuComponent } from './device-neu/device-neu.component';
+import { DeviceBearbeitenComponent } from './device-bearbeiten/device-bearbeiten.component';
 
 import { SecurityService } from './security.service';
 import { AuthGuard } from './auth.guard';
@@ -257,12 +259,28 @@ export const routes: Routes = [
         component: InventurLagerorteBearbeitenComponent
       },
       {
-        path: 'inventur-basis',
+        path: 'device',
         canActivate: [AuthGuard],
         data: {
           roles: ['Authenticated'],
         },
-        component: InventurBasisComponent
+        component: DeviceComponent
+      },
+      {
+        path: 'device-neu',
+        canActivate: [AuthGuard],
+        data: {
+          roles: ['Authenticated'],
+        },
+        component: DeviceNeuComponent
+      },
+      {
+        path: 'device-bearbeiten/:DeviceID',
+        canActivate: [AuthGuard],
+        data: {
+          roles: ['Authenticated'],
+        },
+        component: DeviceBearbeitenComponent
       },
     ]
   },

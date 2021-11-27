@@ -1,0 +1,546 @@
+{
+  "access": [
+    "Authenticated"
+  ],
+  "components": [
+    {
+      "components": [
+        {
+          "components": [
+            {
+              "class": "justify-content-start       d-flex align-items-center col-md-8",
+              "components": [
+                {
+                  "name": "heading0",
+                  "size": "H1",
+                  "style": {
+                    "color": "#5d717b",
+                    "display": "inline-block"
+                  },
+                  "text": "Geräte",
+                  "type": "heading"
+                },
+                {
+                  "name": "heading1",
+                  "size": "H3",
+                  "style": {
+                    "color": "#6A80AA",
+                    "display": "inline-block",
+                    "marginTop": "7px",
+                    "paddingLeft": "10px",
+                    "paddingRight": "10px"
+                  },
+                  "text": "|",
+                  "type": "heading"
+                },
+                {
+                  "attributes": [
+                    {}
+                  ],
+                  "name": "heading2",
+                  "size": "H3",
+                  "style": {
+                    "color": "#6A80AA",
+                    "display": "inline",
+                    "fontSize": "21px",
+                    "fontWeight": "normal"
+                  },
+                  "text": "${dsoDevice.DeviceNummer} · ${dsoDevice.DeviceTitel}",
+                  "type": "heading"
+                }
+              ],
+              "name": "col46",
+              "style": {
+                "height": "57px",
+                "paddingBottom": "1px"
+              },
+              "type": "col"
+            },
+            {
+              "class": "col-md-4  d-flex justify-content-end align-items-end",
+              "components": [
+                {
+                  "buttonStyle": "info",
+                  "buttonType": "submit",
+                  "events": {
+                    "click": [
+                      {
+                        "height": "",
+                        "parameters": [
+                          {
+                            "name": "strMeldung",
+                            "value": "\"Drucken ist für dieses Modul noch nicht aktiviert!\""
+                          }
+                        ],
+                        "path": "meldung-ok",
+                        "then": [],
+                        "title": "Info",
+                        "type": "popup",
+                        "width": 600
+                      }
+                    ]
+                  },
+                  "icon": "print",
+                  "name": "button1",
+                  "size": "md",
+                  "style": {
+                    "backgroundColor": "rgb(230, 236, 239)",
+                    "borderBottom": "2px solid #a71330",
+                    "color": "#5d717d",
+                    "display": "block",
+                    "fontWeight": "normal",
+                    "width": "150px"
+                  },
+                  "text": "Drucken",
+                  "tooltip": "",
+                  "type": "button"
+                }
+              ],
+              "name": "col64",
+              "style": {
+                "paddingRight": "20px"
+              },
+              "type": "col"
+            }
+          ],
+          "name": "row24",
+          "style": {
+            "height": "",
+            "marginTop": "-7px",
+            "paddingBottom": "0",
+            "paddingLeft": "5px",
+            "paddingRight": "3px",
+            "paddingTop": "0",
+            "width": ""
+          },
+          "type": "row"
+        },
+        {
+          "items": [
+            {
+              "components": [
+                {
+                  "components": [
+                    {
+                      "class": "col-md-10",
+                      "components": [
+                        {
+                          "components": [
+                            {
+                              "addText": "",
+                              "allowAdd": false,
+                              "allowColumnResize": true,
+                              "allowDelete": false,
+                              "allowFiltering": true,
+                              "allowMultiSorting": false,
+                              "allowPaging": false,
+                              "allowSorting": true,
+                              "applyFilterText": "Apply",
+                              "clearFilterText": "Clear",
+                              "columns": [
+                                {
+                                  "property": "DeviceNummer",
+                                  "title": "Gerätenummer",
+                                  "type": "string",
+                                  "width": "200px"
+                                },
+                                {
+                                  "property": "DeviceTitel",
+                                  "title": "Gerätetitel",
+                                  "type": "string",
+                                  "width": "200px"
+                                },
+                                {
+                                  "editTemplate": "",
+                                  "format": "date-time",
+                                  "formatString": "dd.MM.yyyy HH:mm",
+                                  "property": "RegistriertAm",
+                                  "title": "Registriert am",
+                                  "type": "string",
+                                  "width": "130px"
+                                },
+                                {
+                                  "format": "date-time",
+                                  "formatString": "dd.MM.yyyy HH:mm",
+                                  "property": "AnmeldungAm",
+                                  "title": "Anmeldung am",
+                                  "type": "string",
+                                  "width": "130px"
+                                },
+                                {
+                                  "format": "date-time",
+                                  "formatString": "dd.MM.yyyy HH:mm",
+                                  "property": "AbmeldungAm",
+                                  "title": "Abmeldung am",
+                                  "type": "string",
+                                  "width": "130px"
+                                },
+                                {
+                                  "filterProperty": "",
+                                  "format": "",
+                                  "property": "InventurBasis.LagerortNummer",
+                                  "template": "${data.InventurBasis.LagerortNummer} ${data.InventurBasis.LagerortTitel}",
+                                  "title": "Lagerort",
+                                  "type": "string",
+                                  "width": "300px"
+                                },
+                                {
+                                  "property": "Info",
+                                  "title": "Info",
+                                  "type": "string"
+                                }
+                              ],
+                              "confirmDelete": false,
+                              "confirmDeleteCancelText": "",
+                              "confirmDeleteOkText": "",
+                              "confirmDeleteText": "",
+                              "confirmDeleteTitle": "",
+                              "containsText": "Contains",
+                              "count": "${rstDeviceCount}",
+                              "data": "${rstDevice}",
+                              "emptyText": "Keine Geräte vorhanden",
+                              "endsWithText": "Ends with",
+                              "equalsText": "Equals",
+                              "events": {
+                                "add": [],
+                                "delete": [],
+                                "loadData": [
+                                  {
+                                    "error": [
+                                      {
+                                        "detail": "Geräte können nicht geladen werden!",
+                                        "severity": "error",
+                                        "summary": "",
+                                        "type": "notify"
+                                      }
+                                    ],
+                                    "name": "dbOptimo.getInventurDevices",
+                                    "parameters": [
+                                      {
+                                        "name": "$top",
+                                        "value": "event.top"
+                                      },
+                                      {
+                                        "name": "$skip",
+                                        "value": "event.skip"
+                                      },
+                                      {
+                                        "name": "$count",
+                                        "value": "event.top != null && event.skip != null"
+                                      },
+                                      {
+                                        "name": "$filter",
+                                        "value": "${event.filter}"
+                                      },
+                                      {
+                                        "name": "$orderby",
+                                        "value": "${event.orderby || 'DeviceNummer'}"
+                                      },
+                                      {
+                                        "name": "$expand",
+                                        "value": "InventurBasis"
+                                      }
+                                    ],
+                                    "then": [
+                                      {
+                                        "name": "rstDevice",
+                                        "type": "set",
+                                        "value": "${result.value}"
+                                      },
+                                      {
+                                        "name": "rstDeviceCount",
+                                        "type": "set",
+                                        "value": "event.top != null && event.skip != null ? result['@odata.count'] : ${result.value.length}"
+                                      },
+                                      {
+                                        "code": "if (this.rstDevice.find(p => p.DeviceID == this.letzteDeviceID) != null) {\n    // letzteDeviceID wurde in rstDevice gefunden\n    this.gridDevice.onSelect(this.rstDevice.find(p => p.DeviceID == this.letzteDeviceID))\n} else {\n    // letzteDeviceID wurde in rstDevice NICHT gefunden\n    this.letzteDeviceID = null;\n    this.gridDevice.onSelect(this.rstDevice[0]);\n}",
+                                        "type": "execute"
+                                      }
+                                    ],
+                                    "type": "invoke"
+                                  }
+                                ],
+                                "rowDoubleClick": [
+                                  {
+                                    "name": "letzteDeviceID",
+                                    "type": "set",
+                                    "value": "${event.DeviceID}"
+                                  },
+                                  {
+                                    "parameters": [
+                                      {
+                                        "name": "DeviceID",
+                                        "value": "${event.DeviceID}"
+                                      }
+                                    ],
+                                    "path": "device-bearbeiten",
+                                    "title": "Bearbeiten Gerät",
+                                    "type": "popup"
+                                  }
+                                ],
+                                "rowSelect": [
+                                  {
+                                    "name": "dsoDevice",
+                                    "type": "set",
+                                    "value": "${event}"
+                                  }
+                                ]
+                              },
+                              "filterCaseSensitivity": "caseInsensitive",
+                              "greaterThanOrEqualsText": "Greater than or equals",
+                              "greaterThanText": "Greater than",
+                              "lessThanOrEqualsText": "Less than or equals",
+                              "lessThanText": "Less than",
+                              "locale": "de",
+                              "name": "gridDevice",
+                              "notEqualsText": "Not equals",
+                              "pageSize": 22,
+                              "startsWithText": "Starts with",
+                              "style": {
+                                "border": "1px solid rgba(0, 0, 0, 0)",
+                                "height": "700px",
+                                "marginLeft": "-10px",
+                                "marginRight": "-10px",
+                                "marginTop": "-13px"
+                              },
+                              "title": "",
+                              "type": "grid",
+                              "value": ""
+                            }
+                          ],
+                          "headerTemplate": [
+                            {
+                              "class": "",
+                              "components": [
+                                {
+                                  "class": "col-md-12 align-items-start d-flex",
+                                  "components": [
+                                    {
+                                      "buttonStyle": "light",
+                                      "events": {
+                                        "click": [
+                                          {
+                                            "path": "device-neu",
+                                            "then": [
+                                              {
+                                                "condition": "${result} != null",
+                                                "name": "letzteDeviceID",
+                                                "type": "set",
+                                                "value": "${result.DeviceID}"
+                                              },
+                                              {
+                                                "code": "this.gridDevice.load();",
+                                                "condition": "${result} != null",
+                                                "type": "execute"
+                                              }
+                                            ],
+                                            "title": "Neues Gerät",
+                                            "type": "popup"
+                                          }
+                                        ]
+                                      },
+                                      "icon": "add",
+                                      "name": "buttonNeu",
+                                      "size": "sm",
+                                      "style": {
+                                        "color": "#A71330",
+                                        "display": "block",
+                                        "marginRight": ""
+                                      },
+                                      "text": "Neues Gerät",
+                                      "tooltip": "",
+                                      "type": "button"
+                                    },
+                                    {
+                                      "buttonStyle": "light",
+                                      "events": {
+                                        "click": [
+                                          {
+                                            "name": "letzteDeviceID",
+                                            "type": "set",
+                                            "value": "${dsoDevice.DeviceID}"
+                                          },
+                                          {
+                                            "parameters": [
+                                              {
+                                                "name": "DeviceID",
+                                                "value": "${dsoDevice.DeviceID}"
+                                              }
+                                            ],
+                                            "path": "device-bearbeiten",
+                                            "then": [],
+                                            "title": "Bearbeiten Gerät",
+                                            "type": "popup"
+                                          }
+                                        ]
+                                      },
+                                      "icon": "create",
+                                      "name": "buttonBearbeiten",
+                                      "size": "sm",
+                                      "style": {
+                                        "color": "#6A80AA",
+                                        "display": "block",
+                                        "marginLeft": "10px",
+                                        "paddingLeft": ""
+                                      },
+                                      "text": "",
+                                      "tooltip": "Bearbeiten Gerät",
+                                      "type": "button"
+                                    },
+                                    {
+                                      "buttonStyle": "light",
+                                      "disabled": false,
+                                      "events": {
+                                        "click": [
+                                          {
+                                            "parameters": [
+                                              {
+                                                "name": "strMeldung",
+                                                "value": "\"Soll das Gerät '\" + ${dsoDevice.DeviceNummer} + \" \" + ${dsoDevice.DeviceTitel} + \"' gelöscht werden?\""
+                                              }
+                                            ],
+                                            "path": "meldung-loeschen",
+                                            "then": [
+                                              {
+                                                "condition": "${result} == 'Löschen'",
+                                                "error": [
+                                                  {
+                                                    "detail": "Gerät konnte nicht gelöscht werden!",
+                                                    "severity": "error",
+                                                    "summary": "",
+                                                    "type": "notify"
+                                                  }
+                                                ],
+                                                "name": "dbOptimo.deleteInventurDevice",
+                                                "parameters": [
+                                                  {
+                                                    "name": "DeviceID",
+                                                    "value": "${dsoDevice.DeviceID}"
+                                                  }
+                                                ],
+                                                "then": [
+                                                  {
+                                                    "name": "letzteDeviceID",
+                                                    "type": "set",
+                                                    "value": "null"
+                                                  }
+                                                ],
+                                                "type": "invoke"
+                                              }
+                                            ],
+                                            "title": "Löschen Gerät",
+                                            "type": "popup"
+                                          }
+                                        ]
+                                      },
+                                      "icon": "cancel",
+                                      "name": "buttonLoeschen",
+                                      "size": "sm",
+                                      "style": {
+                                        "color": "#6A80AA",
+                                        "display": "block",
+                                        "fontWeight": "normal",
+                                        "marginLeft": "10px",
+                                        "marginRight": "-9px",
+                                        "paddingLeft": ""
+                                      },
+                                      "text": "",
+                                      "tooltip": "Löschen Gerät",
+                                      "type": "button"
+                                    }
+                                  ],
+                                  "name": "col1",
+                                  "type": "col"
+                                }
+                              ],
+                              "name": "row1",
+                              "type": "row"
+                            }
+                          ],
+                          "name": "panel0",
+                          "style": {
+                            "border": "1px solid #e6ecef",
+                            "height": "750px"
+                          },
+                          "text": "${rstDeviceCount} Geträte",
+                          "type": "panel"
+                        }
+                      ],
+                      "name": "col0",
+                      "type": "col"
+                    },
+                    {
+                      "class": "col-md-2",
+                      "components": [
+                        {
+                          "allowCollapse": false,
+                          "collapsed": false,
+                          "components": [
+                            {
+                              "name": "textarea0",
+                              "readOnly": true,
+                              "style": {
+                                "height": "668px",
+                                "width": "100%"
+                              },
+                              "type": "textarea",
+                              "value": "${dsoDevice.Info}"
+                            }
+                          ],
+                          "footerTemplate": "",
+                          "headerTemplate": "",
+                          "icon": "",
+                          "name": "panel1",
+                          "style": {
+                            "border": "1px solid #e6ecef",
+                            "height": "750px"
+                          },
+                          "text": "Info",
+                          "type": "panel"
+                        }
+                      ],
+                      "name": "col2",
+                      "style": {
+                        "paddingLeft": "5px"
+                      },
+                      "type": "col"
+                    }
+                  ],
+                  "name": "row0",
+                  "style": {
+                    "height": "100%"
+                  },
+                  "type": "row"
+                }
+              ],
+              "selected": true,
+              "text": "Daten"
+            }
+          ],
+          "name": "tabs0",
+          "style": {
+            "float": "none"
+          },
+          "type": "tabs"
+        }
+      ],
+      "container": "main",
+      "type": "content"
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "letzteDeviceID",
+        "type": "set",
+        "value": "null"
+      },
+      {
+        "code": "this.gridDevice.load();",
+        "type": "execute"
+      }
+    ]
+  },
+  "layout": "Main",
+  "name": "Device"
+}

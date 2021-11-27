@@ -4,8 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OptimoWork.Models.DbOptimo
 {
-  [Table("vwInventurLagerorte")]
-  public partial class VwInventurLagerorte
+  [Table("vwInventurLagerorteMitSummen")]
+  public partial class VwInventurLagerorteMitSummen
   {
     public int InventurID
     {
@@ -23,47 +23,32 @@ namespace OptimoWork.Models.DbOptimo
       get;
       set;
     }
+    public string LagerortGesamt
+    {
+      get;
+      set;
+    }
     public string LagerortStatus
     {
       get;
       set;
     }
-    public string Notiz
+    public Int64 AnzahlArtikel
     {
       get;
       set;
     }
-    public int? DeviceID
+    public Int64 AnzahlErfasst
     {
       get;
       set;
     }
-    public string DeviceNummer
+    public string AnzahlArtikelFormatiert
     {
       get;
       set;
     }
-    public string DeviceTitel
-    {
-      get;
-      set;
-    }
-    public DateTime? RegistriertAm
-    {
-      get;
-      set;
-    }
-    public DateTime? AnmeldungAm
-    {
-      get;
-      set;
-    }
-    public DateTime? AbmeldungAm
-    {
-      get;
-      set;
-    }
-    public string DeviceInfo
+    public string AnzahlErfasstFormatiert
     {
       get;
       set;

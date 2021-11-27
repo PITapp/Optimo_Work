@@ -1,48 +1,35 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OptimoWork.Models.DbOptimo
 {
-  [Table("vwInventurLagerorte")]
-  public partial class VwInventurLagerorte
+  [Table("InventurDevice")]
+  public partial class InventurDevice
   {
-    public int InventurID
-    {
-      get;
-      set;
-    }
     [Key]
-    public string LagerortNummer
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public int DeviceID
     {
       get;
       set;
     }
-    public string LagerortTitel
-    {
-      get;
-      set;
-    }
-    public string LagerortStatus
-    {
-      get;
-      set;
-    }
-    public string Notiz
-    {
-      get;
-      set;
-    }
-    public int? DeviceID
-    {
-      get;
-      set;
-    }
+
+
+    public ICollection<InventurErfassung> InventurErfassungs { get; set; }
     public string DeviceNummer
     {
       get;
       set;
     }
+    public int? InventurID
+    {
+      get;
+      set;
+    }
+
+    public InventurBasis InventurBasis { get; set; }
     public string DeviceTitel
     {
       get;
@@ -63,7 +50,7 @@ namespace OptimoWork.Models.DbOptimo
       get;
       set;
     }
-    public string DeviceInfo
+    public string Info
     {
       get;
       set;

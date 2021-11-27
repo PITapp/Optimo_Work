@@ -122,7 +122,7 @@
                 {
                   "components": [
                     {
-                      "class": "col-md-6",
+                      "class": "col-md-7",
                       "components": [
                         {
                           "components": [
@@ -148,21 +148,36 @@
                                   "property": "LagerortNummer",
                                   "title": "Nummer",
                                   "type": "string",
-                                  "width": "100px"
+                                  "width": "90px"
                                 },
                                 {
                                   "format": "",
                                   "property": "LagerortTitel",
                                   "title": "Titel",
                                   "type": "string",
-                                  "width": "300px"
+                                  "width": "250px"
                                 },
                                 {
                                   "format": "",
                                   "property": "LagerortStatus",
+                                  "sortProperty": "",
                                   "title": "Status",
                                   "type": "string",
-                                  "width": "200px"
+                                  "width": "180px"
+                                },
+                                {
+                                  "format": "",
+                                  "property": "DeviceNummer",
+                                  "title": "Gerät aktiv",
+                                  "type": "string"
+                                },
+                                {
+                                  "format": "date-time",
+                                  "formatString": "dd.MM.yyyy HH:mm",
+                                  "property": "AnmeldungAm",
+                                  "template": "",
+                                  "title": "Angemeldet am",
+                                  "type": "string"
                                 },
                                 {
                                   "property": "Notiz",
@@ -197,7 +212,7 @@
                                         "type": "notify"
                                       }
                                     ],
-                                    "name": "dbOptimo.getInventurBases",
+                                    "name": "dbOptimo.getVwInventurLagerortes",
                                     "parameters": [
                                       {
                                         "name": "$top",
@@ -232,7 +247,7 @@
                                         "value": "event.top != null && event.skip != null ? result['@odata.count'] : ${result.value.length}"
                                       },
                                       {
-                                        "code": "this.gridLagerorte.onSelect(this.rstLagerorte[0]);",
+                                        "code": "if (this.rstLagerorte.find(p => p.InventurID == this.letzteInventurID) != null) {\n    // letzteInventurID wurde in rstLagerorte gefunden\n    this.gridLagerorte.onSelect(this.rstLagerorte.find(p => p.InventurID == this.letzteInventurID))\n} else {\n    // letzteInventurID wurde in rstLagerorte NICHT gefunden\n    this.letzteInventurID = null;\n    this.gridLagerorte.onSelect(this.rstLagerorte[0]);\n}",
                                         "type": "execute"
                                       }
                                     ],
@@ -240,6 +255,11 @@
                                   }
                                 ],
                                 "rowDoubleClick": [
+                                  {
+                                    "name": "letzteInventurID",
+                                    "type": "set",
+                                    "value": "${event.InventurID}"
+                                  },
                                   {
                                     "parameters": [
                                       {
@@ -324,6 +344,11 @@
                                       "events": {
                                         "click": [
                                           {
+                                            "name": "letzteInventurID",
+                                            "type": "set",
+                                            "value": "${dsoLagerort.InventurID}"
+                                          },
+                                          {
                                             "parameters": [
                                               {
                                                 "name": "InventurID",
@@ -331,6 +356,7 @@
                                               }
                                             ],
                                             "path": "inventur-lagerorte-bearbeiten",
+                                            "then": [],
                                             "title": "Lagerort bearbeiten",
                                             "type": "popup"
                                           }
@@ -372,7 +398,7 @@
                       "type": "col"
                     },
                     {
-                      "class": "col-md-6",
+                      "class": "col-md-5",
                       "components": [
                         {
                           "attributes": [],
@@ -410,9 +436,11 @@
                                 },
                                 {
                                   "property": "Beschreibung",
+                                  "sortProperty": "",
                                   "title": "Bezeichnung",
+                                  "tooltip": "",
                                   "type": "string",
-                                  "width": "300px"
+                                  "width": ""
                                 },
                                 {
                                   "editTemplate": "",
@@ -449,7 +477,7 @@
                                   "textAlign": "right",
                                   "title": "Gelöscht",
                                   "type": "string",
-                                  "width": "100px"
+                                  "width": "110px"
                                 }
                               ],
                               "confirmDelete": false,
@@ -550,7 +578,7 @@
                             "border": "1px solid #e6ecef",
                             "height": "750px"
                           },
-                          "text": "Erfassung: ${dsoLagerort.LagerortNummer} ${dsoLagerort.LagerortTitel}",
+                          "text": "${rstErfassungLagerorteCount} Artikel erfasst",
                           "type": "panel"
                         }
                       ],
@@ -988,7 +1016,7 @@
                             "border": "1px solid #e6ecef",
                             "height": "750px"
                           },
-                          "text": "Erfassung: ${dsoArtikel.Artikelnummer} | ${dsoArtikel.Beschreibung} | ${dsoArtikel.LagerortGesamt}",
+                          "text": "${rstErfassungArtikelCount} Erfassungen durchgeführt",
                           "type": "panel"
                         }
                       ],
@@ -1102,6 +1130,13 @@
                                   "title": "Gelöscht",
                                   "type": "string",
                                   "width": "100px"
+                                },
+                                {
+                                  "format": "",
+                                  "property": "DeviceNummer",
+                                  "title": "Gerät",
+                                  "type": "string",
+                                  "width": "150px"
                                 }
                               ],
                               "confirmDelete": false,
@@ -1290,6 +1325,11 @@
   ],
   "events": {
     "load": [
+      {
+        "name": "letzteInventurID",
+        "type": "set",
+        "value": "null"
+      },
       {
         "code": "this.gridLagerorte.load();",
         "type": "execute"

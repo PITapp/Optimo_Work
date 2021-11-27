@@ -22,45 +22,45 @@ namespace OptimoWork.Controllers.DbOptimo
   using Data;
   using Models.DbOptimo;
 
-  [ODataRoutePrefix("odata/dbOptimo/InventurErfassungs")]
-  [Route("mvc/odata/dbOptimo/InventurErfassungs")]
-  public partial class InventurErfassungsController : ODataController
+  [ODataRoutePrefix("odata/dbOptimo/InventurDevices")]
+  [Route("mvc/odata/dbOptimo/InventurDevices")]
+  public partial class InventurDevicesController : ODataController
   {
     private Data.DbOptimoContext context;
 
-    public InventurErfassungsController(Data.DbOptimoContext context)
+    public InventurDevicesController(Data.DbOptimoContext context)
     {
       this.context = context;
     }
-    // GET /odata/DbOptimo/InventurErfassungs
+    // GET /odata/DbOptimo/InventurDevices
     [EnableQuery(MaxExpansionDepth=10,MaxAnyAllExpressionDepth=10,MaxNodeCount=1000)]
     [HttpGet]
-    public IEnumerable<Models.DbOptimo.InventurErfassung> GetInventurErfassungs()
+    public IEnumerable<Models.DbOptimo.InventurDevice> GetInventurDevices()
     {
-      var items = this.context.InventurErfassungs.AsQueryable<Models.DbOptimo.InventurErfassung>();
-      this.OnInventurErfassungsRead(ref items);
+      var items = this.context.InventurDevices.AsQueryable<Models.DbOptimo.InventurDevice>();
+      this.OnInventurDevicesRead(ref items);
 
       return items;
     }
 
-    partial void OnInventurErfassungsRead(ref IQueryable<Models.DbOptimo.InventurErfassung> items);
+    partial void OnInventurDevicesRead(ref IQueryable<Models.DbOptimo.InventurDevice> items);
 
     [EnableQuery(MaxExpansionDepth=10,MaxAnyAllExpressionDepth=10,MaxNodeCount=1000)]
-    [HttpGet("{ErfassungID}")]
-    public SingleResult<InventurErfassung> GetInventurErfassung(int key)
+    [HttpGet("{DeviceID}")]
+    public SingleResult<InventurDevice> GetInventurDevice(int key)
     {
-        var items = this.context.InventurErfassungs.Where(i=>i.ErfassungID == key);
-        this.OnInventurErfassungsGet(ref items);
+        var items = this.context.InventurDevices.Where(i=>i.DeviceID == key);
+        this.OnInventurDevicesGet(ref items);
 
         return SingleResult.Create(items);
     }
 
-    partial void OnInventurErfassungsGet(ref IQueryable<Models.DbOptimo.InventurErfassung> items);
+    partial void OnInventurDevicesGet(ref IQueryable<Models.DbOptimo.InventurDevice> items);
 
-    partial void OnInventurErfassungDeleted(Models.DbOptimo.InventurErfassung item);
+    partial void OnInventurDeviceDeleted(Models.DbOptimo.InventurDevice item);
 
-    [HttpDelete("{ErfassungID}")]
-    public IActionResult DeleteInventurErfassung(int key)
+    [HttpDelete("{DeviceID}")]
+    public IActionResult DeleteInventurDevice(int key)
     {
         try
         {
@@ -70,8 +70,9 @@ namespace OptimoWork.Controllers.DbOptimo
             }
 
 
-            var itemToDelete = this.context.InventurErfassungs
-                .Where(i => i.ErfassungID == key)
+            var itemToDelete = this.context.InventurDevices
+                .Where(i => i.DeviceID == key)
+                .Include(i => i.InventurErfassungs)
                 .FirstOrDefault();
 
             if (itemToDelete == null)
@@ -80,8 +81,8 @@ namespace OptimoWork.Controllers.DbOptimo
                 return BadRequest(ModelState);
             }
 
-            this.OnInventurErfassungDeleted(itemToDelete);
-            this.context.InventurErfassungs.Remove(itemToDelete);
+            this.OnInventurDeviceDeleted(itemToDelete);
+            this.context.InventurDevices.Remove(itemToDelete);
             this.context.SaveChanges();
 
             return new NoContentResult();
@@ -93,11 +94,11 @@ namespace OptimoWork.Controllers.DbOptimo
         }
     }
 
-    partial void OnInventurErfassungUpdated(Models.DbOptimo.InventurErfassung item);
+    partial void OnInventurDeviceUpdated(Models.DbOptimo.InventurDevice item);
 
-    [HttpPut("{ErfassungID}")]
+    [HttpPut("{DeviceID}")]
     [EnableQuery(MaxExpansionDepth=10,MaxAnyAllExpressionDepth=10,MaxNodeCount=1000)]
-    public IActionResult PutInventurErfassung(int key, [FromBody]Models.DbOptimo.InventurErfassung newItem)
+    public IActionResult PutInventurDevice(int key, [FromBody]Models.DbOptimo.InventurDevice newItem)
     {
         try
         {
@@ -106,17 +107,17 @@ namespace OptimoWork.Controllers.DbOptimo
                 return BadRequest(ModelState);
             }
 
-            if (newItem == null || (newItem.ErfassungID != key))
+            if (newItem == null || (newItem.DeviceID != key))
             {
                 return BadRequest();
             }
 
-            this.OnInventurErfassungUpdated(newItem);
-            this.context.InventurErfassungs.Update(newItem);
+            this.OnInventurDeviceUpdated(newItem);
+            this.context.InventurDevices.Update(newItem);
             this.context.SaveChanges();
 
-            var itemToReturn = this.context.InventurErfassungs.Where(i => i.ErfassungID == key);
-            Request.QueryString = Request.QueryString.Add("$expand", "InventurArtikel,InventurDevice");
+            var itemToReturn = this.context.InventurDevices.Where(i => i.DeviceID == key);
+            Request.QueryString = Request.QueryString.Add("$expand", "InventurBasis");
             return new ObjectResult(SingleResult.Create(itemToReturn));
         }
         catch(Exception ex)
@@ -126,9 +127,9 @@ namespace OptimoWork.Controllers.DbOptimo
         }
     }
 
-    [HttpPatch("{ErfassungID}")]
+    [HttpPatch("{DeviceID}")]
     [EnableQuery(MaxExpansionDepth=10,MaxAnyAllExpressionDepth=10,MaxNodeCount=1000)]
-    public IActionResult PatchInventurErfassung(int key, [FromBody]Delta<Models.DbOptimo.InventurErfassung> patch)
+    public IActionResult PatchInventurDevice(int key, [FromBody]Delta<Models.DbOptimo.InventurDevice> patch)
     {
         try
         {
@@ -137,7 +138,7 @@ namespace OptimoWork.Controllers.DbOptimo
                 return BadRequest(ModelState);
             }
 
-            var itemToUpdate = this.context.InventurErfassungs.Where(i => i.ErfassungID == key).FirstOrDefault();
+            var itemToUpdate = this.context.InventurDevices.Where(i => i.DeviceID == key).FirstOrDefault();
 
             if (itemToUpdate == null)
             {
@@ -147,12 +148,12 @@ namespace OptimoWork.Controllers.DbOptimo
 
             patch.Patch(itemToUpdate);
 
-            this.OnInventurErfassungUpdated(itemToUpdate);
-            this.context.InventurErfassungs.Update(itemToUpdate);
+            this.OnInventurDeviceUpdated(itemToUpdate);
+            this.context.InventurDevices.Update(itemToUpdate);
             this.context.SaveChanges();
 
-            var itemToReturn = this.context.InventurErfassungs.Where(i => i.ErfassungID == key);
-            Request.QueryString = Request.QueryString.Add("$expand", "InventurArtikel,InventurDevice");
+            var itemToReturn = this.context.InventurDevices.Where(i => i.DeviceID == key);
+            Request.QueryString = Request.QueryString.Add("$expand", "InventurBasis");
             return new ObjectResult(SingleResult.Create(itemToReturn));
         }
         catch(Exception ex)
@@ -162,11 +163,11 @@ namespace OptimoWork.Controllers.DbOptimo
         }
     }
 
-    partial void OnInventurErfassungCreated(Models.DbOptimo.InventurErfassung item);
+    partial void OnInventurDeviceCreated(Models.DbOptimo.InventurDevice item);
 
     [HttpPost]
     [EnableQuery(MaxExpansionDepth=10,MaxAnyAllExpressionDepth=10,MaxNodeCount=1000)]
-    public IActionResult Post([FromBody] Models.DbOptimo.InventurErfassung item)
+    public IActionResult Post([FromBody] Models.DbOptimo.InventurDevice item)
     {
         try
         {
@@ -180,15 +181,15 @@ namespace OptimoWork.Controllers.DbOptimo
                 return BadRequest();
             }
 
-            this.OnInventurErfassungCreated(item);
-            this.context.InventurErfassungs.Add(item);
+            this.OnInventurDeviceCreated(item);
+            this.context.InventurDevices.Add(item);
             this.context.SaveChanges();
 
-            var key = item.ErfassungID;
+            var key = item.DeviceID;
 
-            var itemToReturn = this.context.InventurErfassungs.Where(i => i.ErfassungID == key);
+            var itemToReturn = this.context.InventurDevices.Where(i => i.DeviceID == key);
 
-            Request.QueryString = Request.QueryString.Add("$expand", "InventurArtikel,InventurDevice");
+            Request.QueryString = Request.QueryString.Add("$expand", "InventurBasis");
 
             return new ObjectResult(SingleResult.Create(itemToReturn))
             {

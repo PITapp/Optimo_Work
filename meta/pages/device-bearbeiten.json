@@ -18,12 +18,12 @@
                           "class": "col-md-3",
                           "components": [
                             {
-                              "component": "LagerortNummer",
-                              "name": "LagerortNummerLabel",
+                              "component": "DeviceNummer",
+                              "name": "DeviceNummerLabel",
                               "style": {
                                 "width": "100%"
                               },
-                              "text": "Nummer",
+                              "text": "Gerätenummer",
                               "type": "label"
                             }
                           ],
@@ -33,22 +33,22 @@
                           "class": "col-md-9",
                           "components": [
                             {
-                              "maxLength": 10,
-                              "name": "LagerortNummer",
+                              "maxLength": 30,
+                              "name": "DeviceNummer",
                               "style": {
                                 "display": "block",
                                 "width": "100%"
                               },
                               "type": "textbox",
-                              "value": "${dsoLagerort.LagerortNummer}"
+                              "value": "${dsoDevice.DeviceNummer}"
                             },
                             {
-                              "component": "LagerortNummer",
-                              "name": "LagerortNummerRequiredValidator",
+                              "component": "DeviceNummer",
+                              "name": "DeviceNummerRequiredValidator",
                               "style": {
                                 "position": "absolute"
                               },
-                              "text": "LagerortNummer is required",
+                              "text": "DeviceNummer is required",
                               "type": "required-validator"
                             }
                           ],
@@ -66,12 +66,12 @@
                           "class": "col-md-3",
                           "components": [
                             {
-                              "component": "LagerortTitel",
-                              "name": "LagerortTitelLabel",
+                              "component": "DeviceTitel",
+                              "name": "DeviceTitelLabel",
                               "style": {
                                 "width": "100%"
                               },
-                              "text": "Titel",
+                              "text": "Gerätetitel",
                               "type": "label"
                             }
                           ],
@@ -81,22 +81,22 @@
                           "class": "col-md-9",
                           "components": [
                             {
-                              "maxLength": 70,
-                              "name": "LagerortTitel",
+                              "maxLength": 150,
+                              "name": "DeviceTitel",
                               "style": {
                                 "display": "block",
                                 "width": "100%"
                               },
                               "type": "textbox",
-                              "value": "${dsoLagerort.LagerortTitel}"
+                              "value": "${dsoDevice.DeviceTitel}"
                             },
                             {
-                              "component": "LagerortTitel",
-                              "name": "LagerortTitelRequiredValidator",
+                              "component": "DeviceTitel",
+                              "name": "DeviceTitelRequiredValidator",
                               "style": {
                                 "position": "absolute"
                               },
-                              "text": "LagerortTitel is required",
+                              "text": "DeviceTitel is required",
                               "type": "required-validator"
                             }
                           ],
@@ -114,12 +114,12 @@
                           "class": "col-md-3",
                           "components": [
                             {
-                              "component": "LagerortStatus",
-                              "name": "LagerortStatusLabel",
+                              "component": "RegistriertAm",
+                              "name": "RegistriertAmLabel",
                               "style": {
                                 "width": "100%"
                               },
-                              "text": "Status",
+                              "text": "Registriert am",
                               "type": "label"
                             }
                           ],
@@ -129,28 +129,17 @@
                           "class": "col-md-9",
                           "components": [
                             {
-                              "data": "${rstLagerorteStatus}",
-                              "emptyFilterText": "No results found",
-                              "multipleItemsSelectedText": "{0} items selected",
-                              "name": "LagerortStatus",
+                              "dateFormat": "dd.mm.yy",
+                              "inline": false,
+                              "locale": "de",
+                              "name": "RegistriertAm",
                               "placeholder": "",
+                              "showTime": true,
                               "style": {
-                                "display": "block",
                                 "width": "100%"
                               },
-                              "textProperty": "LagerortStatus",
-                              "type": "dropdown",
-                              "value": "${dsoLagerort.LagerortStatus}",
-                              "valueProperty": "LagerortStatus"
-                            },
-                            {
-                              "component": "LagerortStatus",
-                              "name": "LagerortStatusRequiredValidator",
-                              "style": {
-                                "position": "absolute"
-                              },
-                              "text": "LagerortStatus is required",
-                              "type": "required-validator"
+                              "type": "datepicker",
+                              "value": "${dsoDevice.RegistriertAm}"
                             }
                           ],
                           "type": "col"
@@ -167,12 +156,12 @@
                           "class": "col-md-3",
                           "components": [
                             {
-                              "component": "Notiz",
-                              "name": "NotizLabel",
+                              "component": "AnmeldungAm",
+                              "name": "AnmeldungAmLabel",
                               "style": {
                                 "width": "100%"
                               },
-                              "text": "Notiz",
+                              "text": "Anmeldung am",
                               "type": "label"
                             }
                           ],
@@ -182,13 +171,93 @@
                           "class": "col-md-9",
                           "components": [
                             {
-                              "name": "Notiz",
-                              "rows": 4,
+                              "dateFormat": "dd.mm.yy",
+                              "locale": "de",
+                              "name": "AnmeldungAm",
+                              "showTime": true,
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "datepicker",
+                              "value": "${dsoDevice.AnmeldungAm}"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "AbmeldungAm",
+                              "name": "AbmeldungAmLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Abmeldung am",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "dateFormat": "dd.mm.yy",
+                              "locale": "de",
+                              "name": "AbmeldungAm",
+                              "showTime": true,
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "datepicker",
+                              "value": "${dsoDevice.AbmeldungAm}"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "Info",
+                              "name": "InfoLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Info",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "name": "Info",
+                              "rows": 7,
                               "style": {
                                 "width": "100%"
                               },
                               "type": "textarea",
-                              "value": "${dsoLagerort.Notiz}"
+                              "value": "${dsoDevice.Info}"
                             }
                           ],
                           "type": "col"
@@ -202,16 +271,14 @@
                     {
                       "components": [
                         {
-                          "class": "col offset-sm-3 justify-content-end d-flex",
+                          "class": "col offset-sm-3",
                           "components": [
                             {
                               "buttonStyle": "success",
                               "buttonType": "submit",
                               "icon": "done",
-                              "name": "button1",
-                              "style": {},
+                              "name": "button0",
                               "text": "Speichern",
-                              "tooltip": "",
                               "type": "button"
                             },
                             {
@@ -223,7 +290,7 @@
                                   }
                                 ]
                               },
-                              "name": "button2",
+                              "name": "button1",
                               "style": {
                                 "marginLeft": "1rem"
                               },
@@ -231,12 +298,14 @@
                               "type": "button"
                             }
                           ],
-                          "name": "col46",
-                          "style": {},
+                          "name": "col0",
                           "type": "col"
                         }
                       ],
-                      "name": "row24",
+                      "name": "row0",
+                      "style": {
+                        "textAlign": "right"
+                      },
                       "type": "row"
                     }
                   ],
@@ -245,31 +314,30 @@
                       {
                         "error": [
                           {
-                            "detail": "Lagerort konnte nicht gespeichert werden!",
+                            "detail": "Gerät konnte nicht gespeichert werden!",
                             "severity": "error",
-                            "summary": "",
+                            "summary": "Error",
                             "type": "notify"
                           }
                         ],
-                        "name": "dbOptimo.updateInventurBasis",
+                        "name": "dbOptimo.updateInventurDevice",
                         "parameters": [
                           {
-                            "name": "InventurID",
-                            "value": "${parameters.InventurID}"
+                            "name": "DeviceID",
+                            "value": "${parameters.DeviceID}"
                           },
                           {
-                            "name": "InventurBasis",
+                            "name": "InventurDevice",
                             "value": "${event}"
                           }
                         ],
                         "then": [
                           {
-                            "detail": "Lagerort gespeichert",
+                            "detail": "Gerät gespeichert",
                             "severity": "success",
                             "type": "notify"
                           },
                           {
-                            "result": "${result}",
                             "type": "close-popup"
                           }
                         ],
@@ -295,35 +363,18 @@
     "load": [
       {
         "error": [],
-        "name": "dbOptimo.getInventurBasisByInventurID",
+        "name": "dbOptimo.getInventurDeviceByDeviceID",
         "parameters": [
           {
-            "name": "InventurID",
-            "value": "${parameters.InventurID}"
+            "name": "DeviceID",
+            "value": "${parameters.DeviceID}"
           }
         ],
         "then": [
           {
-            "name": "dsoLagerort",
+            "name": "dsoDevice",
             "type": "set",
             "value": "${result}"
-          }
-        ],
-        "type": "invoke"
-      },
-      {
-        "name": "dbOptimo.getInventurBasisStatuses",
-        "parameters": [
-          {
-            "name": "$orderby",
-            "value": "Sortierung"
-          }
-        ],
-        "then": [
-          {
-            "name": "rstLagerorteStatus",
-            "type": "set",
-            "value": "${result.value}"
           }
         ],
         "type": "invoke"
@@ -331,5 +382,5 @@
     ]
   },
   "layout": "Main",
-  "name": "InventurLagerorteBearbeiten"
+  "name": "DeviceBearbeiten"
 }

@@ -174,6 +174,7 @@ namespace OptimoWork
           oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.InventurArtikel>("InventurArtikels");
           oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.InventurBasis>("InventurBases");
           oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.InventurBasisStatus>("InventurBasisStatuses");
+          oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.InventurDevice>("InventurDevices");
           oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.InventurErfassung>("InventurErfassungs");
           oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.Notizen>("Notizens");
           oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.Protokoll>("Protokolls");
@@ -187,6 +188,7 @@ namespace OptimoWork
           oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.VwInventurArtikel>("VwInventurArtikels");
           oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.VwInventurErfassung>("VwInventurErfassungs");
           oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.VwInventurLagerorte>("VwInventurLagerortes");
+          oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.VwInventurLagerorteMitSummen>("VwInventurLagerorteMitSummens");
           oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.VwRollen>("VwRollens");
 
           this.OnConfigureOData(oDataBuilder);
