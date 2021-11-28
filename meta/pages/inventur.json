@@ -256,20 +256,8 @@
                                 ],
                                 "rowDoubleClick": [
                                   {
-                                    "name": "letzteInventurID",
-                                    "type": "set",
-                                    "value": "${event.InventurID}"
-                                  },
-                                  {
-                                    "parameters": [
-                                      {
-                                        "name": "InventurID",
-                                        "value": "${event.InventurID}"
-                                      }
-                                    ],
-                                    "path": "inventur-lagerorte-bearbeiten",
-                                    "title": "Lagerort bearbeiten",
-                                    "type": "popup"
+                                    "code": "this.buttonLagerortBearbeitenClick(null);",
+                                    "type": "execute"
                                   }
                                 ],
                                 "rowSelect": [
@@ -356,7 +344,13 @@
                                               }
                                             ],
                                             "path": "inventur-lagerorte-bearbeiten",
-                                            "then": [],
+                                            "then": [
+                                              {
+                                                "code": "this.gridLagerorte.load();",
+                                                "condition": "${result} != null",
+                                                "type": "execute"
+                                              }
+                                            ],
                                             "title": "Lagerort bearbeiten",
                                             "type": "popup"
                                           }

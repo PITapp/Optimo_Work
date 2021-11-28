@@ -172,9 +172,7 @@ export class InventurGenerated implements AfterViewInit, OnInit, OnDestroy {
   }
 
   gridLagerorteRowDoubleClick(event: any) {
-    this.letzteInventurID = event.InventurID;
-
-    this.dialogService.open(InventurLagerorteBearbeitenComponent, { parameters: {InventurID: event.InventurID}, title: `Lagerort bearbeiten` });
+    this.buttonLagerortBearbeitenClick(null);
   }
 
   gridLagerorteRowSelect(event: any) {
@@ -193,7 +191,12 @@ export class InventurGenerated implements AfterViewInit, OnInit, OnDestroy {
   buttonLagerortBearbeitenClick(event: any) {
     this.letzteInventurID = this.dsoLagerort.InventurID;
 
-    this.dialogService.open(InventurLagerorteBearbeitenComponent, { parameters: {InventurID: this.dsoLagerort.InventurID}, title: `Lagerort bearbeiten` });
+    this.dialogService.open(InventurLagerorteBearbeitenComponent, { parameters: {InventurID: this.dsoLagerort.InventurID}, title: `Lagerort bearbeiten` })
+        .afterClosed().subscribe(result => {
+              if (result != null) {
+        this.gridLagerorte.load();
+      }
+    });
   }
 
   buttonBearbeitenProtokollClick(event: any) {
