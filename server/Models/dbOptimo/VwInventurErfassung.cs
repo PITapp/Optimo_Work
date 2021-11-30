@@ -28,6 +28,11 @@ namespace OptimoWork.Models.DbOptimo
       get;
       set;
     }
+    public string ErfasstAmFormatiert
+    {
+      get;
+      set;
+    }
     public int ErfasstAnzahl
     {
       get;

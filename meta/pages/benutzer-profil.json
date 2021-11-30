@@ -505,7 +505,7 @@
                                           "name": "Notiz",
                                           "rows": 4,
                                           "style": {
-                                            "height": "207px",
+                                            "height": "197px",
                                             "width": "100%"
                                           },
                                           "type": "textarea",
@@ -696,7 +696,7 @@
                           "name": "panel0",
                           "style": {
                             "border": "1px solid #e6ecef",
-                            "height": "750px"
+                            "height": "740px"
                           },
                           "text": "Benutzerdaten",
                           "type": "panel"
@@ -905,7 +905,7 @@
                           "name": "Bild",
                           "style": {
                             "border": "1px solid #e6ecef",
-                            "height": "750px"
+                            "height": "740px"
                           },
                           "text": "Profilbild",
                           "type": "panel"
@@ -926,7 +926,7 @@
                           "name": "panel1",
                           "style": {
                             "border": "1px solid #e6ecef",
-                            "height": "750px"
+                            "height": "740px"
                           },
                           "text": "Sonstiges",
                           "type": "panel"

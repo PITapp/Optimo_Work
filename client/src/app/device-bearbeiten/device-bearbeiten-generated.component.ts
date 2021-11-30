@@ -38,6 +38,8 @@ export class DeviceBearbeitenGenerated implements AfterViewInit, OnInit, OnDestr
   @ViewChild('registriertAm') registriertAm: DatePickerComponent;
   @ViewChild('anmeldungAmLabel') anmeldungAmLabel: LabelComponent;
   @ViewChild('anmeldungAm') anmeldungAm: DatePickerComponent;
+  @ViewChild('label0') label0: LabelComponent;
+  @ViewChild('inventurId') inventurId: TextBoxComponent;
   @ViewChild('abmeldungAmLabel') abmeldungAmLabel: LabelComponent;
   @ViewChild('abmeldungAm') abmeldungAm: DatePickerComponent;
   @ViewChild('infoLabel') infoLabel: LabelComponent;

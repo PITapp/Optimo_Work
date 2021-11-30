@@ -18,10 +18,10 @@
     </div>
   </div>
   <rz-tabs #tabsKontakte [selectedIndex]="tabsKontakteSelectedIndex" [style]="{'float': 'none'}" (change)="tabsKontakteChange($event)">
-    <rz-tabs-item [disabled]="false" [selected]="true" text="Daten">
+    <rz-tabs-item [disabled]="false" [selected]="false" text="Daten">
       <div class="row">
         <div class="col-md-7">
-          <rz-panel #panel2 [allowCollapse]="false" [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="Kontaktdaten">
+          <rz-panel #panel2 [allowCollapse]="false" [style]="{'border': '1px solid #e6ecef', 'height': '740px'}" text="Kontaktdaten">
             <rz-template-form #templateFormKontakte [style]="{}">
               <div class="row">
                 <div class="col-md-6" [ngStyle]="{'paddingLeft': '0px'}">
@@ -129,7 +129,7 @@
                   </div>
                   <div [ngStyle]="{'marginBottom': '4px'}" class="row">
                     <div class="col-md-12" [ngStyle]="{'paddingLeft': '0'}">
-                      <rz-textarea #notiz [rows]="4" [style]="{'height': '217px', 'width': '100%'}" [(ngModel)]="dsoBaseKontakte && dsoBaseKontakte.Notiz" name="Notiz">
+                      <rz-textarea #notiz [rows]="4" [style]="{'height': '207px', 'width': '100%'}" [(ngModel)]="dsoBaseKontakte && dsoBaseKontakte.Notiz" name="Notiz">
                       </rz-textarea>
                     </div>
                   </div>
@@ -247,7 +247,7 @@
                       </rz-label>
                     </div>
                     <div class="col-md-9" [ngStyle]="{'display': 'block', 'paddingRight': '0'}">
-                      <rz-textarea #kontoInfo [style]="{'height': '127px', 'width': '100%'}" [(ngModel)]="dsoBaseKontakte && dsoBaseKontakte.KontoInfo" name="KontoInfo">
+                      <rz-textarea #kontoInfo [style]="{'height': '117px', 'width': '100%'}" [(ngModel)]="dsoBaseKontakte && dsoBaseKontakte.KontoInfo" name="KontoInfo">
                       </rz-textarea>
                     </div>
                   </div>
@@ -301,7 +301,7 @@
           </div>
           <div [ngStyle]="{'marginTop': '20px', 'paddingLeft': '0', 'paddingTop': '0'}" class="row">
             <div class="col-md-12">
-              <rz-panel #bild [style]="{'border': '1px solid #e6ecef', 'height': '360px'}" text="Profilbild">
+              <rz-panel #bild [style]="{'border': '1px solid #e6ecef', 'height': '350px'}" text="Profilbild">
                 <div [ngStyle]="{'marginBottom': '15px'}" class="row">
                   <div class="col-md-5">
                     <rz-image #bildUrl [path]="dsoBaseKontakte?.BildURL" [style]="{'backgroundColor': 'rgba(0, 0, 0, 0)', 'border': '1px solid #dbdfe2', 'borderRadius': '4px', 'width': '120px'}">
@@ -333,8 +333,8 @@
     <rz-tabs-item [selected]="false" text="Notizen">
       <div class="row">
         <div class="col-md-7">
-          <rz-panel #panel4 [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="{{rstNotizenCount}} Notizen">
-            <rz-grid #gridNotizen [allowAdd]="false" [allowColumnResize]="true" [allowFiltering]="false" [allowMultiSorting]="false" [allowPaging]="false" [allowSorting]="true" applyFilterText="Apply" clearFilterText="Clear" [confirmDelete]="false" containsText="Contains" [count]="rstNotizenCount" [data]="rstNotizen" emptyText="Keine Notizen vorhanden" endsWithText="Ends with" equalsText="Equals" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Greater than or equals" greaterThanText="Greater than" lessThanOrEqualsText="Less than or equals" lessThanText="Less than" notEqualsText="Not equals" [pageSize]="15" startsWithText="Starts with" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '700px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}" (loadData)="gridNotizenLoadData($event)" (rowDoubleClick)="gridNotizenRowDoubleClick($event)" (rowSelect)="gridNotizenRowSelect($event)">
+          <rz-panel #panel4 [style]="{'border': '1px solid #e6ecef', 'height': '740px'}" text="{{rstNotizenCount}} Notizen">
+            <rz-grid #gridNotizen [allowAdd]="false" [allowColumnResize]="true" [allowFiltering]="false" [allowMultiSorting]="false" [allowPaging]="false" [allowSorting]="true" applyFilterText="Apply" clearFilterText="Clear" [confirmDelete]="false" containsText="Contains" [count]="rstNotizenCount" [data]="rstNotizen" emptyText="Keine Notizen vorhanden" endsWithText="Ends with" equalsText="Equals" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Greater than or equals" greaterThanText="Greater than" lessThanOrEqualsText="Less than or equals" lessThanText="Less than" notEqualsText="Not equals" [pageSize]="15" startsWithText="Starts with" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '690px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}" (loadData)="gridNotizenLoadData($event)" (rowDoubleClick)="gridNotizenRowDoubleClick($event)" (rowSelect)="gridNotizenRowSelect($event)">
               <rz-grid-column format="date-time" formatString="dd.MM.yyyy HH:mm" property="Am" title="Am" width="150px" type="string">
               </rz-grid-column>
               <rz-grid-column property="Titel" title="Titel" type="string">
@@ -355,7 +355,7 @@
           </rz-panel>
         </div>
         <div class="col-md-5" [ngStyle]="{'paddingLeft': '5px'}">
-          <rz-panel #panel6 [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" [text]="dsoNotizen?.Titel">
+          <rz-panel #panel6 [style]="{'border': '1px solid #e6ecef', 'height': '740px'}" [text]="dsoNotizen?.Titel">
             <div [ngStyle]="{'marginLeft': '-36px', 'marginRight': '-36px', 'marginTop': '-12px'}" class="row">
               <div class="col-md-12" [ngStyle]="{}">
                 <rz-html #htmlEditorInfotexte>
@@ -392,11 +392,11 @@
         </div>
       </div>
     </rz-tabs-item>
-    <rz-tabs-item [disabled]="false" [selected]="false" text="Liste">
+    <rz-tabs-item [disabled]="false" [selected]="true" text="Liste">
       <div [ngStyle]="{'height': '100%'}" class="row">
         <div class="col-md-12" [ngStyle]="{'display': 'block', 'float': 'none'}">
-          <rz-panel #panel0 [style]="{'border': '1px solid #e6ecef', 'display': 'block', 'height': '750px'}" text="{{rstBaseKontakteCount}} Kontakte">
-            <rz-grid #gridKontakte [allowAdd]="false" [allowColumnReorder]="true" [allowColumnResize]="true" [allowDelete]="false" [allowFiltering]="true" [allowMultiSorting]="true" [allowPaging]="true" [allowSorting]="true" [alwaysShowPager]="false" applyFilterText="Anwenden" clearFilterText="Entfernen" columnResizeMode="expand" [confirmDelete]="false" containsText="Enthält" [count]="rstBaseKontakteCount" [data]="rstBaseKontakte" emptyText="Keine Kontakte gefunden" endsWithText="Endet mit" equalsText="Gleich" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Größer oder gleich" greaterThanText="Größer" [isLoading]="false" lessThanOrEqualsText="Kleiner oder gleich" lessThanText="Kleiner" locale="de-at" notEqualsText="Nicht Gleich" [pageSize]="20" [responsive]="true" startsWithText="Beginnt mit" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '700px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}" [(value)]="dsoBaseKontakteAusListe" (loadData)="gridKontakteLoadData($event)" (rowDoubleClick)="gridKontakteRowDoubleClick($event)" (rowSelect)="gridKontakteRowSelect($event)">
+          <rz-panel #panel0 [style]="{'border': '1px solid #e6ecef', 'display': 'block', 'height': '740px'}" text="{{rstBaseKontakteCount}} Kontakte">
+            <rz-grid #gridKontakte [allowAdd]="false" [allowColumnReorder]="true" [allowColumnResize]="true" [allowDelete]="false" [allowFiltering]="true" [allowMultiSorting]="true" [allowPaging]="true" [allowSorting]="true" [alwaysShowPager]="false" applyFilterText="Anwenden" clearFilterText="Entfernen" columnResizeMode="expand" [confirmDelete]="false" containsText="Enthält" [count]="rstBaseKontakteCount" [data]="rstBaseKontakte" emptyText="Keine Kontakte gefunden" endsWithText="Endet mit" equalsText="Gleich" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Größer oder gleich" greaterThanText="Größer" [isLoading]="false" lessThanOrEqualsText="Kleiner oder gleich" lessThanText="Kleiner" locale="de-at" notEqualsText="Nicht Gleich" [pageSize]="20" [responsive]="true" startsWithText="Beginnt mit" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '690px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}" [(value)]="dsoBaseKontakteAusListe" (loadData)="gridKontakteLoadData($event)" (rowDoubleClick)="gridKontakteRowDoubleClick($event)" (rowSelect)="gridKontakteRowSelect($event)">
               <rz-grid-column property="Name1" title="Name" width="120px" type="string">
               </rz-grid-column>
               <rz-grid-column property="Name2" title="Vorname" width="100px" type="string">

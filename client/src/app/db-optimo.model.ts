@@ -269,6 +269,13 @@ export interface VwBenutzerRollen {
   RolleTitel: string;
 }
 
+export interface VwErfassungSummen {
+  Auftragsnr: string;
+  Erfassungsnr: number;
+  Zeilennr: number;
+  Menge: number;
+}
+
 export interface VwInventurArtikel {
   ArtikelID: number;
   InventurID: number;
@@ -287,11 +294,24 @@ export interface VwInventurArtikel {
   SummeGezaehltFormatiert: string;
 }
 
+export interface VwInventurArtikelAlle {
+  ArtikelID: number;
+  InventurID: number;
+  ZeilenNr: number;
+  Artikelnummer: string;
+  Beschreibung: string;
+  Beschreibung2: string;
+  StdKreditorName: string;
+  ArtikelStatus: string;
+  Notiz: string;
+}
+
 export interface VwInventurErfassung {
   ErfassungID: number;
   ArtikelID: number;
   DeviceID: number;
   ErfasstAm: string;
+  ErfasstAmFormatiert: string;
   ErfasstAnzahl: number;
   ErfasstAnzahlFormatiert: string;
   GeloeschtAm: string;
@@ -308,6 +328,12 @@ export interface VwInventurErfassung {
   RegistriertAm: string;
   AnmeldungAm: string;
   AbmeldungAm: string;
+}
+
+export interface VwInventurErfassungSummen {
+  ArtikelID: number;
+  SummeErfasst: number;
+  SummeErfasstFormatiert: string;
 }
 
 export interface VwInventurLagerorte {

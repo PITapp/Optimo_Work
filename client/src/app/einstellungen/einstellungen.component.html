@@ -17,8 +17,8 @@
     <rz-tabs-item [selected]="false" text="Infotexte">
       <div class="row">
         <div class="col-md-7">
-          <rz-panel #panel1 [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="{{rstInfotexteCount}} Infotexte">
-            <rz-grid #gridInfotexte [allowAdd]="false" [allowColumnResize]="true" [allowFiltering]="true" [allowMultiSorting]="false" [allowPaging]="true" [allowSorting]="true" applyFilterText="Apply" clearFilterText="Clear" [confirmDelete]="false" containsText="Contains" [count]="rstInfotexteCount" [data]="rstInfotexte" emptyText="Keine Infotexte vorhanden" endsWithText="Ends with" equalsText="Equals" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Greater than or equals" greaterThanText="Greater than" lessThanOrEqualsText="Less than or equals" lessThanText="Less than" notEqualsText="Not equals" [pageSize]="15" startsWithText="Starts with" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '700px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}" (loadData)="gridInfotexteLoadData($event)" (rowDoubleClick)="gridInfotexteRowDoubleClick($event)" (rowSelect)="gridInfotexteRowSelect($event)">
+          <rz-panel #panel1 [style]="{'border': '1px solid #e6ecef', 'height': '740px'}" text="{{rstInfotexteCount}} Infotexte">
+            <rz-grid #gridInfotexte [allowAdd]="false" [allowColumnResize]="true" [allowFiltering]="true" [allowMultiSorting]="false" [allowPaging]="true" [allowSorting]="true" applyFilterText="Apply" clearFilterText="Clear" [confirmDelete]="false" containsText="Contains" [count]="rstInfotexteCount" [data]="rstInfotexte" emptyText="Keine Infotexte vorhanden" endsWithText="Ends with" equalsText="Equals" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Greater than or equals" greaterThanText="Greater than" lessThanOrEqualsText="Less than or equals" lessThanText="Less than" notEqualsText="Not equals" [pageSize]="15" startsWithText="Starts with" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '690px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}" (loadData)="gridInfotexteLoadData($event)" (rowDoubleClick)="gridInfotexteRowDoubleClick($event)" (rowSelect)="gridInfotexteRowSelect($event)">
               <rz-grid-column property="Titel" title="Titel" width="60%" type="string">
               </rz-grid-column>
               <rz-grid-column property="Code" title="Code" width="40%" type="string">
@@ -39,7 +39,7 @@
           </rz-panel>
         </div>
         <div class="col-md-5" [ngStyle]="{'paddingLeft': '5px'}">
-          <rz-panel #panel0 [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" [text]="dsoInfotexte?.Titel">
+          <rz-panel #panel0 [style]="{'border': '1px solid #e6ecef', 'height': '740px'}" [text]="dsoInfotexte?.Titel">
             <div [ngStyle]="{'marginLeft': '-36px', 'marginRight': '-36px', 'marginTop': '-12px'}" class="row">
               <div class="col-md-12" [ngStyle]="{}">
                 <rz-html #htmlEditorInfotexte>

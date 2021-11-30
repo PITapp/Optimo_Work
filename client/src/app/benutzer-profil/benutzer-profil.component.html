@@ -17,7 +17,7 @@
     <rz-tabs-item [selected]="true" text="Daten">
       <div class="row">
         <div class="col-md-4">
-          <rz-panel #panel0 [allowCollapse]="false" [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="Benutzerdaten">
+          <rz-panel #panel0 [allowCollapse]="false" [style]="{'border': '1px solid #e6ecef', 'height': '740px'}" text="Benutzerdaten">
             <rz-template-form #form0 (submit)="form0Submit($event)">
               <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
                 <div class="col-md-3" [ngStyle]="{'paddingLeft': '0', 'textAlign': 'right'}">
@@ -91,7 +91,7 @@
                   </rz-label>
                 </div>
                 <div class="col-md-9" [ngStyle]="{'paddingRight': '0'}">
-                  <rz-textarea #notiz [rows]="4" [style]="{'height': '207px', 'width': '100%'}" [(ngModel)]="dsoBenutzer && dsoBenutzer.Notiz" name="Notiz">
+                  <rz-textarea #notiz [rows]="4" [style]="{'height': '197px', 'width': '100%'}" [(ngModel)]="dsoBenutzer && dsoBenutzer.Notiz" name="Notiz">
                   </rz-textarea>
                 </div>
               </div>
@@ -107,7 +107,7 @@
           </rz-panel>
         </div>
         <div class="col-md-4" [ngStyle]="{'paddingLeft': '5px'}">
-          <rz-panel #bild [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="Profilbild">
+          <rz-panel #bild [style]="{'border': '1px solid #e6ecef', 'height': '740px'}" text="Profilbild">
             <div [ngStyle]="{'marginBottom': '15px'}" class="row">
               <div class="col-md-5">
                 <rz-image #bildUrl [path]="dsoBase?.BildURL" [style]="{'backgroundColor': 'rgba(0, 0, 0, 0)', 'border': '1px solid #dbdfe2', 'borderRadius': '4px', 'width': '120px'}">
@@ -133,7 +133,7 @@
           </rz-panel>
         </div>
         <div class="col-md-4" [ngStyle]="{'paddingLeft': '5px'}">
-          <rz-panel #panel1 [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="Sonstiges">
+          <rz-panel #panel1 [style]="{'border': '1px solid #e6ecef', 'height': '740px'}" text="Sonstiges">
           </rz-panel>
         </div>
       </div>

@@ -263,7 +263,7 @@
                               "startsWithText": "Starts with",
                               "style": {
                                 "border": "1px solid rgba(0, 0, 0, 0)",
-                                "height": "700px",
+                                "height": "690px",
                                 "marginLeft": "-10px",
                                 "marginRight": "-10px",
                                 "marginTop": "-13px"
@@ -435,7 +435,7 @@
                           "name": "panel1",
                           "style": {
                             "border": "1px solid #e6ecef",
-                            "height": "750px"
+                            "height": "740px"
                           },
                           "text": "${rstInfotexteCount} Infotexte",
                           "type": "panel"
@@ -560,7 +560,7 @@
                           "name": "panel0",
                           "style": {
                             "border": "1px solid #e6ecef",
-                            "height": "750px"
+                            "height": "740px"
                           },
                           "text": "${dsoInfotexte.Titel}",
                           "type": "panel"

@@ -48,6 +48,16 @@
         </div>
         <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
           <div class="col-md-3">
+            <rz-label #label0 component="InventurID" [style]="{'width': '100%'}" text="Lagerort">
+            </rz-label>
+          </div>
+          <div class="col-md-9">
+            <rz-textbox #inventurId [maxLength]="150" [style]="{'display': 'block', 'width': '100%'}" [(ngModel)]="dsoDevice && dsoDevice.InventurID" name="InventurID">
+            </rz-textbox>
+          </div>
+        </div>
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3">
             <rz-label #abmeldungAmLabel component="AbmeldungAm" [style]="{'width': '100%'}" text="Abmeldung am">
             </rz-label>
           </div>

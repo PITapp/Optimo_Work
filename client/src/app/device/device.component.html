@@ -17,8 +17,8 @@
     <rz-tabs-item [selected]="true" text="Daten">
       <div [ngStyle]="{'height': '100%'}" class="row">
         <div class="col-md-10">
-          <rz-panel #panel0 [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="{{rstDeviceCount}} Geträte">
-            <rz-grid #gridDevice [allowAdd]="false" [allowColumnResize]="true" [allowDelete]="false" [allowFiltering]="true" [allowMultiSorting]="false" [allowPaging]="false" [allowSorting]="true" applyFilterText="Apply" clearFilterText="Clear" [confirmDelete]="false" containsText="Contains" [count]="rstDeviceCount" [data]="rstDevice" emptyText="Keine Geräte vorhanden" endsWithText="Ends with" equalsText="Equals" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Greater than or equals" greaterThanText="Greater than" lessThanOrEqualsText="Less than or equals" lessThanText="Less than" locale="de" notEqualsText="Not equals" [pageSize]="22" startsWithText="Starts with" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '700px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}" (loadData)="gridDeviceLoadData($event)" (rowDoubleClick)="gridDeviceRowDoubleClick($event)" (rowSelect)="gridDeviceRowSelect($event)">
+          <rz-panel #panel0 [style]="{'border': '1px solid #e6ecef', 'height': '740px'}" text="{{rstDeviceCount}} Geträte">
+            <rz-grid #gridDevice [allowAdd]="false" [allowColumnResize]="true" [allowDelete]="false" [allowFiltering]="true" [allowMultiSorting]="false" [allowPaging]="false" [allowSorting]="true" applyFilterText="Apply" clearFilterText="Clear" [confirmDelete]="false" containsText="Contains" [count]="rstDeviceCount" [data]="rstDevice" emptyText="Keine Geräte vorhanden" endsWithText="Ends with" equalsText="Equals" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Greater than or equals" greaterThanText="Greater than" lessThanOrEqualsText="Less than or equals" lessThanText="Less than" locale="de" notEqualsText="Not equals" [pageSize]="22" startsWithText="Starts with" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '690px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}" (loadData)="gridDeviceLoadData($event)" (rowDoubleClick)="gridDeviceRowDoubleClick($event)" (rowSelect)="gridDeviceRowSelect($event)">
               <rz-grid-column property="DeviceNummer" title="Gerätenummer" width="200px" type="string">
               </rz-grid-column>
               <rz-grid-column property="DeviceTitel" title="Gerätetitel" width="200px" type="string">
@@ -27,12 +27,12 @@
               </rz-grid-column>
               <rz-grid-column format="date-time" formatString="dd.MM.yyyy HH:mm" property="AnmeldungAm" title="Anmeldung am" width="130px" type="string">
               </rz-grid-column>
-              <rz-grid-column format="date-time" formatString="dd.MM.yyyy HH:mm" property="AbmeldungAm" title="Abmeldung am" width="130px" type="string">
-              </rz-grid-column>
               <rz-grid-column property="InventurBasis.LagerortNummer" title="Lagerort" width="300px" type="string">
                 <ng-template let-data gridColumnTemplate>
                 {{data?.InventurBasis?.LagerortNummer}} {{data?.InventurBasis?.LagerortTitel}}
                 </ng-template>
+              </rz-grid-column>
+              <rz-grid-column format="date-time" formatString="dd.MM.yyyy HH:mm" property="AbmeldungAm" title="Abmeldung am" width="130px" type="string">
               </rz-grid-column>
               <rz-grid-column property="Info" title="Info" type="string">
               </rz-grid-column>
@@ -52,8 +52,8 @@
           </rz-panel>
         </div>
         <div class="col-md-2" [ngStyle]="{'paddingLeft': '5px'}">
-          <rz-panel #panel1 [allowCollapse]="false" [collapsed]="false" [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="Info">
-            <rz-textarea #textarea0 [readOnly]="true" [style]="{'height': '668px', 'width': '100%'}" [(ngModel)]="dsoDevice && dsoDevice.Info" name="textarea0">
+          <rz-panel #panel1 [allowCollapse]="false" [collapsed]="false" [style]="{'border': '1px solid #e6ecef', 'height': '740px'}" text="Info">
+            <rz-textarea #textarea0 [readOnly]="true" [style]="{'height': '658px', 'width': '100%'}" [(ngModel)]="dsoDevice && dsoDevice.Info" name="textarea0">
             </rz-textarea>
           </rz-panel>
         </div>

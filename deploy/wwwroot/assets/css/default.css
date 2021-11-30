@@ -12821,3 +12821,34 @@ input::placeholder {
 .optimo-filter-auswahl .ui-dropdown-item, .ui-dropdown-items li {
   background-color: #e9e9e9;
 }
+
+/* --- Scrollbar: Farbe und Einstellungen --- */
+body:not(.rz-default-scrollbars)::-webkit-scrollbar {
+  background-color: #ffffff;
+}
+
+body:not(.rz-default-scrollbars)::-webkit-scrollbar-thumb {
+  background: #DFE2E6;
+  border: 4px solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+  border-radius: 8px;
+}
+
+body:not(.rz-default-scrollbars)::-webkit-scrollbar-corner {
+  background-color: #ffffff;
+}
+
+body:not(.rz-default-scrollbars) ::-webkit-scrollbar {
+  background-color: #ffffff;
+}
+
+body:not(.rz-default-scrollbars) ::-webkit-scrollbar-thumb {
+  background: #DFE2E6;
+  border: 4px solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+  border-radius: 8px;
+}
+
+body:not(.rz-default-scrollbars) ::-webkit-scrollbar-corner {
+  background-color: #ffffff;
+}

@@ -17,8 +17,8 @@
     <rz-tabs-item [selected]="true" text="Lagerorte">
       <div class="row">
         <div class="col-md-7">
-          <rz-panel #panel1 [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="{{rstLagerorteCount}} Lagerorte">
-            <rz-grid #gridLagerorte [allowAdd]="false" [allowColumnReorder]="true" [allowColumnResize]="true" [allowDelete]="false" [allowFiltering]="true" [allowMultiSorting]="false" [allowPaging]="true" [allowSorting]="true" [alwaysShowPager]="false" applyFilterText="Anwenden" clearFilterText="Entfernen" columnResizeMode="expand" [confirmDelete]="false" containsText="Enthält" [count]="rstLagerorteCount" [data]="rstLagerorte" emptyText="Keine Lagerorte vorhanden" endsWithText="Endet mit" equalsText="Gleich" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Größer oder gleich" greaterThanText="Größer" [isLoading]="false" lessThanOrEqualsText="Kleiner oder gleich" lessThanText="Kleiner" locale="de-at" notEqualsText="Nicht Gleich" [pageSize]="20" [responsive]="true" startsWithText="Beginnt mit" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '700px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}" (loadData)="gridLagerorteLoadData($event)" (rowDoubleClick)="gridLagerorteRowDoubleClick($event)" (rowSelect)="gridLagerorteRowSelect($event)">
+          <rz-panel #panel1 [style]="{'border': '1px solid #e6ecef', 'height': '740px'}" text="{{rstLagerorteCount}} Lagerorte">
+            <rz-grid #gridLagerorte [allowAdd]="false" [allowColumnReorder]="true" [allowColumnResize]="true" [allowDelete]="false" [allowFiltering]="true" [allowMultiSorting]="false" [allowPaging]="true" [allowSorting]="true" [alwaysShowPager]="false" applyFilterText="Anwenden" clearFilterText="Entfernen" columnResizeMode="expand" [confirmDelete]="false" containsText="Enthält" [count]="rstLagerorteCount" [data]="rstLagerorte" emptyText="Keine Lagerorte vorhanden" endsWithText="Endet mit" equalsText="Gleich" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Größer oder gleich" greaterThanText="Größer" [isLoading]="false" lessThanOrEqualsText="Kleiner oder gleich" lessThanText="Kleiner" locale="de-at" notEqualsText="Nicht Gleich" [pageSize]="20" [responsive]="true" startsWithText="Beginnt mit" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '690px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}" (loadData)="gridLagerorteLoadData($event)" (rowDoubleClick)="gridLagerorteRowDoubleClick($event)" (rowSelect)="gridLagerorteRowSelect($event)">
               <rz-grid-column property="LagerortNummer" title="Nummer" width="90px" type="string">
               </rz-grid-column>
               <rz-grid-column property="LagerortTitel" title="Titel" width="250px" type="string">
@@ -43,8 +43,8 @@
           </rz-panel>
         </div>
         <div class="col-md-5" [ngStyle]="{'paddingLeft': '5px'}">
-          <rz-panel #panel0 [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="{{rstErfassungLagerorteCount}} Artikel erfasst">
-            <rz-grid #gridErfassungLagerorte [allowAdd]="false" [allowColumnReorder]="true" [allowColumnResize]="true" [allowDelete]="false" [allowFiltering]="true" [allowMultiSorting]="false" [allowPaging]="true" [allowSorting]="true" [alwaysShowPager]="false" applyFilterText="Anwenden" clearFilterText="Entfernen" columnResizeMode="expand" [confirmDelete]="false" containsText="Enthält" [count]="rstErfassungLagerorteCount" [data]="rstErfassungLagerorte" emptyText="Keine Daten vorhanden" endsWithText="Endet mit" equalsText="Gleich" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Größer oder gleich" greaterThanText="Größer" [isLoading]="false" lessThanOrEqualsText="Kleiner oder gleich" lessThanText="Kleiner" locale="de-at" notEqualsText="Nicht Gleich" [pageSize]="20" [responsive]="true" startsWithText="Beginnt mit" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '700px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}">
+          <rz-panel #panel0 [style]="{'border': '1px solid #e6ecef', 'height': '740px'}" text="{{rstErfassungLagerorteCount}} Artikel erfasst">
+            <rz-grid #gridErfassungLagerorte [allowAdd]="false" [allowColumnReorder]="true" [allowColumnResize]="true" [allowDelete]="false" [allowFiltering]="true" [allowMultiSorting]="false" [allowPaging]="true" [allowSorting]="true" [alwaysShowPager]="false" applyFilterText="Anwenden" clearFilterText="Entfernen" columnResizeMode="expand" [confirmDelete]="false" containsText="Enthält" [count]="rstErfassungLagerorteCount" [data]="rstErfassungLagerorte" emptyText="Keine Daten vorhanden" endsWithText="Endet mit" equalsText="Gleich" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Größer oder gleich" greaterThanText="Größer" [isLoading]="false" lessThanOrEqualsText="Kleiner oder gleich" lessThanText="Kleiner" locale="de-at" notEqualsText="Nicht Gleich" [pageSize]="20" [responsive]="true" startsWithText="Beginnt mit" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '690px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}">
               <rz-grid-column format="date-time" formatString="dd.MM.yyyy HH:mm" property="ErfasstAm" title="Am" width="120px" type="string">
               </rz-grid-column>
               <rz-grid-column property="Artikelnummer" title="Artikelnummer" width="120px" type="string">
@@ -78,8 +78,8 @@
     <rz-tabs-item [selected]="false" text="Artikel">
       <div class="row">
         <div class="col-md-6">
-          <rz-panel #panel2 [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="{{rstArtikelCount}} Artikel">
-            <rz-grid #gridArtikel [allowAdd]="false" [allowColumnReorder]="true" [allowColumnResize]="true" [allowDelete]="false" [allowFiltering]="true" [allowMultiSorting]="false" [allowPaging]="true" [allowSorting]="true" [alwaysShowPager]="false" applyFilterText="Anwenden" clearFilterText="Entfernen" columnResizeMode="expand" [confirmDelete]="false" containsText="Enthält" [count]="rstArtikelCount" [data]="rstArtikel" emptyText="Keine Artikel vorhanden" endsWithText="Endet mit" equalsText="Gleich" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Größer oder gleich" greaterThanText="Größer" [isLoading]="false" lessThanOrEqualsText="Kleiner oder gleich" lessThanText="Kleiner" locale="de-at" notEqualsText="Nicht Gleich" [pageSize]="20" [responsive]="true" startsWithText="Beginnt mit" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '700px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}" (loadData)="gridArtikelLoadData($event)" (rowSelect)="gridArtikelRowSelect($event)">
+          <rz-panel #panel2 [style]="{'border': '1px solid #e6ecef', 'height': '740px'}" text="{{rstArtikelCount}} Artikel">
+            <rz-grid #gridArtikel [allowAdd]="false" [allowColumnReorder]="true" [allowColumnResize]="true" [allowDelete]="false" [allowFiltering]="true" [allowMultiSorting]="false" [allowPaging]="true" [allowSorting]="true" [alwaysShowPager]="false" applyFilterText="Anwenden" clearFilterText="Entfernen" columnResizeMode="expand" [confirmDelete]="false" containsText="Enthält" [count]="rstArtikelCount" [data]="rstArtikel" emptyText="Keine Artikel vorhanden" endsWithText="Endet mit" equalsText="Gleich" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Größer oder gleich" greaterThanText="Größer" [isLoading]="false" lessThanOrEqualsText="Kleiner oder gleich" lessThanText="Kleiner" locale="de-at" notEqualsText="Nicht Gleich" [pageSize]="20" [responsive]="true" startsWithText="Beginnt mit" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '690px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}" (loadData)="gridArtikelLoadData($event)" (rowSelect)="gridArtikelRowSelect($event)">
               <rz-grid-column property="Artikelnummer" title="Artikelnummer" width="120px" type="string">
               </rz-grid-column>
               <rz-grid-column property="Beschreibung" title="Bezeichnung" width="300px" type="string">
@@ -103,8 +103,8 @@
           </rz-panel>
         </div>
         <div class="col-md-6" [ngStyle]="{'paddingLeft': '5px'}">
-          <rz-panel #panel3 [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="{{rstErfassungArtikelCount}} Erfassungen durchgeführt">
-            <rz-grid #gridErfassungArtikel [allowAdd]="false" [allowColumnReorder]="true" [allowColumnResize]="true" [allowDelete]="false" [allowFiltering]="true" [allowMultiSorting]="false" [allowPaging]="true" [allowSorting]="true" [alwaysShowPager]="false" applyFilterText="Anwenden" clearFilterText="Entfernen" columnResizeMode="expand" [confirmDelete]="false" containsText="Enthält" [count]="rstErfassungArtikelCount" [data]="rstErfassungArtikel" emptyText="Keine Daten vorhanden" endsWithText="Endet mit" equalsText="Gleich" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Größer oder gleich" greaterThanText="Größer" [isLoading]="false" lessThanOrEqualsText="Kleiner oder gleich" lessThanText="Kleiner" locale="de-at" notEqualsText="Nicht Gleich" [pageSize]="20" [responsive]="true" startsWithText="Beginnt mit" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '700px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}">
+          <rz-panel #panel3 [style]="{'border': '1px solid #e6ecef', 'height': '740px'}" text="{{rstErfassungArtikelCount}} Erfassungen durchgeführt">
+            <rz-grid #gridErfassungArtikel [allowAdd]="false" [allowColumnReorder]="true" [allowColumnResize]="true" [allowDelete]="false" [allowFiltering]="true" [allowMultiSorting]="false" [allowPaging]="true" [allowSorting]="true" [alwaysShowPager]="false" applyFilterText="Anwenden" clearFilterText="Entfernen" columnResizeMode="expand" [confirmDelete]="false" containsText="Enthält" [count]="rstErfassungArtikelCount" [data]="rstErfassungArtikel" emptyText="Keine Daten vorhanden" endsWithText="Endet mit" equalsText="Gleich" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Größer oder gleich" greaterThanText="Größer" [isLoading]="false" lessThanOrEqualsText="Kleiner oder gleich" lessThanText="Kleiner" locale="de-at" notEqualsText="Nicht Gleich" [pageSize]="20" [responsive]="true" startsWithText="Beginnt mit" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '690px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}">
               <rz-grid-column format="date-time" formatString="dd.MM.yyyy HH:mm" property="ErfasstAm" title="Am" width="120px" type="string">
               </rz-grid-column>
               <rz-grid-column property="LagerortGesamt" title="Lagerort" width="250px" type="string">
@@ -136,8 +136,8 @@
     <rz-tabs-item [selected]="false" text="Erfassung">
       <div class="row">
         <div class="col-md-12">
-          <rz-panel #panel4 [style]="{'border': '1px solid #e6ecef', 'height': '750px'}" text="{{rstErfassungCount}} Erfassungen">
-            <rz-grid #gridErfassung [allowAdd]="false" [allowColumnReorder]="true" [allowColumnResize]="true" [allowDelete]="false" [allowFiltering]="true" [allowMultiSorting]="false" [allowPaging]="true" [allowSorting]="true" [alwaysShowPager]="false" applyFilterText="Anwenden" clearFilterText="Entfernen" columnResizeMode="expand" [confirmDelete]="false" containsText="Enthält" [count]="rstErfassungCount" [data]="rstErfassung" emptyText="Keine Erfassung vorhanden" endsWithText="Endet mit" equalsText="Gleich" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Größer oder gleich" greaterThanText="Größer" [isLoading]="false" lessThanOrEqualsText="Kleiner oder gleich" lessThanText="Kleiner" locale="de-at" notEqualsText="Nicht Gleich" [pageSize]="20" [responsive]="true" startsWithText="Beginnt mit" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '700px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}" (loadData)="gridErfassungLoadData($event)" (rowSelect)="gridErfassungRowSelect($event)">
+          <rz-panel #panel4 [style]="{'border': '1px solid #e6ecef', 'height': '740px'}" text="{{rstErfassungCount}} Erfassungen">
+            <rz-grid #gridErfassung [allowAdd]="false" [allowColumnReorder]="true" [allowColumnResize]="true" [allowDelete]="false" [allowFiltering]="true" [allowMultiSorting]="false" [allowPaging]="true" [allowSorting]="true" [alwaysShowPager]="false" applyFilterText="Anwenden" clearFilterText="Entfernen" columnResizeMode="expand" [confirmDelete]="false" containsText="Enthält" [count]="rstErfassungCount" [data]="rstErfassung" emptyText="Keine Erfassung vorhanden" endsWithText="Endet mit" equalsText="Gleich" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Größer oder gleich" greaterThanText="Größer" [isLoading]="false" lessThanOrEqualsText="Kleiner oder gleich" lessThanText="Kleiner" locale="de-at" notEqualsText="Nicht Gleich" [pageSize]="20" [responsive]="true" startsWithText="Beginnt mit" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '690px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}" (loadData)="gridErfassungLoadData($event)" (rowSelect)="gridErfassungRowSelect($event)">
               <rz-grid-column format="date-time" formatString="dd.MM.yyyy HH:mm" property="ErfasstAm" title="Am" width="120px" type="string">
               </rz-grid-column>
               <rz-grid-column property="LagerortGesamt" title="Lagerort" width="250px" type="string">
@@ -168,6 +168,34 @@
               <div class="row">
                 <div class="col-md-12 align-items-start d-flex">
                   <rz-button #buttonErfassungExport buttonStyle="light" buttonType="button" icon="published_with_changes" size="sm" [style]="{'color': '#a71330', 'display': 'block', 'marginRight': '-9px', 'marginTop': '1px'}" text="Export" (click)="buttonErfassungExportClick($event)">
+                  </rz-button>
+                </div>
+              </div>
+            </rz-panel-header>
+          </rz-panel>
+        </div>
+      </div>
+    </rz-tabs-item>
+    <rz-tabs-item [disabled]="false" [selected]="false" text="Summen">
+      <div class="row">
+        <div class="col-md-12">
+          <rz-panel #panel5 [style]="{'border': '1px solid #e6ecef', 'height': '740px'}" text="{{rstErfassungSummenCount}} Erfassung Summen">
+            <rz-grid #gridErfassungSummen [allowAdd]="false" [allowColumnReorder]="true" [allowColumnResize]="true" [allowDelete]="false" [allowFiltering]="true" [allowMultiSorting]="false" [allowPaging]="true" [allowSorting]="true" [alwaysShowPager]="false" applyFilterText="Anwenden" clearFilterText="Entfernen" columnResizeMode="expand" [confirmDelete]="false" containsText="Enthält" [count]="rstErfassungSummenCount" [data]="rstErfassungSummen" emptyText="Keine Erfassung Summen vorhanden" endsWithText="Endet mit" equalsText="Gleich" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Größer oder gleich" greaterThanText="Größer" [isLoading]="false" lessThanOrEqualsText="Kleiner oder gleich" lessThanText="Kleiner" locale="de-at" notEqualsText="Nicht Gleich" [pageSize]="20" [responsive]="true" startsWithText="Beginnt mit" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '690px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}" (loadData)="gridErfassungSummenLoadData($event)" (rowSelect)="gridErfassungSummenRowSelect($event)">
+              <rz-grid-column property="Auftragsnr" textAlign="left" title="Auftragsnr" width="200px" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="Erfassungsnr" textAlign="right" title="Erfassungsnr" width="100px" type="integer">
+              </rz-grid-column>
+              <rz-grid-column property="Zeilennr" textAlign="right" title="Zeilennr" width="100px" type="integer">
+              </rz-grid-column>
+              <rz-grid-column format="decimal" property="Menge" textAlign="right" title="Menge" width="100px" type="number">
+              </rz-grid-column>
+              <rz-grid-column [filterable]="false" [sortable]="false" textAlign="right">
+              </rz-grid-column>
+            </rz-grid>
+            <rz-panel-header>
+              <div class="row">
+                <div class="col-md-12 align-items-start d-flex">
+                  <rz-button #buttonErfassungSummenExport buttonStyle="light" buttonType="button" icon="published_with_changes" size="sm" [style]="{'color': '#a71330', 'display': 'block', 'marginRight': '-9px', 'marginTop': '1px'}" text="Export" (click)="buttonErfassungSummenExportClick($event)">
                   </rz-button>
                 </div>
               </div>

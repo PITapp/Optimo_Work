@@ -48,6 +48,9 @@ export class InventurGenerated implements AfterViewInit, OnInit, OnDestroy {
   @ViewChild('panel4') panel4: PanelComponent;
   @ViewChild('gridErfassung') gridErfassung: GridComponent;
   @ViewChild('buttonErfassungExport') buttonErfassungExport: ButtonComponent;
+  @ViewChild('panel5') panel5: PanelComponent;
+  @ViewChild('gridErfassungSummen') gridErfassungSummen: GridComponent;
+  @ViewChild('buttonErfassungSummenExport') buttonErfassungSummenExport: ButtonComponent;
 
   router: Router;
 
@@ -89,6 +92,9 @@ export class InventurGenerated implements AfterViewInit, OnInit, OnDestroy {
   rstErfassung: any;
   rstErfassungCount: any;
   dsoErfassung: any;
+  rstErfassungSummen: any;
+  rstErfassungSummenCount: any;
+  dsoErfassungSummen: any;
 
   constructor(private injector: Injector) {
   }
@@ -145,6 +151,8 @@ export class InventurGenerated implements AfterViewInit, OnInit, OnDestroy {
     this.gridArtikel.load();
 
     this.gridErfassung.load();
+
+    this.gridErfassungSummen.load();
   }
 
   button1Click(event: any) {
@@ -255,6 +263,27 @@ export class InventurGenerated implements AfterViewInit, OnInit, OnDestroy {
   }
 
   buttonErfassungExportClick(event: any) {
+    this.dialogService.open(MeldungOkComponent, { parameters: {strMeldung: "Export ist für dieses Modul noch nicht aktiviert!"}, title: `Info` });
+  }
+
+  gridErfassungSummenLoadData(event: any) {
+    this.dbOptimo.getVwErfassungSummens(`${event.filter}`, event.top, event.skip, `${event.orderby}`, event.top != null && event.skip != null, null, null, null)
+    .subscribe((result: any) => {
+      this.rstErfassungSummen = result.value;
+
+      this.rstErfassungSummenCount = event.top != null && event.skip != null ? result['@odata.count'] : result.value.length;
+
+      this.gridErfassungSummen.onSelect(this.rstErfassungSummen[0]);
+    }, (result: any) => {
+      this.notificationService.notify({ severity: "error", summary: ``, detail: `Erfassung Summen konnte nicht geladen werden!` });
+    });
+  }
+
+  gridErfassungSummenRowSelect(event: any) {
+    this.dsoErfassungSummen = event;
+  }
+
+  buttonErfassungSummenExportClick(event: any) {
     this.dialogService.open(MeldungOkComponent, { parameters: {strMeldung: "Export ist für dieses Modul noch nicht aktiviert!"}, title: `Info` });
   }
 }

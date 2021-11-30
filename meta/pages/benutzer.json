@@ -272,7 +272,7 @@
                               "startsWithText": "Starts with",
                               "style": {
                                 "border": "1px solid rgba(0, 0, 0, 0)",
-                                "height": "700px",
+                                "height": "690px",
                                 "marginLeft": "-10px",
                                 "marginRight": "-10px",
                                 "marginTop": "-13px"
@@ -473,7 +473,7 @@
                           "name": "panel0",
                           "style": {
                             "border": "1px solid #e6ecef",
-                            "height": "750px"
+                            "height": "740px"
                           },
                           "text": "${rstBenutzerBaseCount} Benutzer",
                           "type": "panel"
@@ -566,7 +566,7 @@
                               "startsWithText": "Starts with",
                               "style": {
                                 "border": "1px solid rgba(0, 0, 0, 0)",
-                                "height": "700px",
+                                "height": "690px",
                                 "marginLeft": "-10px",
                                 "marginRight": "-10px",
                                 "marginTop": "-8px"
@@ -581,7 +581,7 @@
                           "name": "panel1",
                           "style": {
                             "border": "1px solid #e6ecef",
-                            "height": "750px"
+                            "height": "740px"
                           },
                           "text": "{{rstBenutzerRollenCount == 1 ? rstBenutzerRollenCount + ' Rolle' : rstBenutzerRollenCount + ' Rollen'}}",
                           "type": "panel"

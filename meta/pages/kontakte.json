@@ -742,7 +742,7 @@
                                                   "name": "Notiz",
                                                   "rows": 4,
                                                   "style": {
-                                                    "height": "217px",
+                                                    "height": "207px",
                                                     "width": "100%"
                                                   },
                                                   "type": "textarea",
@@ -1328,7 +1328,7 @@
                                                   "name": "KontoInfo",
                                                   "placeholder": "",
                                                   "style": {
-                                                    "height": "127px",
+                                                    "height": "117px",
                                                     "width": "100%"
                                                   },
                                                   "type": "textarea",
@@ -1570,7 +1570,7 @@
                           "name": "panel2",
                           "style": {
                             "border": "1px solid #e6ecef",
-                            "height": "750px"
+                            "height": "740px"
                           },
                           "text": "Kontaktdaten",
                           "type": "panel",
@@ -2136,7 +2136,7 @@
                                   "name": "Bild",
                                   "style": {
                                     "border": "1px solid #e6ecef",
-                                    "height": "360px"
+                                    "height": "350px"
                                   },
                                   "text": "Profilbild",
                                   "type": "panel"
@@ -2168,7 +2168,7 @@
               ],
               "disabled": false,
               "icon": "",
-              "selected": true,
+              "selected": false,
               "text": "Daten"
             },
             {
@@ -2319,7 +2319,7 @@
                               "startsWithText": "Starts with",
                               "style": {
                                 "border": "1px solid rgba(0, 0, 0, 0)",
-                                "height": "700px",
+                                "height": "690px",
                                 "marginLeft": "-10px",
                                 "marginRight": "-10px",
                                 "marginTop": "-13px"
@@ -2491,7 +2491,7 @@
                           "name": "panel4",
                           "style": {
                             "border": "1px solid #e6ecef",
-                            "height": "750px"
+                            "height": "740px"
                           },
                           "text": "${rstNotizenCount} Notizen",
                           "type": "panel"
@@ -2616,7 +2616,7 @@
                           "name": "panel6",
                           "style": {
                             "border": "1px solid #e6ecef",
-                            "height": "750px"
+                            "height": "740px"
                           },
                           "text": "${dsoNotizen.Titel}",
                           "type": "panel"
@@ -2946,7 +2946,7 @@
                               "startsWithText": "Beginnt mit",
                               "style": {
                                 "border": "1px solid rgba(0, 0, 0, 0)",
-                                "height": "700px",
+                                "height": "690px",
                                 "marginLeft": "-10px",
                                 "marginRight": "-10px",
                                 "marginTop": "-13px"
@@ -3006,7 +3006,7 @@
                           "style": {
                             "border": "1px solid #e6ecef",
                             "display": "block",
-                            "height": "750px"
+                            "height": "740px"
                           },
                           "text": "${rstBaseKontakteCount} Kontakte",
                           "type": "panel"
@@ -3029,7 +3029,7 @@
               ],
               "disabled": false,
               "icon": "",
-              "selected": false,
+              "selected": true,
               "text": "Liste"
             }
           ],
