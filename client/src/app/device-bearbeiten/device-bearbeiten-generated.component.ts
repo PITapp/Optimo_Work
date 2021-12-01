@@ -36,12 +36,10 @@ export class DeviceBearbeitenGenerated implements AfterViewInit, OnInit, OnDestr
   @ViewChild('deviceTitelRequiredValidator') deviceTitelRequiredValidator: RequiredValidatorComponent;
   @ViewChild('registriertAmLabel') registriertAmLabel: LabelComponent;
   @ViewChild('registriertAm') registriertAm: DatePickerComponent;
-  @ViewChild('anmeldungAmLabel') anmeldungAmLabel: LabelComponent;
-  @ViewChild('anmeldungAm') anmeldungAm: DatePickerComponent;
   @ViewChild('label0') label0: LabelComponent;
   @ViewChild('inventurId') inventurId: TextBoxComponent;
-  @ViewChild('abmeldungAmLabel') abmeldungAmLabel: LabelComponent;
-  @ViewChild('abmeldungAm') abmeldungAm: DatePickerComponent;
+  @ViewChild('anmeldungAmLabel') anmeldungAmLabel: LabelComponent;
+  @ViewChild('anmeldungAm') anmeldungAm: DatePickerComponent;
   @ViewChild('infoLabel') infoLabel: LabelComponent;
   @ViewChild('info') info: TextAreaComponent;
   @ViewChild('button0') button0: ButtonComponent;

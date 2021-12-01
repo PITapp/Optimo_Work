@@ -38,17 +38,7 @@
         </div>
         <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
           <div class="col-md-3">
-            <rz-label #anmeldungAmLabel component="AnmeldungAm" [style]="{'width': '100%'}" text="Anmeldung am">
-            </rz-label>
-          </div>
-          <div class="col-md-9">
-            <rz-datepicker #anmeldungAm dateFormat="dd.mm.yy" locale="de" [showTime]="true" [style]="{'width': '100%'}" [(ngModel)]="dsoDevice && dsoDevice.AnmeldungAm" name="AnmeldungAm">
-            </rz-datepicker>
-          </div>
-        </div>
-        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
-          <div class="col-md-3">
-            <rz-label #label0 component="InventurID" [style]="{'width': '100%'}" text="Lagerort">
+            <rz-label #label0 component="InventurID" [style]="{'width': '100%'}" text="Lagerort aktiv">
             </rz-label>
           </div>
           <div class="col-md-9">
@@ -58,11 +48,11 @@
         </div>
         <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
           <div class="col-md-3">
-            <rz-label #abmeldungAmLabel component="AbmeldungAm" [style]="{'width': '100%'}" text="Abmeldung am">
+            <rz-label #anmeldungAmLabel component="AnmeldungAm" [style]="{'width': '100%'}" text="Anmeldung am">
             </rz-label>
           </div>
           <div class="col-md-9">
-            <rz-datepicker #abmeldungAm dateFormat="dd.mm.yy" locale="de" [showTime]="true" [style]="{'width': '100%'}" [(ngModel)]="dsoDevice && dsoDevice.AbmeldungAm" name="AbmeldungAm">
+            <rz-datepicker #anmeldungAm dateFormat="dd.mm.yy" locale="de" [showTime]="true" [style]="{'width': '100%'}" [(ngModel)]="dsoDevice && dsoDevice.AnmeldungAm" name="AnmeldungAm">
             </rz-datepicker>
           </div>
         </div>

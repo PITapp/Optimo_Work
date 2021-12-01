@@ -15,7 +15,6 @@ import { TemplateFormComponent } from '@radzen/angular/dist/template-form';
 import { LabelComponent } from '@radzen/angular/dist/label';
 import { TextBoxComponent } from '@radzen/angular/dist/textbox';
 import { RequiredValidatorComponent } from '@radzen/angular/dist/required-validator';
-import { DatePickerComponent } from '@radzen/angular/dist/datepicker';
 import { TextAreaComponent } from '@radzen/angular/dist/textarea';
 import { ButtonComponent } from '@radzen/angular/dist/button';
 
@@ -34,12 +33,6 @@ export class DeviceNeuGenerated implements AfterViewInit, OnInit, OnDestroy {
   @ViewChild('deviceTitelLabel') deviceTitelLabel: LabelComponent;
   @ViewChild('deviceTitel') deviceTitel: TextBoxComponent;
   @ViewChild('deviceTitelRequiredValidator') deviceTitelRequiredValidator: RequiredValidatorComponent;
-  @ViewChild('registriertAmLabel') registriertAmLabel: LabelComponent;
-  @ViewChild('registriertAm') registriertAm: DatePickerComponent;
-  @ViewChild('anmeldungAmLabel') anmeldungAmLabel: LabelComponent;
-  @ViewChild('anmeldungAm') anmeldungAm: DatePickerComponent;
-  @ViewChild('abmeldungAmLabel') abmeldungAmLabel: LabelComponent;
-  @ViewChild('abmeldungAm') abmeldungAm: DatePickerComponent;
   @ViewChild('infoLabel') infoLabel: LabelComponent;
   @ViewChild('info') info: TextAreaComponent;
   @ViewChild('button1') button1: ButtonComponent;

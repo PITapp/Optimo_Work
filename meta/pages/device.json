@@ -160,27 +160,19 @@
                                   "width": "130px"
                                 },
                                 {
-                                  "format": "date-time",
-                                  "formatString": "dd.MM.yyyy HH:mm",
-                                  "property": "AnmeldungAm",
-                                  "title": "Anmeldung am",
-                                  "type": "string",
-                                  "width": "130px"
-                                },
-                                {
                                   "filterProperty": "",
                                   "format": "",
                                   "property": "InventurBasis.LagerortNummer",
                                   "template": "${data.InventurBasis.LagerortNummer} ${data.InventurBasis.LagerortTitel}",
-                                  "title": "Lagerort",
+                                  "title": "Lagerort aktiv",
                                   "type": "string",
                                   "width": "300px"
                                 },
                                 {
                                   "format": "date-time",
                                   "formatString": "dd.MM.yyyy HH:mm",
-                                  "property": "AbmeldungAm",
-                                  "title": "Abmeldung am",
+                                  "property": "AnmeldungAm",
+                                  "title": "Anmeldung am",
                                   "type": "string",
                                   "width": "130px"
                                 },

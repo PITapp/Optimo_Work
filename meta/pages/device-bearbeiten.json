@@ -156,52 +156,12 @@
                           "class": "col-md-3",
                           "components": [
                             {
-                              "component": "AnmeldungAm",
-                              "name": "AnmeldungAmLabel",
-                              "style": {
-                                "width": "100%"
-                              },
-                              "text": "Anmeldung am",
-                              "type": "label"
-                            }
-                          ],
-                          "type": "col"
-                        },
-                        {
-                          "class": "col-md-9",
-                          "components": [
-                            {
-                              "dateFormat": "dd.mm.yy",
-                              "locale": "de",
-                              "name": "AnmeldungAm",
-                              "showTime": true,
-                              "style": {
-                                "width": "100%"
-                              },
-                              "type": "datepicker",
-                              "value": "${dsoDevice.AnmeldungAm}"
-                            }
-                          ],
-                          "type": "col"
-                        }
-                      ],
-                      "style": {
-                        "marginBottom": "1rem"
-                      },
-                      "type": "row"
-                    },
-                    {
-                      "components": [
-                        {
-                          "class": "col-md-3",
-                          "components": [
-                            {
                               "component": "InventurID",
                               "name": "label0",
                               "style": {
                                 "width": "100%"
                               },
-                              "text": "Lagerort",
+                              "text": "Lagerort aktiv",
                               "type": "label"
                             }
                           ],
@@ -238,12 +198,12 @@
                           "class": "col-md-3",
                           "components": [
                             {
-                              "component": "AbmeldungAm",
-                              "name": "AbmeldungAmLabel",
+                              "component": "AnmeldungAm",
+                              "name": "AnmeldungAmLabel",
                               "style": {
                                 "width": "100%"
                               },
-                              "text": "Abmeldung am",
+                              "text": "Anmeldung am",
                               "type": "label"
                             }
                           ],
@@ -255,13 +215,13 @@
                             {
                               "dateFormat": "dd.mm.yy",
                               "locale": "de",
-                              "name": "AbmeldungAm",
+                              "name": "AnmeldungAm",
                               "showTime": true,
                               "style": {
                                 "width": "100%"
                               },
                               "type": "datepicker",
-                              "value": "${dsoDevice.AbmeldungAm}"
+                              "value": "${dsoDevice.AnmeldungAm}"
                             }
                           ],
                           "type": "col"
