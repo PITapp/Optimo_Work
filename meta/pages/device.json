@@ -151,6 +151,14 @@
                                   "width": "200px"
                                 },
                                 {
+                                  "filterProperty": "",
+                                  "format": "",
+                                  "property": "DeviceTyp",
+                                  "title": "Gerätetyp",
+                                  "type": "string",
+                                  "width": "150px"
+                                },
+                                {
                                   "editTemplate": "",
                                   "format": "date-time",
                                   "formatString": "dd.MM.yyyy HH:mm",

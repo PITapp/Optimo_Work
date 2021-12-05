@@ -28,6 +28,16 @@
         </div>
         <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
           <div class="col-md-3">
+            <rz-label #label1 component="DeviceTyp" [style]="{'width': '100%'}" text="Gerätetyp">
+            </rz-label>
+          </div>
+          <div class="col-md-9">
+            <rz-textbox #deviceTyp [maxLength]="150" [style]="{'display': 'block', 'width': '100%'}" [(ngModel)]="dsoDevice && dsoDevice.DeviceTyp" name="DeviceTyp">
+            </rz-textbox>
+          </div>
+        </div>
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3">
             <rz-label #registriertAmLabel component="RegistriertAm" [style]="{'width': '100%'}" text="Registriert am">
             </rz-label>
           </div>

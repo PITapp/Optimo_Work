@@ -33,6 +33,8 @@ export class DeviceNeuGenerated implements AfterViewInit, OnInit, OnDestroy {
   @ViewChild('deviceTitelLabel') deviceTitelLabel: LabelComponent;
   @ViewChild('deviceTitel') deviceTitel: TextBoxComponent;
   @ViewChild('deviceTitelRequiredValidator') deviceTitelRequiredValidator: RequiredValidatorComponent;
+  @ViewChild('label0') label0: LabelComponent;
+  @ViewChild('deviceTyp') deviceTyp: TextBoxComponent;
   @ViewChild('infoLabel') infoLabel: LabelComponent;
   @ViewChild('info') info: TextAreaComponent;
   @ViewChild('button1') button1: ButtonComponent;

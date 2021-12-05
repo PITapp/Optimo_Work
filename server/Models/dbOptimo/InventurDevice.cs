@@ -35,6 +35,11 @@ namespace OptimoWork.Models.DbOptimo
       get;
       set;
     }
+    public string DeviceTyp
+    {
+      get;
+      set;
+    }
     public DateTime? RegistriertAm
     {
       get;

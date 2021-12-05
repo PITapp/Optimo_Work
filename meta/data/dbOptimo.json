@@ -568,7 +568,8 @@
       "resource": "InventurDevices",
       "required": [
         "DeviceNummer",
-        "DeviceTitel"
+        "DeviceTitel",
+        "DeviceTyp"
       ],
       "properties": {
         "DeviceID": {
@@ -609,6 +610,11 @@
           "x-nullable": false,
           "type": "string",
           "length": 150
+        },
+        "DeviceTyp": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 45
         },
         "RegistriertAm": {
           "type": "string",

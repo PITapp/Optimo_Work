@@ -97,6 +97,7 @@ export interface InventurDevice {
   DeviceNummer: string;
   InventurID: number;
   DeviceTitel: string;
+  DeviceTyp: string;
   RegistriertAm: string;
   AnmeldungAm: string;
   AbmeldungAm: string;
