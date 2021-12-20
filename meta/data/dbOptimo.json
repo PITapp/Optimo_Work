@@ -699,6 +699,10 @@
           "x-nullable": false,
           "type": "integer"
         },
+        "GescannteDaten": {
+          "type": "string",
+          "length": 30
+        },
         "GeloeschtAm": {
           "type": "string",
           "format": "date-time"
@@ -1589,6 +1593,10 @@
           "x-nullable": false,
           "type": "string",
           "length": 47
+        },
+        "GescannteDaten": {
+          "type": "string",
+          "length": 30
         },
         "GeloeschtAm": {
           "type": "string",

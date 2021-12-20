@@ -110,6 +110,7 @@ export interface InventurErfassung {
   DeviceID: number;
   ErfasstAm: string;
   ErfasstAnzahl: number;
+  GescannteDaten: string;
   GeloeschtAm: string;
   Notiz: string;
 }
@@ -315,6 +316,7 @@ export interface VwInventurErfassung {
   ErfasstAmFormatiert: string;
   ErfasstAnzahl: number;
   ErfasstAnzahlFormatiert: string;
+  GescannteDaten: string;
   GeloeschtAm: string;
   InventurID: number;
   Artikelnummer: string;

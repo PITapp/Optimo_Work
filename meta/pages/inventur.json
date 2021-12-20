@@ -1127,6 +1127,13 @@
                                 },
                                 {
                                   "format": "",
+                                  "property": "GescannteDaten",
+                                  "title": "Gescannte Daten",
+                                  "type": "string",
+                                  "width": "150px"
+                                },
+                                {
+                                  "format": "",
                                   "property": "DeviceNummer",
                                   "title": "Gerät",
                                   "type": "string",
