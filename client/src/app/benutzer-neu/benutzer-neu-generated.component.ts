@@ -189,7 +189,25 @@ this.dsoBenutzer.Notiz = event.Notiz
         });
       });
     }, (result: any) => {
-      this.notificationService.notify({ severity: "error", summary: ``, detail: `Benutzer (Schritt 1) konnte nicht erstellt werden!` });
+      this.notificationService.notify({ severity: "error", summary: ``, detail: `Benutzer (Schritt 1) konnte nicht erstellt werden!` })
+      .subscribe(() => {
+
+      });
+
+      this.dsoBenutzer.BaseID = event.BaseID
+this.dsoBenutzer.AspNetUsers_Id = result.Id
+this.dsoBenutzer.Benutzername = event.Anmeldename
+this.dsoBenutzer.Initialen = event.Initialen
+this.dsoBenutzer.Notiz = event.Notiz
+
+      this.dbOptimo.createBenutzer(null, this.dsoBenutzer)
+      .subscribe((result: any) => {
+        this.notificationService.notify({ severity: "success", summary: ``, detail: `Benutzer erstellt` });
+
+        this.dialogRef.close(result);
+      }, (result: any) => {
+
+      });
     });
   }
 
@@ -199,7 +217,7 @@ this.initialen.value = event.Name2.substr(0,1) + event.Name1.substr(0,1);
 
 this.password.value = event.Name2 + '123#';
 this.confirmPassword.value = this.password.value;
-this.roleNames.value = ["Kundenbetreuung"];
+this.roleNames.value = ["Administrator"];
   }
 
   button1Click(event: any) {

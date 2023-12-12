@@ -143,19 +143,12 @@
                               "columnWidth": "",
                               "columns": [
                                 {
-                                  "footerTemplate": "",
                                   "format": "",
-                                  "property": "LagerortNummer",
-                                  "title": "Nummer",
+                                  "property": "Lagerort",
+                                  "sortProperty": "",
+                                  "title": "Lagerort",
                                   "type": "string",
-                                  "width": "90px"
-                                },
-                                {
-                                  "format": "",
-                                  "property": "LagerortTitel",
-                                  "title": "Titel",
-                                  "type": "string",
-                                  "width": "250px"
+                                  "width": "350px"
                                 },
                                 {
                                   "format": "",
@@ -163,13 +156,28 @@
                                   "sortProperty": "",
                                   "title": "Status",
                                   "type": "string",
-                                  "width": "180px"
+                                  "width": "150px"
                                 },
                                 {
                                   "format": "",
                                   "property": "DeviceNummer",
                                   "title": "Gerät aktiv",
-                                  "type": "string"
+                                  "type": "string",
+                                  "width": "100px"
+                                },
+                                {
+                                  "format": "",
+                                  "property": "Verantwortlich",
+                                  "title": "Verantwortlich",
+                                  "type": "string",
+                                  "width": "150px"
+                                },
+                                {
+                                  "format": "",
+                                  "property": "Zaehlteam",
+                                  "title": "Zählteam",
+                                  "type": "string",
+                                  "width": "150px"
                                 },
                                 {
                                   "format": "date-time",
@@ -177,13 +185,14 @@
                                   "property": "AnmeldungAm",
                                   "template": "",
                                   "title": "Angemeldet am",
-                                  "type": "string"
+                                  "type": "string",
+                                  "width": "120px"
                                 },
                                 {
                                   "property": "Notiz",
                                   "title": "Notiz",
                                   "type": "string",
-                                  "width": ""
+                                  "width": "300px"
                                 }
                               ],
                               "confirmDelete": false,
@@ -232,7 +241,7 @@
                                       },
                                       {
                                         "name": "$orderby",
-                                        "value": "${event.orderby || 'LagerortNummer, LagerortTitel'}"
+                                        "value": "${event.orderby || 'ErfassungNr, Lagerort'}"
                                       }
                                     ],
                                     "then": [
@@ -303,7 +312,7 @@
                               "locale": "de-at",
                               "name": "gridLagerorte",
                               "notEqualsText": "Nicht Gleich",
-                              "pageSize": 20,
+                              "pageSize": 200,
                               "pageSizeOptions": [],
                               "responsive": true,
                               "startsWithText": "Beginnt mit",
@@ -362,10 +371,34 @@
                                       "style": {
                                         "color": "#a71330",
                                         "display": "block",
-                                        "marginRight": "-9px",
                                         "marginTop": "1px"
                                       },
                                       "text": "Bearbeiten",
+                                      "tooltip": "",
+                                      "type": "button"
+                                    },
+                                    {
+                                      "buttonStyle": "light",
+                                      "buttonType": "button",
+                                      "events": {
+                                        "click": [
+                                          {
+                                            "code": "this.gridLagerorte.load();",
+                                            "type": "execute"
+                                          }
+                                        ]
+                                      },
+                                      "icon": "cached",
+                                      "name": "buttonLagerorteAktualisieren",
+                                      "size": "sm",
+                                      "style": {
+                                        "color": "#a71330",
+                                        "display": "block",
+                                        "marginLeft": "10px",
+                                        "marginRight": "-9px",
+                                        "marginTop": "1px"
+                                      },
+                                      "text": "Aktualisieren",
                                       "tooltip": "",
                                       "type": "button"
                                     }
@@ -572,7 +605,7 @@
                             "border": "1px solid #e6ecef",
                             "height": "740px"
                           },
-                          "text": "${rstErfassungLagerorteCount} Artikel erfasst",
+                          "text": "${dsoLagerort.Lagerort} · ${rstErfassungLagerorteCount} Einträge",
                           "type": "panel"
                         }
                       ],
@@ -807,10 +840,34 @@
                                       "style": {
                                         "color": "#a71330",
                                         "display": "block",
-                                        "marginRight": "-9px",
                                         "marginTop": "1px"
                                       },
                                       "text": "Export",
+                                      "tooltip": "",
+                                      "type": "button"
+                                    },
+                                    {
+                                      "buttonStyle": "light",
+                                      "buttonType": "button",
+                                      "events": {
+                                        "click": [
+                                          {
+                                            "code": "this.gridArtikel.load();",
+                                            "type": "execute"
+                                          }
+                                        ]
+                                      },
+                                      "icon": "cached",
+                                      "name": "button0",
+                                      "size": "sm",
+                                      "style": {
+                                        "color": "#a71330",
+                                        "display": "block",
+                                        "marginLeft": "10px",
+                                        "marginRight": "-9px",
+                                        "marginTop": "1px"
+                                      },
+                                      "text": "Aktualisieren",
                                       "tooltip": "",
                                       "type": "button"
                                     }
@@ -1010,7 +1067,7 @@
                             "border": "1px solid #e6ecef",
                             "height": "740px"
                           },
-                          "text": "${rstErfassungArtikelCount} Erfassungen durchgeführt",
+                          "text": "${dsoArtikel.Artikelnummer} ${dsoArtikel.Beschreibung} · ${rstErfassungArtikelCount} Einträge",
                           "type": "panel"
                         }
                       ],
@@ -1273,10 +1330,34 @@
                                       "style": {
                                         "color": "#a71330",
                                         "display": "block",
-                                        "marginRight": "-9px",
                                         "marginTop": "1px"
                                       },
                                       "text": "Export",
+                                      "tooltip": "",
+                                      "type": "button"
+                                    },
+                                    {
+                                      "buttonStyle": "light",
+                                      "buttonType": "button",
+                                      "events": {
+                                        "click": [
+                                          {
+                                            "code": "this.gridErfassung.load();",
+                                            "type": "execute"
+                                          }
+                                        ]
+                                      },
+                                      "icon": "cached",
+                                      "name": "button2",
+                                      "size": "sm",
+                                      "style": {
+                                        "color": "#a71330",
+                                        "display": "block",
+                                        "marginLeft": "10px",
+                                        "marginRight": "-9px",
+                                        "marginTop": "1px"
+                                      },
+                                      "text": "Aktualisieren",
                                       "tooltip": "",
                                       "type": "button"
                                     }
@@ -1503,10 +1584,34 @@
                                       "style": {
                                         "color": "#a71330",
                                         "display": "block",
-                                        "marginRight": "-9px",
                                         "marginTop": "1px"
                                       },
                                       "text": "Export",
+                                      "tooltip": "",
+                                      "type": "button"
+                                    },
+                                    {
+                                      "buttonStyle": "light",
+                                      "buttonType": "button",
+                                      "events": {
+                                        "click": [
+                                          {
+                                            "code": "this.gridErfassungSummen.load();",
+                                            "type": "execute"
+                                          }
+                                        ]
+                                      },
+                                      "icon": "cached",
+                                      "name": "button3",
+                                      "size": "sm",
+                                      "style": {
+                                        "color": "#a71330",
+                                        "display": "block",
+                                        "marginLeft": "10px",
+                                        "marginRight": "-9px",
+                                        "marginTop": "1px"
+                                      },
+                                      "text": "Aktualisieren",
                                       "tooltip": "",
                                       "type": "button"
                                     }
@@ -1541,6 +1646,95 @@
               "icon": "",
               "selected": false,
               "text": "Summen"
+            },
+            {
+              "components": [
+                {
+                  "components": [
+                    {
+                      "class": "col-md-6",
+                      "components": [
+                        {
+                          "components": [
+                            {
+                              "class": "col-md-12 justify-content-center d-flex",
+                              "components": [
+                                {
+                                  "name": "image0",
+                                  "path": "/assets/images/Lageplan Lattenrost.png",
+                                  "style": {
+                                    "width": "800px"
+                                  },
+                                  "type": "image"
+                                }
+                              ],
+                              "name": "col10",
+                              "type": "col"
+                            }
+                          ],
+                          "headerTemplate": "",
+                          "icon": "",
+                          "name": "panel6",
+                          "style": {
+                            "border": "1px solid #e6ecef",
+                            "height": "740px"
+                          },
+                          "text": "Lattenrost",
+                          "type": "panel"
+                        }
+                      ],
+                      "name": "col8",
+                      "type": "col"
+                    },
+                    {
+                      "class": "col-md-6",
+                      "components": [
+                        {
+                          "attributes": [],
+                          "components": [
+                            {
+                              "class": "col-md-12 justify-content-center d-flex",
+                              "components": [
+                                {
+                                  "name": "image1",
+                                  "path": "/assets/images/Lageplan Matratzen.png",
+                                  "style": {
+                                    "textAlign": "left",
+                                    "width": "600px"
+                                  },
+                                  "type": "image"
+                                }
+                              ],
+                              "name": "col11",
+                              "type": "col"
+                            }
+                          ],
+                          "footerTemplate": "",
+                          "headerTemplate": "",
+                          "icon": "",
+                          "name": "panel7",
+                          "style": {
+                            "border": "1px solid #e6ecef",
+                            "height": "740px"
+                          },
+                          "text": "Matratzen",
+                          "type": "panel"
+                        }
+                      ],
+                      "name": "col9",
+                      "style": {
+                        "paddingLeft": "5px"
+                      },
+                      "type": "col"
+                    }
+                  ],
+                  "name": "row4",
+                  "type": "row"
+                }
+              ],
+              "icon": "",
+              "selected": false,
+              "text": "Lagepläne"
             }
           ],
           "name": "tabs0",

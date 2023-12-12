@@ -117,7 +117,6 @@ namespace OptimoWork.Controllers.DbOptimo
             this.context.SaveChanges();
 
             var itemToReturn = this.context.InventurArtikels.Where(i => i.ArtikelID == key);
-            Request.QueryString = Request.QueryString.Add("$expand", "InventurBasis");
             return new ObjectResult(SingleResult.Create(itemToReturn));
         }
         catch(Exception ex)
@@ -153,7 +152,6 @@ namespace OptimoWork.Controllers.DbOptimo
             this.context.SaveChanges();
 
             var itemToReturn = this.context.InventurArtikels.Where(i => i.ArtikelID == key);
-            Request.QueryString = Request.QueryString.Add("$expand", "InventurBasis");
             return new ObjectResult(SingleResult.Create(itemToReturn));
         }
         catch(Exception ex)
@@ -185,16 +183,7 @@ namespace OptimoWork.Controllers.DbOptimo
             this.context.InventurArtikels.Add(item);
             this.context.SaveChanges();
 
-            var key = item.ArtikelID;
-
-            var itemToReturn = this.context.InventurArtikels.Where(i => i.ArtikelID == key);
-
-            Request.QueryString = Request.QueryString.Add("$expand", "InventurBasis");
-
-            return new ObjectResult(SingleResult.Create(itemToReturn))
-            {
-                StatusCode = 201
-            };
+            return Created($"odata/DbOptimo/InventurArtikels/{item.ArtikelID}", item);
         }
         catch(Exception ex)
         {

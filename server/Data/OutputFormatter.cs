@@ -51,6 +51,9 @@ namespace OptimoWork.Data
                 type.GetGenericTypeDefinition() == typeof(Nullable<>) ?
                 Nullable.GetUnderlyingType(type) : type;
 
+            if(underlyingType == typeof(System.Guid))
+                return true;
+
             var typeCode = Type.GetTypeCode(underlyingType);
 
             switch (typeCode)

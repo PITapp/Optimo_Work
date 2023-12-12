@@ -45,11 +45,6 @@ namespace OptimoWork.Data
                   .WithMany(i => i.Benutzers)
                   .HasForeignKey(i => i.BaseID)
                   .HasPrincipalKey(i => i.BaseID);
-            builder.Entity<OptimoWork.Models.DbOptimo.InventurArtikel>()
-                  .HasOne(i => i.InventurBasis)
-                  .WithMany(i => i.InventurArtikels)
-                  .HasForeignKey(i => i.InventurID)
-                  .HasPrincipalKey(i => i.InventurID);
             builder.Entity<OptimoWork.Models.DbOptimo.InventurBasis>()
                   .HasOne(i => i.InventurBasisStatus)
                   .WithMany(i => i.InventurBases)
@@ -65,6 +60,11 @@ namespace OptimoWork.Data
                   .WithMany(i => i.InventurErfassungs)
                   .HasForeignKey(i => i.ArtikelID)
                   .HasPrincipalKey(i => i.ArtikelID);
+            builder.Entity<OptimoWork.Models.DbOptimo.InventurErfassung>()
+                  .HasOne(i => i.InventurBasis)
+                  .WithMany(i => i.InventurErfassungs)
+                  .HasForeignKey(i => i.InventurID)
+                  .HasPrincipalKey(i => i.InventurID);
             builder.Entity<OptimoWork.Models.DbOptimo.InventurErfassung>()
                   .HasOne(i => i.InventurDevice)
                   .WithMany(i => i.InventurErfassungs)
@@ -254,6 +254,12 @@ namespace OptimoWork.Data
           set;
         }
 
+        public DbSet<OptimoWork.Models.DbOptimo.VwErfassungNav> VwErfassungNavs
+        {
+          get;
+          set;
+        }
+
         public DbSet<OptimoWork.Models.DbOptimo.VwErfassungSummen> VwErfassungSummens
         {
           get;
@@ -273,6 +279,12 @@ namespace OptimoWork.Data
         }
 
         public DbSet<OptimoWork.Models.DbOptimo.VwInventurErfassung> VwInventurErfassungs
+        {
+          get;
+          set;
+        }
+
+        public DbSet<OptimoWork.Models.DbOptimo.VwInventurErfassungBdo> VwInventurErfassungBdos
         {
           get;
           set;
@@ -301,5 +313,6 @@ namespace OptimoWork.Data
           get;
           set;
         }
+
     }
 }

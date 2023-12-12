@@ -18,24 +18,28 @@
       <div class="row">
         <div class="col-md-7">
           <rz-panel #panel1 [style]="{'border': '1px solid #e6ecef', 'height': '740px'}" text="{{rstLagerorteCount}} Lagerorte">
-            <rz-grid #gridLagerorte [allowAdd]="false" [allowColumnReorder]="true" [allowColumnResize]="true" [allowDelete]="false" [allowFiltering]="true" [allowMultiSorting]="false" [allowPaging]="true" [allowSorting]="true" [alwaysShowPager]="false" applyFilterText="Anwenden" clearFilterText="Entfernen" columnResizeMode="expand" [confirmDelete]="false" containsText="Enthält" [count]="rstLagerorteCount" [data]="rstLagerorte" emptyText="Keine Lagerorte vorhanden" endsWithText="Endet mit" equalsText="Gleich" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Größer oder gleich" greaterThanText="Größer" [isLoading]="false" lessThanOrEqualsText="Kleiner oder gleich" lessThanText="Kleiner" locale="de-at" notEqualsText="Nicht Gleich" [pageSize]="20" [responsive]="true" startsWithText="Beginnt mit" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '690px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}" (loadData)="gridLagerorteLoadData($event)" (rowDoubleClick)="gridLagerorteRowDoubleClick($event)" (rowSelect)="gridLagerorteRowSelect($event)">
-              <rz-grid-column property="LagerortNummer" title="Nummer" width="90px" type="string">
+            <rz-grid #gridLagerorte [allowAdd]="false" [allowColumnReorder]="true" [allowColumnResize]="true" [allowDelete]="false" [allowFiltering]="true" [allowMultiSorting]="false" [allowPaging]="true" [allowSorting]="true" [alwaysShowPager]="false" applyFilterText="Anwenden" clearFilterText="Entfernen" columnResizeMode="expand" [confirmDelete]="false" containsText="Enthält" [count]="rstLagerorteCount" [data]="rstLagerorte" emptyText="Keine Lagerorte vorhanden" endsWithText="Endet mit" equalsText="Gleich" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Größer oder gleich" greaterThanText="Größer" [isLoading]="false" lessThanOrEqualsText="Kleiner oder gleich" lessThanText="Kleiner" locale="de-at" notEqualsText="Nicht Gleich" [pageSize]="200" [responsive]="true" startsWithText="Beginnt mit" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '690px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}" (loadData)="gridLagerorteLoadData($event)" (rowDoubleClick)="gridLagerorteRowDoubleClick($event)" (rowSelect)="gridLagerorteRowSelect($event)">
+              <rz-grid-column property="Lagerort" title="Lagerort" width="350px" type="string">
               </rz-grid-column>
-              <rz-grid-column property="LagerortTitel" title="Titel" width="250px" type="string">
+              <rz-grid-column property="LagerortStatus" title="Status" width="150px" type="string">
               </rz-grid-column>
-              <rz-grid-column property="LagerortStatus" title="Status" width="180px" type="string">
+              <rz-grid-column property="DeviceNummer" title="Gerät aktiv" width="100px" type="string">
               </rz-grid-column>
-              <rz-grid-column property="DeviceNummer" title="Gerät aktiv" type="string">
+              <rz-grid-column property="Verantwortlich" title="Verantwortlich" width="150px" type="string">
               </rz-grid-column>
-              <rz-grid-column format="date-time" formatString="dd.MM.yyyy HH:mm" property="AnmeldungAm" title="Angemeldet am" type="string">
+              <rz-grid-column property="Zaehlteam" title="Zählteam" width="150px" type="string">
               </rz-grid-column>
-              <rz-grid-column property="Notiz" title="Notiz" type="string">
+              <rz-grid-column format="date-time" formatString="dd.MM.yyyy HH:mm" property="AnmeldungAm" title="Angemeldet am" width="120px" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="Notiz" title="Notiz" width="300px" type="string">
               </rz-grid-column>
             </rz-grid>
             <rz-panel-header>
               <div class="row">
                 <div class="col-md-12 align-items-start d-flex">
-                  <rz-button #buttonLagerortBearbeiten buttonStyle="light" buttonType="button" icon="create" size="sm" [style]="{'color': '#a71330', 'display': 'block', 'marginRight': '-9px', 'marginTop': '1px'}" text="Bearbeiten" (click)="buttonLagerortBearbeitenClick($event)">
+                  <rz-button #buttonLagerortBearbeiten buttonStyle="light" buttonType="button" icon="create" size="sm" [style]="{'color': '#a71330', 'display': 'block', 'marginTop': '1px'}" text="Bearbeiten" (click)="buttonLagerortBearbeitenClick($event)">
+                  </rz-button>
+                  <rz-button #buttonLagerorteAktualisieren buttonStyle="light" buttonType="button" icon="cached" size="sm" [style]="{'color': '#a71330', 'display': 'block', 'marginLeft': '10px', 'marginRight': '-9px', 'marginTop': '1px'}" text="Aktualisieren" (click)="buttonLagerorteAktualisierenClick($event)">
                   </rz-button>
                 </div>
               </div>
@@ -43,7 +47,7 @@
           </rz-panel>
         </div>
         <div class="col-md-5" [ngStyle]="{'paddingLeft': '5px'}">
-          <rz-panel #panel0 [style]="{'border': '1px solid #e6ecef', 'height': '740px'}" text="{{rstErfassungLagerorteCount}} Artikel erfasst">
+          <rz-panel #panel0 [style]="{'border': '1px solid #e6ecef', 'height': '740px'}" text="{{dsoLagerort?.Lagerort}} · {{rstErfassungLagerorteCount}} Einträge">
             <rz-grid #gridErfassungLagerorte [allowAdd]="false" [allowColumnReorder]="true" [allowColumnResize]="true" [allowDelete]="false" [allowFiltering]="true" [allowMultiSorting]="false" [allowPaging]="true" [allowSorting]="true" [alwaysShowPager]="false" applyFilterText="Anwenden" clearFilterText="Entfernen" columnResizeMode="expand" [confirmDelete]="false" containsText="Enthält" [count]="rstErfassungLagerorteCount" [data]="rstErfassungLagerorte" emptyText="Keine Daten vorhanden" endsWithText="Endet mit" equalsText="Gleich" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Größer oder gleich" greaterThanText="Größer" [isLoading]="false" lessThanOrEqualsText="Kleiner oder gleich" lessThanText="Kleiner" locale="de-at" notEqualsText="Nicht Gleich" [pageSize]="20" [responsive]="true" startsWithText="Beginnt mit" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '690px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}">
               <rz-grid-column format="date-time" formatString="dd.MM.yyyy HH:mm" property="ErfasstAm" title="Am" width="120px" type="string">
               </rz-grid-column>
@@ -95,7 +99,9 @@
             <rz-panel-header>
               <div class="row">
                 <div class="col-md-12 align-items-start d-flex">
-                  <rz-button #buttonArtikelExport buttonStyle="light" buttonType="button" icon="published_with_changes" size="sm" [style]="{'color': '#a71330', 'display': 'block', 'marginRight': '-9px', 'marginTop': '1px'}" text="Export" (click)="buttonArtikelExportClick($event)">
+                  <rz-button #buttonArtikelExport buttonStyle="light" buttonType="button" icon="published_with_changes" size="sm" [style]="{'color': '#a71330', 'display': 'block', 'marginTop': '1px'}" text="Export" (click)="buttonArtikelExportClick($event)">
+                  </rz-button>
+                  <rz-button #button0 buttonStyle="light" buttonType="button" icon="cached" size="sm" [style]="{'color': '#a71330', 'display': 'block', 'marginLeft': '10px', 'marginRight': '-9px', 'marginTop': '1px'}" text="Aktualisieren" (click)="button0Click($event)">
                   </rz-button>
                 </div>
               </div>
@@ -103,7 +109,7 @@
           </rz-panel>
         </div>
         <div class="col-md-6" [ngStyle]="{'paddingLeft': '5px'}">
-          <rz-panel #panel3 [style]="{'border': '1px solid #e6ecef', 'height': '740px'}" text="{{rstErfassungArtikelCount}} Erfassungen durchgeführt">
+          <rz-panel #panel3 [style]="{'border': '1px solid #e6ecef', 'height': '740px'}" text="{{dsoArtikel?.Artikelnummer}} {{dsoArtikel?.Beschreibung}} · {{rstErfassungArtikelCount}} Einträge">
             <rz-grid #gridErfassungArtikel [allowAdd]="false" [allowColumnReorder]="true" [allowColumnResize]="true" [allowDelete]="false" [allowFiltering]="true" [allowMultiSorting]="false" [allowPaging]="true" [allowSorting]="true" [alwaysShowPager]="false" applyFilterText="Anwenden" clearFilterText="Entfernen" columnResizeMode="expand" [confirmDelete]="false" containsText="Enthält" [count]="rstErfassungArtikelCount" [data]="rstErfassungArtikel" emptyText="Keine Daten vorhanden" endsWithText="Endet mit" equalsText="Gleich" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Größer oder gleich" greaterThanText="Größer" [isLoading]="false" lessThanOrEqualsText="Kleiner oder gleich" lessThanText="Kleiner" locale="de-at" notEqualsText="Nicht Gleich" [pageSize]="20" [responsive]="true" startsWithText="Beginnt mit" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '690px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}">
               <rz-grid-column format="date-time" formatString="dd.MM.yyyy HH:mm" property="ErfasstAm" title="Am" width="120px" type="string">
               </rz-grid-column>
@@ -169,7 +175,9 @@
             <rz-panel-header>
               <div class="row">
                 <div class="col-md-12 align-items-start d-flex">
-                  <rz-button #buttonErfassungExport buttonStyle="light" buttonType="button" icon="published_with_changes" size="sm" [style]="{'color': '#a71330', 'display': 'block', 'marginRight': '-9px', 'marginTop': '1px'}" text="Export" (click)="buttonErfassungExportClick($event)">
+                  <rz-button #buttonErfassungExport buttonStyle="light" buttonType="button" icon="published_with_changes" size="sm" [style]="{'color': '#a71330', 'display': 'block', 'marginTop': '1px'}" text="Export" (click)="buttonErfassungExportClick($event)">
+                  </rz-button>
+                  <rz-button #button2 buttonStyle="light" buttonType="button" icon="cached" size="sm" [style]="{'color': '#a71330', 'display': 'block', 'marginLeft': '10px', 'marginRight': '-9px', 'marginTop': '1px'}" text="Aktualisieren" (click)="button2Click($event)">
                   </rz-button>
                 </div>
               </div>
@@ -197,11 +205,33 @@
             <rz-panel-header>
               <div class="row">
                 <div class="col-md-12 align-items-start d-flex">
-                  <rz-button #buttonErfassungSummenExport buttonStyle="light" buttonType="button" icon="published_with_changes" size="sm" [style]="{'color': '#a71330', 'display': 'block', 'marginRight': '-9px', 'marginTop': '1px'}" text="Export" (click)="buttonErfassungSummenExportClick($event)">
+                  <rz-button #buttonErfassungSummenExport buttonStyle="light" buttonType="button" icon="published_with_changes" size="sm" [style]="{'color': '#a71330', 'display': 'block', 'marginTop': '1px'}" text="Export" (click)="buttonErfassungSummenExportClick($event)">
+                  </rz-button>
+                  <rz-button #button3 buttonStyle="light" buttonType="button" icon="cached" size="sm" [style]="{'color': '#a71330', 'display': 'block', 'marginLeft': '10px', 'marginRight': '-9px', 'marginTop': '1px'}" text="Aktualisieren" (click)="button3Click($event)">
                   </rz-button>
                 </div>
               </div>
             </rz-panel-header>
+          </rz-panel>
+        </div>
+      </div>
+    </rz-tabs-item>
+    <rz-tabs-item [selected]="false" text="Lagepläne">
+      <div class="row">
+        <div class="col-md-6">
+          <rz-panel #panel6 [style]="{'border': '1px solid #e6ecef', 'height': '740px'}" text="Lattenrost">
+            <div class="col-md-12 justify-content-center d-flex">
+              <rz-image #image0 path="assets/images/Lageplan Lattenrost.png" [style]="{'width': '800px'}">
+              </rz-image>
+            </div>
+          </rz-panel>
+        </div>
+        <div class="col-md-6" [ngStyle]="{'paddingLeft': '5px'}">
+          <rz-panel #panel7 [style]="{'border': '1px solid #e6ecef', 'height': '740px'}" text="Matratzen">
+            <div class="col-md-12 justify-content-center d-flex">
+              <rz-image #image1 path="assets/images/Lageplan Matratzen.png" [style]="{'textAlign': 'left', 'width': '600px'}">
+              </rz-image>
+            </div>
           </rz-panel>
         </div>
       </div>

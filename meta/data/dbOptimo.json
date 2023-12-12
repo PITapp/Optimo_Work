@@ -363,22 +363,9 @@
             }
           ]
         },
-        "InventurBasis": {
-          "type": "object",
-          "$ref": "#/definitions/InventurBasis"
-        },
         "InventurID": {
           "x-nullable": false,
-          "type": "integer",
-          "x-foreignKey": {
-            "parentTable": "InventurBasis",
-            "parentEntityType": "InventurBasis",
-            "type": "InventurBasis",
-            "principalKey": "InventurID",
-            "name": "InventurBasis",
-            "textProperty": "LagerortStatus",
-            "navigationProperty": "InventurArtikels"
-          }
+          "type": "integer"
         },
         "ZeilenNr": {
           "x-nullable": false,
@@ -400,6 +387,10 @@
         "StdKreditorName": {
           "type": "string",
           "length": 50
+        },
+        "Einheit": {
+          "type": "string",
+          "length": 10
         },
         "ArtikelStatus": {
           "x-nullable": false,
@@ -439,13 +430,13 @@
           "x-navigation": [
             {
               "inversePropertyName": "InventurBasis",
-              "name": "InventurArtikels",
-              "type": "InventurArtikel"
+              "name": "InventurDevices",
+              "type": "InventurDevice"
             },
             {
               "inversePropertyName": "InventurBasis",
-              "name": "InventurDevices",
-              "type": "InventurDevice"
+              "name": "InventurErfassungs",
+              "type": "InventurErfassung"
             }
           ]
         },
@@ -501,20 +492,32 @@
           "type": "string",
           "length": 100
         },
+        "Zaehlteam": {
+          "type": "string",
+          "length": 255
+        },
+        "FilterBC": {
+          "type": "string",
+          "length": 16777215
+        },
+        "FilterAccess": {
+          "type": "string",
+          "length": 16777215
+        },
         "Notiz": {
           "type": "string",
           "length": 65535
-        },
-        "InventurArtikels": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/InventurArtikel"
-          }
         },
         "InventurDevices": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/InventurDevice"
+          }
+        },
+        "InventurErfassungs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InventurErfassung"
           }
         }
       }
@@ -645,6 +648,7 @@
       "resource": "InventurErfassungs",
       "required": [
         "ArtikelID",
+        "InventurID",
         "DeviceID",
         "ErfasstAm",
         "ErfasstAnzahl"
@@ -670,6 +674,23 @@
             "principalKey": "ArtikelID",
             "name": "InventurArtikel",
             "textProperty": "Artikelnummer",
+            "navigationProperty": "InventurErfassungs"
+          }
+        },
+        "InventurBasis": {
+          "type": "object",
+          "$ref": "#/definitions/InventurBasis"
+        },
+        "InventurID": {
+          "x-nullable": false,
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "InventurBasis",
+            "parentEntityType": "InventurBasis",
+            "type": "InventurBasis",
+            "principalKey": "InventurID",
+            "name": "InventurBasis",
+            "textProperty": "LagerortStatus",
             "navigationProperty": "InventurErfassungs"
           }
         },
@@ -1374,6 +1395,43 @@
         }
       }
     },
+    "VwErfassungNav": {
+      "x-view": true,
+      "x-table": "def.vwErfassungNAV",
+      "resource": "VwErfassungNavs",
+      "required": [
+        "Auftragsnr",
+        "Erfassungsnr",
+        "Zeilennr",
+        "Artikelnummer"
+      ],
+      "properties": {
+        "Auftragsnr": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 30,
+          "x-key": true,
+          "x-virtual": true
+        },
+        "Erfassungsnr": {
+          "x-nullable": false,
+          "type": "integer"
+        },
+        "Zeilennr": {
+          "x-nullable": false,
+          "type": "integer"
+        },
+        "Artikelnummer": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 30
+        },
+        "Menge": {
+          "type": "number",
+          "format": "decimal"
+        }
+      }
+    },
     "VwErfassungSummen": {
       "x-view": true,
       "x-table": "def.vwErfassungSummen",
@@ -1410,11 +1468,11 @@
       "x-table": "def.vwInventurArtikel",
       "resource": "VwInventurArtikels",
       "required": [
-        "InventurID",
         "Artikelnummer",
         "ArtikelStatus",
         "LagerortNummer",
-        "LagerortTitel"
+        "LagerortTitel",
+        "InventurID"
       ],
       "properties": {
         "ArtikelID": {
@@ -1422,16 +1480,12 @@
           "x-nullable": false,
           "type": "integer"
         },
-        "InventurID": {
-          "x-nullable": false,
-          "type": "integer",
-          "x-key": true,
-          "x-virtual": true
-        },
         "Artikelnummer": {
           "x-nullable": false,
           "type": "string",
-          "length": 30
+          "length": 30,
+          "x-key": true,
+          "x-virtual": true
         },
         "Beschreibung": {
           "type": "string",
@@ -1463,6 +1517,10 @@
           "x-nullable": false,
           "type": "string",
           "length": 70
+        },
+        "InventurID": {
+          "x-nullable": false,
+          "type": "integer"
         },
         "LagerortGesamt": {
           "x-nullable": false,
@@ -1533,6 +1591,10 @@
           "type": "string",
           "length": 50
         },
+        "Einheit": {
+          "type": "string",
+          "length": 10
+        },
         "ArtikelStatus": {
           "x-nullable": false,
           "type": "string",
@@ -1550,10 +1612,10 @@
       "resource": "VwInventurErfassungs",
       "required": [
         "ArtikelID",
+        "InventurID",
         "DeviceID",
         "ErfasstAm",
         "ErfasstAnzahl",
-        "InventurID",
         "Artikelnummer",
         "LagerortNummer",
         "LagerortTitel",
@@ -1571,6 +1633,10 @@
           "type": "integer",
           "x-key": true,
           "x-virtual": true
+        },
+        "InventurID": {
+          "x-nullable": false,
+          "type": "integer"
         },
         "DeviceID": {
           "x-nullable": false,
@@ -1601,10 +1667,6 @@
         "GeloeschtAm": {
           "type": "string",
           "format": "date-time"
-        },
-        "InventurID": {
-          "x-nullable": false,
-          "type": "integer"
         },
         "Artikelnummer": {
           "x-nullable": false,
@@ -1662,6 +1724,58 @@
         }
       }
     },
+    "VwInventurErfassungBdo": {
+      "x-view": true,
+      "x-table": "def.vwInventurErfassungBDO",
+      "resource": "VwInventurErfassungBdos",
+      "required": [
+        "Artikelnummer",
+        "ErfasstAm",
+        "LagerortNummer",
+        "LagerortTitel"
+      ],
+      "properties": {
+        "Artikelnummer": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 30,
+          "x-key": true,
+          "x-virtual": true
+        },
+        "Beschreibung": {
+          "type": "string",
+          "length": 100
+        },
+        "ErfasstAnzahlFormatiert": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 47
+        },
+        "ErfasstAm": {
+          "x-nullable": false,
+          "type": "string",
+          "format": "date-time"
+        },
+        "ErfasstAmFormatiert": {
+          "type": "string",
+          "length": 21
+        },
+        "GeloeschtAm": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "LagerortNummer": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 10
+        },
+        "LagerortTitel": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 70
+        }
+      }
+    },
     "VwInventurErfassungSummen": {
       "x-view": true,
       "x-table": "def.vwInventurErfassungSummen",
@@ -1691,6 +1805,9 @@
       "x-table": "def.vwInventurLagerorte",
       "resource": "VwInventurLagerortes",
       "required": [
+        "AuftragCode",
+        "ErfassungNr",
+        "Lagerort",
         "LagerortNummer",
         "LagerortTitel",
         "LagerortStatus"
@@ -1701,12 +1818,26 @@
           "x-nullable": false,
           "type": "integer"
         },
+        "AuftragCode": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 30,
+          "x-key": true,
+          "x-virtual": true
+        },
+        "ErfassungNr": {
+          "x-nullable": false,
+          "type": "integer"
+        },
+        "Lagerort": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 70
+        },
         "LagerortNummer": {
           "x-nullable": false,
           "type": "string",
-          "length": 10,
-          "x-key": true,
-          "x-virtual": true
+          "length": 10
         },
         "LagerortTitel": {
           "x-nullable": false,
@@ -1717,6 +1848,14 @@
           "x-nullable": false,
           "type": "string",
           "length": 30
+        },
+        "Verantwortlich": {
+          "type": "string",
+          "length": 100
+        },
+        "Zaehlteam": {
+          "type": "string",
+          "length": 255
         },
         "Notiz": {
           "type": "string",
@@ -3457,6 +3596,73 @@
         }
       }
     },
+    "/VwErfassungNavs": {
+      "get": {
+        "operationId": "getVwErfassungNavs",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$count",
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$select",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/VwErfassungNav"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
     "/VwErfassungSummens": {
       "get": {
         "operationId": "getVwErfassungSummens",
@@ -3710,6 +3916,73 @@
                 "value": {
                   "items": {
                     "$ref": "#/definitions/VwInventurErfassung"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/VwInventurErfassungBdos": {
+      "get": {
+        "operationId": "getVwInventurErfassungBdos",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$count",
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$select",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/VwInventurErfassungBdo"
                   },
                   "type": "array"
                 }

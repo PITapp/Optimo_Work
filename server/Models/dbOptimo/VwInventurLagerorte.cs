@@ -13,6 +13,21 @@ namespace OptimoWork.Models.DbOptimo
       set;
     }
     [Key]
+    public string AuftragCode
+    {
+      get;
+      set;
+    }
+    public int ErfassungNr
+    {
+      get;
+      set;
+    }
+    public string Lagerort
+    {
+      get;
+      set;
+    }
     public string LagerortNummer
     {
       get;
@@ -24,6 +39,16 @@ namespace OptimoWork.Models.DbOptimo
       set;
     }
     public string LagerortStatus
+    {
+      get;
+      set;
+    }
+    public string Verantwortlich
+    {
+      get;
+      set;
+    }
+    public string Zaehlteam
     {
       get;
       set;

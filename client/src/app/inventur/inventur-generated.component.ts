@@ -17,6 +17,7 @@ import { TabsComponent } from '@radzen/angular/dist/tabs';
 import { PanelComponent } from '@radzen/angular/dist/panel';
 import { GridComponent } from '@radzen/angular/dist/grid';
 import { LabelComponent } from '@radzen/angular/dist/label';
+import { ImageComponent } from '@radzen/angular/dist/image';
 
 import { ConfigService } from '../config.service';
 import { MeldungOkComponent } from '../meldung-ok/meldung-ok.component';
@@ -36,21 +37,29 @@ export class InventurGenerated implements AfterViewInit, OnInit, OnDestroy {
   @ViewChild('panel1') panel1: PanelComponent;
   @ViewChild('gridLagerorte') gridLagerorte: GridComponent;
   @ViewChild('buttonLagerortBearbeiten') buttonLagerortBearbeiten: ButtonComponent;
+  @ViewChild('buttonLagerorteAktualisieren') buttonLagerorteAktualisieren: ButtonComponent;
   @ViewChild('panel0') panel0: PanelComponent;
   @ViewChild('gridErfassungLagerorte') gridErfassungLagerorte: GridComponent;
   @ViewChild('buttonBearbeitenProtokoll') buttonBearbeitenProtokoll: ButtonComponent;
   @ViewChild('panel2') panel2: PanelComponent;
   @ViewChild('gridArtikel') gridArtikel: GridComponent;
   @ViewChild('buttonArtikelExport') buttonArtikelExport: ButtonComponent;
+  @ViewChild('button0') button0: ButtonComponent;
   @ViewChild('panel3') panel3: PanelComponent;
   @ViewChild('gridErfassungArtikel') gridErfassungArtikel: GridComponent;
   @ViewChild('buttonExportArtikelErfassung') buttonExportArtikelErfassung: ButtonComponent;
   @ViewChild('panel4') panel4: PanelComponent;
   @ViewChild('gridErfassung') gridErfassung: GridComponent;
   @ViewChild('buttonErfassungExport') buttonErfassungExport: ButtonComponent;
+  @ViewChild('button2') button2: ButtonComponent;
   @ViewChild('panel5') panel5: PanelComponent;
   @ViewChild('gridErfassungSummen') gridErfassungSummen: GridComponent;
   @ViewChild('buttonErfassungSummenExport') buttonErfassungSummenExport: ButtonComponent;
+  @ViewChild('button3') button3: ButtonComponent;
+  @ViewChild('panel6') panel6: PanelComponent;
+  @ViewChild('image0') image0: ImageComponent;
+  @ViewChild('panel7') panel7: PanelComponent;
+  @ViewChild('image1') image1: ImageComponent;
 
   router: Router;
 
@@ -160,7 +169,7 @@ export class InventurGenerated implements AfterViewInit, OnInit, OnDestroy {
   }
 
   gridLagerorteLoadData(event: any) {
-    this.dbOptimo.getVwInventurLagerortes(`${event.filter}`, event.top, event.skip, `${event.orderby || 'LagerortNummer, LagerortTitel'}`, event.top != null && event.skip != null, null, null, null)
+    this.dbOptimo.getVwInventurLagerortes(`${event.filter}`, event.top, event.skip, `${event.orderby || 'ErfassungNr, Lagerort'}`, event.top != null && event.skip != null, null, null, null)
     .subscribe((result: any) => {
       this.rstLagerorte = result.value;
 
@@ -207,6 +216,10 @@ export class InventurGenerated implements AfterViewInit, OnInit, OnDestroy {
     });
   }
 
+  buttonLagerorteAktualisierenClick(event: any) {
+    this.gridLagerorte.load();
+  }
+
   buttonBearbeitenProtokollClick(event: any) {
     this.dialogService.open(MeldungOkComponent, { parameters: {strMeldung: "Export ist für dieses Modul noch nicht aktiviert!"}, title: `Info` });
   }
@@ -241,6 +254,10 @@ export class InventurGenerated implements AfterViewInit, OnInit, OnDestroy {
     this.dialogService.open(MeldungOkComponent, { parameters: {strMeldung: "Export ist für dieses Modul noch nicht aktiviert!"}, title: `Info` });
   }
 
+  button0Click(event: any) {
+    this.gridArtikel.load();
+  }
+
   buttonExportArtikelErfassungClick(event: any) {
     this.dialogService.open(MeldungOkComponent, { parameters: {strMeldung: "Export ist für dieses Modul noch nicht aktiviert!"}, title: `Info` });
   }
@@ -266,6 +283,10 @@ export class InventurGenerated implements AfterViewInit, OnInit, OnDestroy {
     this.dialogService.open(MeldungOkComponent, { parameters: {strMeldung: "Export ist für dieses Modul noch nicht aktiviert!"}, title: `Info` });
   }
 
+  button2Click(event: any) {
+    this.gridErfassung.load();
+  }
+
   gridErfassungSummenLoadData(event: any) {
     this.dbOptimo.getVwErfassungSummens(`${event.filter}`, event.top, event.skip, `${event.orderby}`, event.top != null && event.skip != null, null, null, null)
     .subscribe((result: any) => {
@@ -285,5 +306,9 @@ export class InventurGenerated implements AfterViewInit, OnInit, OnDestroy {
 
   buttonErfassungSummenExportClick(event: any) {
     this.dialogService.open(MeldungOkComponent, { parameters: {strMeldung: "Export ist für dieses Modul noch nicht aktiviert!"}, title: `Info` });
+  }
+
+  button3Click(event: any) {
+    this.gridErfassungSummen.load();
   }
 }

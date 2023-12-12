@@ -46,10 +46,10 @@ namespace OptimoWork.Controllers.DbOptimo
     partial void OnVwInventurArtikelsRead(ref IQueryable<Models.DbOptimo.VwInventurArtikel> items);
 
     [EnableQuery(MaxExpansionDepth=10,MaxAnyAllExpressionDepth=10,MaxNodeCount=1000)]
-    [HttpGet("{InventurID}")]
-    public SingleResult<VwInventurArtikel> GetVwInventurArtikel(int key)
+    [HttpGet("{Artikelnummer}")]
+    public SingleResult<VwInventurArtikel> GetVwInventurArtikel(string key)
     {
-        var items = this.context.VwInventurArtikels.AsNoTracking().Where(i=>i.InventurID == key);
+        var items = this.context.VwInventurArtikels.AsNoTracking().Where(i=>i.Artikelnummer == key);
         this.OnVwInventurArtikelsGet(ref items);
 
         return SingleResult.Create(items);

@@ -72,8 +72,8 @@ namespace OptimoWork.Controllers.DbOptimo
 
             var itemToDelete = this.context.InventurBases
                 .Where(i => i.InventurID == key)
-                .Include(i => i.InventurArtikels)
                 .Include(i => i.InventurDevices)
+                .Include(i => i.InventurErfassungs)
                 .FirstOrDefault();
 
             if (itemToDelete == null)

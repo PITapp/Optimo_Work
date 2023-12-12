@@ -55,8 +55,8 @@ namespace OptimoWork.Data
                 if (etagHeaderValue != null)
                 {
                     var values = request
-                    .GetRequestContainer()
-                    .GetRequiredService<IETagHandler>()
+                        .GetRequestContainer()
+                        .GetRequiredService<IETagHandler>()
                         .ParseETag(etagHeaderValue) ?? new Dictionary<string, object>();
 
                     return elementType

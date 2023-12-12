@@ -294,7 +294,7 @@
                               "locale": "de",
                               "name": "gridDevice",
                               "notEqualsText": "Not equals",
-                              "pageSize": 22,
+                              "pageSize": 200,
                               "startsWithText": "Starts with",
                               "style": {
                                 "border": "1px solid rgba(0, 0, 0, 0)",

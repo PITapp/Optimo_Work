@@ -17,9 +17,9 @@ namespace OptimoWork.Models.DbOptimo
     }
 
 
-    public ICollection<InventurArtikel> InventurArtikels { get; set; }
-
     public ICollection<InventurDevice> InventurDevices { get; set; }
+
+    public ICollection<InventurErfassung> InventurErfassungs { get; set; }
     public string LagerortStatus
     {
       get;
@@ -58,6 +58,21 @@ namespace OptimoWork.Models.DbOptimo
       set;
     }
     public string Verantwortlich
+    {
+      get;
+      set;
+    }
+    public string Zaehlteam
+    {
+      get;
+      set;
+    }
+    public string FilterBC
+    {
+      get;
+      set;
+    }
+    public string FilterAccess
     {
       get;
       set;

@@ -21,6 +21,13 @@ namespace OptimoWork.Models.DbOptimo
     }
 
     public InventurArtikel InventurArtikel { get; set; }
+    public int InventurID
+    {
+      get;
+      set;
+    }
+
+    public InventurBasis InventurBasis { get; set; }
     public int DeviceID
     {
       get;

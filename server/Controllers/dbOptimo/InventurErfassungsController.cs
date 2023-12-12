@@ -116,7 +116,7 @@ namespace OptimoWork.Controllers.DbOptimo
             this.context.SaveChanges();
 
             var itemToReturn = this.context.InventurErfassungs.Where(i => i.ErfassungID == key);
-            Request.QueryString = Request.QueryString.Add("$expand", "InventurArtikel,InventurDevice");
+            Request.QueryString = Request.QueryString.Add("$expand", "InventurArtikel,InventurBasis,InventurDevice");
             return new ObjectResult(SingleResult.Create(itemToReturn));
         }
         catch(Exception ex)
@@ -152,7 +152,7 @@ namespace OptimoWork.Controllers.DbOptimo
             this.context.SaveChanges();
 
             var itemToReturn = this.context.InventurErfassungs.Where(i => i.ErfassungID == key);
-            Request.QueryString = Request.QueryString.Add("$expand", "InventurArtikel,InventurDevice");
+            Request.QueryString = Request.QueryString.Add("$expand", "InventurArtikel,InventurBasis,InventurDevice");
             return new ObjectResult(SingleResult.Create(itemToReturn));
         }
         catch(Exception ex)
@@ -188,7 +188,7 @@ namespace OptimoWork.Controllers.DbOptimo
 
             var itemToReturn = this.context.InventurErfassungs.Where(i => i.ErfassungID == key);
 
-            Request.QueryString = Request.QueryString.Add("$expand", "InventurArtikel,InventurDevice");
+            Request.QueryString = Request.QueryString.Add("$expand", "InventurArtikel,InventurBasis,InventurDevice");
 
             return new ObjectResult(SingleResult.Create(itemToReturn))
             {

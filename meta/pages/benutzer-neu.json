@@ -51,7 +51,7 @@
                               "events": {
                                 "change": [
                                   {
-                                    "code": "this.anmeldename.value = event.Name2 + ' ' + event.Name1;\nthis.initialen.value = event.Name2.substr(0,1) + event.Name1.substr(0,1);\n\nthis.password.value = event.Name2 + '123#';\nthis.confirmPassword.value = this.password.value;\nthis.roleNames.value = [\"Kundenbetreuung\"];",
+                                    "code": "this.anmeldename.value = event.Name2 + ' ' + event.Name1;\nthis.initialen.value = event.Name2.substr(0,1) + event.Name1.substr(0,1);\n\nthis.password.value = event.Name2 + '123#';\nthis.confirmPassword.value = this.password.value;\nthis.roleNames.value = [\"Administrator\"];",
                                     "type": "execute"
                                   }
                                 ]
@@ -453,7 +453,33 @@
                             "detail": "Benutzer (Schritt 1) konnte nicht erstellt werden!",
                             "severity": "error",
                             "summary": "",
+                            "then": [],
                             "type": "notify"
+                          },
+                          {
+                            "code": "${dsoBenutzer.BaseID} = ${event.BaseID}\n${dsoBenutzer.AspNetUsers_Id} = ${result.Id}\n${dsoBenutzer.Benutzername} = ${event.Anmeldename}\n${dsoBenutzer.Initialen} = ${event.Initialen}\n${dsoBenutzer.Notiz} = ${event.Notiz}",
+                            "type": "execute"
+                          },
+                          {
+                            "name": "dbOptimo.createBenutzer",
+                            "parameters": [
+                              {
+                                "name": "Benutzer",
+                                "value": "${dsoBenutzer}"
+                              }
+                            ],
+                            "then": [
+                              {
+                                "detail": "Benutzer erstellt",
+                                "severity": "success",
+                                "type": "notify"
+                              },
+                              {
+                                "result": "${result}",
+                                "type": "close-popup"
+                              }
+                            ],
+                            "type": "invoke"
                           }
                         ],
                         "name": "Security.createUser",

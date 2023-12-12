@@ -122,7 +122,7 @@ export class DbOptimoService {
   }
 
   createInventurArtikel(expand: string | null, inventurArtikel: models.InventurArtikel | null) : Observable<any> {
-    return this.odata.post(`/InventurArtikels`, inventurArtikel, { expand }, ['InventurBasis']);
+    return this.odata.post(`/InventurArtikels`, inventurArtikel, { expand }, []);
   }
 
   deleteInventurArtikel(artikelId: number | null) : Observable<any> {
@@ -134,7 +134,7 @@ export class DbOptimoService {
   }
 
   updateInventurArtikel(expand: string | null, artikelId: number | null, inventurArtikel: models.InventurArtikel | null) : Observable<any> {
-    return this.odata.patch(`/InventurArtikels(${artikelId})`, inventurArtikel, item => item.ArtikelID == artikelId, { expand }, ['InventurBasis']);
+    return this.odata.patch(`/InventurArtikels(${artikelId})`, inventurArtikel, item => item.ArtikelID == artikelId, { expand }, []);
   }
 
   getInventurBases(filter: string | null, top: number | null, skip: number | null, orderby: string | null, count: boolean | null, expand: string | null, format: string | null, select: string | null) : Observable<any> {
@@ -202,7 +202,7 @@ export class DbOptimoService {
   }
 
   createInventurErfassung(expand: string | null, inventurErfassung: models.InventurErfassung | null) : Observable<any> {
-    return this.odata.post(`/InventurErfassungs`, inventurErfassung, { expand }, ['InventurArtikel', 'InventurDevice']);
+    return this.odata.post(`/InventurErfassungs`, inventurErfassung, { expand }, ['InventurArtikel', 'InventurBasis', 'InventurDevice']);
   }
 
   deleteInventurErfassung(erfassungId: number | null) : Observable<any> {
@@ -214,7 +214,7 @@ export class DbOptimoService {
   }
 
   updateInventurErfassung(expand: string | null, erfassungId: number | null, inventurErfassung: models.InventurErfassung | null) : Observable<any> {
-    return this.odata.patch(`/InventurErfassungs(${erfassungId})`, inventurErfassung, item => item.ErfassungID == erfassungId, { expand }, ['InventurArtikel','InventurDevice']);
+    return this.odata.patch(`/InventurErfassungs(${erfassungId})`, inventurErfassung, item => item.ErfassungID == erfassungId, { expand }, ['InventurArtikel','InventurBasis','InventurDevice']);
   }
 
   getNotizens(filter: string | null, top: number | null, skip: number | null, orderby: string | null, count: boolean | null, expand: string | null, format: string | null, select: string | null) : Observable<any> {
@@ -285,6 +285,10 @@ export class DbOptimoService {
     return this.odata.get(`/VwBenutzerRollens`, { filter, top, skip, orderby, count, expand, format, select });
   }
 
+  getVwErfassungNavs(filter: string | null, top: number | null, skip: number | null, orderby: string | null, count: boolean | null, expand: string | null, format: string | null, select: string | null) : Observable<any> {
+    return this.odata.get(`/VwErfassungNavs`, { filter, top, skip, orderby, count, expand, format, select });
+  }
+
   getVwErfassungSummens(filter: string | null, top: number | null, skip: number | null, orderby: string | null, count: boolean | null, expand: string | null, format: string | null, select: string | null) : Observable<any> {
     return this.odata.get(`/VwErfassungSummens`, { filter, top, skip, orderby, count, expand, format, select });
   }
@@ -299,6 +303,10 @@ export class DbOptimoService {
 
   getVwInventurErfassungs(filter: string | null, top: number | null, skip: number | null, orderby: string | null, count: boolean | null, expand: string | null, format: string | null, select: string | null) : Observable<any> {
     return this.odata.get(`/VwInventurErfassungs`, { filter, top, skip, orderby, count, expand, format, select });
+  }
+
+  getVwInventurErfassungBdos(filter: string | null, top: number | null, skip: number | null, orderby: string | null, count: boolean | null, expand: string | null, format: string | null, select: string | null) : Observable<any> {
+    return this.odata.get(`/VwInventurErfassungBdos`, { filter, top, skip, orderby, count, expand, format, select });
   }
 
   getVwInventurErfassungSummens(filter: string | null, top: number | null, skip: number | null, orderby: string | null, count: boolean | null, expand: string | null, format: string | null, select: string | null) : Observable<any> {

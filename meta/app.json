@@ -348,7 +348,8 @@
     "$upload-files-remove-background-color": "#dadfe2",
     "$upload-files-remove-color": "#3a474d",
     "$warning": "#e6c54f",
-    "upgraded": true
+    "upgraded": true,
+    "version": 4.1
   },
   "title": "Optimo work"
 }

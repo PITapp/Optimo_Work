@@ -32,9 +32,10 @@ https://github.com/FastReports/FastReport
 https://www.stimulsoft.com/de
 
 # Löschen node_modules und neu installieren
-> cd cliend 
+> cd client
 > rm -r node_modules
 > npm install
+> npm install --save @radzen/angular@2.82.8
 
 # Interesante Links
 > Theme: https://www.primefaces.org/verona-ng/#/

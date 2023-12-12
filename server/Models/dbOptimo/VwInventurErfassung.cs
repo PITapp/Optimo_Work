@@ -18,6 +18,11 @@ namespace OptimoWork.Models.DbOptimo
       get;
       set;
     }
+    public int InventurID
+    {
+      get;
+      set;
+    }
     public int DeviceID
     {
       get;
@@ -49,11 +54,6 @@ namespace OptimoWork.Models.DbOptimo
       set;
     }
     public DateTime? GeloeschtAm
-    {
-      get;
-      set;
-    }
-    public int InventurID
     {
       get;
       set;

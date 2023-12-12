@@ -46,10 +46,10 @@ namespace OptimoWork.Controllers.DbOptimo
     partial void OnVwInventurLagerortesRead(ref IQueryable<Models.DbOptimo.VwInventurLagerorte> items);
 
     [EnableQuery(MaxExpansionDepth=10,MaxAnyAllExpressionDepth=10,MaxNodeCount=1000)]
-    [HttpGet("{LagerortNummer}")]
+    [HttpGet("{AuftragCode}")]
     public SingleResult<VwInventurLagerorte> GetVwInventurLagerorte(string key)
     {
-        var items = this.context.VwInventurLagerortes.AsNoTracking().Where(i=>i.LagerortNummer == key);
+        var items = this.context.VwInventurLagerortes.AsNoTracking().Where(i=>i.AuftragCode == key);
         this.OnVwInventurLagerortesGet(ref items);
 
         return SingleResult.Create(items);

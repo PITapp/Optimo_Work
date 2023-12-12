@@ -13,11 +13,6 @@ namespace OptimoWork.Models.DbOptimo
       set;
     }
     [Key]
-    public int InventurID
-    {
-      get;
-      set;
-    }
     public string Artikelnummer
     {
       get;
@@ -54,6 +49,11 @@ namespace OptimoWork.Models.DbOptimo
       set;
     }
     public string LagerortTitel
+    {
+      get;
+      set;
+    }
+    public int InventurID
     {
       get;
       set;
