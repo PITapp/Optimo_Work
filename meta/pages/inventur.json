@@ -122,6 +122,330 @@
                 {
                   "components": [
                     {
+                      "class": "col-md-12",
+                      "components": [
+                        {
+                          "components": [
+                            {
+                              "addText": "",
+                              "allowAdd": false,
+                              "allowColumnReorder": true,
+                              "allowColumnResize": true,
+                              "allowDelete": false,
+                              "allowFiltering": true,
+                              "allowMultiSorting": false,
+                              "allowPaging": true,
+                              "allowSorting": true,
+                              "alwaysShowPager": false,
+                              "applyFilterText": "Anwenden",
+                              "clearFilterText": "Entfernen",
+                              "columnResizeMode": "expand",
+                              "columnWidth": "",
+                              "columns": [
+                                {
+                                  "property": "Artikelnummer",
+                                  "title": "Artikelnummer",
+                                  "type": "string",
+                                  "width": "120px"
+                                },
+                                {
+                                  "property": "Beschreibung",
+                                  "title": "Bezeichnung",
+                                  "type": "string",
+                                  "width": "300px"
+                                },
+                                {
+                                  "format": "int64",
+                                  "property": "Lagerbestand",
+                                  "template": "${data.LagerbestandFormatiert}",
+                                  "textAlign": "right",
+                                  "title": "Lagerbestand",
+                                  "type": "number",
+                                  "width": ""
+                                },
+                                {
+                                  "format": "decimal",
+                                  "property": "SummeGezaehlt",
+                                  "template": "${data.SummeGezaehltFormatiert}",
+                                  "textAlign": "right",
+                                  "title": "Gezählt",
+                                  "type": "number",
+                                  "width": ""
+                                },
+                                {
+                                  "format": "decimal",
+                                  "property": "AbweichungAbsolut",
+                                  "template": "${data.AbweichungAbsolutFormatiert}",
+                                  "textAlign": "right",
+                                  "title": "Abweichung Absolut",
+                                  "type": "number"
+                                },
+                                {
+                                  "format": "double",
+                                  "property": "AbweichungProzent",
+                                  "template": "${data.AbweichungProzentFormatiert}",
+                                  "textAlign": "right",
+                                  "title": "Abweichung Prozent",
+                                  "type": "number"
+                                },
+                                {
+                                  "filterProperty": "",
+                                  "format": "double",
+                                  "property": "Einstandspreis",
+                                  "template": "${data.EinstandspreisFormatiert}",
+                                  "textAlign": "right",
+                                  "title": "Einstandspreis",
+                                  "type": "number"
+                                },
+                                {
+                                  "format": "double",
+                                  "property": "WertkorrekturDurchInventur",
+                                  "template": "${data.WertkorrekturDurchInventurFormatiert}",
+                                  "textAlign": "right",
+                                  "title": "Wertkorrektur Inventur",
+                                  "type": "number"
+                                }
+                              ],
+                              "confirmDelete": false,
+                              "confirmDeleteCancelText": "",
+                              "confirmDeleteOkText": "",
+                              "confirmDeleteText": "",
+                              "confirmDeleteTitle": "",
+                              "containsText": "Enthält",
+                              "count": "${rstArtikelKontrolleCount}",
+                              "data": "${rstArtikelKontrolle}",
+                              "emptyText": "Keine Artikel vorhanden",
+                              "endsWithText": "Endet mit",
+                              "equalsText": "Gleich",
+                              "events": {
+                                "add": [],
+                                "create": [],
+                                "delete": [],
+                                "loadData": [
+                                  {
+                                    "condition": "",
+                                    "error": [
+                                      {
+                                        "detail": "Artikel können nicht geladen werden!",
+                                        "severity": "error",
+                                        "summary": "",
+                                        "type": "notify"
+                                      }
+                                    ],
+                                    "name": "dbOptimo.getVwInventurArtikelKontrolles",
+                                    "parameters": [
+                                      {
+                                        "name": "$top",
+                                        "value": "event.top"
+                                      },
+                                      {
+                                        "name": "$skip",
+                                        "value": "event.skip"
+                                      },
+                                      {
+                                        "name": "$count",
+                                        "value": "event.top != null && event.skip != null"
+                                      },
+                                      {
+                                        "name": "$filter",
+                                        "value": "${event.filter}"
+                                      },
+                                      {
+                                        "name": "$orderby",
+                                        "value": "${event.orderby}"
+                                      }
+                                    ],
+                                    "then": [
+                                      {
+                                        "name": "rstArtikelKontrolle",
+                                        "type": "set",
+                                        "value": "${result.value}"
+                                      },
+                                      {
+                                        "name": "rstArtikelKontrolleCount",
+                                        "type": "set",
+                                        "value": "event.top != null && event.skip != null ? result['@odata.count'] : ${result.value.length}"
+                                      },
+                                      {
+                                        "code": "this.gridArtikelKontrolle.onSelect(this.rstArtikelKontrolle[0]);",
+                                        "type": "execute"
+                                      }
+                                    ],
+                                    "type": "invoke"
+                                  }
+                                ],
+                                "rowDoubleClick": [],
+                                "rowSelect": []
+                              },
+                              "filterCaseSensitivity": "caseInsensitive",
+                              "greaterThanOrEqualsText": "Größer oder gleich",
+                              "greaterThanText": "Größer",
+                              "isLoading": false,
+                              "lessThanOrEqualsText": "Kleiner oder gleich",
+                              "lessThanText": "Kleiner",
+                              "locale": "de-at",
+                              "name": "gridArtikelKontrolle",
+                              "notEqualsText": "Nicht Gleich",
+                              "pageSize": 20,
+                              "pageSizeOptions": [],
+                              "responsive": true,
+                              "startsWithText": "Beginnt mit",
+                              "style": {
+                                "border": "1px solid rgba(0, 0, 0, 0)",
+                                "height": "690px",
+                                "marginLeft": "-10px",
+                                "marginRight": "-10px",
+                                "marginTop": "-13px"
+                              },
+                              "template": "",
+                              "title": "",
+                              "type": "grid",
+                              "value": ""
+                            }
+                          ],
+                          "headerTemplate": [
+                            {
+                              "components": [
+                                {
+                                  "class": "col-md-12 align-items-start d-flex",
+                                  "components": [
+                                    {
+                                      "buttonStyle": "light",
+                                      "buttonType": "button",
+                                      "events": {
+                                        "click": [
+                                          {
+                                            "error": [
+                                              {
+                                                "severity": "error",
+                                                "summary": "Der Export kann nicht durchgeführt werden!",
+                                                "type": "notify"
+                                              }
+                                            ],
+                                            "format": "xlsx",
+                                            "name": "dbOptimo.getVwInventurArtikelWirtscahftspruefungs",
+                                            "then": [
+                                              {
+                                                "severity": "success",
+                                                "summary": "Der Export wurde erfolgreich durchgeführt!",
+                                                "type": "notify"
+                                              }
+                                            ],
+                                            "type": "export"
+                                          }
+                                        ]
+                                      },
+                                      "icon": "upgrade",
+                                      "name": "buttonExportWirtschaftspruefung",
+                                      "size": "sm",
+                                      "style": {
+                                        "color": "#a71330",
+                                        "display": "block",
+                                        "marginTop": "1px"
+                                      },
+                                      "text": "Export Wirtschaftsprüfung",
+                                      "tooltip": "",
+                                      "type": "button"
+                                    },
+                                    {
+                                      "buttonStyle": "light",
+                                      "buttonType": "button",
+                                      "events": {
+                                        "click": [
+                                          {
+                                            "error": [
+                                              {
+                                                "severity": "error",
+                                                "summary": "Der Export kann nicht durchgeführt werden!",
+                                                "type": "notify"
+                                              }
+                                            ],
+                                            "format": "xlsx",
+                                            "name": "dbOptimo.getVwInventurArtikelKontrolles",
+                                            "then": [
+                                              {
+                                                "severity": "success",
+                                                "summary": "Der Export wurde erfolgreich durchgeführt!",
+                                                "type": "notify"
+                                              }
+                                            ],
+                                            "type": "export"
+                                          }
+                                        ]
+                                      },
+                                      "icon": "upgrade",
+                                      "name": "buttonExportKontrolle",
+                                      "size": "sm",
+                                      "style": {
+                                        "color": "#a71330",
+                                        "display": "block",
+                                        "marginLeft": "10px",
+                                        "marginTop": "1px"
+                                      },
+                                      "text": "Export",
+                                      "tooltip": "",
+                                      "type": "button"
+                                    },
+                                    {
+                                      "buttonStyle": "light",
+                                      "buttonType": "button",
+                                      "events": {
+                                        "click": [
+                                          {
+                                            "code": "this.gridArtikel.load();",
+                                            "type": "execute"
+                                          }
+                                        ]
+                                      },
+                                      "icon": "cached",
+                                      "name": "buttonAktualisierenKontrolle",
+                                      "size": "sm",
+                                      "style": {
+                                        "color": "#a71330",
+                                        "display": "block",
+                                        "marginLeft": "10px",
+                                        "marginRight": "-9px",
+                                        "marginTop": "1px"
+                                      },
+                                      "text": "Aktualisieren",
+                                      "tooltip": "",
+                                      "type": "button"
+                                    }
+                                  ],
+                                  "name": "col6",
+                                  "type": "col"
+                                }
+                              ],
+                              "name": "row0",
+                              "type": "row"
+                            }
+                          ],
+                          "icon": "",
+                          "name": "panel8",
+                          "style": {
+                            "border": "1px solid #e6ecef",
+                            "height": "740px"
+                          },
+                          "text": "${rstArtikelKontrolleCount} Artikel",
+                          "type": "panel"
+                        }
+                      ],
+                      "name": "col12",
+                      "type": "col"
+                    }
+                  ],
+                  "name": "row5",
+                  "type": "row"
+                }
+              ],
+              "selected": true,
+              "text": "Kontrolle"
+            },
+            {
+              "components": [
+                {
+                  "components": [
+                    {
                       "class": "col-md-7",
                       "components": [
                         {
@@ -577,7 +901,7 @@
                                           }
                                         ]
                                       },
-                                      "icon": "published_with_changes",
+                                      "icon": "upgrade",
                                       "name": "buttonBearbeitenProtokoll",
                                       "size": "sm",
                                       "style": {
@@ -621,7 +945,7 @@
                 }
               ],
               "icon": "",
-              "selected": true,
+              "selected": false,
               "text": "Lagerorte"
             },
             {
@@ -822,19 +1146,27 @@
                                       "events": {
                                         "click": [
                                           {
-                                            "parameters": [
+                                            "error": [
                                               {
-                                                "name": "strMeldung",
-                                                "value": "\"Export ist für dieses Modul noch nicht aktiviert!\""
+                                                "severity": "error",
+                                                "summary": "Der Export kann nicht durchgeführt werden!",
+                                                "type": "notify"
                                               }
                                             ],
-                                            "path": "meldung-ok",
-                                            "title": "Info",
-                                            "type": "popup"
+                                            "format": "xlsx",
+                                            "name": "dbOptimo.getVwInventurArtikels",
+                                            "then": [
+                                              {
+                                                "severity": "success",
+                                                "summary": "Der Export wurde erfolgreich durchgeführt!",
+                                                "type": "notify"
+                                              }
+                                            ],
+                                            "type": "export"
                                           }
                                         ]
                                       },
-                                      "icon": "published_with_changes",
+                                      "icon": "upgrade",
                                       "name": "buttonArtikelExport",
                                       "size": "sm",
                                       "style": {
@@ -1039,7 +1371,7 @@
                                           }
                                         ]
                                       },
-                                      "icon": "published_with_changes",
+                                      "icon": "upgrade",
                                       "name": "buttonExportArtikelErfassung",
                                       "size": "sm",
                                       "style": {
@@ -1324,7 +1656,7 @@
                                           }
                                         ]
                                       },
-                                      "icon": "published_with_changes",
+                                      "icon": "upgrade",
                                       "name": "buttonErfassungExport",
                                       "size": "sm",
                                       "style": {
@@ -1578,7 +1910,7 @@
                                           }
                                         ]
                                       },
-                                      "icon": "published_with_changes",
+                                      "icon": "upgrade",
                                       "name": "buttonErfassungSummenExport",
                                       "size": "sm",
                                       "style": {
@@ -1756,6 +2088,10 @@
         "name": "letzteInventurID",
         "type": "set",
         "value": "null"
+      },
+      {
+        "code": "this.gridArtikelKontrolle.load();",
+        "type": "execute"
       },
       {
         "code": "this.gridLagerorte.load();",

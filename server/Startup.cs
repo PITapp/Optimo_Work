@@ -189,6 +189,8 @@ namespace OptimoWork
           oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.VwErfassungSummen>("VwErfassungSummens");
           oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.VwInventurArtikel>("VwInventurArtikels");
           oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.VwInventurArtikelAlle>("VwInventurArtikelAlles");
+          oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.VwInventurArtikelKontrolle>("VwInventurArtikelKontrolles");
+          oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.VwInventurArtikelWirtscahftspruefung>("VwInventurArtikelWirtscahftspruefungs");
           oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.VwInventurErfassung>("VwInventurErfassungs");
           oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.VwInventurErfassungBdo>("VwInventurErfassungBdos");
           oDataBuilder.EntitySet<OptimoWork.Models.DbOptimo.VwInventurErfassungSummen>("VwInventurErfassungSummens");

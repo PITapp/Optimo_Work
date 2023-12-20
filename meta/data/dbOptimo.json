@@ -397,6 +397,13 @@
           "type": "string",
           "length": 30
         },
+        "Einstandspreis": {
+          "type": "number",
+          "format": "double"
+        },
+        "Lagerbestand": {
+          "type": "integer"
+        },
         "Notiz": {
           "type": "string",
           "length": 65535
@@ -1600,9 +1607,170 @@
           "type": "string",
           "length": 30
         },
+        "Einstandspreis": {
+          "type": "number",
+          "format": "double"
+        },
+        "Lagerbestand": {
+          "type": "integer"
+        },
         "Notiz": {
           "type": "string",
           "length": 65535
+        }
+      }
+    },
+    "VwInventurArtikelKontrolle": {
+      "x-view": true,
+      "x-table": "def.vwInventurArtikelKontrolle",
+      "resource": "VwInventurArtikelKontrolles",
+      "required": [
+        "Artikelnummer",
+        "ArtikelStatus",
+        "LagerortNummer",
+        "LagerortTitel",
+        "InventurID"
+      ],
+      "properties": {
+        "ArtikelID": {
+          "x-default-sql": "0",
+          "x-nullable": false,
+          "type": "integer"
+        },
+        "Artikelnummer": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 30,
+          "x-key": true,
+          "x-virtual": true
+        },
+        "Beschreibung": {
+          "type": "string",
+          "length": 100
+        },
+        "Beschreibung2": {
+          "type": "string",
+          "length": 100
+        },
+        "StdKreditorName": {
+          "type": "string",
+          "length": 50
+        },
+        "Lagerbestand": {
+          "type": "integer"
+        },
+        "LagerbestandFormatiert": {
+          "type": "string",
+          "length": 47
+        },
+        "Einstandspreis": {
+          "type": "number",
+          "format": "double"
+        },
+        "EinstandspreisFormatiert": {
+          "type": "string",
+          "length": 49
+        },
+        "ArtikelStatus": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 30
+        },
+        "Notiz": {
+          "type": "string",
+          "length": 65535
+        },
+        "LagerortNummer": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 10
+        },
+        "LagerortTitel": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 70
+        },
+        "InventurID": {
+          "x-nullable": false,
+          "type": "integer"
+        },
+        "LagerortGesamt": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 81
+        },
+        "AnzahlErfasst": {
+          "x-default-sql": "0",
+          "x-nullable": false,
+          "type": "integer",
+          "format": "int64"
+        },
+        "AnzahlErfasstFormatiert": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 61
+        },
+        "SummeGezaehlt": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "SummeGezaehltFormatiert": {
+          "type": "string",
+          "length": 77
+        },
+        "AbweichungAbsolut": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "AbweichungAbsolutFormatiert": {
+          "type": "string",
+          "length": 78
+        },
+        "AbweichungProzent": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "AbweichungProzentFormatiert": {
+          "type": "string",
+          "length": 89
+        },
+        "WertkorrekturDurchInventur": {
+          "type": "number",
+          "format": "double"
+        },
+        "WertkorrekturDurchInventurFormatiert": {
+          "type": "string",
+          "length": 63
+        }
+      }
+    },
+    "VwInventurArtikelWirtscahftspruefung": {
+      "x-view": true,
+      "x-table": "def.vwInventurArtikelWirtscahftspruefung",
+      "resource": "VwInventurArtikelWirtscahftspruefungs",
+      "required": [
+        "Artikelnummer"
+      ],
+      "properties": {
+        "Artikelnummer": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 30,
+          "x-key": true,
+          "x-virtual": true
+        },
+        "Beschreibung": {
+          "type": "string",
+          "length": 100
+        },
+        "Lagerort": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 81
+        },
+        "Gezaehlt": {
+          "type": "number",
+          "format": "decimal"
         }
       }
     },
@@ -3849,6 +4017,140 @@
                 "value": {
                   "items": {
                     "$ref": "#/definitions/VwInventurArtikelAlle"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/VwInventurArtikelKontrolles": {
+      "get": {
+        "operationId": "getVwInventurArtikelKontrolles",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$count",
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$select",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/VwInventurArtikelKontrolle"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/VwInventurArtikelWirtscahftspruefungs": {
+      "get": {
+        "operationId": "getVwInventurArtikelWirtscahftspruefungs",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$count",
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$select",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/VwInventurArtikelWirtscahftspruefung"
                   },
                   "type": "array"
                 }

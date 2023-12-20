@@ -14,7 +14,63 @@
     </div>
   </div>
   <rz-tabs #tabs0 [style]="{'float': 'none'}">
-    <rz-tabs-item [selected]="true" text="Lagerorte">
+    <rz-tabs-item [selected]="true" text="Kontrolle">
+      <div class="row">
+        <div class="col-md-12">
+          <rz-panel #panel8 [style]="{'border': '1px solid #e6ecef', 'height': '740px'}" text="{{rstArtikelKontrolleCount}} Artikel">
+            <rz-grid #gridArtikelKontrolle [allowAdd]="false" [allowColumnReorder]="true" [allowColumnResize]="true" [allowDelete]="false" [allowFiltering]="true" [allowMultiSorting]="false" [allowPaging]="true" [allowSorting]="true" [alwaysShowPager]="false" applyFilterText="Anwenden" clearFilterText="Entfernen" columnResizeMode="expand" [confirmDelete]="false" containsText="Enthält" [count]="rstArtikelKontrolleCount" [data]="rstArtikelKontrolle" emptyText="Keine Artikel vorhanden" endsWithText="Endet mit" equalsText="Gleich" filterCaseSensitivity="caseInsensitive" greaterThanOrEqualsText="Größer oder gleich" greaterThanText="Größer" [isLoading]="false" lessThanOrEqualsText="Kleiner oder gleich" lessThanText="Kleiner" locale="de-at" notEqualsText="Nicht Gleich" [pageSize]="20" [responsive]="true" startsWithText="Beginnt mit" [style]="{'border': '1px solid rgba(0, 0, 0, 0)', 'height': '690px', 'marginLeft': '-10px', 'marginRight': '-10px', 'marginTop': '-13px'}" (loadData)="gridArtikelKontrolleLoadData($event)">
+              <rz-grid-column property="Artikelnummer" title="Artikelnummer" width="120px" type="string">
+              </rz-grid-column>
+              <rz-grid-column property="Beschreibung" title="Bezeichnung" width="300px" type="string">
+              </rz-grid-column>
+              <rz-grid-column format="int64" property="Lagerbestand" textAlign="right" title="Lagerbestand" type="number">
+                <ng-template let-data gridColumnTemplate>
+                {{data?.LagerbestandFormatiert}}
+                </ng-template>
+              </rz-grid-column>
+              <rz-grid-column format="decimal" property="SummeGezaehlt" textAlign="right" title="Gezählt" type="number">
+                <ng-template let-data gridColumnTemplate>
+                {{data?.SummeGezaehltFormatiert}}
+                </ng-template>
+              </rz-grid-column>
+              <rz-grid-column format="decimal" property="AbweichungAbsolut" textAlign="right" title="Abweichung Absolut" type="number">
+                <ng-template let-data gridColumnTemplate>
+                {{data?.AbweichungAbsolutFormatiert}}
+                </ng-template>
+              </rz-grid-column>
+              <rz-grid-column format="double" property="AbweichungProzent" textAlign="right" title="Abweichung Prozent" type="number">
+                <ng-template let-data gridColumnTemplate>
+                {{data?.AbweichungProzentFormatiert}}
+                </ng-template>
+              </rz-grid-column>
+              <rz-grid-column format="double" property="Einstandspreis" textAlign="right" title="Einstandspreis" type="number">
+                <ng-template let-data gridColumnTemplate>
+                {{data?.EinstandspreisFormatiert}}
+                </ng-template>
+              </rz-grid-column>
+              <rz-grid-column format="double" property="WertkorrekturDurchInventur" textAlign="right" title="Wertkorrektur Inventur" type="number">
+                <ng-template let-data gridColumnTemplate>
+                {{data?.WertkorrekturDurchInventurFormatiert}}
+                </ng-template>
+              </rz-grid-column>
+            </rz-grid>
+            <rz-panel-header>
+              <div class="row">
+                <div class="col-md-12 align-items-start d-flex">
+                  <rz-button #buttonExportWirtschaftspruefung buttonStyle="light" buttonType="button" icon="upgrade" size="sm" [style]="{'color': '#a71330', 'display': 'block', 'marginTop': '1px'}" text="Export Wirtschaftsprüfung" (click)="buttonExportWirtschaftspruefungClick($event)">
+                  </rz-button>
+                  <rz-button #buttonExportKontrolle buttonStyle="light" buttonType="button" icon="upgrade" size="sm" [style]="{'color': '#a71330', 'display': 'block', 'marginLeft': '10px', 'marginTop': '1px'}" text="Export" (click)="buttonExportKontrolleClick($event)">
+                  </rz-button>
+                  <rz-button #buttonAktualisierenKontrolle buttonStyle="light" buttonType="button" icon="cached" size="sm" [style]="{'color': '#a71330', 'display': 'block', 'marginLeft': '10px', 'marginRight': '-9px', 'marginTop': '1px'}" text="Aktualisieren" (click)="buttonAktualisierenKontrolleClick($event)">
+                  </rz-button>
+                </div>
+              </div>
+            </rz-panel-header>
+          </rz-panel>
+        </div>
+      </div>
+    </rz-tabs-item>
+    <rz-tabs-item [selected]="false" text="Lagerorte">
       <div class="row">
         <div class="col-md-7">
           <rz-panel #panel1 [style]="{'border': '1px solid #e6ecef', 'height': '740px'}" text="{{rstLagerorteCount}} Lagerorte">
@@ -70,7 +126,7 @@
             <rz-panel-header>
               <div class="row">
                 <div class="col-md-12 align-items-start d-flex">
-                  <rz-button #buttonBearbeitenProtokoll buttonStyle="light" buttonType="button" icon="published_with_changes" size="sm" [style]="{'color': '#a71330', 'display': 'block', 'marginRight': '-9px', 'marginTop': '1px'}" text="Export" (click)="buttonBearbeitenProtokollClick($event)">
+                  <rz-button #buttonBearbeitenProtokoll buttonStyle="light" buttonType="button" icon="upgrade" size="sm" [style]="{'color': '#a71330', 'display': 'block', 'marginRight': '-9px', 'marginTop': '1px'}" text="Export" (click)="buttonBearbeitenProtokollClick($event)">
                   </rz-button>
                 </div>
               </div>
@@ -99,7 +155,7 @@
             <rz-panel-header>
               <div class="row">
                 <div class="col-md-12 align-items-start d-flex">
-                  <rz-button #buttonArtikelExport buttonStyle="light" buttonType="button" icon="published_with_changes" size="sm" [style]="{'color': '#a71330', 'display': 'block', 'marginTop': '1px'}" text="Export" (click)="buttonArtikelExportClick($event)">
+                  <rz-button #buttonArtikelExport buttonStyle="light" buttonType="button" icon="upgrade" size="sm" [style]="{'color': '#a71330', 'display': 'block', 'marginTop': '1px'}" text="Export" (click)="buttonArtikelExportClick($event)">
                   </rz-button>
                   <rz-button #button0 buttonStyle="light" buttonType="button" icon="cached" size="sm" [style]="{'color': '#a71330', 'display': 'block', 'marginLeft': '10px', 'marginRight': '-9px', 'marginTop': '1px'}" text="Aktualisieren" (click)="button0Click($event)">
                   </rz-button>
@@ -130,7 +186,7 @@
             <rz-panel-header>
               <div class="row">
                 <div class="col-md-12 align-items-start d-flex">
-                  <rz-button #buttonExportArtikelErfassung buttonStyle="light" buttonType="button" icon="published_with_changes" size="sm" [style]="{'color': '#a71330', 'display': 'block', 'marginRight': '-9px', 'marginTop': '1px'}" text="Export" (click)="buttonExportArtikelErfassungClick($event)">
+                  <rz-button #buttonExportArtikelErfassung buttonStyle="light" buttonType="button" icon="upgrade" size="sm" [style]="{'color': '#a71330', 'display': 'block', 'marginRight': '-9px', 'marginTop': '1px'}" text="Export" (click)="buttonExportArtikelErfassungClick($event)">
                   </rz-button>
                 </div>
               </div>
@@ -175,7 +231,7 @@
             <rz-panel-header>
               <div class="row">
                 <div class="col-md-12 align-items-start d-flex">
-                  <rz-button #buttonErfassungExport buttonStyle="light" buttonType="button" icon="published_with_changes" size="sm" [style]="{'color': '#a71330', 'display': 'block', 'marginTop': '1px'}" text="Export" (click)="buttonErfassungExportClick($event)">
+                  <rz-button #buttonErfassungExport buttonStyle="light" buttonType="button" icon="upgrade" size="sm" [style]="{'color': '#a71330', 'display': 'block', 'marginTop': '1px'}" text="Export" (click)="buttonErfassungExportClick($event)">
                   </rz-button>
                   <rz-button #button2 buttonStyle="light" buttonType="button" icon="cached" size="sm" [style]="{'color': '#a71330', 'display': 'block', 'marginLeft': '10px', 'marginRight': '-9px', 'marginTop': '1px'}" text="Aktualisieren" (click)="button2Click($event)">
                   </rz-button>
@@ -205,7 +261,7 @@
             <rz-panel-header>
               <div class="row">
                 <div class="col-md-12 align-items-start d-flex">
-                  <rz-button #buttonErfassungSummenExport buttonStyle="light" buttonType="button" icon="published_with_changes" size="sm" [style]="{'color': '#a71330', 'display': 'block', 'marginTop': '1px'}" text="Export" (click)="buttonErfassungSummenExportClick($event)">
+                  <rz-button #buttonErfassungSummenExport buttonStyle="light" buttonType="button" icon="upgrade" size="sm" [style]="{'color': '#a71330', 'display': 'block', 'marginTop': '1px'}" text="Export" (click)="buttonErfassungSummenExportClick($event)">
                   </rz-button>
                   <rz-button #button3 buttonStyle="light" buttonType="button" icon="cached" size="sm" [style]="{'color': '#a71330', 'display': 'block', 'marginLeft': '10px', 'marginRight': '-9px', 'marginTop': '1px'}" text="Aktualisieren" (click)="button3Click($event)">
                   </rz-button>

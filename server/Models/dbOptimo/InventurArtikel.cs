@@ -58,6 +58,16 @@ namespace OptimoWork.Models.DbOptimo
       get;
       set;
     }
+    public double? Einstandspreis
+    {
+      get;
+      set;
+    }
+    public int? Lagerbestand
+    {
+      get;
+      set;
+    }
     public string Notiz
     {
       get;

@@ -35,7 +35,7 @@ https://www.stimulsoft.com/de
 > cd client
 > rm -r node_modules
 > npm install
-> npm install --save @radzen/angular@2.82.8
+> npm install --save @radzen/angular@2.87.2
 
 # Interesante Links
 > Theme: https://www.primefaces.org/verona-ng/#/

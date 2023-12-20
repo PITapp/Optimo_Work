@@ -34,6 +34,11 @@ export class InventurGenerated implements AfterViewInit, OnInit, OnDestroy {
   @ViewChild('heading21') heading21: HeadingComponent;
   @ViewChild('button1') button1: ButtonComponent;
   @ViewChild('tabs0') tabs0: TabsComponent;
+  @ViewChild('panel8') panel8: PanelComponent;
+  @ViewChild('gridArtikelKontrolle') gridArtikelKontrolle: GridComponent;
+  @ViewChild('buttonExportWirtschaftspruefung') buttonExportWirtschaftspruefung: ButtonComponent;
+  @ViewChild('buttonExportKontrolle') buttonExportKontrolle: ButtonComponent;
+  @ViewChild('buttonAktualisierenKontrolle') buttonAktualisierenKontrolle: ButtonComponent;
   @ViewChild('panel1') panel1: PanelComponent;
   @ViewChild('gridLagerorte') gridLagerorte: GridComponent;
   @ViewChild('buttonLagerortBearbeiten') buttonLagerortBearbeiten: ButtonComponent;
@@ -88,6 +93,8 @@ export class InventurGenerated implements AfterViewInit, OnInit, OnDestroy {
   security: SecurityService;
   letzteInventurID: any;
   parameters: any;
+  rstArtikelKontrolle: any;
+  rstArtikelKontrolleCount: any;
   rstLagerorte: any;
   rstLagerorteCount: any;
   dsoLagerort: any;
@@ -155,6 +162,8 @@ export class InventurGenerated implements AfterViewInit, OnInit, OnDestroy {
   load() {
     this.letzteInventurID = null;
 
+    this.gridArtikelKontrolle.load();
+
     this.gridLagerorte.load();
 
     this.gridArtikel.load();
@@ -166,6 +175,41 @@ export class InventurGenerated implements AfterViewInit, OnInit, OnDestroy {
 
   button1Click(event: any) {
     this.dialogService.open(MeldungOkComponent, { parameters: {strMeldung: "Drucken ist für dieses Modul noch nicht aktiviert!"}, width: 600, title: `Info` });
+  }
+
+  gridArtikelKontrolleLoadData(event: any) {
+    this.dbOptimo.getVwInventurArtikelKontrolles(`${event.filter}`, event.top, event.skip, `${event.orderby}`, event.top != null && event.skip != null, null, null, null)
+    .subscribe((result: any) => {
+      this.rstArtikelKontrolle = result.value;
+
+      this.rstArtikelKontrolleCount = event.top != null && event.skip != null ? result['@odata.count'] : result.value.length;
+
+      this.gridArtikelKontrolle.onSelect(this.rstArtikelKontrolle[0]);
+    }, (result: any) => {
+      this.notificationService.notify({ severity: "error", summary: ``, detail: `Artikel können nicht geladen werden!` });
+    });
+  }
+
+  buttonExportWirtschaftspruefungClick(event: any) {
+    this.dbOptimo.getVwInventurArtikelWirtscahftspruefungs(null, null, null, null, null, null, `xlsx`, null)
+    .subscribe((result: any) => {
+      this.notificationService.notify({ severity: "success", summary: `Der Export wurde erfolgreich durchgeführt!`, detail: `` });
+    }, (result: any) => {
+      this.notificationService.notify({ severity: "error", summary: `Der Export kann nicht durchgeführt werden!`, detail: `` });
+    });
+  }
+
+  buttonExportKontrolleClick(event: any) {
+    this.dbOptimo.getVwInventurArtikelKontrolles(null, null, null, null, null, null, `xlsx`, null)
+    .subscribe((result: any) => {
+      this.notificationService.notify({ severity: "success", summary: `Der Export wurde erfolgreich durchgeführt!`, detail: `` });
+    }, (result: any) => {
+      this.notificationService.notify({ severity: "error", summary: `Der Export kann nicht durchgeführt werden!`, detail: `` });
+    });
+  }
+
+  buttonAktualisierenKontrolleClick(event: any) {
+    this.gridArtikel.load();
   }
 
   gridLagerorteLoadData(event: any) {
@@ -251,7 +295,12 @@ export class InventurGenerated implements AfterViewInit, OnInit, OnDestroy {
   }
 
   buttonArtikelExportClick(event: any) {
-    this.dialogService.open(MeldungOkComponent, { parameters: {strMeldung: "Export ist für dieses Modul noch nicht aktiviert!"}, title: `Info` });
+    this.dbOptimo.getVwInventurArtikels(null, null, null, null, null, null, `xlsx`, null)
+    .subscribe((result: any) => {
+      this.notificationService.notify({ severity: "success", summary: `Der Export wurde erfolgreich durchgeführt!`, detail: `` });
+    }, (result: any) => {
+      this.notificationService.notify({ severity: "error", summary: `Der Export kann nicht durchgeführt werden!`, detail: `` });
+    });
   }
 
   button0Click(event: any) {

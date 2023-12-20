@@ -69,6 +69,8 @@ export interface InventurArtikel {
   StdKreditorName: string;
   Einheit: string;
   ArtikelStatus: string;
+  Einstandspreis: number;
+  Lagerbestand: number;
   Notiz: string;
 }
 
@@ -319,7 +321,44 @@ export interface VwInventurArtikelAlle {
   StdKreditorName: string;
   Einheit: string;
   ArtikelStatus: string;
+  Einstandspreis: number;
+  Lagerbestand: number;
   Notiz: string;
+}
+
+export interface VwInventurArtikelKontrolle {
+  ArtikelID: number;
+  Artikelnummer: string;
+  Beschreibung: string;
+  Beschreibung2: string;
+  StdKreditorName: string;
+  Lagerbestand: number;
+  LagerbestandFormatiert: string;
+  Einstandspreis: number;
+  EinstandspreisFormatiert: string;
+  ArtikelStatus: string;
+  Notiz: string;
+  LagerortNummer: string;
+  LagerortTitel: string;
+  InventurID: number;
+  LagerortGesamt: string;
+  AnzahlErfasst: number;
+  AnzahlErfasstFormatiert: string;
+  SummeGezaehlt: number;
+  SummeGezaehltFormatiert: string;
+  AbweichungAbsolut: number;
+  AbweichungAbsolutFormatiert: string;
+  AbweichungProzent: number;
+  AbweichungProzentFormatiert: string;
+  WertkorrekturDurchInventur: number;
+  WertkorrekturDurchInventurFormatiert: string;
+}
+
+export interface VwInventurArtikelWirtscahftspruefung {
+  Artikelnummer: string;
+  Beschreibung: string;
+  Lagerort: string;
+  Gezaehlt: number;
 }
 
 export interface VwInventurErfassung {

@@ -112,6 +112,14 @@ namespace OptimoWork.Data
                   .Property(p => p.ArtikelID)
                   .HasDefaultValueSql("0");
 
+            builder.Entity<OptimoWork.Models.DbOptimo.VwInventurArtikelKontrolle>()
+                  .Property(p => p.ArtikelID)
+                  .HasDefaultValueSql("0");
+
+            builder.Entity<OptimoWork.Models.DbOptimo.VwInventurArtikelKontrolle>()
+                  .Property(p => p.AnzahlErfasst)
+                  .HasDefaultValueSql("0");
+
             builder.Entity<OptimoWork.Models.DbOptimo.VwInventurErfassung>()
                   .Property(p => p.ErfassungID)
                   .HasDefaultValueSql("0");
@@ -273,6 +281,18 @@ namespace OptimoWork.Data
         }
 
         public DbSet<OptimoWork.Models.DbOptimo.VwInventurArtikelAlle> VwInventurArtikelAlles
+        {
+          get;
+          set;
+        }
+
+        public DbSet<OptimoWork.Models.DbOptimo.VwInventurArtikelKontrolle> VwInventurArtikelKontrolles
+        {
+          get;
+          set;
+        }
+
+        public DbSet<OptimoWork.Models.DbOptimo.VwInventurArtikelWirtscahftspruefung> VwInventurArtikelWirtscahftspruefungs
         {
           get;
           set;

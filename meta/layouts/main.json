@@ -204,7 +204,7 @@
             "float": "none",
             "marginTop": "-6px"
           },
-          "text": "© 2022 Optimo Schlafsysteme GmbH",
+          "text": "© 2023 Optimo Schlafsysteme GmbH",
           "type": "label"
         },
         {
@@ -237,7 +237,7 @@
             "float": "right",
             "marginTop": "-2px"
           },
-          "text": "Version 1.03.028",
+          "text": "Version 1.03.032",
           "type": "link"
         },
         {
